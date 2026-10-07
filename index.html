@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sea Cargo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#0a0d14] text-gray-200 font-sans pb-24 selection:bg-[#00e676] selection:text-black">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#10141e]/90 backdrop-blur-md border-b border-gray-800/80 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-sm shadow-md shadow-[#00e676]/20">
+        SC
+      </div>
+      <div>
+        <h1 class="text-sm font-extrabold text-white tracking-wider">THE SEA CARGO</h1>
+        <p class="text-[10px] text-[#00e676] flex items-center gap-1 font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#00e676] animate-pulse"></span> Platform Active
+        </p>
+      </div>
+    </div>
+    <span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/40 text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+      <i class="fa-solid fa-crown text-[9px]"></i> VIP 1
+    </span>
+  </header>
+
+  <main class="p-4 space-y-4 max-w-md mx-auto">
+
+    <!-- Live Withdrawal Marquee -->
+    <div class="bg-[#121722] border border-gray-800 rounded-xl px-3 py-2 flex items-center gap-2 overflow-hidden text-xs">
+      <i class="fa-solid fa-bullhorn text-[#ffb800] text-xs"></i>
+      <div class="whitespace-nowrap overflow-hidden w-full text-[11px] text-gray-300">
+        <span class="text-[#00e676] font-semibold">User 98**12</span> withdraw ₹1,850 successfully • 
+        <span class="text-[#00e676] font-semibold">User 87**54</span> withdraw ₹5,400 successfully
+      </div>
+    </div>
+
+    <!-- Main Wallet Card -->
+    <div class="relative overflow-hidden bg-gradient-to-br from-[#151b27] via-[#101520] to-[#0a0d14] border border-gray-800/80 p-5 rounded-2xl shadow-xl">
+      <div class="flex justify-between items-start">
+        <div>
+          <p class="text-xs text-gray-400 font-medium">Total Available Balance</p>
+          <h2 class="text-3xl font-black text-white mt-1 tracking-tight" id="balanceDisplay">₹ 0.00</h2>
+        </div>
+        <button onclick="location.reload()" class="text-gray-400 hover:text-white transition">
+          <i class="fa-solid fa-arrows-rotate text-xs"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <button onclick="openModal('rechargeModal')" class="flex items-center justify-center gap-2 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#00e676]/20">
+          <i class="fa-solid fa-wallet"></i> Recharge (Add)
+        </button>
+        <button onclick="openModal('withdrawModal')" class="flex items-center justify-center gap-2 bg-[#1b2230] hover:bg-[#222a3c] border border-gray-700/80 text-white font-semibold py-2.5 rounded-xl text-xs transition active:scale-95">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdrawal
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+      <div class="bg-[#121722] border border-gray-800/80 p-3 rounded-xl">
+        <p class="text-[10px] text-gray-400">Daily Cargo ROI</p>
+        <p class="text-[#00e676] font-bold text-sm mt-1">₹ 0.00</p>
+      </div>
+      <div class="bg-[#121722] border border-gray-800/80 p-3 rounded-xl">
+        <p class="text-[10px] text-gray-400">Team Income</p>
+        <p class="text-[#ffb800] font-bold text-sm mt-1">₹ 0.00</p>
+      </div>
+      <div class="bg-[#121722] border border-gray-800/80 p-3 rounded-xl">
+        <p class="text-[10px] text-gray-400">My Team</p>
+        <p class="text-white font-bold text-sm mt-1">0 Users</p>
+      </div>
+    </div>
+
+    <!-- Cargo Plans Section -->
+    <div class="space-y-3 pt-1">
+      <div class="flex justify-between items-center">
+        <h3 class="text-xs font-bold text-gray-400 tracking-wider uppercase">Available Cargo Plans</h3>
+        <span class="text-[10px] text-[#00e676]">Daily Return Credit</span>
+      </div>
+
+      <!-- Plan 1 -->
+      <div class="bg-[#131925] border border-gray-800 rounded-2xl p-4 relative overflow-hidden transition hover:border-gray-700">
+        <div class="flex justify-between items-start">
+          <div>
+            <h4 class="text-sm font-bold text-white">Vessel Tier 1</h4>
+            <p class="text-[11px] text-gray-400">Light Commercial Shipping</p>
+          </div>
+          <span class="bg-[#00e676]/20 text-[#00e676] border border-[#00e676]/30 text-[10px] font-bold px-2 py-0.5 rounded-md">
+            ₹ 250.00
+          </span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-2.5 rounded-xl text-xs">
+          <div><span class="text-gray-400 text-[11px]">Daily ROI:</span> <span class="text-[#00e676] font-bold">₹ 50.00</span></div>
+          <div><span class="text-gray-400 text-[11px]">Validity:</span> <span class="text-white font-semibold">7 Days</span></div>
+          <div><span class="text-gray-400 text-[11px]">Total Profit:</span> <span class="text-[#ffb800] font-bold">₹ 350.00</span></div>
+          <div><span class="text-gray-400 text-[11px]">Capital:</span> <span class="text-white">Included</span></div>
+        </div>
+        <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2 rounded-xl text-xs transition active:scale-95">
+          Invest Now
+        </button>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="bg-[#131925] border border-[#ffb800]/40 rounded-2xl p-4 relative overflow-hidden transition shadow-lg shadow-[#ffb800]/5">
+        <div class="flex justify-between items-start">
+          <div>
+            <h4 class="text-sm font-bold text-white flex items-center gap-1.5">
+              Ocean Freight Tier 2 <i class="fa-solid fa-fire text-[#ffb800] text-xs"></i>
+            </h4>
+            <p class="text-[11px] text-gray-400">High Volume Container Route</p>
+          </div>
+          <span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/30 text-[10px] font-bold px-2 py-0.5 rounded-md">
+            ₹ 700.00
+          </span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-2.5 rounded-xl text-xs">
+          <div><span class="text-gray-400 text-[11px]">Daily ROI:</span> <span class="text-[#00e676] font-bold">₹ 160.00</span></div>
+          <div><span class="text-gray-400 text-[11px]">Validity:</span> <span class="text-white font-semibold">10 Days</span></div>
+          <div><span class="text-gray-400 text-[11px]">Total Profit:</span> <span class="text-[#ffb800] font-bold">₹ 1,600.00</span></div>
+          <div><span class="text-gray-400 text-[11px]">Capital:</span> <span class="text-white">Included</span></div>
+        </div>
+        <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#ffb800] hover:bg-[#e0a200] text-black font-bold py-2 rounded-xl text-xs transition active:scale-95">
+          Invest Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Referral Card -->
+    <div class="bg-[#131925] border border-gray-800 p-4 rounded-2xl">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-share-nodes text-[#ffb800]"></i>
+        <h4 class="text-xs font-bold text-white">Invite & Earn 10% Commission</h4>
+      </div>
+      <p class="text-[11px] text-gray-400 mt-1">Directly share your team link on WhatsApp or Telegram.</p>
+      <div class="flex items-center gap-2 mt-3">
+        <input id="refLink" type="text" readonly value="https://theseacargo.vercel.app/?ref=SC7860" class="w-full bg-[#0c1018] text-xs text-gray-300 px-3 py-2 rounded-xl border border-gray-800 outline-none">
+        <button onclick="copyRef()" class="bg-[#ffb800] hover:bg-[#e0a200] text-black font-bold text-xs px-3.5 py-2 rounded-xl active:scale-95 transition">
+          Copy
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Recharge Modal (Popup) -->
+  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
+    <div class="bg-[#131925] border border-gray-800 w-full max-w-sm rounded-2xl p-5 space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-qrcode text-[#00e676]"></i> Scan & Pay (UPI)
+        </h3>
+        <button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
+      </div>
+      <div class="text-center p-3 bg-white rounded-xl mx-auto w-40 h-40 flex items-center justify-center">
+        <!-- Replace with your UPI QR Code Image -->
+        <span class="text-xs text-gray-800 font-semibold text-center">Place your QR Code here</span>
+      </div>
+      <div>
+        <label class="text-[11px] text-gray-400">12-Digit UTR / Transaction ID</label>
+        <input type="text" placeholder="Enter UTR Number" class="w-full mt-1 bg-[#0c1018] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#00e676]">
+      </div>
+      <button onclick="alert('UTR Submitted! Verification will take 5-10 minutes.'); closeModal('rechargeModal')" class="w-full bg-[#00e676] text-black font-bold py-2.5 rounded-xl text-xs">
+        Submit UTR For Approval
+      </button>
+    </div>
+  </div>
+
+  <!-- Withdraw Modal (Popup) -->
+  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
+    <div class="bg-[#131925] border border-gray-800 w-full max-w-sm rounded-2xl p-5 space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-building-columns text-[#ffb800]"></i> Withdraw Balance
+        </h3>
+        <button onclick="closeModal('withdrawModal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
+      </div>
+      <div class="space-y-2">
+        <input type="text" placeholder="Bank Account Number / UPI ID" class="w-full bg-[#0c1018] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ffb800]">
+        <input type="text" placeholder="IFSC Code (if bank transfer)" class="w-full bg-[#0c1018] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ffb800]">
+        <input type="number" placeholder="Enter Amount (Min. ₹150)" class="w-full bg-[#0c1018] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ffb800]">
+      </div>
+      <button onclick="alert('Insufficient balance for withdrawal.'); closeModal('withdrawModal')" class="w-full bg-[#ffb800] text-black font-bold py-2.5 rounded-xl text-xs">
+        Request Payout
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-[#10141e]/95 backdrop-blur-md border-t border-gray-800/80 py-3 px-6 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
+    <button class="text-[#00e676] font-bold flex flex-col items-center gap-1">
+      <i class="fa-solid fa-house text-sm"></i> Home
+    </button>
+    <button class="flex flex-col items-center gap-1 hover:text-white">
+      <i class="fa-solid fa-ship text-sm"></i> Plans
+    </button>
+    <button class="flex flex-col items-center gap-1 hover:text-white">
+      <i class="fa-solid fa-users text-sm"></i> Team
+    </button>
+    <button class="flex flex-col items-center gap-1 hover:text-white">
+      <i class="fa-solid fa-user text-sm"></i> Profile
+    </button>
+  </nav>
+
+  <script>
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    function copyRef() {
+      const input = document.getElementById('refLink');
+      navigator.clipboard.writeText(input.value);
+      alert('Referral Link Copied!');
+    }
+  </script>
+</body>
+</html>
