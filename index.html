@@ -33,8 +33,9 @@
     <div class="bg-[#121722] border border-gray-800 rounded-xl px-3 py-2 flex items-center gap-2 overflow-hidden text-xs">
       <i class="fa-solid fa-bullhorn text-[#ffb800] text-xs"></i>
       <div class="whitespace-nowrap overflow-hidden w-full text-[11px] text-gray-300">
-        <span class="text-[#00e676] font-semibold">User 98**12</span> withdraw ₹1,850 successfully • 
-        <span class="text-[#00e676] font-semibold">User 87**54</span> withdraw ₹5,400 successfully
+        <span class="text-[#00e676] font-semibold">User 98**12</span> withdraw ₹1,950 successfully • 
+        <span class="text-[#00e676] font-semibold">User 87**54</span> withdraw ₹18,000 successfully • 
+        <span class="text-[#00e676] font-semibold">User 74**33</span> withdraw ₹24,000 successfully
       </div>
     </div>
 
@@ -77,57 +78,243 @@
     </div>
 
     <!-- Cargo Plans Section -->
-    <div class="space-y-3 pt-1">
+    <div class="space-y-4 pt-1">
       <div class="flex justify-between items-center">
-        <h3 class="text-xs font-bold text-gray-400 tracking-wider uppercase">Available Cargo Plans</h3>
-        <span class="text-[10px] text-[#00e676]">Daily Return Credit</span>
+        <h3 class="text-xs font-bold text-gray-400 tracking-wider uppercase">Active Cargo Investment Plans</h3>
+        <span class="text-[10px] text-[#00e676] font-semibold">Daily Payout</span>
       </div>
 
-      <!-- Plan 1 -->
-      <div class="bg-[#131925] border border-gray-800 rounded-2xl p-4 relative overflow-hidden transition hover:border-gray-700">
-        <div class="flex justify-between items-start">
-          <div>
+      <!-- Plan 1: ₹190 -->
+      <div class="bg-[#131925] border border-gray-800 rounded-2xl overflow-hidden transition hover:border-[#00e676]/50">
+        <div class="relative h-36 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=700&q=80" alt="Plan 190" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131925] via-transparent to-black/30"></div>
+          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">
+            Price: ₹190
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/60 backdrop-blur-sm text-[10px] font-semibold text-white px-2 py-0.5 rounded-md border border-white/10">
+            Starter Cargo Vessel
+          </span>
+        </div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
             <h4 class="text-sm font-bold text-white">Vessel Tier 1</h4>
-            <p class="text-[11px] text-gray-400">Light Commercial Shipping</p>
+            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
           </div>
-          <span class="bg-[#00e676]/20 text-[#00e676] border border-[#00e676]/30 text-[10px] font-bold px-2 py-0.5 rounded-md">
-            ₹ 250.00
-          </span>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-3 rounded-xl text-xs border border-gray-800/80">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-bold text-base mt-0.5">₹195.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹1,950.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#00e676]/20">
+            Invest ₹190 Now
+          </button>
         </div>
-        <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-2.5 rounded-xl text-xs">
-          <div><span class="text-gray-400 text-[11px]">Daily ROI:</span> <span class="text-[#00e676] font-bold">₹ 50.00</span></div>
-          <div><span class="text-gray-400 text-[11px]">Validity:</span> <span class="text-white font-semibold">7 Days</span></div>
-          <div><span class="text-gray-400 text-[11px]">Total Profit:</span> <span class="text-[#ffb800] font-bold">₹ 350.00</span></div>
-          <div><span class="text-gray-400 text-[11px]">Capital:</span> <span class="text-white">Included</span></div>
-        </div>
-        <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2 rounded-xl text-xs transition active:scale-95">
-          Invest Now
-        </button>
       </div>
 
-      <!-- Plan 2 -->
-      <div class="bg-[#131925] border border-[#ffb800]/40 rounded-2xl p-4 relative overflow-hidden transition shadow-lg shadow-[#ffb800]/5">
-        <div class="flex justify-between items-start">
-          <div>
-            <h4 class="text-sm font-bold text-white flex items-center gap-1.5">
-              Ocean Freight Tier 2 <i class="fa-solid fa-fire text-[#ffb800] text-xs"></i>
-            </h4>
-            <p class="text-[11px] text-gray-400">High Volume Container Route</p>
-          </div>
-          <span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/30 text-[10px] font-bold px-2 py-0.5 rounded-md">
-            ₹ 700.00
+      <!-- Plan 2: ₹295 -->
+      <div class="bg-[#131925] border border-gray-800 rounded-2xl overflow-hidden transition hover:border-[#00e676]/50">
+        <div class="relative h-36 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=700&q=80" alt="Plan 295" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131925] via-transparent to-black/30"></div>
+          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">
+            Price: ₹295
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/60 backdrop-blur-sm text-[10px] font-semibold text-white px-2 py-0.5 rounded-md border border-white/10">
+            Harbor Feeder Line
           </span>
         </div>
-        <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-2.5 rounded-xl text-xs">
-          <div><span class="text-gray-400 text-[11px]">Daily ROI:</span> <span class="text-[#00e676] font-bold">₹ 160.00</span></div>
-          <div><span class="text-gray-400 text-[11px]">Validity:</span> <span class="text-white font-semibold">10 Days</span></div>
-          <div><span class="text-gray-400 text-[11px]">Total Profit:</span> <span class="text-[#ffb800] font-bold">₹ 1,600.00</span></div>
-          <div><span class="text-gray-400 text-[11px]">Capital:</span> <span class="text-white">Included</span></div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
+            <h4 class="text-sm font-bold text-white">Harbor Feeder Tier 2</h4>
+            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-3 rounded-xl text-xs border border-gray-800/80">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-bold text-base mt-0.5">₹300.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹3,000.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#00e676]/20">
+            Invest ₹295 Now
+          </button>
         </div>
-        <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#ffb800] hover:bg-[#e0a200] text-black font-bold py-2 rounded-xl text-xs transition active:scale-95">
-          Invest Now
-        </button>
       </div>
+
+      <!-- Plan 3: ₹395 -->
+      <div class="bg-[#131925] border border-gray-800 rounded-2xl overflow-hidden transition hover:border-[#00e676]/50">
+        <div class="relative h-36 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=700&q=80" alt="Plan 395" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131925] via-transparent to-black/30"></div>
+          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">
+            Price: ₹395
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/60 backdrop-blur-sm text-[10px] font-semibold text-white px-2 py-0.5 rounded-md border border-white/10">
+            Regional Coastal Express
+          </span>
+        </div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
+            <h4 class="text-sm font-bold text-white">Coastal Express Tier 3</h4>
+            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-3 rounded-xl text-xs border border-gray-800/80">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-bold text-base mt-0.5">₹400.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹4,000.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#00e676]/20">
+            Invest ₹395 Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Plan 4: ₹498 -->
+      <div class="bg-[#131925] border border-gray-800 rounded-2xl overflow-hidden transition hover:border-[#00e676]/50">
+        <div class="relative h-36 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" alt="Plan 498" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131925] via-transparent to-black/30"></div>
+          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">
+            Price: ₹498
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/60 backdrop-blur-sm text-[10px] font-semibold text-white px-2 py-0.5 rounded-md border border-white/10">
+            Bulk Shipping Logistics
+          </span>
+        </div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
+            <h4 class="text-sm font-bold text-white">Bulk Logistics Tier 4</h4>
+            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-3 rounded-xl text-xs border border-gray-800/80">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-bold text-base mt-0.5">₹500.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹5,000.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#00e676]/20">
+            Invest ₹498 Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Plan 5: ₹795 -->
+      <div class="bg-[#131925] border border-gray-800 rounded-2xl overflow-hidden transition hover:border-[#00e676]/50">
+        <div class="relative h-36 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=700&q=80" alt="Plan 795" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#131925] via-transparent to-black/30"></div>
+          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">
+            Price: ₹795
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/60 backdrop-blur-sm text-[10px] font-semibold text-white px-2 py-0.5 rounded-md border border-white/10">
+            Trans-Ocean Liner
+          </span>
+        </div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
+            <h4 class="text-sm font-bold text-white">Trans-Ocean Tier 5</h4>
+            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0c1018] p-3 rounded-xl text-xs border border-gray-800/80">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-bold text-base mt-0.5">₹800.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹8,000.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#00e676]/20">
+            Invest ₹795 Now
+          </button>
+        </div>
+      </div>
+
+      <!-- PREMIUM PLAN 1: ₹999 (Roj 1200 - 15 Days) -->
+      <div class="bg-[#151c2b] border-2 border-[#ffb800] rounded-2xl overflow-hidden shadow-xl shadow-[#ffb800]/10">
+        <div class="relative h-40 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=700&q=80" alt="VIP Plan 999" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#151c2b] via-transparent to-black/40"></div>
+          <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-[#ffb800] to-[#ffa000] text-black text-xs font-black px-3 py-1 rounded-full shadow-lg">
+            VIP 1 • ₹999
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/70 backdrop-blur-sm text-[11px] font-bold text-[#ffb800] px-2.5 py-0.5 rounded-md border border-[#ffb800]/30 flex items-center gap-1">
+            <i class="fa-solid fa-crown text-[10px]"></i> Golden Fleet VIP
+          </span>
+        </div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
+            <h4 class="text-sm font-extrabold text-white">Golden Fleet VIP Tier</h4>
+            <span class="text-xs font-semibold text-[#ffb800]">Validity: <b class="text-white">15 Days</b></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0d121c] p-3 rounded-xl text-xs border border-gray-800">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-extrabold text-base mt-0.5">₹1,200.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹18,000.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-gradient-to-r from-[#ffb800] to-[#ffa000] hover:brightness-110 text-black font-extrabold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#ffb800]/20">
+            Invest Premium ₹999 Now
+          </button>
+        </div>
+      </div>
+
+      <!-- PREMIUM PLAN 2: ₹1495 (Roj 1600 - 15 Days) -->
+      <div class="bg-[#151c2b] border-2 border-[#ffb800] rounded-2xl overflow-hidden shadow-xl shadow-[#ffb800]/10">
+        <div class="relative h-40 w-full overflow-hidden bg-gray-900">
+          <img src="https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=700&q=80" alt="VIP Plan 1495" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#151c2b] via-transparent to-black/40"></div>
+          <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-[#ffb800] to-[#ffa000] text-black text-xs font-black px-3 py-1 rounded-full shadow-lg">
+            VIP 2 • ₹1,495
+          </span>
+          <span class="absolute bottom-2 left-3 bg-black/70 backdrop-blur-sm text-[11px] font-bold text-[#ffb800] px-2.5 py-0.5 rounded-md border border-[#ffb800]/30 flex items-center gap-1">
+            <i class="fa-solid fa-gem text-[10px]"></i> Ultra King Cargo
+          </span>
+        </div>
+        <div class="p-4 pt-2">
+          <div class="flex justify-between items-center">
+            <h4 class="text-sm font-extrabold text-white">Ultra King Carrier Tier</h4>
+            <span class="text-xs font-semibold text-[#ffb800]">Validity: <b class="text-white">15 Days</b></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#0d121c] p-3 rounded-xl text-xs border border-gray-800">
+            <div>
+              <p class="text-gray-400 text-[11px]">Roj Milega (Daily):</p>
+              <p class="text-[#00e676] font-extrabold text-base mt-0.5">₹1,600.00</p>
+            </div>
+            <div>
+              <p class="text-gray-400 text-[11px]">Total Return Amount:</p>
+              <p class="text-[#ffb800] font-black text-base mt-0.5">₹24,000.00</p>
+            </div>
+          </div>
+          <button onclick="alert('Balance kam hai! Kripya pehle Recharge karein.')" class="w-full mt-3 bg-gradient-to-r from-[#ffb800] to-[#ffa000] hover:brightness-110 text-black font-extrabold py-2.5 rounded-xl text-xs transition active:scale-95 shadow-md shadow-[#ffb800]/20">
+            Invest Premium ₹1,495 Now
+          </button>
+        </div>
+      </div>
+
     </div>
 
     <!-- Referral Card -->
@@ -138,7 +325,7 @@
       </div>
       <p class="text-[11px] text-gray-400 mt-1">Directly share your team link on WhatsApp or Telegram.</p>
       <div class="flex items-center gap-2 mt-3">
-        <input id="refLink" type="text" readonly value="https://theseacargo.vercel.app/?ref=SC7860" class="w-full bg-[#0c1018] text-xs text-gray-300 px-3 py-2 rounded-xl border border-gray-800 outline-none">
+        <input id="refLink" type="text" readonly value="https://the-sea-cargo.vercel.app/?ref=SC7860" class="w-full bg-[#0c1018] text-xs text-gray-300 px-3 py-2 rounded-xl border border-gray-800 outline-none">
         <button onclick="copyRef()" class="bg-[#ffb800] hover:bg-[#e0a200] text-black font-bold text-xs px-3.5 py-2 rounded-xl active:scale-95 transition">
           Copy
         </button>
@@ -157,7 +344,6 @@
         <button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
       </div>
       <div class="text-center p-3 bg-white rounded-xl mx-auto w-40 h-40 flex items-center justify-center">
-        <!-- Replace with your UPI QR Code Image -->
         <span class="text-xs text-gray-800 font-semibold text-center">Place your QR Code here</span>
       </div>
       <div>
