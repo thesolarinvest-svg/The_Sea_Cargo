@@ -3,374 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sea Cargo - Official Platform</title>
+  <title>The Sea Cargo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-[#07090e] text-gray-200 font-sans pb-24 selection:bg-[#00e676] selection:text-black">
+<body class="bg-[#07090e] text-gray-200 font-sans pb-20">
 
-  <!-- ================= TOP HEADER ================= -->
-  <header class="sticky top-0 z-40 bg-[#0d1017]/95 backdrop-blur-md border-b border-gray-800/80 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-xs shadow-md shadow-[#00e676]/20">
-        SC
-      </div>
-      <div>
-        <h1 class="text-xs font-black text-white tracking-wider">THE SEA CARGO</h1>
-        <p class="text-[10px] text-[#00e676] font-semibold flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#00e676] animate-pulse"></span> Diwedi (Verified)
-        </p>
-      </div>
+  <!-- AUTH (NO OTP) -->
+  <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center">
+    <div class="text-center mb-6">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-2xl mb-2"><i class="fa-solid fa-ship"></i></div>
+      <h1 class="text-xl font-black text-white tracking-wider">THE SEA CARGO</h1>
+      <p class="text-xs text-gray-400">Maritime Freight Investment</p>
     </div>
-    <span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/40 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-      <i class="fa-solid fa-crown text-[9px]"></i> VIP 1
-    </span>
-  </header>
-
-  <main class="p-4 space-y-4 max-w-md mx-auto">
-
-    <!-- ================= 2-SECOND LIVE WITHDRAW TICKER ================= -->
-    <div class="bg-[#0f131d] border border-gray-800 rounded-2xl p-3 space-y-2 shadow-lg">
-      <div class="flex justify-between items-center px-1">
-        <span class="text-[11px] font-bold text-white flex items-center gap-1.5">
-          <i class="fa-solid fa-bolt text-[#ffb800]"></i> Live Withdrawals (Auto 2s)
-        </span>
-        <span class="text-[9px] text-[#00e676] font-bold flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#00e676] animate-ping"></span> Active 2s
-        </span>
-      </div>
-      <div id="withdrawList" class="space-y-1.5 text-xs"></div>
+    <div class="grid grid-cols-2 bg-[#0f131d] p-1 rounded-xl border border-gray-800 mb-4">
+      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2 text-xs font-bold rounded-lg bg-[#00e676] text-black">Sign Up</button>
+      <button id="tabLogin" onclick="switchAuth('login')" class="py-2 text-xs font-bold rounded-lg text-gray-400">Login</button>
     </div>
-
-    <!-- ================= MAIN BALANCE CARD ================= -->
-    <div class="bg-gradient-to-br from-[#121724] via-[#0d121c] to-[#07090e] border border-gray-800 p-5 rounded-2xl shadow-xl">
-      <p class="text-xs text-gray-400 font-medium">Total Available Balance</p>
-      <h2 class="text-3xl font-black text-white mt-1 tracking-tight" id="balanceDisplay">₹ 0.00</h2>
-      <div class="grid grid-cols-2 gap-3 mt-4">
-        <button onclick="openModal('rechargeModal')" class="bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-md shadow-[#00e676]/20 flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-wallet"></i> Recharge (Add)
-        </button>
-        <button onclick="openModal('withdrawModal')" class="bg-[#182030] hover:bg-[#202a3f] border border-gray-700 text-white font-semibold py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5">
-          <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdrawal
-        </button>
-      </div>
+    <div id="signupBox" class="bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3">
+      <input id="regUser" type="text" placeholder="User ID / Apna Naam" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit Phone" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <input id="regPass" type="password" placeholder="Password (Min 6)" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="handleRegister()" class="w-full bg-[#00e676] text-black font-black py-2.5 rounded-xl text-xs">Create Account</button>
     </div>
-
-    <!-- ================= QUICK 3 STATS ================= -->
-    <div class="grid grid-cols-3 gap-2 text-center text-xs">
-      <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl">
-        <p class="text-[10px] text-gray-400">Daily Return</p>
-        <p class="text-[#00e676] font-bold text-xs mt-1">₹ 0.00</p>
-      </div>
-      <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl">
-        <p class="text-[10px] text-gray-400">Team Bonus</p>
-        <p class="text-[#ffb800] font-bold text-xs mt-1">₹ 0.00</p>
-      </div>
-      <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl">
-        <p class="text-[10px] text-gray-400">Active Plans</p>
-        <p class="text-white font-bold text-xs mt-1">0 Ship</p>
-      </div>
+    <div id="loginBox" class="hidden bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3">
+      <input id="loginUser" type="text" placeholder="User ID" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <input id="loginPass" type="password" placeholder="Password" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="handleLogin()" class="w-full bg-[#ffb800] text-black font-black py-2.5 rounded-xl text-xs">Login</button>
     </div>
+  </div>
 
-    <!-- ================= CARGO INVESTMENT PLANS (ALL SHIP PHOTOS) ================= -->
-    <div class="space-y-4 pt-1">
-      <div class="flex justify-between items-center">
-        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Active Cargo Investment Plans</h3>
-        <span class="text-[10px] text-[#00e676] font-bold">Daily Payout</span>
-      </div>
-
-      <!-- Plan 1: 190 -->
-      <div class="bg-[#0f131d] border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
-        <div class="relative h-44 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Container_ship_Elly_Maersk.jpg/800px-Container_ship_Elly_Maersk.jpg" alt="Coastal Feeder Ship" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">Price: ₹190</span>
-          <span class="absolute bottom-2 left-3 bg-black/80 backdrop-blur-sm text-[10px] text-white px-2 py-0.5 rounded border border-white/10">Coastal Feeder Ship</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-bold text-white">Vessel Tier 1</h4>
-            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-bold text-sm">₹195.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-sm">₹1,950.00</p></div>
-          </div>
-          <button onclick="investPlan(190)" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs active:scale-95 transition">Invest ₹190 Now</button>
-        </div>
-      </div>
-
-      <!-- Plan 2: 295 -->
-      <div class="bg-[#0f131d] border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
-        <div class="relative h-44 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/CMA_CGM_Benjamin_Franklin_-_port_of_Rotterdam.jpg/800px-CMA_CGM_Benjamin_Franklin_-_port_of_Rotterdam.jpg" alt="Harbor Cargo Ship" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">Price: ₹295</span>
-          <span class="absolute bottom-2 left-3 bg-black/80 backdrop-blur-sm text-[10px] text-white px-2 py-0.5 rounded border border-white/10">Harbor Cargo Ship</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-bold text-white">Harbor Feeder Tier 2</h4>
-            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-bold text-sm">₹300.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-sm">₹3,000.00</p></div>
-          </div>
-          <button onclick="investPlan(295)" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs active:scale-95 transition">Invest ₹295 Now</button>
-        </div>
-      </div>
-
-      <!-- Plan 3: 395 -->
-      <div class="bg-[#0f131d] border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
-        <div class="relative h-44 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Emma_Maersk_stb_side.jpg/800px-Emma_Maersk_stb_side.jpg" alt="Regional Cargo Liner" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">Price: ₹395</span>
-          <span class="absolute bottom-2 left-3 bg-black/80 backdrop-blur-sm text-[10px] text-white px-2 py-0.5 rounded border border-white/10">Regional Cargo Liner</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-bold text-white">Coastal Express Tier 3</h4>
-            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-bold text-sm">₹400.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-sm">₹4,000.00</p></div>
-          </div>
-          <button onclick="investPlan(395)" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs active:scale-95 transition">Invest ₹395 Now</button>
-        </div>
-      </div>
-
-      <!-- Plan 4: 498 -->
-      <div class="bg-[#0f131d] border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
-        <div class="relative h-44 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Container_Ship_in_San_Francisco_Bay.jpg/800px-Container_Ship_in_San_Francisco_Bay.jpg" alt="Bulk Cargo Freight" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">Price: ₹498</span>
-          <span class="absolute bottom-2 left-3 bg-black/80 backdrop-blur-sm text-[10px] text-white px-2 py-0.5 rounded border border-white/10">Bulk Cargo Freight</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-bold text-white">Bulk Logistics Tier 4</h4>
-            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-bold text-sm">₹500.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-sm">₹5,000.00</p></div>
-          </div>
-          <button onclick="investPlan(498)" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs active:scale-95 transition">Invest ₹498 Now</button>
-        </div>
-      </div>
-
-      <!-- Plan 5: 795 -->
-      <div class="bg-[#0f131d] border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
-        <div class="relative h-44 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Madrid_Maersk_in_the_English_Channel.jpg/800px-Madrid_Maersk_in_the_English_Channel.jpg" alt="Trans-Ocean Heavy Liner" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-[#00e676] text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md">Price: ₹795</span>
-          <span class="absolute bottom-2 left-3 bg-black/80 backdrop-blur-sm text-[10px] text-white px-2 py-0.5 rounded border border-white/10">Trans-Ocean Heavy Liner</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-bold text-white">Trans-Ocean Tier 5</h4>
-            <span class="text-xs font-semibold text-gray-300">Validity: <b class="text-white">10 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-bold text-sm">₹800.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-sm">₹8,000.00</p></div>
-          </div>
-          <button onclick="investPlan(795)" class="w-full mt-3 bg-[#00e676] hover:bg-[#00c853] text-black font-bold py-2.5 rounded-xl text-xs active:scale-95 transition">Invest ₹795 Now</button>
-        </div>
-      </div>
-
-      <!-- VIP 1: 999 -->
-      <div class="bg-[#12192a] border-2 border-[#ffb800] rounded-2xl overflow-hidden shadow-xl shadow-[#ffb800]/10">
-        <div class="relative h-48 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Ever_Given_in_the_Suez_Canal_-_20200424.jpg/800px-Ever_Given_in_the_Suez_Canal_-_20200424.jpg" alt="Golden Fleet VIP Ship" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-[#ffb800] to-[#ffa000] text-black text-xs font-black px-3 py-1 rounded-full shadow-lg">VIP 1 • ₹999</span>
-          <span class="absolute bottom-2 left-3 bg-black/90 text-[10px] font-bold text-[#ffb800] px-2 py-0.5 rounded"><i class="fa-solid fa-crown mr-1"></i> Golden Fleet Mega Carrier</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-extrabold text-white">Golden Fleet VIP Tier</h4>
-            <span class="text-xs text-[#ffb800]">Validity: <b class="text-white">15 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-black text-base">₹1,200.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-base">₹18,000.00</p></div>
-          </div>
-          <button onclick="investPlan(999)" class="w-full mt-3 bg-gradient-to-r from-[#ffb800] to-[#ffa000] text-black font-black py-2.5 rounded-xl text-xs shadow-md shadow-[#ffb800]/20">Invest Premium ₹999 Now</button>
-        </div>
-      </div>
-
-      <!-- VIP 2: 1495 -->
-      <div class="bg-[#12192a] border-2 border-[#ffb800] rounded-2xl overflow-hidden shadow-xl shadow-[#ffb800]/10">
-        <div class="relative h-48 w-full bg-black">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/OOCL_Hong_Kong.jpg/800px-OOCL_Hong_Kong.jpg" alt="Ultra King Mega Ship" class="w-full h-full object-cover">
-          <span class="absolute top-2.5 right-2.5 bg-gradient-to-r from-[#ffb800] to-[#ffa000] text-black text-xs font-black px-3 py-1 rounded-full shadow-lg">VIP 2 • ₹1,495</span>
-          <span class="absolute bottom-2 left-3 bg-black/90 text-[10px] font-bold text-[#ffb800] px-2 py-0.5 rounded"><i class="fa-solid fa-gem mr-1"></i> Ultra King Flagship Carrier</span>
-        </div>
-        <div class="p-4 pt-2">
-          <div class="flex justify-between items-center">
-            <h4 class="text-sm font-extrabold text-white">Ultra King Carrier Tier</h4>
-            <span class="text-xs text-[#ffb800]">Validity: <b class="text-white">15 Days</b></span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
-            <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-black text-base">₹1,600.00</p></div>
-            <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-base">₹24,000.00</p></div>
-          </div>
-          <button onclick="investPlan(1495)" class="w-full mt-3 bg-gradient-to-r from-[#ffb800] to-[#ffa000] text-black font-black py-2.5 rounded-xl text-xs shadow-md shadow-[#ffb800]/20">Invest Premium ₹1,495 Now</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= TRUST, CERTIFICATES & LEGAL SECTION ================= -->
-    <div class="bg-[#0c101a] border border-gray-800 rounded-2xl p-5 space-y-4 shadow-xl mt-6">
-      <div class="text-center space-y-1">
-        <span class="text-[10px] font-extrabold text-[#00e676] tracking-widest uppercase">Verified Maritime Entity</span>
-        <h3 class="text-base font-black text-white">Official Certifications & Security</h3>
-        <p class="text-[11px] text-gray-400">The Sea Cargo operates under international shipping safety charters with guaranteed member fund protection.</p>
-      </div>
-
-      <!-- Trust Badges Grid -->
-      <div class="grid grid-cols-2 gap-2.5 pt-1">
-        <div class="bg-[#07090e] border border-gray-800/90 rounded-xl p-3 text-center space-y-1.5">
-          <div class="w-9 h-9 mx-auto rounded-full bg-[#00e676]/10 border border-[#00e676]/30 flex items-center justify-center text-[#00e676] text-sm">
-            <i class="fa-solid fa-award"></i>
-          </div>
-          <p class="text-xs font-bold text-white">ISO 9001:2015</p>
-          <p class="text-[10px] text-gray-400">Certified Ocean Freight & Quality Management</p>
-        </div>
-
-        <div class="bg-[#07090e] border border-gray-800/90 rounded-xl p-3 text-center space-y-1.5">
-          <div class="w-9 h-9 mx-auto rounded-full bg-[#ffb800]/10 border border-[#ffb800]/30 flex items-center justify-center text-[#ffb800] text-sm">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <p class="text-xs font-bold text-white">Port Security Council</p>
-          <p class="text-[10px] text-gray-400">Government Registered Cargo License</p>
-        </div>
-
-        <div class="bg-[#07090e] border border-gray-800/90 rounded-xl p-3 text-center space-y-1.5">
-          <div class="w-9 h-9 mx-auto rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-sm">
-            <i class="fa-solid fa-lock"></i>
-          </div>
-          <p class="text-xs font-bold text-white">256-Bit SSL Escrow</p>
-          <p class="text-[10px] text-gray-400">100% Protected UPI & Bank Payouts</p>
-        </div>
-
-        <div class="bg-[#07090e] border border-gray-800/90 rounded-xl p-3 text-center space-y-1.5">
-          <div class="w-9 h-9 mx-auto rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-sm">
-            <i class="fa-solid fa-headset"></i>
-          </div>
-          <p class="text-xs font-bold text-white">24/7 Priority Support</p>
-          <p class="text-[10px] text-gray-400">Instant Tele-Help for Withdrawals</p>
-        </div>
-      </div>
-
-      <!-- Mission Statement -->
-      <div class="bg-[#07090e] border border-gray-800 rounded-xl p-3.5 space-y-1 text-xs">
-        <h4 class="font-bold text-[#ffb800] flex items-center gap-1.5">
-          <i class="fa-solid fa-compass"></i> Our Maritime Mission
-        </h4>
-        <p class="text-[11px] text-gray-400 leading-relaxed">
-          Founded to democratize international sea logistics investments, The Sea Cargo allows retail participants to earn directly from high-volume maritime freight routes with automated daily returns and instant payout verification.
-        </p>
-      </div>
-    </div>
-
-    <!-- Referral Card -->
-    <div class="bg-[#0f131d] border border-gray-800 p-4 rounded-2xl">
+  <!-- DASHBOARD -->
+  <div id="mainDashboard" class="hidden">
+    <header class="sticky top-0 z-40 bg-[#0d1017] border-b border-gray-800 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
       <div class="flex items-center gap-2">
-        <i class="fa-solid fa-share-nodes text-[#ffb800]"></i>
-        <h4 class="text-xs font-bold text-white">Invite & Earn 10% Commission</h4>
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-xs"><i class="fa-solid fa-ship"></i></div>
+        <div><h1 class="text-xs font-black text-white">THE SEA CARGO</h1><p id="topUser" class="text-[10px] text-[#00e676]">● Active</p></div>
       </div>
-      <p class="text-[11px] text-gray-400 mt-1">Directly share your team link on WhatsApp or Telegram.</p>
-      <div class="flex items-center gap-2 mt-3">
-        <input id="refInput" pe="text" readonly value="https://the-sea-cargo.vercel.app/?ref=Diwedi" class="w-full bg-[#080b12] text-xs text-gray-300 px-3 py-2 rounded-xl border border-gray-800 outline-none">
-        <button onclick="copyRef()" class="bg-[#ffb800] hover:bg-[#e0a200] text-black font-bold text-xs px-3.5 py-2 rounded-xl active:scale-95 transition">Copy</button>
+      <span class="bg-[#ffb800]/20 text-[#ffb800] text-[10px] font-bold px-2 py-0.5 rounded-full">VIP 1</span>
+    </header>
+
+    <main class="p-4 space-y-4 max-w-md mx-auto">
+      <!-- 2s Live Withdraw List -->
+      <div class="bg-[#0f131d] border border-gray-800 rounded-xl p-3 space-y-2">
+        <div class="flex justify-between items-center text-[10px]"><span class="font-bold text-white"><i class="fa-solid fa-bolt text-[#ffb800]"></i> Live Withdrawals</span><span class="text-[#00e676]">● 2s Active</span></div>
+        <div id="withdrawList" class="space-y-1.5 text-xs"></div>
       </div>
-    </div>
 
-  </main>
+      <!-- Wallet -->
+      <div class="bg-gradient-to-br from-[#121724] to-[#07090e] border border-gray-800 p-4 rounded-xl shadow-lg">
+        <p class="text-[11px] text-gray-400">Available Balance</p>
+        <h2 class="text-2xl font-black text-white mt-0.5">₹ 0.00</h2>
+        <div class="grid grid-cols-2 gap-2 mt-3">
+          <button onclick="openModal('rechargeModal')" class="bg-[#00e676] text-black font-bold py-2 rounded-lg text-xs">Recharge (Add)</button>
+          <button onclick="openModal('withdrawModal')" class="bg-[#182030] text-white font-semibold py-2 rounded-lg text-xs border border-gray-700">Withdrawal</button>
+        </div>
+      </div>
 
-  <!-- Bottom Navigation -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017]/95 backdrop-blur-md border-t border-gray-800/80 py-3 px-6 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
-    <button class="text-[#00e676] font-bold flex flex-col items-center gap-1"><i class="fa-solid fa-house text-sm"></i> Home</button>
-    <button onclick="window.scrollTo({top: 450, behavior: 'smooth'})" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-ship text-sm"></i> Plans</button>
-    <button onclick="copyRef()" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-users text-sm"></i> Team</button>
-    <button onclick="alert('User ID: Diwedi\nStatus: Active VIP 1\nSecurity: Verified')" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-user text-sm"></i> Profile</button>
-  </nav>
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-3 gap-2 text-center text-xs">
+        <div class="bg-[#0f131d] border border-gray-800 p-2 rounded-lg"><p class="text-[10px] text-gray-400">Daily Return</p><p class="text-[#00e676] font-bold text-xs">₹ 0.00</p></div>
+        <div class="bg-[#0f131d] border border-gray-800 p-2 rounded-lg"><p class="text-[10px] text-gray-400">Team Bonus</p><p class="text-[#ffb800] font-bold text-xs">₹ 0.00</p></div>
+        <div class="bg-[#0f131d] border border-gray-800 p-2 rounded-lg"><p class="text-[10px] text-gray-400">Plans</p><p class="text-white font-bold text-xs">0 Ship</p></div>
+      </div>
+
+      <!-- PLANS LIST -->
+      <div id="plansList" class="space-y-3 pt-1">
+        <h3 class="text-xs font-bold text-gray-400 uppercase">Cargo Investment Plans</h3>
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="bg-[#0c101a] border border-gray-800 rounded-xl p-4 space-y-3">
+        <h4 class="text-xs font-black text-white text-center uppercase tracking-wider">Official Maritime Entity</h4>
+        <div class="grid grid-cols-2 gap-2 text-center text-xs">
+          <div class="bg-[#07090e] border border-gray-800 p-2 rounded-lg"><i class="fa-solid fa-award text-[#00e676]"></i><p class="font-bold text-white text-[11px] mt-1">ISO 9001:2015</p><p class="text-[9px] text-gray-400">Certified Cargo Line</p></div>
+          <div class="bg-[#07090e] border border-gray-800 p-2 rounded-lg"><i class="fa-solid fa-shield-halved text-[#ffb800]"></i><p class="font-bold text-white text-[11px] mt-1">Port Security</p><p class="text-[9px] text-gray-400">Registered Escrow</p></div>
+        </div>
+      </div>
+
+      <!-- Refer Link -->
+      <div class="bg-[#0f131d] border border-gray-800 p-3 rounded-xl flex items-center gap-2">
+        <input id="refInput" type="text" readonly class="w-full bg-[#080b12] border border-gray-800 text-[11px] px-2 py-1.5 rounded-lg text-gray-300">
+        <button onclick="copyRef()" class="bg-[#ffb800] text-black font-bold px-3 py-1.5 rounded-lg text-xs">Copy</button>
+      </div>
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017] border-t border-gray-800 py-2.5 px-6 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
+      <button class="text-[#00e676] font-bold flex flex-col items-center"><i class="fa-solid fa-house text-sm"></i>Home</button>
+      <button onclick="window.scrollTo({top: 350, behavior: 'smooth'})" class="flex flex-col items-center"><i class="fa-solid fa-ship text-sm"></i>Plans</button>
+      <button onclick="copyRef()" class="flex flex-col items-center"><i class="fa-solid fa-users text-sm"></i>Team</button>
+      <button onclick="logout()" class="flex flex-col items-center text-red-400"><i class="fa-solid fa-right-from-bracket text-sm"></i>Logout</button>
+    </nav>
+  </div>
 
   <!-- Recharge Modal -->
-  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
-    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-sm rounded-2xl p-5 space-y-3">
-      <div class="flex justify-between items-center">
-        <h3 class="text-sm font-bold text-white"><i class="fa-solid fa-qrcode text-[#00e676] mr-1"></i> UPI QR Recharge</h3>
-        <button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
-      </div>
-      <div class="bg-white rounded-xl p-3 w-40 h-40 mx-auto flex items-center justify-center text-black text-xs font-bold text-center">Place Your QR Code Here</div>
-      <input type="text" placeholder="Enter 12-Digit UTR Number" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <button onclick="alert('UTR Submitted! Verification will take 5 minutes.'); closeModal('rechargeModal')" class="w-full bg-[#00e676] text-black font-bold py-2.5 rounded-xl text-xs">Submit UTR</button>
+  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-xl p-4 space-y-3 text-center">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white">Recharge (UPI)</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400">&times;</button></div>
+      <div class="bg-white p-3 rounded-lg mx-auto w-36 h-36 flex items-center justify-center text-black font-bold text-xs">QR Code Image</div>
+      <input type="text" placeholder="12-digit UTR Number" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2 py-1.5 text-xs text-white">
+      <button onclick="toast('UTR Submitted!'); closeModal('rechargeModal')" class="w-full bg-[#00e676] text-black font-bold py-2 rounded-lg text-xs">Submit UTR</button>
     </div>
   </div>
 
   <!-- Withdraw Modal -->
-  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
-    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-sm rounded-2xl p-5 space-y-3">
-      <div class="flex justify-between items-center">
-        <h3 class="text-sm font-bold text-white"><i class="fa-solid fa-building-columns text-[#ffb800] mr-1"></i> Withdraw Funds</h3>
-        <button onclick="closeModal('withdrawModal')" class="text-gray-400 hover:text-white text-lg">&times;</button>
-      </div>
-      <input type="text" placeholder="UPI ID or Bank A/C Number" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <input type="text" placeholder="IFSC Code (if bank)" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <input type="number" placeholder="Amount (Min. ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <button onclick="alert('Insufficient balance for withdrawal.'); closeModal('withdrawModal')" class="w-full bg-[#ffb800] text-black font-bold py-2.5 rounded-xl text-xs">Request Payout</button>
+  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-xl p-4 space-y-2">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white">Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400">&times;</button></div>
+      <input type="text" placeholder="UPI ID / Bank A/C" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2 py-1.5 text-xs text-white">
+      <input type="number" placeholder="Amount (Min ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2 py-1.5 text-xs text-white">
+      <button onclick="toast('Insufficient balance.'); closeModal('withdrawModal')" class="w-full bg-[#ffb800] text-black font-bold py-2 rounded-lg text-xs">Request</button>
     </div>
   </div>
 
-  <!-- JavaScript Logic -->
+  <!-- Toast -->
+  <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#00e676] text-white px-3 py-1.5 rounded-lg text-xs opacity-0 pointer-events-none transition duration-300"></div>
+
   <script>
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-    function copyRef() {
-      navigator.clipboard.writeText(document.getElementById('refInput').value);
-      alert('Referral link copied successfully!');
-    }
-    function investPlan(amt) {
-      alert(`Aapke wallet me ₹${amt} ka balance nahi hai! Pehle Recharge karein.`);
-      openModal('rechargeModal');
-    }
-
-    // 2-Second Live Withdrawal Feed
-    const amounts = [1950, 3000, 4000, 5000, 8000, 18000, 24000, 12000];
-    function getRandomWithdrawal() {
-      const p1 = Math.floor(60 + Math.random() * 39);
-      const p2 = Math.floor(10 + Math.random() * 89);
-      const amt = amounts[Math.floor(Math.random() * amounts.length)];
-      return { user: `${p1}****${p2}`, amt: amt.toLocaleString('en-IN') };
-    }
-
-    let feedList = [
-      { user: "68****51", amt: "24,000" },
-      { user: "65****72", amt: "8,000" },
-      { user: "76****34", amt: "8,000" },
-      { user: "62****91", amt: "5,000" },
-      { user: "77****70", amt: "4,000" }
+    const plansData = [
+      { name: "Vessel Tier 1", price: 190, daily: 195, total: 1950, days: 10, icon: "fa-ship", bg: "from-blue-900 to-slate-900", sub: "Coastal Cargo Feeder" },
+      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, icon: "fa-ferry", bg: "from-teal-900 to-slate-900", sub: "Harbor Freight Line" },
+      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, icon: "fa-anchor", bg: "from-indigo-900 to-slate-900", sub: "Regional Sea Express" },
+      { name: "Bulk Logistics Tier 4", price: 498, daily: 500, total: 5000, days: 10, icon: "fa-boxes-stacked", bg: "from-amber-950 to-slate-900", sub: "Bulk Cargo Carrier" },
+      { name: "Trans-Ocean Tier 5", price: 795, daily: 800, total: 8000, days: 10, icon: "fa-water", bg: "from-cyan-950 to-slate-900", sub: "Trans-Ocean Heavy Liner" },
+      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, icon: "fa-crown", bg: "from-yellow-950 to-zinc-900", vip: true, sub: "Mega Fleet Carrier" },
+      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, icon: "fa-gem", bg: "from-rose-950 to-zinc-900", vip: true, sub: "Flagship Ocean Carrier" }
     ];
 
-    function renderFeed() {
-      const c = document.getElementById('withdrawList');
-      if (!c) return;
-      c.innerHTML = feedList.map(item => `
-        <div class="flex justify-between items-center bg-[#07090e] border border-gray-800/80 px-3 py-1.5 rounded-lg text-[11px]">
-          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#00e676]"></span><span class="text-gray-300">User ${item.user}</span></div>
-          <div class="text-[#00e676] font-bold">Withdraw <span class="text-[#ffb800]">₹${item.amt}</span> success</div>
+    function toast(m) {
+      const t = document.getElementById('toast');
+      t.innerText = m;
+      t.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 2500);
+    }
+
+    function switchAuth(tab) {
+      document.getElementById('signupBox').classList.toggle('hidden', tab !== 'signup');
+      document.getElementById('loginBox').classList.toggle('hidden', tab === 'signup');
+      document.getElementById('tabSignup').className = `py-2 text-xs font-bold rounded-lg ${tab === 'signup' ? 'bg-[#00e676] text-black' : 'text-gray-400'}`;
+      document.getElementById('tabLogin').className = `py-2 text-xs font-bold rounded-lg ${tab === 'login' ? 'bg-[#ffb800] text-black' : 'text-gray-400'}`;
+    }
+
+    function handleRegister() {
+      const u = document.getElementById('regUser').value.trim();
+      const p = document.getElementById('regPhone').value.trim();
+      const pass = document.getElementById('regPass').value.trim();
+      if(!u || p.length < 10 || pass.length < 6) return toast("Valid User ID, Phone & Password required!");
+      localStorage.setItem('sc_account', JSON.stringify({ userId: u, phone: p, pass }));
+      toast("Account Created Successfully!");
+      launchApp(u);
+    }
+
+    function handleLogin() {
+      const u = document.getElementById('loginUser').value.trim();
+      const pass = document.getElementById('loginPass').value.trim();
+      const acc = JSON.parse(localStorage.getItem('sc_account') || '{}');
+      if(acc.userId && acc.userId.toLowerCase() === u.toLowerCase() && acc.pass === pass) {
+        toast("Login Successful!");
+        launchApp(acc.userId);
+      } else {
+        toast("Invalid User ID or Password!");
+      }
+    }
+
+    function launchApp(user) {
+      document.getElementById('authScreen').classList.add('hidden');
+      document.getElementById('mainDashboard').classList.remove('hidden');
+      document.getElementById('topUser').innerText = `● ${user}`;
+      document.getElementById('refInput').value = `https://the-sea-cargo.vercel.app/?ref=${user}`;
+      renderPlans();
+      startWithdrawFeed();
+    }
+
+    function logout() {
+      localStorage.removeItem('sc_account');
+      document.getElementById('mainDashboard').classList.add('hidden');
+      document.getElementById('authScreen').classList.remove('hidden');
+      switchAuth('login');
+      toast("Logged out.");
+    }
+
+    function renderPlans() {
+      const box = document.getElementById('plansList');
+      box.innerHTML = '<h3 class="text-xs font-bold text-gray-400 uppercase">Cargo Investment Plans</h3>' + plansData.map(p => `
+        <div class="bg-[#0f131d] border ${p.vip ? 'border-[#ffb800]' : 'border-gray-800'} rounded-xl overflow-hidden shadow-lg">
+          <div class="h-32 bg-gradient-to-br ${p.bg} flex flex-col items-center justify-center relative">
+            <i class="fa-solid ${p.icon} text-4xl ${p.vip ? 'text-[#ffb800]' : 'text-sky-400'} mb-1"></i>
+            <span class="text-[10px] font-black tracking-widest uppercase text-white/90">${p.sub}</span>
+            <span class="absolute top-2 right-2 ${p.vip ? 'bg-[#ffb800]' : 'bg-[#00e676]'} text-black text-[10px] font-black px-2 py-0.5 rounded-full">₹${p.price}</span>
+          </div>
+          <div class="p-3">
+            <div class="flex justify-between items-center"><h4 class="text-xs font-bold text-white">${p.name}</h4><span class="text-[10px] text-gray-400">${p.days} Days</span></div>
+            <div class="grid grid-cols-2 gap-1.5 mt-2 bg-[#080b12] p-2 rounded-lg text-[11px] border border-gray-800">
+              <div><span class="text-gray-400">Roj Milega:</span> <b class="text-[#00e676]">₹${p.daily}</b></div>
+              <div><span class="text-gray-400">Total:</span> <b class="text-[#ffb800]">₹${p.total}</b></div>
+            </div>
+            <button onclick="toast('Balance kam hai! Pehle Recharge karein.')" class="w-full mt-2.5 ${p.vip ? 'bg-[#ffb800]' : 'bg-[#00e676]'} text-black font-extrabold py-2 rounded-lg text-xs">Invest ₹${p.price}</button>
+          </div>
         </div>
       `).join('');
     }
 
-    renderFeed();
-    setInterval(() => {
-      feedList.pop();
-      feedList.unshift(getRandomWithdrawal());
-      renderFeed();
-    }, 2000);
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    function copyRef() {
+      navigator.clipboard.writeText(document.getElementById('refInput').value);
+      toast("Referral link copied!");
+    }
+
+    // 2s Withdraw Feed
+    const amounts = [1950, 3000, 4000, 5000, 8000, 18000, 24000];
+    let feed = [
+      { u: "68****51", a: "24,000" }, { u: "65****72", a: "8,000" },
+      { u: "76****34", a: "8,000" }, { u: "62****91", a: "5,000" }, { u: "77****70", a: "4,000" }
+    ];
+    function startWithdrawFeed() {
+      const el = document.getElementById('withdrawList');
+      function update() {
+        el.innerHTML = feed.map(x => `
+          <div class="flex justify-between items-center bg-[#07090e] border border-gray-800 px-2.5 py-1 rounded text-[11px]">
+            <span class="text-gray-300">User ${x.u}</span>
+            <span class="text-[#00e676] font-bold">Withdraw <b class="text-[#ffb800]">₹${x.a}</b> success</span>
+          </div>
+        `).join('');
+      }
+      update();
+      setInterval(() => {
+        const u = `${Math.floor(60 + Math.random()*39)}****${Math.floor(10 + Math.random()*89)}`;
+        const a = amounts[Math.floor(Math.random()*amounts.length)].toLocaleString('en-IN');
+        feed.pop(); feed.unshift({ u, a });
+        update();
+      }, 2000);
+    }
+
+    window.onload = function() {
+      const saved = localStorage.getItem('sc_account');
+      if(saved) launchApp(JSON.parse(saved).userId);
+    };
   </script>
 </body>
 </html>
