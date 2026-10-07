@@ -3,138 +3,269 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sea Cargo</title>
+  <title>The Sea Cargo - Maritime Network</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .glass-card { background: rgba(16, 21, 33, 0.85); backdrop-filter: blur(10px); }
+  </style>
 </head>
-<body class="bg-[#07090e] text-gray-200 font-sans pb-20">
+<body class="bg-[#07090e] text-gray-200 font-sans pb-24 selection:bg-[#00e676] selection:text-black">
 
-  <!-- AUTH (NO OTP) -->
+  <!-- ================= 1. AUTH SCREEN (NO OTP) ================= -->
   <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center">
     <div class="text-center mb-6">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-2xl mb-2"><i class="fa-solid fa-ship"></i></div>
-      <h1 class="text-xl font-black text-white tracking-wider">THE SEA CARGO</h1>
-      <p class="text-xs text-gray-400">Maritime Freight Investment</p>
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-[#00e676]/20 mb-3">
+        <i class="fa-solid fa-ship text-2xl"></i>
+      </div>
+      <h1 class="text-2xl font-black text-white tracking-widest uppercase">THE SEA CARGO</h1>
+      <p class="text-xs text-gray-400 mt-1">Official Ocean Freight & VIP Shipping</p>
     </div>
+
     <div class="grid grid-cols-2 bg-[#0f131d] p-1 rounded-xl border border-gray-800 mb-4">
-      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2 text-xs font-bold rounded-lg bg-[#00e676] text-black">Sign Up</button>
-      <button id="tabLogin" onclick="switchAuth('login')" class="py-2 text-xs font-bold rounded-lg text-gray-400">Login</button>
+      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-bold rounded-lg bg-[#00e676] text-black">Sign Up</button>
+      <button id="tabLogin" onclick="switchAuth('login')" class="py-2.5 text-xs font-bold rounded-lg text-gray-400">Login</button>
     </div>
-    <div id="signupBox" class="bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3">
-      <input id="regUser" type="text" placeholder="User ID / Apna Naam" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit Phone" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <input id="regPass" type="password" placeholder="Password (Min 6)" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <button onclick="handleRegister()" class="w-full bg-[#00e676] text-black font-black py-2.5 rounded-xl text-xs">Create Account</button>
+
+    <!-- Sign Up Box -->
+    <div id="signupBox" class="bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3 shadow-xl">
+      <div>
+        <label class="text-[11px] text-gray-400">User ID / Username</label>
+        <input id="regUser" type="text" placeholder="Apna User ID banayein" class="w-full mt-1 bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      </div>
+      <div>
+        <label class="text-[11px] text-gray-400">Mobile Number</label>
+        <div class="flex gap-2 mt-1">
+          <span class="bg-[#070a12] border border-gray-800 px-3 py-2 text-xs text-gray-400 rounded-xl flex items-center">+91</span>
+          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+        </div>
+      </div>
+      <div>
+        <label class="text-[11px] text-gray-400">Password</label>
+        <input id="regPass" type="password" placeholder="Password (Min 6)" class="w-full mt-1 bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      </div>
+      <button onclick="handleRegister()" class="w-full bg-[#00e676] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-[#00e676]/20">
+        Create Account
+      </button>
     </div>
-    <div id="loginBox" class="hidden bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3">
-      <input id="loginUser" type="text" placeholder="User ID" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <input id="loginPass" type="password" placeholder="Password" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
-      <button onclick="handleLogin()" class="w-full bg-[#ffb800] text-black font-black py-2.5 rounded-xl text-xs">Login</button>
+
+    <!-- Login Box -->
+    <div id="loginBox" class="hidden bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3 shadow-xl">
+      <div>
+        <label class="text-[11px] text-gray-400">User ID</label>
+        <input id="loginUser" type="text" placeholder="User ID enter karein" class="w-full mt-1 bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      </div>
+      <div>
+        <label class="text-[11px] text-gray-400">Password</label>
+        <input id="loginPass" type="password" placeholder="Password enter karein" class="w-full mt-1 bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      </div>
+      <button onclick="handleLogin()" class="w-full bg-[#ffb800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-[#ffb800]/20">
+        Login Now
+      </button>
     </div>
   </div>
 
-  <!-- DASHBOARD -->
+  <!-- ================= 2. DASHBOARD ================= -->
   <div id="mainDashboard" class="hidden">
-    <header class="sticky top-0 z-40 bg-[#0d1017] border-b border-gray-800 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-[#0d1017]/95 backdrop-blur-md border-b border-gray-800 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
       <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-xs"><i class="fa-solid fa-ship"></i></div>
-        <div><h1 class="text-xs font-black text-white">THE SEA CARGO</h1><p id="topUser" class="text-[10px] text-[#00e676]">● Active</p></div>
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center font-black text-black text-xs shadow-md"><i class="fa-solid fa-ship"></i></div>
+        <div>
+          <h1 class="text-xs font-black text-white">THE SEA CARGO</h1>
+          <p id="topUserTag" class="text-[10px] text-[#00e676] font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#00e676] animate-pulse"></span> Active</p>
+        </div>
       </div>
-      <span class="bg-[#ffb800]/20 text-[#ffb800] text-[10px] font-bold px-2 py-0.5 rounded-full">VIP 1</span>
+      <span class="bg-[#ffb800]/20 text-[#ffb800] border border-[#ffb800]/40 text-[10px] font-bold px-2 py-0.5 rounded-full"><i class="fa-solid fa-crown text-[9px] mr-0.5"></i> VIP 1</span>
     </header>
 
     <main class="p-4 space-y-4 max-w-md mx-auto">
-      <!-- 2s Live Withdraw List -->
-      <div class="bg-[#0f131d] border border-gray-800 rounded-xl p-3 space-y-2">
-        <div class="flex justify-between items-center text-[10px]"><span class="font-bold text-white"><i class="fa-solid fa-bolt text-[#ffb800]"></i> Live Withdrawals</span><span class="text-[#00e676]">● 2s Active</span></div>
-        <div id="withdrawList" class="space-y-1.5 text-xs"></div>
-      </div>
 
-      <!-- Wallet -->
-      <div class="bg-gradient-to-br from-[#121724] to-[#07090e] border border-gray-800 p-4 rounded-xl shadow-lg">
-        <p class="text-[11px] text-gray-400">Available Balance</p>
-        <h2 class="text-2xl font-black text-white mt-0.5">₹ 0.00</h2>
-        <div class="grid grid-cols-2 gap-2 mt-3">
-          <button onclick="openModal('rechargeModal')" class="bg-[#00e676] text-black font-bold py-2 rounded-lg text-xs">Recharge (Add)</button>
-          <button onclick="openModal('withdrawModal')" class="bg-[#182030] text-white font-semibold py-2 rounded-lg text-xs border border-gray-700">Withdrawal</button>
+      <!-- ================= SECTION: HOME ================= -->
+      <section id="sec-home" class="space-y-4">
+        <!-- 2s Live Withdraw List -->
+        <div class="bg-[#0f131d] border border-gray-800 rounded-2xl p-3 space-y-2 shadow-lg">
+          <div class="flex justify-between items-center px-1">
+            <span class="text-[11px] font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ffb800]"></i> Live Withdrawals (Auto 2s)</span>
+            <span class="text-[9px] text-[#00e676] font-bold">● Active</span>
+          </div>
+          <div id="withdrawList" class="space-y-1.5 text-xs"></div>
         </div>
-      </div>
 
-      <!-- Quick Stats -->
-      <div class="grid grid-cols-3 gap-2 text-center text-xs">
-        <div class="bg-[#0f131d] border border-gray-800 p-2 rounded-lg"><p class="text-[10px] text-gray-400">Daily Return</p><p class="text-[#00e676] font-bold text-xs">₹ 0.00</p></div>
-        <div class="bg-[#0f131d] border border-gray-800 p-2 rounded-lg"><p class="text-[10px] text-gray-400">Team Bonus</p><p class="text-[#ffb800] font-bold text-xs">₹ 0.00</p></div>
-        <div class="bg-[#0f131d] border border-gray-800 p-2 rounded-lg"><p class="text-[10px] text-gray-400">Plans</p><p class="text-white font-bold text-xs">0 Ship</p></div>
-      </div>
-
-      <!-- PLANS LIST -->
-      <div id="plansList" class="space-y-3 pt-1">
-        <h3 class="text-xs font-bold text-gray-400 uppercase">Cargo Investment Plans</h3>
-        <!-- Injected via JavaScript -->
-      </div>
-
-      <!-- Trust Badges -->
-      <div class="bg-[#0c101a] border border-gray-800 rounded-xl p-4 space-y-3">
-        <h4 class="text-xs font-black text-white text-center uppercase tracking-wider">Official Maritime Entity</h4>
-        <div class="grid grid-cols-2 gap-2 text-center text-xs">
-          <div class="bg-[#07090e] border border-gray-800 p-2 rounded-lg"><i class="fa-solid fa-award text-[#00e676]"></i><p class="font-bold text-white text-[11px] mt-1">ISO 9001:2015</p><p class="text-[9px] text-gray-400">Certified Cargo Line</p></div>
-          <div class="bg-[#07090e] border border-gray-800 p-2 rounded-lg"><i class="fa-solid fa-shield-halved text-[#ffb800]"></i><p class="font-bold text-white text-[11px] mt-1">Port Security</p><p class="text-[9px] text-gray-400">Registered Escrow</p></div>
+        <!-- Available Balance Card -->
+        <div class="bg-gradient-to-br from-[#121724] via-[#0d121c] to-[#07090e] border border-gray-800 p-5 rounded-2xl shadow-xl">
+          <p class="text-xs text-gray-400 font-medium">Total Available Balance</p>
+          <h2 class="text-3xl font-black text-white mt-1 tracking-tight" id="balanceDisplay">₹ 0.00</h2>
+          <div class="grid grid-cols-2 gap-3 mt-4">
+            <button onclick="openModal('rechargeModal')" class="bg-[#00e676] hover:bg-[#00c853] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-md shadow-[#00e676]/20 flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-wallet"></i> Recharge (Add)
+            </button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#182030] hover:bg-[#202a3f] border border-gray-700 text-white font-semibold py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdrawal
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- Refer Link -->
-      <div class="bg-[#0f131d] border border-gray-800 p-3 rounded-xl flex items-center gap-2">
-        <input id="refInput" type="text" readonly class="w-full bg-[#080b12] border border-gray-800 text-[11px] px-2 py-1.5 rounded-lg text-gray-300">
-        <button onclick="copyRef()" class="bg-[#ffb800] text-black font-bold px-3 py-1.5 rounded-lg text-xs">Copy</button>
-      </div>
+        <!-- 3 Quick Stats -->
+        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+          <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl"><p class="text-[10px] text-gray-400">Daily Return</p><p class="text-[#00e676] font-bold text-xs mt-1">₹ 0.00</p></div>
+          <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl"><p class="text-[10px] text-gray-400">Team Bonus</p><p class="text-[#ffb800] font-bold text-xs mt-1">₹ 0.00</p></div>
+          <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl"><p class="text-[10px] text-gray-400">Plans</p><p class="text-white font-bold text-xs mt-1">0 Ship</p></div>
+        </div>
+
+        <!-- Featured Plans Preview -->
+        <div class="flex justify-between items-center pt-1">
+          <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Cargo Fleets</h3>
+          <button onclick="switchTab('plans')" class="text-[11px] text-[#00e676] font-bold">See All Plans &rarr;</button>
+        </div>
+        <div id="homePlansContainer" class="space-y-4"></div>
+
+        <!-- ================= OFFICIAL CERTIFICATES & TRUST SECTION ================= -->
+        <div class="bg-[#0c101a] border border-gray-800 rounded-2xl p-5 space-y-4 shadow-xl mt-6">
+          <div class="text-center space-y-1">
+            <span class="text-[10px] font-extrabold text-[#00e676] tracking-widest uppercase">Verified Entity</span>
+            <h3 class="text-sm font-black text-white">Certifications & Accreditations</h3>
+            <p class="text-[11px] text-gray-400">Registered international logistics enterprise holding verified shipping authority certificates.</p>
+          </div>
+
+          <!-- Official Document Badges (Images) -->
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div class="bg-[#07090e] border border-gray-800 rounded-xl p-2.5 text-center">
+              <div class="h-28 rounded-lg overflow-hidden border border-gray-800 bg-white/5 flex items-center justify-center p-1">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=400&q=80" alt="ISO 9001 Certificate" class="w-full h-full object-cover rounded">
+              </div>
+              <p class="text-[11px] font-bold text-white mt-2">ISO 9001:2015</p>
+              <p class="text-[9px] text-gray-400">Maritime Quality Certified</p>
+            </div>
+
+            <div class="bg-[#07090e] border border-gray-800 rounded-xl p-2.5 text-center">
+              <div class="h-28 rounded-lg overflow-hidden border border-gray-800 bg-white/5 flex items-center justify-center p-1">
+                <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=400&q=80" alt="Govt Cargo License" class="w-full h-full object-cover rounded">
+              </div>
+              <p class="text-[11px] font-bold text-white mt-2">Port Security Board</p>
+              <p class="text-[9px] text-gray-400">Global Shipping License</p>
+            </div>
+          </div>
+
+          <!-- Mission & Vision -->
+          <div class="bg-[#07090e] border border-gray-800 rounded-xl p-3.5 space-y-2 text-xs">
+            <div>
+              <h4 class="font-bold text-[#00e676] text-[11px] uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-bullseye"></i> Our Mission</h4>
+              <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">To open high-volume international maritime transport profits to retail partners with instant guaranteed daily return settlements.</p>
+            </div>
+            <div class="border-t border-gray-800/80 pt-2">
+              <h4 class="font-bold text-[#ffb800] text-[11px] uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-eye"></i> Our Vision</h4>
+              <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">To build India's premier digital container cargo investment network protected by automated escrow guarantees.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SECTION: PLANS (ALL 7) ================= -->
+      <section id="sec-plans" class="hidden space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">All Cargo Investment Plans</h3>
+          <span class="text-[10px] text-[#00e676] font-bold">100% Real Ships</span>
+        </div>
+        <div id="allPlansContainer" class="space-y-4"></div>
+      </section>
+
+      <!-- ================= SECTION: TEAM ================= -->
+      <section id="sec-team" class="hidden space-y-4">
+        <div class="bg-[#0f131d] border border-gray-800 p-5 rounded-2xl space-y-3">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-share-nodes text-[#ffb800]"></i> Invite & Earn Commission</h3>
+          <p class="text-xs text-gray-400">Share your invite link with your members to earn 10% instant direct bonus.</p>
+          <div class="flex gap-2">
+            <input id="refInput" type="text" readonly class="w-full bg-[#080b12] border border-gray-800 text-xs px-3 py-2 rounded-xl text-gray-300">
+            <button onclick="copyRef()" class="bg-[#ffb800] text-black font-bold px-4 py-2 rounded-xl text-xs active:scale-95 whitespace-nowrap">Copy</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="bg-[#0f131d] border border-gray-800 p-4 rounded-xl text-center">
+            <p class="text-gray-400">Level 1 Direct</p>
+            <p class="text-2xl font-black text-[#00e676] mt-1">10%</p>
+          </div>
+          <div class="bg-[#0f131d] border border-gray-800 p-4 rounded-xl text-center">
+            <p class="text-gray-400">Level 2 Indirect</p>
+            <p class="text-2xl font-black text-[#ffb800] mt-1">5%</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SECTION: PROFILE ================= -->
+      <section id="sec-profile" class="hidden space-y-4">
+        <div class="bg-[#0f131d] border border-gray-800 p-5 rounded-2xl flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00e676] to-[#ffb800] flex items-center justify-center text-black font-black text-lg">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white" id="profUser">User</h3>
+            <p class="text-xs text-gray-400" id="profPhone">+91 **********</p>
+          </div>
+        </div>
+
+        <div class="bg-[#0f131d] border border-gray-800 rounded-2xl divide-y divide-gray-800 text-xs">
+          <div class="p-3.5 flex justify-between items-center"><span class="text-gray-400">Security Status</span><span class="text-[#00e676] font-semibold">Active & Secured</span></div>
+          <div class="p-3.5 flex justify-between items-center cursor-pointer" onclick="openModal('withdrawModal')"><span class="text-gray-400">Payout Account (UPI / Bank)</span><span class="text-[#ffb800]">Update &rarr;</span></div>
+          <div class="p-3.5 flex justify-between items-center"><span class="text-gray-400">VIP Level</span><span class="text-white font-bold">VIP 1 Member</span></div>
+          <div class="p-3.5 flex justify-between items-center"><span class="text-gray-400">Platform Version</span><span class="text-gray-400">3.4 Official</span></div>
+        </div>
+
+        <button onclick="logout()" class="w-full bg-red-500/20 text-red-400 border border-red-500/40 font-bold py-3 rounded-xl text-xs active:scale-95 transition">
+          <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout Account
+        </button>
+      </section>
+
     </main>
 
-    <!-- Bottom Nav -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017] border-t border-gray-800 py-2.5 px-6 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
-      <button class="text-[#00e676] font-bold flex flex-col items-center"><i class="fa-solid fa-house text-sm"></i>Home</button>
-      <button onclick="window.scrollTo({top: 350, behavior: 'smooth'})" class="flex flex-col items-center"><i class="fa-solid fa-ship text-sm"></i>Plans</button>
-      <button onclick="copyRef()" class="flex flex-col items-center"><i class="fa-solid fa-users text-sm"></i>Team</button>
-      <button onclick="logout()" class="flex flex-col items-center text-red-400"><i class="fa-solid fa-right-from-bracket text-sm"></i>Logout</button>
+    <!-- Bottom Navigation Bar (4 Tabs) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017]/95 backdrop-blur-md border-t border-gray-800 py-2.5 px-6 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
+      <button onclick="switchTab('home')" id="nav-home" class="text-[#00e676] font-bold flex flex-col items-center gap-1"><i class="fa-solid fa-house text-sm"></i> Home</button>
+      <button onclick="switchTab('plans')" id="nav-plans" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-ship text-sm"></i> Plans</button>
+      <button onclick="switchTab('team')" id="nav-team" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-users text-sm"></i> Team</button>
+      <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-user text-sm"></i> Profile</button>
     </nav>
   </div>
 
   <!-- Recharge Modal -->
-  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-xl p-4 space-y-3 text-center">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white">Recharge (UPI)</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400">&times;</button></div>
-      <div class="bg-white p-3 rounded-lg mx-auto w-36 h-36 flex items-center justify-center text-black font-bold text-xs">QR Code Image</div>
-      <input type="text" placeholder="12-digit UTR Number" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2 py-1.5 text-xs text-white">
-      <button onclick="toast('UTR Submitted!'); closeModal('rechargeModal')" class="w-full bg-[#00e676] text-black font-bold py-2 rounded-lg text-xs">Submit UTR</button>
+  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-2xl p-4 space-y-3 text-center">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white"><i class="fa-solid fa-qrcode text-[#00e676] mr-1"></i> UPI QR Recharge</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400">&times;</button></div>
+      <div class="bg-white p-3 rounded-xl mx-auto w-36 h-36 flex items-center justify-center text-black font-bold text-xs">QR Code Image</div>
+      <input type="text" placeholder="12-digit UTR Number" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="showToast('UTR Submitted! Approval in 5 mins.'); closeModal('rechargeModal')" class="w-full bg-[#00e676] text-black font-extrabold py-2 rounded-xl text-xs">Submit UTR</button>
     </div>
   </div>
 
   <!-- Withdraw Modal -->
-  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-xl p-4 space-y-2">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white">Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400">&times;</button></div>
-      <input type="text" placeholder="UPI ID / Bank A/C" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2 py-1.5 text-xs text-white">
-      <input type="number" placeholder="Amount (Min ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2 py-1.5 text-xs text-white">
-      <button onclick="toast('Insufficient balance.'); closeModal('withdrawModal')" class="w-full bg-[#ffb800] text-black font-bold py-2 rounded-lg text-xs">Request</button>
+  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-2xl p-4 space-y-2">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white"><i class="fa-solid fa-building-columns text-[#ffb800] mr-1"></i> Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400">&times;</button></div>
+      <input type="text" placeholder="UPI ID / Bank Account" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <input type="number" placeholder="Amount (Min ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="showToast('Insufficient balance for withdrawal.'); closeModal('withdrawModal')" class="w-full bg-[#ffb800] text-black font-extrabold py-2 rounded-xl text-xs">Request Payout</button>
     </div>
   </div>
 
-  <!-- Toast -->
-  <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#00e676] text-white px-3 py-1.5 rounded-lg text-xs opacity-0 pointer-events-none transition duration-300"></div>
+  <!-- App Toast Notification -->
+  <div id="appToast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#00e676] text-white px-4 py-2 rounded-xl text-xs shadow-2xl opacity-0 pointer-events-none transition duration-300"></div>
 
+  <!-- ================= LOGIC ENGINE ================= -->
   <script>
+    // 7 Real Cargo Ships (Fast Loading CDN URLs)
     const plansData = [
-      { name: "Vessel Tier 1", price: 190, daily: 195, total: 1950, days: 10, icon: "fa-ship", bg: "from-blue-900 to-slate-900", sub: "Coastal Cargo Feeder" },
-      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, icon: "fa-ferry", bg: "from-teal-900 to-slate-900", sub: "Harbor Freight Line" },
-      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, icon: "fa-anchor", bg: "from-indigo-900 to-slate-900", sub: "Regional Sea Express" },
-      { name: "Bulk Logistics Tier 4", price: 498, daily: 500, total: 5000, days: 10, icon: "fa-boxes-stacked", bg: "from-amber-950 to-slate-900", sub: "Bulk Cargo Carrier" },
-      { name: "Trans-Ocean Tier 5", price: 795, daily: 800, total: 8000, days: 10, icon: "fa-water", bg: "from-cyan-950 to-slate-900", sub: "Trans-Ocean Heavy Liner" },
-      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, icon: "fa-crown", bg: "from-yellow-950 to-zinc-900", vip: true, sub: "Mega Fleet Carrier" },
-      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, icon: "fa-gem", bg: "from-rose-950 to-zinc-900", vip: true, sub: "Flagship Ocean Carrier" }
+      { name: "Vessel Tier 1", price: 190, daily: 195, total: 1950, days: 10, img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format&fit=crop&q=80", tag: "Coastal Tug Feeder" },
+      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&auto=format&fit=crop&q=80", tag: "Harbor Cargo Ship" },
+      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=800&auto=format&fit=crop&q=80", tag: "Regional Container Ship" },
+      { name: "Bulk Logistics Tier 4", price: 498, daily: 500, total: 5000, days: 10, img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?w=800&auto=format&fit=crop&q=80", tag: "Ocean Bulk Freight" },
+      { name: "Trans-Ocean Tier 5", price: 795, daily: 800, total: 8000, days: 10, img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&auto=format&fit=crop&q=80", tag: "Trans-Ocean Liner" },
+      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80", vip: true, tag: "Golden Mega Fleet" },
+      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&auto=format&fit=crop&q=80", vip: true, tag: "Ultra King Flagship" }
     ];
 
-    function toast(m) {
-      const t = document.getElementById('toast');
-      t.innerText = m;
+    function showToast(msg) {
+      const t = document.getElementById('appToast');
+      t.innerText = msg;
       t.classList.remove('opacity-0', 'pointer-events-none');
       setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 2500);
     }
@@ -142,18 +273,18 @@
     function switchAuth(tab) {
       document.getElementById('signupBox').classList.toggle('hidden', tab !== 'signup');
       document.getElementById('loginBox').classList.toggle('hidden', tab === 'signup');
-      document.getElementById('tabSignup').className = `py-2 text-xs font-bold rounded-lg ${tab === 'signup' ? 'bg-[#00e676] text-black' : 'text-gray-400'}`;
-      document.getElementById('tabLogin').className = `py-2 text-xs font-bold rounded-lg ${tab === 'login' ? 'bg-[#ffb800] text-black' : 'text-gray-400'}`;
+      .getElementById('tabSignup').className = `py-2.5 text-xs font-bold rounded-lg ${tab === 'signup' ? 'bg-[#00e676] text-black' : 'text-gray-400'}`;
+      document.getElementById('tabLogin').className = `py-2.5 text-xs font-bold rounded-lg ${tab === 'login' ? 'bg-[#ffb800] text-black' : 'text-gray-400'}`;
     }
 
     function handleRegister() {
       const u = document.getElementById('regUser').value.trim();
       const p = document.getElementById('regPhone').value.trim();
       const pass = document.getElementById('regPass').value.trim();
-      if(!u || p.length < 10 || pass.length < 6) return toast("Valid User ID, Phone & Password required!");
+      if(!u || p.length < 10 || pass.length < 6) return showToast("User ID, 10-digit Phone aur Password required!");
       localStorage.setItem('sc_account', JSON.stringify({ userId: u, phone: p, pass }));
-      toast("Account Created Successfully!");
-      launchApp(u);
+      showToast("Account Created! Welcome to The Sea Cargo.");
+      launchApp(u, p);
     }
 
     function handleLogin() {
@@ -161,19 +292,21 @@
       const pass = document.getElementById('loginPass').value.trim();
       const acc = JSON.parse(localStorage.getItem('sc_account') || '{}');
       if(acc.userId && acc.userId.toLowerCase() === u.toLowerCase() && acc.pass === pass) {
-        toast("Login Successful!");
-        launchApp(acc.userId);
+        showToast("Login Successful!");
+        launchApp(acc.userId, acc.phone || '9876543210');
       } else {
-        toast("Invalid User ID or Password!");
+        showToast("Invalid User ID ya Password! Pehle Sign Up karein.");
       }
     }
 
-    function launchApp(user) {
+    function launchApp(user, phone) {
       document.getElementById('authScreen').classList.add('hidden');
       document.getElementById('mainDashboard').classList.remove('hidden');
-      document.getElementById('topUser').innerText = `● ${user}`;
+      document.getElementById('topUserTag').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-[#00e676] animate-pulse"></span> ${user}`;
+      document.getElementById('profUser').innerText = user;
+      document.getElementById('profPhone').innerText = `+91 ${phone}`;
       document.getElementById('refInput').value = `https://the-sea-cargo.vercel.app/?ref=${user}`;
-      renderPlans();
+      renderAllPlans();
       startWithdrawFeed();
     }
 
@@ -182,38 +315,57 @@
       document.getElementById('mainDashboard').classList.add('hidden');
       document.getElementById('authScreen').classList.remove('hidden');
       switchAuth('login');
-      toast("Logged out.");
+      showToast("Logged out successfully.");
     }
 
-    function renderPlans() {
-      const box = document.getElementById('plansList');
-      box.innerHTML = '<h3 class="text-xs font-bold text-gray-400 uppercase">Cargo Investment Plans</h3>' + plansData.map(p => `
-        <div class="bg-[#0f131d] border ${p.vip ? 'border-[#ffb800]' : 'border-gray-800'} rounded-xl overflow-hidden shadow-lg">
-          <div class="h-32 bg-gradient-to-br ${p.bg} flex flex-col items-center justify-center relative">
-            <i class="fa-solid ${p.icon} text-4xl ${p.vip ? 'text-[#ffb800]' : 'text-sky-400'} mb-1"></i>
-            <span class="text-[10px] font-black tracking-widest uppercase text-white/90">${p.sub}</span>
-            <span class="absolute top-2 right-2 ${p.vip ? 'bg-[#ffb800]' : 'bg-[#00e676]'} text-black text-[10px] font-black px-2 py-0.5 rounded-full">₹${p.price}</span>
+    function switchTab(t) {
+      ['home', 'plans', 'team', 'profile'].forEach(x => {
+        document.getElementById('sec-' + x).classList.add('hidden');
+        document.getElementById('nav-' + x).className = "flex flex-col items-center gap-1 text-gray-400 hover:text-white";
+      });
+      document.getElementById('sec-' + t).classList.remove('hidden');
+      document.getElementById('nav-' + t).className = "text-[#00e676] font-bold flex flex-col items-center gap-1";
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function renderPlanCard(p) {
+      return `
+        <div class="bg-[#0f131d] border ${p.vip ? 'border-[#ffb800]' : 'border-gray-800'} rounded-2xl overflow-hidden shadow-lg">
+          <div class="relative h-44 w-full bg-gray-950">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
+            <span class="absolute top-2.5 right-2.5 ${p.vip ? 'bg-gradient-to-r from-[#ffb800] to-[#ffa000]' : 'bg-[#00e676]'} text-black text-[11px] font-black px-2.5 py-0.5 rounded-full shadow">₹${p.price}</span>
+            <span class="absolute bottom-2 left-3 bg-black/80 backdrop-blur-sm text-[10px] ${p.vip ? 'text-[#ffb800] font-bold' : 'text-white'} px-2 py-0.5 rounded border border-white/10">${p.tag}</span>
           </div>
-          <div class="p-3">
-            <div class="flex justify-between items-center"><h4 class="text-xs font-bold text-white">${p.name}</h4><span class="text-[10px] text-gray-400">${p.days} Days</span></div>
-            <div class="grid grid-cols-2 gap-1.5 mt-2 bg-[#080b12] p-2 rounded-lg text-[11px] border border-gray-800">
-              <div><span class="text-gray-400">Roj Milega:</span> <b class="text-[#00e676]">₹${p.daily}</b></div>
-              <div><span class="text-gray-400">Total:</span> <b class="text-[#ffb800]">₹${p.total}</b></div>
+          <div class="p-4 pt-3">
+            <div class="flex justify-between items-center"><h4 class="text-sm font-bold text-white">${p.name}</h4><span class="text-xs text-gray-300">Validity: <b class="text-white">${p.days} Days</b></span></div>
+            <div class="grid grid-cols-2 gap-2 mt-3 bg-[#080b12] p-2.5 rounded-xl text-xs border border-gray-800">
+              <div><p class="text-gray-400 text-[11px]">Roj Milega:</p><p class="text-[#00e676] font-bold text-sm">₹${p.daily}.00</p></div>
+              <div><p class="text-gray-400 text-[11px]">Total Return:</p><p class="text-[#ffb800] font-black text-sm">₹${p.total.toLocaleString('en-IN')}.00</p></div>
             </div>
-            <button onclick="toast('Balance kam hai! Pehle Recharge karein.')" class="w-full mt-2.5 ${p.vip ? 'bg-[#ffb800]' : 'bg-[#00e676]'} text-black font-extrabold py-2 rounded-lg text-xs">Invest ₹${p.price}</button>
+            <button onclick="investPlan(${p.price})" class="w-full mt-3 ${p.vip ? 'bg-gradient-to-r from-[#ffb800] to-[#ffa000]' : 'bg-[#00e676] hover:bg-[#00c853]'} text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition">Invest ₹${p.price} Now</button>
           </div>
         </div>
-      `).join('');
+      `;
+    }
+
+    function renderAllPlans() {
+      document.getElementById('homePlansContainer').innerHTML = renderPlanCard(plansData[0]) + renderPlanCard(plansData[1]);
+      document.getElementById('allPlansContainer').innerHTML = plansData.map(renderPlanCard).join('');
+    }
+
+    function investPlan(amt) {
+      showToast(`Balance kam hai! Pehle ₹${amt} add karein.`);
+      openModal('rechargeModal');
     }
 
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     function copyRef() {
       navigator.clipboard.writeText(document.getElementById('refInput').value);
-      toast("Referral link copied!");
+      showToast("Referral link copied!");
     }
 
-    // 2s Withdraw Feed
+    // 2-Second Live Withdrawal Feed
     const amounts = [1950, 3000, 4000, 5000, 8000, 18000, 24000];
     let feed = [
       { u: "68****51", a: "24,000" }, { u: "65****72", a: "8,000" },
@@ -223,7 +375,7 @@
       const el = document.getElementById('withdrawList');
       function update() {
         el.innerHTML = feed.map(x => `
-          <div class="flex justify-between items-center bg-[#07090e] border border-gray-800 px-2.5 py-1 rounded text-[11px]">
+          <div class="flex justify-between items-center bg-[#07090e] border border-gray-800 px-3 py-1.5 rounded-lg text-[11px]">
             <span class="text-gray-300">User ${x.u}</span>
             <span class="text-[#00e676] font-bold">Withdraw <b class="text-[#ffb800]">₹${x.a}</b> success</span>
           </div>
@@ -238,9 +390,16 @@
       }, 2000);
     }
 
+    // Check Login on Start
     window.onload = function() {
       const saved = localStorage.getItem('sc_account');
-      if(saved) launchApp(JSON.parse(saved).userId);
+      if(saved) {
+        const u = JSON.parse(saved);
+        launchApp(u.userId, u.phone || '9876543210');
+      } else {
+        document.getElementById('authScreen').classList.remove('hidden');
+        document.getElementById('mainDashboard').classList.add('hidden');
+      }
     };
   </script>
 </body>
