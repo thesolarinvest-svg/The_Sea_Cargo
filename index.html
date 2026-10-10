@@ -3,168 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sea Cargo</title>
+  <title>The Sea Cargo - Maritime Network</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .cert-grand {
+      background: #fdfdf9;
+      border: 3px double #ff7b00;
+      box-shadow: 0 8px 25px rgba(255, 123, 0, 0.18);
+    }
+  </style>
 </head>
-<body class="bg-[#07090e] text-gray-200 font-sans pb-20 selection:bg-[#ff7b00] selection:text-black">
+<body class="bg-[#07090e] text-gray-200 font-sans pb-24 selection:bg-[#ff7b00] selection:text-black">
 
-  <!-- AUTH SCREEN -->
+  <!-- ================= 1. AUTH SCREEN ================= -->
   <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center">
     <div class="text-center mb-6">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-[#ff7b00] to-[#ffb800] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-[#ff7b00]/25 mb-2">
-        <i class="fa-solid fa-ship"></i>
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#ff7b00] to-[#ffb800] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-[#ff7b00]/25 mb-3">
+        <i class="fa-solid fa-ship text-2xl"></i>
       </div>
-      <h1 class="text-xl font-black text-white tracking-widest uppercase">THE SEA CARGO</h1>
-      <p class="text-xs text-orange-400 mt-0.5">Maritime Cargo Network</p>
+      <h1 class="text-2xl font-black text-white tracking-widest uppercase">THE SEA CARGO</h1>
+      <p class="text-xs text-orange-400 mt-1 font-semibold">Official Ocean Freight & Container Network</p>
     </div>
 
     <div class="grid grid-cols-2 bg-[#0f131d] p-1 rounded-xl border border-gray-800 mb-4">
-      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2 text-xs font-bold rounded-lg bg-[#ff7b00] text-black">Sign Up</button>
-      <button id="tabLogin" onclick="switchAuth('login')" class="py-2 text-xs font-bold rounded-lg text-gray-400">Login</button>
+      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-bold rounded-lg bg-[#ff7b00] text-black">Sign Up</button>
+      <button id="tabLogin" onclick="switchAuth('login')" class="py-2.5 text-xs font-bold rounded-lg text-gray-400">Login</button>
     </div>
 
     <div id="signupBox" class="bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3 shadow-xl">
-      <input id="regUser" type="text" placeholder="User ID / Name" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+      <input id="regUser" type="text" placeholder="User ID / Username" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
       <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit Phone" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
       <input id="regPass" type="password" placeholder="Password (Min 6)" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
-      <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition">Create Account</button>
+      <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg">Create Account Instantly</button>
     </div>
 
     <div id="loginBox" class="hidden bg-[#0e1320] border border-gray-800 rounded-2xl p-4 space-y-3 shadow-xl">
       <input id="loginUser" type="text" placeholder="User ID ya Phone" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
-      <input id="loginPass" type="password" placeholder="Password" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
-      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffb800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition">Login</button>
+      <input id="loginPass" type="password" placeholder="Password enter karein" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffb800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg">Login Now</button>
     </div>
   </div>
 
-  <!-- MAIN DASHBOARD -->
+  <!-- ================= 2. MAIN DASHBOARD ================= -->
   <div id="mainDashboard" class="hidden">
-    <header class="sticky top-0 z-40 bg-[#0d1017]/95 backdrop-blur-md border-b border-gray-800 px-4 py-2 flex justify-between items-center max-w-md mx-auto">
+    <header class="sticky top-0 z-40 bg-[#0d1017]/95 backdrop-blur-md border-b border-gray-800 px-4 py-2.5 flex justify-between items-center max-w-md mx-auto">
       <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#ff7b00] to-[#ffb800] flex items-center justify-center font-black text-black text-xs"><i class="fa-solid fa-ship"></i></div>
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#ff7b00] to-[#ffb800] flex items-center justify-center font-black text-black text-xs shadow-md"><i class="fa-solid fa-ship"></i></div>
         <div>
           <h1 class="text-xs font-black text-white tracking-wider">THE SEA CARGO</h1>
           <p id="topUserTag" class="text-[10px] text-[#00e676] font-semibold">● Active</p>
         </div>
       </div>
-      <span class="bg-[#ff7b00]/20 text-[#ff7b00] border border-[#ff7b00]/40 text-[10px] font-bold px-2 py-0.5 rounded-full"><i class="fa-solid fa-crown text-[9px]"></i> VIP 1</span>
+      <span class="bg-[#ff7b00]/20 text-[#ff7b00] border border-[#ff7b00]/40 text-[10px] font-bold px-2 py-0.5 rounded-full"><i class="fa-solid fa-crown text-[9px] mr-0.5"></i> VIP 1</span>
     </header>
 
-    <main class="p-3 space-y-3 max-w-md mx-auto">
-      <!-- HOME SECTION -->
-      <section id="sec-home" class="space-y-3">
-        <!-- Live Withdrawals (Auto 2s Hata Diya) -->
-        <div class="bg-[#0f131d] border border-gray-800 rounded-xl p-2.5 space-y-1 shadow-lg">
+    <main class="p-3.5 space-y-3.5 max-w-md mx-auto">
+      <!-- SECTION: HOME -->
+      <section id="sec-home" class="space-y-3.5">
+        <!-- Live Withdrawals (Without Auto 2s) -->
+        <div class="bg-[#0f131d] border border-gray-800 rounded-2xl p-3 space-y-1.5 shadow-lg">
           <div class="flex justify-between items-center px-1">
-            <span class="text-[11px] font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ff7b00]"></i> Live Withdrawals</span>
+            <span class="text-xs font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ff7b00]"></i> Live Withdrawals</span>
             <span class="text-[9px] text-[#00e676] font-bold">● Active</span>
           </div>
           <div id="withdrawList" class="space-y-1 text-xs"></div>
         </div>
 
-        <!-- Available Balance -->
-        <div class="bg-gradient-to-br from-[#1c120c] via-[#0d121c] to-[#07090e] border border-gray-800 p-3.5 rounded-xl shadow-xl">
-          <p class="text-[11px] text-gray-400 font-medium">Total Available Balance</p>
-          <h2 class="text-2xl font-black text-white mt-0.5" id="balanceDisplay">₹ 0.00</h2>
-          <div class="grid grid-cols-2 gap-2 mt-2.5">
-            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2 rounded-lg text-xs active:scale-95 shadow"><i class="fa-solid fa-wallet mr-1"></i> Recharge (Add)</button>
-            <button onclick="openModal('withdrawModal')" class="bg-[#182030] border border-gray-700 text-white font-semibold py-2 rounded-lg text-xs active:scale-95"><i class="fa-solid fa-arrow-up-from-bracket mr-1"></i> Withdrawal</button>
+        <!-- Available Balance Card -->
+        <div class="bg-gradient-to-br from-[#1c120c] via-[#0d121c] to-[#07090e] border border-orange-500/30 p-4.5 rounded-2xl shadow-xl">
+          <p class="text-xs text-gray-400 font-medium">Total Available Balance</p>
+          <h2 class="text-3xl font-black text-white mt-0.5 tracking-tight" id="balanceDisplay">₹ 0.00</h2>
+          <div class="grid grid-cols-2 gap-2.5 mt-3">
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-md flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-wallet"></i> Recharge (Add)
+            </button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#182030] hover:bg-[#202a3f] border border-gray-700 text-white font-semibold py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdrawal
+            </button>
           </div>
         </div>
 
-        <!-- 24/7 Support (Number-Free) -->
-        <div class="bg-gradient-to-r from-[#111927] to-[#1c120c] border border-orange-500/30 rounded-xl p-2.5 shadow-lg flex items-center justify-between">
+        <!-- Quick 3 Stats -->
+        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+          <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl"><p class="text-[10px] text-gray-400">Daily Return</p><p class="text-[#00e676] font-bold text-xs mt-0.5">₹ 0.00</p></div>
+          <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl"><p class="text-[10px] text-gray-400">Team Bonus</p><p class="text-[#ff7b00] font-bold text-xs mt-0.5">₹ 0.00</p></div>
+          <div class="bg-[#0f131d] border border-gray-800 p-2.5 rounded-xl"><p class="text-[10px] text-gray-400">Plans</p><p class="text-white font-bold text-xs mt-0.5">0 Ship</p></div>
+        </div>
+
+        <!-- 24/7 Support Banner (Without phone number) -->
+        <div class="bg-gradient-to-r from-[#111927] to-[#1c120c] border border-orange-500/30 rounded-2xl p-3.5 shadow-lg flex items-center justify-between">
           <div>
             <h4 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-headset text-[#ff7b00]"></i> 24/7 Official Support</h4>
-            <p class="text-[10px] text-gray-400">Direct Chat Support</p>
+            <p class="text-[10px] text-gray-400">Direct Chat for Recharge & Payouts</p>
           </div>
-          <div class="flex gap-1.5">
-            <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Support" target="_blank" class="px-2.5 py-1.5 rounded-lg bg-[#25D366] text-black font-black flex items-center gap-1 text-[11px] shadow active:scale-95">
+          <div class="flex gap-2">
+            <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Support" target="_blank" class="px-3 py-2 rounded-xl bg-[#25D366] text-black font-extrabold flex items-center gap-1 text-xs shadow active:scale-95">
               <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
             </a>
-            <a href="https://t.me/+919682814718" target="_blank" class="px-2.5 py-1.5 rounded-lg bg-[#229ED9] text-white font-black flex items-center gap-1 text-[11px] shadow active:scale-95">
+            <a href="https://t.me/+919682814718" target="_blank" class="px-3 py-2 rounded-xl bg-[#229ED9] text-white font-extrabold flex items-center gap-1 text-xs shadow active:scale-95">
               <i class="fa-brands fa-telegram text-sm"></i> Telegram
             </a>
           </div>
         </div>
 
-        <!-- Featured 3 Plans on Home -->
+        <!-- Active Cargo Products -->
         <div class="flex justify-between items-center pt-1">
           <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Active Cargo Products</h3>
           <button onclick="switchTab('plans')" class="text-[11px] text-[#ff7b00] font-bold">See All 7 Plans &rarr;</button>
         </div>
-        <div id="homePlansContainer" class="space-y-2"></div>
+        <div id="homePlansContainer" class="space-y-3"></div>
 
-        <!-- Official Certificates -->
-        <div class="bg-[#0c101a] border border-gray-800 rounded-xl p-3 space-y-2.5 shadow-xl mt-3">
-          <div class="text-center">
-            <span class="text-[9px] font-extrabold text-[#ff7b00] tracking-widest uppercase">Verified Entity</span>
-            <h3 class="text-xs font-black text-white">Certifications & Accreditations</h3>
+        <!-- 6 BADE OFFICIAL CERTIFICATES -->
+        <div class="bg-[#0c101a] border border-gray-800 rounded-2xl p-4 space-y-4 shadow-xl mt-4">
+          <div class="text-center space-y-0.5">
+            <span class="text-[9px] font-extrabold text-[#ff7b00] tracking-widest uppercase">Verified Corporate Entity</span>
+            <h3 class="text-base font-black text-white">Official Certifications & Awards</h3>
+            <p class="text-[11px] text-gray-400">Operating under strict maritime trade & port authority licenses.</p>
           </div>
-          <div class="space-y-2 text-gray-900 text-center">
-            <div class="bg-[#fdfdf9] border border-[#ff7b00] rounded-lg p-2">
-              <div class="flex justify-between text-[8px] font-bold text-[#ff7b00]"><span>MARITIME FORUM</span><span class="bg-[#008744] text-white px-1 rounded">ISO VERIFIED</span></div>
-              <h5 class="text-[11px] font-serif font-black mt-0.5">ISO 9001:2015 QUALITY MANAGEMENT</h5>
-              <p class="text-[9px] text-gray-600">Standard for international container shipping & member security.</p>
+
+          <div class="space-y-3.5 pt-1">
+            <!-- Cert 1 -->
+            <div class="cert-grand rounded-2xl p-3.5 text-gray-900">
+              <div class="border-2 border-[#ff7b00] p-3 rounded-xl bg-white text-center">
+                <div class="flex justify-between items-center text-[9px] font-black text-[#ff7b00]"><span>MARITIME ACCREDITATION</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded">ISO VERIFIED</span></div>
+                <h4 class="text-sm font-serif font-black text-gray-900 mt-1">CERTIFICATE OF ACCREDITATION</h4>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">ISO 9001:2015 QUALITY MANAGEMENT</p>
+                <div class="w-14 h-0.5 bg-[#ff7b00] mx-auto my-1.5"></div>
+                <p class="text-[10px] text-gray-600">Standard for international container shipping, automated clearance & member security.</p>
+              </div>
             </div>
-            <div class="bg-[#fdfdf9] border border-[#ff7b00] rounded-lg p-2">
-              <div class="flex justify-between text-[8px] font-bold text-[#008744]"><span>PORT BOARD</span><span class="bg-[#ff7b00] text-black px-1 rounded">LICENSED</span></div>
-              <h5 class="text-[11px] font-serif font-black mt-0.5">PORT & SHIPPING AUTHORITY LICENSE</h5>
-              <p class="text-[9px] text-gray-600">Authorized commercial container vessels across global ports.</p>
+            <!-- Cert 2 -->
+            <div class="cert-grand rounded-2xl p-3.5 text-gray-900">
+              <div class="border-2 border-[#ff7b00] p-3 rounded-xl bg-white text-center">
+                <div class="flex justify-between items-center text-[9px] font-black text-[#008744]"><span>PORT COMMISSION</span><span class="bg-[#ff7b00] text-black px-2 py-0.5 rounded">LICENSED</span></div>
+                <h4 class="text-sm font-serif font-black text-gray-900 mt-1">PORT & SHIPPING LICENSE</h4>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">AUTHORIZED CONTAINER OPERATOR</p>
+                <div class="w-14 h-0.5 bg-[#008744] mx-auto my-1.5"></div>
+                <p class="text-[10px] text-gray-600">Granted commercial authority for container freight logistics across ocean corridors.</p>
+              </div>
             </div>
-            <div class="bg-[#fdfdf9] border border-[#ff7b00] rounded-lg p-2">
-              <div class="flex justify-between text-[8px] font-bold text-[#b8860b]"><span>LOGISTICS EXPO</span><span class="bg-[#b8860b] text-white px-1 rounded">AWARD 2026</span></div>
-              <h5 class="text-[11px] font-serif font-black mt-0.5">BEST CARGO FREIGHT OPERATOR</h5>
-              <p class="text-[9px] text-gray-600">Highest automated return settlement and transparency.</p>
+            <!-- Cert 3 -->
+            <div class="cert-grand rounded-2xl p-3.5 text-gray-900">
+              <div class="border-2 border-[#ff7b00] p-3 rounded-xl bg-white text-center">
+                <div class="flex justify-between items-center text-[9px] font-black text-[#b8860b]"><span>LOGISTICS EXPO</span><span class="bg-[#b8860b] text-white px-2 py-0.5 rounded">WINNER 2026</span></div>
+                <h4 class="text-sm font-serif font-black text-gray-900 mt-1">BEST OCEAN FREIGHT PLATFORM</h4>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">AUTOMATED SETTLEMENT EXCELLENCE</p>
+                <div class="w-14 h-0.5 bg-[#b8860b] mx-auto my-1.5"></div>
+                <p class="text-[10px] text-gray-600">Highest payout fidelity and continuous member dividend distribution.</p>
+              </div>
+            </div>
+            <!-- Cert 4 -->
+            <div class="cert-grand rounded-2xl p-3.5 text-gray-900">
+              <div class="border-2 border-[#ff7b00] p-3 rounded-xl bg-white text-center">
+                <div class="flex justify-between items-center text-[9px] font-black text-[#1e3a8a]"><span>BANKING SAFEGUARD</span><span class="bg-[#1e3a8a] text-white px-2 py-0.5 rounded">100% ESCROW</span></div>
+                <h4 class="text-sm font-serif font-black text-gray-900 mt-1">CAPITAL ESCROW GUARANTEE</h4>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">INSURED RESERVE BOND</p>
+                <div class="w-14 h-0.5 bg-[#1e3a8a] mx-auto my-1.5"></div>
+                <p class="text-[10px] text-gray-600">All member investments and returns are backed by secured reserves.</p>
+              </div>
+            </div>
+            <!-- Cert 5 -->
+            <div class="cert-grand rounded-2xl p-3.5 text-gray-900">
+              <div class="border-2 border-[#ff7b00] p-3 rounded-xl bg-white text-center">
+                <div class="flex justify-between items-center text-[9px] font-black text-[#008744]"><span>SAFETY CHARTER</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded">IMO COMPLIANT</span></div>
+                <h4 class="text-sm font-serif font-black text-gray-900 mt-1">IMO FLEET SAFETY CHARTER</h4>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">SOLAS CERTIFIED</p>
+                <div class="w-14 h-0.5 bg-[#008744] mx-auto my-1.5"></div>
+                <p class="text-[10px] text-gray-600">International verification of maritime cargo vessel standards.</p>
+              </div>
+            </div>
+            <!-- Cert 6 -->
+            <div class="cert-grand rounded-2xl p-3.5 text-gray-900">
+              <div class="border-2 border-[#ff7b00] p-3 rounded-xl bg-white text-center">
+                <div class="flex justify-between items-center text-[9px] font-black text-[#b8860b]"><span>STABILITY AUDIT</span><span class="bg-[#b8860b] text-white px-2 py-0.5 rounded">AAA RATED</span></div>
+                <h4 class="text-sm font-serif font-black text-gray-900 mt-1">TRIPLE-A RATING CERTIFICATE</h4>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">SOLVENCY CERTIFICATION</p>
+                <div class="w-14 h-0.5 bg-[#b8860b] mx-auto my-1.5"></div>
+                <p class="text-[10px] text-gray-600">Highest solvency grade for uninterrupted automated daily withdrawals.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PLANS SECTION -->
-      <section id="sec-plans" class="hidden space-y-2">
+      <!-- SECTION: ALL 7 PLANS -->
+      <section id="sec-plans" class="hidden space-y-3">
         <div class="flex justify-between items-center">
           <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">All 7 Cargo Fleet Plans</h3>
           <span class="text-[10px] text-[#ff7b00] font-bold">100% Ocean Vessels</span>
         </div>
-        <div id="allPlansContainer" class="space-y-2"></div>
+        <div id="allPlansContainer" class="space-y-3"></div>
       </section>
 
-      <!-- WALLET SECTION -->
-      <section id="sec-wallet" class="hidden space-y-3">
-        <div class="bg-gradient-to-br from-[#1c120c] via-[#0d121c] to-[#07090e] border border-orange-500/30 p-4 rounded-xl shadow-xl">
-          <p class="text-[11px] text-gray-400 font-medium">Wallet Balance (Whellt)</p>
-          <h2 class="text-2xl font-black text-white mt-0.5" id="walletBalanceDisplay">₹ 0.00</h2>
-          <div class="grid grid-cols-2 gap-2 mt-3">
-            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2 rounded-lg text-xs active:scale-95 shadow"><i class="fa-solid fa-wallet mr-1"></i> Recharge</button>
-            <button onclick="openModal('withdrawModal')" class="bg-[#182030] border border-gray-700 text-white font-semibold py-2 rounded-lg text-xs active:scale-95"><i class="fa-solid fa-arrow-up-from-bracket mr-1"></i> Withdraw</button>
+      <!-- SECTION: PREMIUM WALLET (WHELLT) -->
+      <section id="sec-wallet" class="hidden space-y-3.5">
+        <div class="bg-gradient-to-br from-[#1c120c] via-[#0d121c] to-[#07090e] border border-orange-500/30 p-5 rounded-2xl shadow-xl">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-gray-400 font-medium">Wallet Balance (Whellt)</span>
+            <span class="bg-[#00e676]/20 text-[#00e676] text-[10px] font-bold px-2 py-0.5 rounded-full">Active A/C</span>
+          </div>
+          <h2 class="text-3xl font-black text-white mt-1 tracking-tight" id="walletBalanceDisplay">₹ 0.00</h2>
+          <div class="grid grid-cols-2 gap-2.5 mt-4">
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 shadow-md flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-wallet"></i> Recharge (Add)
+            </button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#182030] hover:bg-[#202a3f] border border-gray-700 text-white font-semibold py-2.5 rounded-xl text-xs active:scale-95 flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdrawal
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5 text-xs">
+          <div class="bg-[#0f131d] border border-gray-800 p-3 rounded-xl">
+            <p class="text-gray-400 text-[10px]">Today's Income</p>
+            <p class="text-lg font-black text-[#00e676] mt-0.5">₹ 0.00</p>
+          </div>
+          <div class="bg-[#0f131d] border border-gray-800 p-3 rounded-xl">
+            <p class="text-gray-400 text-[10px]">Total Withdrawn</p>
+            <p class="text-lg font-black text-[#ffb800] mt-0.5">₹ 0.00</p>
+          </div>
+        </div>
+
+        <div class="bg-[#0f131d] border border-gray-800 rounded-2xl p-4 space-y-2.5">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-clock-rotate-left text-[#ff7b00]"></i> Wallet Activity
+          </h4>
+          <div class="space-y-2 text-xs">
+            <div class="bg-[#070a12] border border-gray-800 p-2.5 rounded-xl flex justify-between items-center">
+              <div><p class="font-bold text-white">Daily Cargo Return</p><p class="text-[10px] text-gray-400">Container Fleet Automated</p></div>
+              <span class="text-[#00e676] font-bold">+ ₹0.00</span>
+            </div>
+            <div class="bg-[#070a12] border border-gray-800 p-2.5 rounded-xl flex justify-between items-center">
+              <div><p class="font-bold text-white">Security Deposit Verified</p><p class="text-[10px] text-gray-400">Escrow Protected</p></div>
+              <span class="text-[#ff7b00] font-bold">Verified</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- TEAM SECTION -->
-      <section id="sec-team" class="hidden space-y-3">
-        <div class="bg-[#0f131d] border border-gray-800 p-4 rounded-xl space-y-2">
-          <h3 class="text-xs font-bold text-white"><i class="fa-solid fa-share-nodes text-[#ff7b00] mr-1"></i> Invite & Earn 10%</h3>
+      <!-- SECTION: TEAM -->
+      <section id="sec-team" class="hidden space-y-3.5">
+        <div class="bg-[#0f131d] border border-gray-800 p-4.5 rounded-2xl space-y-3">
+          <h3 class="text-sm font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-share-nodes text-[#ff7b00]"></i> Invite & Earn 10%</h3>
           <div class="flex gap-2">
-            <input id="refInput" type="text" readonly class="w-full bg-[#080b12] border border-gray-800 text-[11px] px-2 py-1.5 rounded-lg text-gray-300">
-            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-bold px-3 py-1.5 rounded-lg text-xs">Copy</button>
+            <input id="refInput" type="text" readonly class="w-full bg-[#080b12] border border-gray-800 text-xs px-3 py-2 rounded-xl text-gray-300">
+            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-bold px-4 py-2 rounded-xl text-xs whitespace-nowrap">Copy</button>
           </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5 text-center text-xs">
+          <div class="bg-[#0f131d] border border-gray-800 p-3.5 rounded-xl"><p class="text-gray-400">Direct Level 1</p><p class="text-2xl font-black text-[#00e676] mt-0.5">10%</p></div>
+          <div class="bg-[#0f131d] border border-gray-800 p-3.5 rounded-xl"><p class="text-gray-400">Indirect Level 2</p><p class="text-2xl font-black text-[#ffb800] mt-0.5">5%</p></div>
         </div>
       </section>
 
-      <!-- PROFILE SECTION -->
-      <section id="sec-profile" class="hidden space-y-3">
-        <div class="bg-[#0f131d] border border-gray-800 p-4 rounded-xl flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#ff7b00] to-[#ffb800] flex items-center justify-center text-black font-black"><i class="fa-solid fa-user"></i></div>
+      <!-- SECTION: PROFILE -->
+      <section id="sec-profile" class="hidden space-y-3.5">
+        <div class="bg-[#0f131d] border border-gray-800 p-4.5 rounded-2xl flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-[#ff7b00] to-[#ffb800] flex items-center justify-center text-black font-black text-lg"><i class="fa-solid fa-user"></i></div>
           <div><h3 class="text-sm font-bold text-white" id="profUser">User</h3><p class="text-xs text-gray-400" id="profPhone">+91 **********</p></div>
         </div>
-        <button onclick="logout()" class="w-full bg-red-500/20 text-red-400 border border-red-500/40 font-bold py-2 rounded-xl text-xs active:scale-95"><i class="fa-solid fa-right-from-bracket mr-1"></i> Logout</button>
+        <div class="bg-[#0f131d] border border-gray-800 rounded-2xl divide-y divide-gray-800 text-xs">
+          <div class="p-3.5 flex justify-between"><span class="text-gray-400">Security</span><span class="text-[#00e676]">Protected</span></div>
+          <div class="p-3.5 flex justify-between cursor-pointer" onclick="openModal('withdrawModal')"><span class="text-gray-400">Payout Account (UPI)</span><span class="text-[#ff7b00]">Update &rarr;</span></div>
+          <div class="p-3.5 flex justify-between"><span class="text-gray-400">Support</span><a href="https://wa.me/919682814718" target="_blank" class="text-[#25D366] font-bold">Chat WhatsApp &rarr;</a></div>
+        </div>
+                <button onclick="logout()" class="w-full bg-red-500/20 text-red-400 border border-red-500/40 font-bold py-2.5 rounded-xl text-xs active:scale-95"><i class="fa-solid fa-right-from-bracket mr-1"></i> Logout</button>
       </section>
     </main>
 
-    <!-- Bottom Navigation -->
+    <!-- Bottom Navigation (5 Tabs) -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017]/95 backdrop-blur-md border-t border-gray-800 py-2 px-3 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
       <button onclick="switchTab('home')" id="nav-home" class="text-[#ff7b00] font-bold flex flex-col items-center"><i class="fa-solid fa-house text-sm"></i>Home</button>
       <button onclick="switchTab('plans')" id="nav-plans" class="flex flex-col items-center hover:text-white"><i class="fa-solid fa-ship text-sm"></i>Plans</button>
@@ -174,37 +282,84 @@
     </nav>
   </div>
 
-  <!-- MODALS -->
-  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-xl p-4 space-y-3 text-center">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white"><i class="fa-solid fa-qrcode text-[#ff7b00] mr-1"></i> Recharge (UPI)</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400">&times;</button></div>
-      <div class="bg-white p-3 rounded-lg mx-auto w-32 h-32 flex items-center justify-center text-black font-bold text-xs">QR Code Image</div>
-      <input type="text" placeholder="12-digit UTR Number" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2.5 py-1.5 text-xs text-white outline-none">
-      <button onclick="showToast('UTR Submitted!'); closeModal('rechargeModal')" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-bold py-2 rounded-lg text-xs">Submit UTR</button>
+  <!-- RECHARGE MODAL WITH PHONEPE QR -->
+  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-orange-500/40 w-full max-w-xs rounded-2xl p-4.5 space-y-3 text-center">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white flex items-center gap-1"><i class="fa-solid fa-qrcode text-[#ff7b00]"></i> PhonePe QR Recharge</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400 text-lg">&times;</button></div>
+      <div class="bg-white p-2 rounded-xl mx-auto w-48 shadow-lg">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=thesolarinvest1@axl&pn=TheSeaCargo" alt="PhonePe QR" class="w-full h-auto mx-auto rounded">
+      </div>
+      <div class="bg-[#070a12] border border-gray-800 p-2 rounded-xl flex justify-between items-center text-xs">
+        <span class="text-gray-300 font-mono text-[11px]">thesolarinvest1@axl</span>
+        <button onclick="navigator.clipboard.writeText('thesolarinvest1@axl'); showToast('UPI Copied!')" class="bg-[#ff7b00] text-black font-bold px-2.5 py-1 rounded-lg text-[10px]">Copy UPI</button>
+      </div>
+      <input type="text" placeholder="12-digit UTR Number enter karein" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="showToast('UTR Submitted! Approval in 5 mins.'); closeModal('rechargeModal')" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2.5 rounded-xl text-xs">Submit UTR</button>
     </div>
   </div>
 
-  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-xl p-4 space-y-2">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white"><i class="fa-solid fa-building-columns text-[#ff7b00] mr-1"></i> Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400">&times;</button></div>
-      <input type="text" placeholder="UPI ID / Bank Account" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2.5 py-1.5 text-xs text-white outline-none">
-      <input type="number" placeholder="Amount (Min ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-lg px-2.5 py-1.5 text-xs text-white outline-none">
-      <button onclick="showToast('Insufficient balance.'); closeModal('withdrawModal')" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffb800] text-black font-bold py-2 rounded-lg text-xs">Request Payout</button>
+  <!-- WITHDRAW MODAL -->
+  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-2xl p-4 space-y-2.5">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white"><i class="fa-solid fa-building-columns text-[#ff7b00] mr-1"></i> Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400 text-lg">&times;</button></div>
+      <input type="text" placeholder="UPI ID / Bank Account" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <input type="number" placeholder="Amount (Min ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="showToast('Insufficient balance.'); closeModal('withdrawModal')" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffb800] text-black font-extrabold py-2 rounded-xl text-xs">Request Payout</button>
     </div>
   </div>
 
-  <div id="appToast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#ff7b00] text-white px-3 py-1.5 rounded-lg text-xs opacity-0 pointer-events-none transition duration-300"></div>
-    <!-- SCRIPT -->
+  <div id="appToast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#ff7b00] text-white px-3.5 py-1.5 rounded-xl text-xs opacity-0 pointer-events-none transition duration-300"></div>
+          <button onclick="logout()" class="w-full bg-red-500/20 text-red-400 border border-red-500/40 font-bold py-2.5 rounded-xl text-xs active:scale-95"><i class="fa-solid fa-right-from-bracket mr-1"></i> Logout</button>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation (5 Tabs) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017]/95 backdrop-blur-md border-t border-gray-800 py-2 px-3 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
+      <button onclick="switchTab('home')" id="nav-home" class="text-[#ff7b00] font-bold flex flex-col items-center"><i class="fa-solid fa-house text-sm"></i>Home</button>
+      <button onclick="switchTab('plans')" id="nav-plans" class="flex flex-col items-center hover:text-white"><i class="fa-solid fa-ship text-sm"></i>Plans</button>
+      <button onclick="switchTab('wallet')" id="nav-wallet" class="flex flex-col items-center hover:text-white"><i class="fa-solid fa-wallet text-sm"></i>Wallet</button>
+      <button onclick="switchTab('team')" id="nav-team" class="flex flex-col items-center hover:text-white"><i class="fa-solid fa-users text-sm"></i>Team</button>
+      <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center hover:text-white"><i class="fa-solid fa-user text-sm"></i>Profile</button>
+    </nav>
+  </div>
+
+  <!-- RECHARGE MODAL WITH PHONEPE QR -->
+  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-orange-500/40 w-full max-w-xs rounded-2xl p-4.5 space-y-3 text-center">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white flex items-center gap-1"><i class="fa-solid fa-qrcode text-[#ff7b00]"></i> PhonePe QR Recharge</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400 text-lg">&times;</button></div>
+      <div class="bg-white p-2 rounded-xl mx-auto w-48 shadow-lg">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=thesolarinvest1@axl&pn=TheSeaCargo" alt="PhonePe QR" class="w-full h-auto mx-auto rounded">
+      </div>
+      <div class="bg-[#070a12] border border-gray-800 p-2 rounded-xl flex justify-between items-center text-xs">
+        <span class="text-gray-300 font-mono text-[11px]">thesolarinvest1@axl</span>
+        <button onclick="navigator.clipboard.writeText('thesolarinvest1@axl'); showToast('UPI Copied!')" class="bg-[#ff7b00] text-black font-bold px-2.5 py-1 rounded-lg text-[10px]">Copy UPI</button>
+      </div>
+      <input type="text" placeholder="12-digit UTR Number enter karein" class="w-full bg-[#070a12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="showToast('UTR Submitted! Approval in 5 mins.'); closeModal('rechargeModal')" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2.5 rounded-xl text-xs">Submit UTR</button>
+    </div>
+  </div>
+
+  <!-- WITHDRAW MODAL -->
+  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0f131d] border border-gray-800 w-full max-w-xs rounded-2xl p-4 space-y-2.5">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-bold text-white"><i class="fa-solid fa-building-columns text-[#ff7b00] mr-1"></i> Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400 text-lg">&times;</button></div>
+      <input type="text" placeholder="UPI ID / Bank Account" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <input type="number" placeholder="Amount (Min ₹150)" class="w-full bg-[#080b12] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white outline-none">
+      <button onclick="showToast('Insufficient balance.'); closeModal('withdrawModal')" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffb800] text-black font-extrabold py-2 rounded-xl text-xs">Request Payout</button>
+    </div>
+  </div>
+
+  <div id="appToast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#ff7b00] text-white px-3.5 py-1.5 rounded-xl text-xs opacity-0 pointer-events-none transition duration-300"></div>
+  <!-- SCRIPT ENGINE -->
   <script>
-    // 100% REAL CONTAINER & CARGO SHIPS (Direct Guaranteed Fast CDN Links)
     const plansData = [
       { name: "Vessel Tier 1", price: 190, daily: 195, total: 1950, days: 10, img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", tag: "Coastal Container Feeder" },
-      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80", tag: "Harbor Container Terminal" },
-      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80", tag: "Deep Sea Cargo Freight" },
+      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", tag: "Harbor Container Terminal" },
+      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80", tag: "Deep Sea Cargo Freight" },
       { name: "Bulk Logistics Tier 4", price: 498, daily: 500, total: 5000, days: 10, img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", tag: "Port Crane Container Loading" },
       { name: "Trans-Ocean Tier 5", price: 795, daily: 800, total: 8000, days: 10, img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80", tag: "Trans-Ocean Heavy Carrier" },
-      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", vip: true, tag: "Golden Mega Container Fleet" },
-      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80", vip: true, tag: "Ultra King Flagship Vessel" }
+      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80", tag: "Golden Mega Container Fleet" },
+      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80", tag: "Ultra King Flagship Vessel" }
     ];
 
     function showToast(msg) {
@@ -217,8 +372,8 @@
     function switchAuth(tab) {
       document.getElementById('signupBox').classList.toggle('hidden', tab !== 'signup');
       document.getElementById('loginBox').classList.toggle('hidden', tab === 'signup');
-      document.getElementById('tabSignup').className = `py-2 text-xs font-bold rounded-lg ${tab === 'signup' ? 'bg-[#ff7b00] text-black' : 'text-gray-400'}`;
-      document.getElementById('tabLogin').className = `py-2 text-xs font-bold rounded-lg ${tab === 'login' ? 'bg-[#ff7b00] text-black' : 'text-gray-400'}`;
+      document.getElementById('tabSignup').className = `py-2.5 text-xs font-bold rounded-lg ${tab === 'signup' ? 'bg-[#ff7b00] text-black' : 'text-gray-400'}`;
+      document.getElementById('tabLogin').className = `py-2.5 text-xs font-bold rounded-lg ${tab === 'login' ? 'bg-[#ff7b00] text-black' : 'text-gray-400'}`;
     }
 
     function handleRegister() {
@@ -281,31 +436,28 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Ultra-Compact Card: Ek sath 3 plans phone screen par aayenge
     function renderPlanCard(p) {
       return `
-        <div class="bg-[#0f131d] border ${p.vip ? 'border-[#ff7b00]' : 'border-gray-800'} rounded-xl overflow-hidden shadow-md">
-          <div class="relative h-28 w-full bg-[#070b14] overflow-hidden">
+        <div class="bg-[#0f131d] border ${p.vip ? 'border-[#ff7b00]' : 'border-gray-800'} rounded-2xl overflow-hidden shadow-lg">
+          <div class="relative h-32 w-full bg-[#070b14] overflow-hidden">
             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
-            <span class="absolute top-1.5 right-1.5 ${p.vip ? 'bg-gradient-to-r from-[#ff7b00] to-[#ffb800]' : 'bg-[#ff7b00]'} text-black text-[9px] font-black px-2 py-0.5 rounded-full shadow">₹${p.price}</span>
-            <span class="absolute bottom-1 left-2 bg-black/80 text-[8px] ${p.vip ? 'text-[#ff7b00] font-bold' : 'text-white'} px-1.5 py-0.5 rounded">${p.tag}</span>
+            <span class="absolute top-2 right-2 ${p.vip ? 'bg-gradient-to-r from-[#ff7b00] to-[#ffb800]' : 'bg-[#ff7b00]'} text-black text-[10px] font-black px-2.5 py-0.5 rounded-full shadow">₹${p.price}</span>
+            <span class="absolute bottom-1.5 left-2 bg-black/80 backdrop-blur-sm text-[9px] ${p.vip ? 'text-[#ff7b00] font-bold' : 'text-white'} px-2 py-0.5 rounded border border-white/10">${p.tag}</span>
           </div>
-          <div class="p-2">
-            <div class="flex justify-between items-center"><h4 class="text-xs font-bold text-white">${p.name}</h4><span class="text-[10px] text-gray-400">${p.days} Days</span></div>
-            <div class="grid grid-cols-2 gap-1.5 mt-1 bg-[#080b12] p-1.5 rounded-lg text-[10px] border border-gray-800">
-              <div><span class="text-gray-400">Daily:</span> <b class="text-[#00e676]">₹${p.daily}</b></div>
-              <div><span class="text-gray-400">Total:</span> <b class="text-[#ff7b00]">₹${p.total}</b></div>
+          <div class="p-3">
+            <div class="flex justify-between items-center"><h4 class="text-xs font-bold text-white">${p.name}</h4><span class="text-[10px] text-gray-300">Validity: <b class="text-white">${p.days} Days</b></span></div>
+            <div class="grid grid-cols-2 gap-2 mt-2 bg-[#080b12] p-2.5 rounded-xl border border-gray-800">
+              <div><p class="text-gray-400 text-[10px]">Daily Income:</p><p class="text-[#00e676] font-black text-sm mt-0.5">₹${p.daily}.00</p></div>
+              <div><p class="text-gray-400 text-[10px]">Total Revenue:</p><p class="text-[#ffb800] font-black text-sm mt-0.5">₹${p.total.toLocaleString('en-IN')}.00</p></div>
             </div>
-            <button onclick="investPlan(${p.price})" class="w-full mt-1.5 bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-1.5 rounded-lg text-[11px] active:scale-95 shadow">Buy ₹${p.price} Now</button>
+            <button onclick="investPlan(${p.price})" class="w-full mt-2.5 bg-gradient-to-r from-[#ff7b00] to-[#ff9800] text-black font-extrabold py-2 rounded-xl text-xs active:scale-95 shadow">Buy ₹${p.price} Now</button>
           </div>
         </div>
       `;
     }
 
     function renderAllPlans() {
-      // Home screen par ek sath 3 plans
       document.getElementById('homePlansContainer').innerHTML = renderPlanCard(plansData[0]) + renderPlanCard(plansData[1]) + renderPlanCard(plansData[2]);
-      // Plans tab par poore 7 plans
       document.getElementById('allPlansContainer').innerHTML = plansData.map(renderPlanCard).join('');
     }
 
