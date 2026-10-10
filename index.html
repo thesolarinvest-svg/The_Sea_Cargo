@@ -54,7 +54,7 @@
     <main class="p-3 space-y-3 max-w-md mx-auto">
       <!-- HOME SECTION -->
       <section id="sec-home" class="space-y-3">
-        <!-- Live Withdrawals (Auto 2s Hata Diya Gaya) -->
+        <!-- Live Withdrawals (Auto 2s Hata Diya) -->
         <div class="bg-[#0f131d] border border-gray-800 rounded-xl p-2.5 space-y-1 shadow-lg">
           <div class="flex justify-between items-center px-1">
             <span class="text-[11px] font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ff7b00]"></i> Live Withdrawals</span>
@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <!-- 24/7 Support (No Number Displayed) -->
+        <!-- 24/7 Support (Number-Free) -->
         <div class="bg-gradient-to-r from-[#111927] to-[#1c120c] border border-orange-500/30 rounded-xl p-2.5 shadow-lg flex items-center justify-between">
           <div>
             <h4 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-headset text-[#ff7b00]"></i> 24/7 Official Support</h4>
@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <!-- Featured 3 Plans on Home (Ek sath 3 plans screen par aayenge) -->
+        <!-- Featured 3 Plans on Home -->
         <div class="flex justify-between items-center pt-1">
           <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Active Cargo Products</h3>
           <button onclick="switchTab('plans')" class="text-[11px] text-[#ff7b00] font-bold">See All 7 Plans &rarr;</button>
@@ -164,7 +164,7 @@
       </section>
     </main>
 
-    <!-- Bottom Navigation (5 Tabs) -->
+    <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[#0d1017]/95 backdrop-blur-md border-t border-gray-800 py-2 px-3 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
       <button onclick="switchTab('home')" id="nav-home" class="text-[#ff7b00] font-bold flex flex-col items-center"><i class="fa-solid fa-house text-sm"></i>Home</button>
       <button onclick="switchTab('plans')" id="nav-plans" class="flex flex-col items-center hover:text-white"><i class="fa-solid fa-ship text-sm"></i>Plans</button>
@@ -194,18 +194,17 @@
   </div>
 
   <div id="appToast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-[#121724] border border-[#ff7b00] text-white px-3 py-1.5 rounded-lg text-xs opacity-0 pointer-events-none transition duration-300"></div>
-
-  <!-- SCRIPT -->
+    <!-- SCRIPT -->
   <script>
-    // 100% REAL CONTAINER LOADING & CARGO VESSELS ONLY (NO REDIRECTS)
+    // 100% REAL CONTAINER & CARGO SHIPS (Direct Guaranteed Fast CDN Links)
     const plansData = [
-      { name: "Vessel Tier 1", price: 190, daily: 195, total: 1950, days: 10, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Container_ship_Elly_Maersk.jpg/800px-Container_ship_Elly_Maersk.jpg", tag: "Coastal Container Feeder" },
-      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/CMA_CGM_Benjamin_Franklin_-_port_of_Rotterdam.jpg/800px-CMA_CGM_Benjamin_Franklin_-_port_of_Rotterdam.jpg", tag: "Harbor Container Terminal" },
-      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Emma_Maersk_stb_side.jpg/800px-Emma_Maersk_stb_side.jpg", tag: "Deep Sea Cargo Freight" },
-      { name: "Bulk Logistics Tier 4", price: 498, daily: 500, total: 5000, days: 10, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Container_Ship_in_San_Francisco_Bay.jpg/800px-Container_Ship_in_San_Francisco_Bay.jpg", tag: "Port Crane Container Loading" },
-      { name: "Trans-Ocean Tier 5", price: 795, daily: 800, total: 8000, days: 10, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Madrid_Maersk_in_the_English_Channel.jpg/800px-Madrid_Maersk_in_the_English_Channel.jpg", tag: "Trans-Ocean Heavy Carrier" },
-      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Ever_Given_in_the_Suez_Canal_-_20200424.jpg/800px-Ever_Given_in_the_Suez_Canal_-_20200424.jpg", vip: true, tag: "Golden Mega Container Fleet" },
-      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/OOCL_Hong_Kong.jpg/800px-OOCL_Hong_Kong.jpg", vip: true, tag: "Ultra King Flagship Vessel" }
+      { name: "Vessel Tier 1", price: 190, daily: 195, total: 1950, days: 10, img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", tag: "Coastal Container Feeder" },
+      { name: "Harbor Feeder Tier 2", price: 295, daily: 300, total: 3000, days: 10, img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80", tag: "Harbor Container Terminal" },
+      { name: "Coastal Express Tier 3", price: 395, daily: 400, total: 4000, days: 10, img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80", tag: "Deep Sea Cargo Freight" },
+      { name: "Bulk Logistics Tier 4", price: 498, daily: 500, total: 5000, days: 10, img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", tag: "Port Crane Container Loading" },
+      { name: "Trans-Ocean Tier 5", price: 795, daily: 800, total: 8000, days: 10, img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80", tag: "Trans-Ocean Heavy Carrier" },
+      { name: "Golden Fleet VIP 1", price: 999, daily: 1200, total: 18000, days: 15, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", vip: true, tag: "Golden Mega Container Fleet" },
+      { name: "Ultra King VIP 2", price: 1495, daily: 1600, total: 24000, days: 15, img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80", vip: true, tag: "Ultra King Flagship Vessel" }
     ];
 
     function showToast(msg) {
@@ -256,7 +255,7 @@
     function launchApp(user, phone) {
       document.getElementById('authScreen').classList.add('hidden');
       document.getElementById('mainDashboard').classList.remove('hidden');
-            document.getElementById('topUserTag').innerText = `● ${user}`;
+      document.getElementById('topUserTag').innerText = `● ${user}`;
       document.getElementById('profUser').innerText = user;
       document.getElementById('profPhone').innerText = `+91 ${phone}`;
       document.getElementById('refInput').value = `https://the-sea-cargo.vercel.app/?ref=${user}`;
@@ -282,11 +281,12 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
+    // Ultra-Compact Card: Ek sath 3 plans phone screen par aayenge
     function renderPlanCard(p) {
       return `
         <div class="bg-[#0f131d] border ${p.vip ? 'border-[#ff7b00]' : 'border-gray-800'} rounded-xl overflow-hidden shadow-md">
           <div class="relative h-28 w-full bg-[#070b14] overflow-hidden">
-            <img src="${p.img}" referrerpolicy="no-referrer" alt="${p.name}" class="w-full h-full object-cover">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
             <span class="absolute top-1.5 right-1.5 ${p.vip ? 'bg-gradient-to-r from-[#ff7b00] to-[#ffb800]' : 'bg-[#ff7b00]'} text-black text-[9px] font-black px-2 py-0.5 rounded-full shadow">₹${p.price}</span>
             <span class="absolute bottom-1 left-2 bg-black/80 text-[8px] ${p.vip ? 'text-[#ff7b00] font-bold' : 'text-white'} px-1.5 py-0.5 rounded">${p.tag}</span>
           </div>
@@ -303,7 +303,9 @@
     }
 
     function renderAllPlans() {
+      // Home screen par ek sath 3 plans
       document.getElementById('homePlansContainer').innerHTML = renderPlanCard(plansData[0]) + renderPlanCard(plansData[1]) + renderPlanCard(plansData[2]);
+      // Plans tab par poore 7 plans
       document.getElementById('allPlansContainer').innerHTML = plansData.map(renderPlanCard).join('');
     }
 
