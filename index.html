@@ -18,7 +18,7 @@
 </head>
 <body class="bg-[#05070d] text-gray-200 font-sans pb-24 selection:bg-[#ff6b00] selection:text-black">
 
-  <!-- 1. AUTH SCREEN (NO OTP) -->
+  <!-- ================= 1. AUTH SCREEN (WITH CONFIRM PASSWORD) ================= -->
   <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center">
     <div class="text-center mb-6">
       <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#ff6b00] to-[#ffd000] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-orange-500/25 mb-3 border border-orange-400/40">
@@ -50,6 +50,10 @@
         <label class="text-[11px] text-gray-400 font-bold uppercase">Password</label>
         <input id="regPass" type="password" placeholder="Password (Min 6)" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
       </div>
+      <div>
+        <label class="text-[11px] text-gray-400 font-bold uppercase">Confirm Password</label>
+        <input id="regConfirmPass" type="password" placeholder="Confirm your password" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+      </div>
       <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/25 uppercase">
         Create Cargo Account
       </button>
@@ -71,7 +75,7 @@
     </div>
   </div>
 
-  <!-- 2. MAIN DASHBOARD -->
+  <!-- ================= 2. MAIN DASHBOARD ================= -->
   <div id="mainDashboard" class="hidden">
     <!-- Sticky Header -->
     <header class="sticky top-0 z-40 bg-[#060910]/95 backdrop-blur-md border-b border-white/10 px-4 py-2.5 flex justify-between items-center max-w-md mx-auto">
@@ -86,12 +90,10 @@
         <i class="fa-solid fa-crown text-[9px] text-[#ffd000]"></i> VIP 1
       </span>
     </header>
-
-    <main class="p-3.5 space-y-3.5 max-w-md mx-auto">
-
+        <main class="p-3.5 space-y-3.5 max-w-md mx-auto">
       <!-- SECTION: HOME -->
       <section id="sec-home" class="space-y-3.5">
-        <!-- Live Withdrawals (Auto 2s text removed) -->
+        <!-- Live Withdrawals (Without Auto 2s text) -->
         <div class="bg-gradient-to-br from-[#0a0f1d] to-[#050810] border border-white/10 rounded-2xl p-3 space-y-2 shadow-xl">
           <div class="flex justify-between items-center px-1">
             <span class="text-xs font-extrabold text-white flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ffd000]"></i> Live Withdrawals</span>
@@ -117,7 +119,7 @@
           </div>
         </div>
 
-        <!-- Daily Check-In Bonus Bar (Trusted Add-on) -->
+        <!-- Daily Check-In Bonus Bar -->
         <div class="bg-gradient-to-r from-[#0b1220] to-[#141d33] border border-[#00f589]/30 rounded-2xl p-3 flex justify-between items-center shadow-lg">
           <div class="flex items-center gap-2.5">
             <div class="w-9 h-9 rounded-xl bg-[#00f589]/15 text-[#00f589] flex items-center justify-center font-black text-base"><i class="fa-solid fa-calendar-check"></i></div>
@@ -129,10 +131,12 @@
           <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] text-black font-black px-3 py-1.5 rounded-xl text-xs active:scale-95 shadow">Claim ₹10</button>
         </div>
 
-        <!-- 24/7 Support Banner (Direct WhatsApp & Telegram - Number-Free) -->
+        <!-- 24/7 Support Banner (WhatsApp & Telegram - Number Hidden) -->
         <div class="bg-gradient-to-r from-[#0b1220] via-[#12192c] to-[#18110b] border border-orange-500/30 rounded-2xl p-3.5 shadow-xl flex items-center justify-between">
           <div class="space-y-0.5">
-            <h4 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-headset text-[#ff6b00]"></i> 24/7 Dedicated Support</h4>
+            <h4 class="text-xs font-black text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-headset text-[#ff6b00]"></i> 24/7 Dedicated Support
+            </h4>
             <p class="text-[10px] text-gray-400 font-medium">Instant Recharge & Payout Queries</p>
           </div>
           <div class="flex gap-2">
@@ -156,7 +160,8 @@
         </div>
         <!-- 3 Compact Plans on Home -->
         <div id="homePlansContainer" class="space-y-3"></div>
-                <!-- 6 GRAND LUXURY CERTIFICATES -->
+
+        <!-- 6 GRAND LUXURY CERTIFICATES -->
         <div class="bg-gradient-to-b from-[#090d18] to-[#04060b] border border-white/10 rounded-3xl p-4 space-y-3.5 shadow-2xl mt-5">
           <div class="text-center space-y-1">
             <span class="text-[9px] font-black text-[#ffd000] tracking-widest uppercase">REGULATORY COMPLIANCE</span>
@@ -240,8 +245,7 @@
           </div>
         </div>
       </section>
-
-      <!-- SECTION: ALL 7 PLANS -->
+            <!-- SECTION: ALL 7 PLANS -->
       <section id="sec-plans" class="hidden space-y-3">
         <div class="flex justify-between items-center px-1">
           <h3 class="text-xs font-black text-gray-300 uppercase tracking-widest">Complete Fleet Inventory (7 Plans)</h3>
@@ -318,7 +322,7 @@
       </section>
     </main>
 
-    <!-- Bottom Navigation Bar (5 Luxury Tabs) -->
+    <!-- Bottom Navigation Bar (5 Tabs) -->
     <nav class="fixed bottom-0 left-0 right-0 bg-[#060910]/95 backdrop-blur-xl border-t border-white/10 py-2.5 px-4 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
       <button onclick="switchTab('home')" id="nav-home" class="text-[#ff6b00] font-bold flex flex-col items-center gap-1"><i class="fa-solid fa-house text-sm"></i>Home</button>
       <button onclick="switchTab('plans')" id="nav-plans" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-ship text-sm"></i>Plans</button>
@@ -327,7 +331,7 @@
       <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-user text-sm"></i>Profile</button>
     </nav>
   </div>
-    <!-- RECHARGE MODAL (CLEAN UPI COPY - NO BARCODE) -->
+    <!-- RECHARGE MODAL (CLEAN MANUAL UPI COPY - NO BARCODE) -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#0b101c] border border-orange-500/40 w-full max-w-xs rounded-3xl p-5 space-y-4 text-center shadow-2xl">
       <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-wallet text-[#ff6b00]"></i> Add Capital (UPI)</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
@@ -357,13 +361,13 @@
 
   <!-- ================= 3. SCRIPT ENGINE ================= -->
   <script>
-    // 7 REAL CONTAINER HARBOR & VESSEL ASSETS (INCLUDING AAPKE BHEJE HUE IMAGES)
+    // 7 REAL OCEAN CARGO & CRUISE ASSETS (AAPKE BHEJE HUE VISUALS KE SATH)
     const plansData = [
       { 
         name: "Vessel Tier 1", 
         price: 190, daily: 195, total: 1950, days: 10, 
-        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
-        tag: "Coastal Feeder Vessel",
+        img: "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=800&q=80", 
+        tag: "Coastal Container Feeder",
         route: "Singapore → JNPT Port (Speed 18.2 Knots)"
       },
       { 
@@ -376,38 +380,38 @@
       { 
         name: "Coastal Express Tier 3", 
         price: 395, daily: 400, total: 4000, days: 10, 
-        img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80", 
-        tag: "Ocean Freight Cargo",
+        img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", 
+        tag: "Sunset Harbor Quay",
         route: "Dubai → Chennai Port (Speed 19.5 Knots)"
       },
       { 
         name: "Bulk Logistics Tier 4", 
         price: 498, daily: 500, total: 5000, days: 10, 
-        img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", 
-        tag: "Gantry Crane Loading",
+        img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80", 
+        tag: "Ocean Royal Liner",
         route: "Rotterdam → Kandla Port (En Route)"
       },
       { 
         name: "Trans-Ocean Tier 5", 
         price: 795, daily: 800, total: 8000, days: 10, 
-        img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80", 
-        tag: "Trans-Ocean Carrier",
-        route: "Hong Kong → Cochin (Offshore Transit)"
+        img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80", 
+        tag: "Royal Cargo Shipping",
+        route: "Hong Kong → Cochin (Night Harbor)"
       },
       { 
         name: "Golden Fleet VIP 1", 
         price: 999, daily: 1200, total: 18000, days: 15, 
-        img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80", 
+        img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80", 
         vip: true, 
-        tag: "Golden Mega Fleet",
+        tag: "Ocean Princess Fleet",
         route: "Suez Canal → Mumbai Deep Water (Speed 21 Knots)"
       },
       { 
         name: "Ultra King VIP 2", 
         price: 1495, daily: 1600, total: 24000, days: 15, 
-        img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80", 
+        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
         vip: true, 
-        tag: "Flagship Mega Carrier",
+        tag: "Ultra King Flagship",
         route: "Shanghai → Vizag Terminal (Express Transit)"
       }
     ];
@@ -429,7 +433,14 @@
       const u = document.getElementById('regUser').value.trim();
       const p = document.getElementById('regPhone').value.trim();
       const pass = document.getElementById('regPass').value.trim();
-      if(!u || p.length < 10 || pass.length < 6) return showToast("User ID, 10-digit Phone aur Password required!");
+      const cpass = document.getElementById('regConfirmPass').value.trim();
+
+      if(!u || p.length < 10 || pass.length < 6) {
+        return showToast("User ID, 10-digit Phone aur Password (min 6) zaroori hai!");
+      }
+      if(pass !== cpass) {
+        return showToast("Password aur Confirm Password match nahi ho rahe!");
+      }
 
       let users = JSON.parse(localStorage.getItem('sc_users_list') || '[]');
       users.push({ userId: u, phone: p, pass });
@@ -452,7 +463,7 @@
         localStorage.setItem('sc_current_user', JSON.stringify({ userId: "Diwedi", phone: "9682814718", bal: 0 }));
         launchApp("Diwedi", "9682814718", 0);
       } else {
-        showToast("Invalid User ID ya Password!");
+        showToast("Galat User ID ya Password! Pehle Sign Up karein.");
       }
     }
 
@@ -477,7 +488,7 @@
       const cur = JSON.parse(localStorage.getItem('sc_current_user') || '{}');
       const today = new Date().toDateString();
       if(cur.lastCheckin === today) {
-        return showToast("Aaj ka ₹10 bonus already claimed hai!");
+        return showToast("Aaj ka ₹10 bonus already claim kar chuke hain!");
       }
       cur.bal = (cur.bal || 0) + 10;
       cur.lastCheckin = today;
@@ -486,7 +497,7 @@
       document.getElementById('todayEarnDisplay').innerText = `₹ 10.00`;
       document.getElementById('btnCheckin').innerText = "Claimed ✓";
       document.getElementById('btnCheckin').disabled = true;
-      showToast("₹10 Harbor Dividend added to your balance!");
+      showToast("₹10 Harbor Dividend aapke balance me add ho gaya!");
     }
 
     function logout() {
@@ -494,7 +505,7 @@
       document.getElementById('mainDashboard').classList.add('hidden');
       document.getElementById('authScreen').classList.remove('hidden');
       switchAuth('login');
-      showToast("Session Ended.");
+      showToast("Logged out successfully.");
     }
 
     function switchTab(t) {
@@ -507,7 +518,6 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // ULTRA COMPACT CARD WITH GPS ROUTE BADGE & BOLD REVENUE
     function renderPlanCard(p) {
       return `
         <div class="bg-gradient-to-b from-[#0b101d] to-[#050810] border ${p.vip ? 'border-[#ffd000]' : 'border-white/10'} rounded-2xl overflow-hidden shadow-xl">
