@@ -3,75 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sea Cargo - Maritime Asset Platform</title>
+  <title>The Sea Cargo - Maritime Freight Capital</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cinzel:wght@700;900&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #040711; }
     .font-luxury { font-family: 'Cinzel', serif; }
-    .cert-grand {
-      background: #fdfdf9;
-      border: 3px double #ff6b00;
-      box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+    .luxury-card {
+      background: linear-gradient(145deg, rgba(14, 21, 37, 0.9) 0%, rgba(7, 11, 20, 0.95) 100%);
+      border: 1px solid rgba(255, 123, 0, 0.2);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+    .cert-luxury {
+      background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f6f3ea 100%);
+      border: 2px solid #d4af37;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6), inset 0 0 18px rgba(212, 175, 55, 0.2);
     }
   </style>
 </head>
-<body class="bg-[#05070d] text-gray-200 font-sans pb-24 selection:bg-[#ff6b00] selection:text-black">
+<body class="text-gray-200 pb-28 selection:bg-[#ff7b00] selection:text-black">
 
   <!-- ================= 1. AUTH SCREEN ================= -->
   <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center relative">
-    <div class="text-center mb-6">
-      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#ff6b00] to-[#ffd000] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-orange-500/25 mb-3 border border-orange-400/40">
+    <div class="text-center mb-7">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#ff6b00] via-[#ffa100] to-[#ffd000] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-orange-500/25 mb-3 border border-orange-400/40">
         <i class="fa-solid fa-ship text-2xl"></i>
       </div>
-      <h1 class="text-2xl font-black text-white tracking-widest font-luxury uppercase">THE SEA CARGO</h1>
-      <p class="text-xs text-orange-400 mt-1 font-semibold">Maritime Cargo Logistics & Asset Platform</p>
+      <h1 class="text-2xl font-black text-white tracking-[0.2em] font-luxury uppercase">THE SEA CARGO</h1>
+      <p class="text-xs text-orange-400/90 mt-1 font-semibold tracking-wider">OFFICIAL MARITIME CONTAINER ASSET NETWORK</p>
     </div>
 
-    <div class="grid grid-cols-2 bg-[#0d121f] p-1 rounded-xl border border-white/10 mb-4">
-      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-bold rounded-lg bg-[#ff6b00] text-black">Sign Up</button>
-      <button id="tabLogin" onclick="switchAuth('login')" class="py-2.5 text-xs font-bold rounded-lg text-gray-400">Login</button>
+    <div class="grid grid-cols-2 bg-[#090e1a] p-1.5 rounded-2xl border border-white/10 mb-5 shadow-inner">
+      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md transition">Sign Up</button>
+      <button id="tabLogin" onclick="switchAuth('login')" class="py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition">Login</button>
     </div>
 
-    <!-- Sign Up Box with Confirm Password -->
-    <div id="signupBox" class="bg-[#0b101c] border border-orange-500/30 rounded-2xl p-4 space-y-3 shadow-xl">
+    <!-- Sign Up Form -->
+    <div id="signupBox" class="luxury-card rounded-3xl p-5 space-y-3.5 shadow-2xl relative">
       <div>
-        <label class="text-[11px] text-gray-400 font-bold uppercase">User ID / Username</label>
-        <input id="regUser" type="text" placeholder="Choose unique User ID" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account Identity / Username</label>
+        <input id="regUser" type="text" placeholder="Enter unique ID (e.g. Diwedi)" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <div>
-        <label class="text-[11px] text-gray-400 font-bold uppercase">Mobile Number</label>
-        <div class="flex gap-2 mt-1">
-          <span class="bg-[#05070d] border border-white/10 px-3 py-2 text-xs text-gray-400 rounded-xl flex items-center">+91</span>
-          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit phone number" class="w-full bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
+        <div class="flex gap-2 mt-1.5">
+          <span class="bg-[#050914] border border-white/10 px-3 py-2.5 text-xs text-gray-400 rounded-xl font-mono">+91</span>
+          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
         </div>
       </div>
       <div>
-        <label class="text-[11px] text-gray-400 font-bold uppercase">Password</label>
-        <input id="regPass" type="password" placeholder="Password (Min 6)" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Security Access Password</label>
+        <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <div>
-        <label class="text-[11px] text-gray-400 font-bold uppercase">Confirm Password</label>
-        <input id="regConfirmPass" type="password" placeholder="Confirm your password" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Confirm Security Password</label>
+        <input id="regConfirmPass" type="password" placeholder="Re-type password" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
-      <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/25 uppercase">
+      <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] via-[#ff8800] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg shadow-orange-500/25 tracking-wider uppercase mt-2">
         Create Cargo Account
       </button>
     </div>
 
-    <!-- Login Box -->
-    <div id="loginBox" class="hidden bg-[#0b101c] border border-orange-500/30 rounded-2xl p-4 space-y-3 shadow-xl">
+    <!-- Login Form -->
+    <div id="loginBox" class="hidden luxury-card rounded-3xl p-5 space-y-3.5 shadow-2xl relative">
       <div>
-        <label class="text-[11px] text-gray-400 font-bold uppercase">User ID ya Phone</label>
-        <input id="loginUser" type="text" placeholder="User ID ya Phone enter karein" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account ID / Mobile</label>
+        <input id="loginUser" type="text" placeholder="Enter User ID or phone" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
       </div>
       <div>
-        <label class="text-[11px] text-gray-400 font-bold uppercase">Password</label>
-        <input id="loginPass" type="password" placeholder="Password enter karein" class="w-full mt-1 bg-[#05070d] border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#ff6b00]">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Password</label>
+        <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
       </div>
-      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ffa100] to-[#ff6b00] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/25 uppercase">
-        Authorize Login
+      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg shadow-yellow-500/20 tracking-wider uppercase mt-2">
+        Authorize Access
       </button>
     </div>
   </div>
@@ -79,260 +84,419 @@
   <!-- ================= 2. MAIN APPLICATION ================= -->
   <div id="mainDashboard" class="hidden">
     <!-- Header -->
-    <header class="sticky top-0 z-40 bg-[#060910]/95 backdrop-blur-md border-b border-white/10 px-4 py-2.5 flex justify-between items-center max-w-md mx-auto">
-      <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#ff6b00] to-[#ffd000] flex items-center justify-center font-black text-black text-xs shadow-md"><i class="fa-solid fa-ship"></i></div>
+    <header class="sticky top-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-b border-white/10 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#ff6b00] to-[#ffd000] flex items-center justify-center font-black text-black text-xs shadow-md shadow-orange-500/30">
+          <i class="fa-solid fa-ship"></i>
+        </div>
         <div>
-          <h1 class="text-xs font-black text-white tracking-wider font-luxury">THE SEA CARGO</h1>
-          <p id="topUserTag" class="text-[10px] text-[#00f589] font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Active</p>
+          <h1 class="text-xs font-black text-white tracking-widest font-luxury uppercase">THE SEA CARGO</h1>
+          <p id="topUserTag" class="text-[10px] text-[#00f589] font-bold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Terminal Connected
+          </p>
         </div>
       </div>
       <div class="flex items-center gap-1.5">
-        <span class="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-[#ffd000] border border-[#ffd000]/40 text-[10px] font-black px-2.5 py-0.5 rounded-full flex items-center gap-1">
-          <i class="fa-solid fa-crown text-[9px] text-[#ffd000]"></i> VIP 1
+        <span class="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-[#ffd000] border border-[#ffd000]/40 text-[10px] font-black px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+          <i class="fa-solid fa-crown text-[9px]"></i> VIP 1
         </span>
       </div>
     </header>
         <main class="p-3.5 space-y-4 max-w-md mx-auto">
-      <!-- SECTION: LUXURY HOMEPAGE -->
+      <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- Live Ticker (Without Auto 2s text) -->
-        <div class="bg-gradient-to-br from-[#0a0f1d] to-[#050810] border border-white/10 rounded-2xl p-3 space-y-2 shadow-xl">
+        <!-- Live Settlement Feed -->
+        <div class="luxury-card rounded-2xl p-3 space-y-2 shadow-xl">
           <div class="flex justify-between items-center px-1">
-            <span class="text-xs font-extrabold text-white flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ffd000]"></i> Live Withdrawals</span>
-            <span class="text-[9px] font-extrabold text-[#00f589] uppercase tracking-wider bg-[#00f589]/10 px-2 py-0.5 rounded-md border border-[#00f589]/20">● Active</span>
+            <span class="text-xs font-black text-white flex items-center gap-1.5 tracking-wide">
+              <i class="fa-solid fa-bolt text-[#ffd000]"></i> Verified Port Settlements
+            </span>
+            <span class="text-[9px] font-extrabold text-[#00f589] uppercase tracking-wider bg-[#00f589]/10 px-2 py-0.5 rounded-md border border-[#00f589]/20">Live UTR</span>
           </div>
-          <div id="withdrawList" class="space-y-1 text-xs"></div>
+          <div id="withdrawList" class="space-y-1.5 text-xs"></div>
         </div>
 
-        <!-- Luxury Hero Section (Sophisticated Financial Overview) -->
-        <div class="bg-gradient-to-br from-[#162035] via-[#0d1424] to-[#060911] border border-orange-500/30 p-5 rounded-3xl shadow-2xl relative overflow-hidden">
+        <!-- Institutional Reserve Portfolio Card -->
+        <div class="luxury-card p-5 rounded-3xl shadow-2xl relative overflow-hidden border border-orange-500/30">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-[10px] font-bold text-orange-400/90 uppercase tracking-widest">Global Maritime Capital</p>
-              <h2 class="text-xs text-gray-300 font-semibold mt-0.5">Welcome, <span id="welcomeUser" class="text-white font-bold">Partner</span></h2>
+              <p class="text-[10px] font-extrabold text-[#ff7b00] uppercase tracking-widest">Maritime Reserve Holdings</p>
+              <h2 class="text-xs text-gray-300 font-semibold mt-0.5">Investor: <span id="welcomeUser" class="text-white font-bold">Partner</span></h2>
             </div>
-            <button onclick="refreshDashboard()" class="text-xs text-gray-400 hover:text-white bg-[#0b101c] p-1.5 rounded-lg border border-white/10 active:scale-95 transition" title="Refresh">
+            <button onclick="refreshDashboard()" class="text-xs text-gray-400 hover:text-white bg-[#0b101c] p-2 rounded-xl border border-white/10 active:scale-95 transition" title="Synchronize">
               <i class="fa-solid fa-arrows-rotate"></i>
             </button>
           </div>
 
           <div class="mt-3">
-            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Available Balance</p>
+            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Settled Liquid Capital</p>
             <h3 class="text-3xl font-black text-white tracking-tight mt-0.5" id="balanceDisplay">₹ 0.00</h3>
           </div>
 
-          <div class="grid grid-cols-2 gap-2.5 mt-4">
-            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/30 flex items-center justify-center gap-1.5 uppercase">
-              <i class="fa-solid fa-wallet"></i> Deposit
+          <div class="grid grid-cols-2 gap-3 mt-4">
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/30 flex items-center justify-center gap-1.5 uppercase tracking-wider">
+              <i class="fa-solid fa-circle-plus"></i> Deposit Capital
             </button>
-            <button onclick="openModal('withdrawModal')" class="bg-[#0b101c] border border-white/15 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5 uppercase">
-              <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdraw
+            <button onclick="openModal('withdrawModal')" class="bg-[#080d1a] border border-white/15 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5 uppercase tracking-wider">
+              <i class="fa-solid fa-arrow-down"></i> Liquidate Payout
             </button>
           </div>
         </div>
 
-        <!-- Complete User Dashboard Stats -->
+        <!-- Portfolio Statistics Grid -->
         <div class="grid grid-cols-3 gap-2 text-center text-xs">
-          <div class="bg-[#0b101c] border border-white/10 p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">Total Investment</p>
+          <div class="luxury-card p-2.5 rounded-2xl">
+            <p class="text-[9px] text-gray-400 font-bold uppercase">Total Allocated</p>
             <p class="text-xs font-black text-white mt-1" id="dashTotalInvest">₹ 0.00</p>
           </div>
-          <div class="bg-[#0b101c] border border-white/10 p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">Estimated Return</p>
+          <div class="luxury-card p-2.5 rounded-2xl">
+            <p class="text-[9px] text-gray-400 font-bold uppercase">Estimated Yield</p>
             <p class="text-xs font-black text-[#00f589] mt-1" id="dashEstEarnings">₹ 0.00</p>
           </div>
-          <div class="bg-[#0b101c] border border-white/10 p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">Completed Payouts</p>
+          <div class="luxury-card p-2.5 rounded-2xl">
+            <p class="text-[9px] text-gray-400 font-bold uppercase">Executed Payouts</p>
             <p class="text-xs font-black text-[#ffd000] mt-1" id="dashCompletedPayout">₹ 0.00</p>
           </div>
         </div>
 
-        <!-- Daily Check-In Bonus Bar -->
-        <div class="bg-gradient-to-r from-[#0b1220] to-[#141d33] border border-[#00f589]/30 rounded-2xl p-3 flex justify-between items-center shadow-lg">
+        <!-- Daily Freight Dividend Check-In -->
+        <div class="luxury-card p-3 rounded-2xl flex justify-between items-center border border-[#00f589]/30">
           <div class="flex items-center gap-2.5">
             <div class="w-8 h-8 rounded-xl bg-[#00f589]/15 text-[#00f589] flex items-center justify-center font-black text-sm"><i class="fa-solid fa-calendar-check"></i></div>
             <div>
-              <p class="text-xs font-bold text-white">Harbor Check-In Reward</p>
-              <p class="text-[10px] text-gray-400">Claim free ₹10 freight bonus daily</p>
+              <p class="text-xs font-bold text-white">Daily Freight Dividend</p>
+              <p class="text-[10px] text-gray-400">Claim complimentary ₹10 harbor allowance</p>
             </div>
           </div>
-          <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] text-black font-black px-3 py-1.5 rounded-xl text-xs active:scale-95 shadow">Claim ₹10</button>
+          <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] hover:bg-[#00d876] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shadow transition">Claim ₹10</button>
         </div>
 
-        <!-- 24/7 Official Support (Direct Chat - No Number Displayed) -->
-        <div class="bg-gradient-to-r from-[#0b1220] via-[#12192c] to-[#18110b] border border-orange-500/30 rounded-2xl p-3.5 shadow-xl flex items-center justify-between">
+        <!-- 24/7 Institutional Support -->
+        <div class="luxury-card p-3.5 rounded-2xl flex items-center justify-between border border-orange-500/30">
           <div class="space-y-0.5">
-            <h4 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-headset text-[#ff6b00]"></i> 24/7 Dedicated Support</h4>
-            <p class="text-[10px] text-gray-400 font-medium">Instant Deposit & Payout Help</p>
+            <h4 class="text-xs font-black text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-headset text-[#ff6b00]"></i> Institutional Clearing Desk
+            </h4>
+            <p class="text-[10px] text-gray-400">Direct Priority Channel for Deposits & Settlements</p>
           </div>
           <div class="flex gap-2">
-            <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Team" target="_blank" class="px-3 py-2 rounded-xl bg-[#25D366] text-black font-extrabold flex items-center gap-1 text-xs shadow-md active:scale-95 transition">
+            <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Team" target="_blank" class="px-3 py-2 rounded-xl bg-[#25D366] text-black font-extrabold flex items-center gap-1.5 text-xs shadow-md active:scale-95 transition">
               <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
             </a>
-            <a href="https://t.me/+919682814718" target="_blank" class="px-3 py-2 rounded-xl bg-[#229ED9] text-white font-extrabold flex items-center gap-1 text-xs shadow-md active:scale-95 transition">
+            <a href="https://t.me/+919682814718" target="_blank" class="px-3 py-2 rounded-xl bg-[#229ED9] text-white font-extrabold flex items-center gap-1.5 text-xs shadow-md active:scale-95 transition">
               <i class="fa-brands fa-telegram text-sm"></i> Telegram
             </a>
           </div>
         </div>
 
-        <!-- Active Plans Header -->
+        <!-- Featured Plans Header -->
         <div class="flex justify-between items-center pt-1 px-1">
           <h3 class="text-xs font-black text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-            <i class="fa-solid fa-boxes-stacked text-[#ff6b00]"></i> Featured Investment Fleets
+            <i class="fa-solid fa-boxes-stacked text-[#ff6b00]"></i> Active Container Fleets
           </h3>
           <button onclick="switchTab('plans')" class="text-[11px] text-[#ff6b00] font-black hover:underline">
-            View All 6 Plans &rarr;
+            View All 6 Fleets &rarr;
           </button>
         </div>
-        <!-- 3 Compact Plans on Home -->
+        <!-- 3 Compact Home Plans -->
         <div id="homePlansContainer" class="space-y-3"></div>
 
         <!-- 6 GRAND LUXURY CERTIFICATES -->
-        <div class="bg-gradient-to-b from-[#090d18] to-[#04060b] border border-white/10 rounded-3xl p-4 space-y-3.5 shadow-2xl mt-5">
+        <div class="luxury-card rounded-3xl p-4 space-y-3.5 shadow-2xl mt-5">
           <div class="text-center space-y-1">
-            <span class="text-[9px] font-black text-[#ffd000] tracking-widest uppercase">REGULATORY COMPLIANCE</span>
-            <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">Official Maritime Certifications</h3>
-            <p class="text-[10px] text-gray-400">Audited ocean logistics assets under institutional maritime law.</p>
+            <span class="text-[9px] font-black text-[#ffd000] tracking-widest uppercase font-luxury">REGULATORY COMPLIANCE</span>
+            <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">Institutional Accreditations</h3>
+            <p class="text-[10px] text-gray-400">Audited ocean logistics assets governed under maritime commercial protocol.</p>
           </div>
 
           <div class="space-y-3 pt-1">
-            <div class="cert-grand rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#ff6b00] p-2.5 rounded-xl bg-white">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>GENEVA MARITIME COUNCIL</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">ISO 9001:2015</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
+              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
+                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>GENEVA MARITIME FORUM</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">ISO 9001:2015</span></div>
                 <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">CERTIFICATE OF STANDARDIZATION</h4>
-                <div class="w-12 h-0.5 bg-[#ffd000] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Standard for international container shipping, automated clearance & member security.</p>
+                <div class="w-12 h-0.5 bg-[#d4af37] mx-auto my-1"></div>
+                <p class="text-[9px] text-gray-700 font-medium">Standard for global container cargo operations, escrow solvency & automated member settlements.</p>
               </div>
             </div>
-            <div class="cert-grand rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#ff6b00] p-2.5 rounded-xl bg-white">
+            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
+              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#008744]"><span>PORT COMMISSION BUREAU</span><span class="bg-[#ff6b00] text-black px-2 py-0.5 rounded font-sans">LICENSED</span></div>
                 <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">PORT OPERATOR TRADE LICENSE</h4>
                 <div class="w-12 h-0.5 bg-[#008744] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Granted commercial authority for container freight logistics across ocean corridors.</p>
+                <p class="text-[9px] text-gray-700 font-medium">Authorizes multi-terminal container vessel transit and offshore freight revenue allocation.</p>
               </div>
             </div>
-            <div class="cert-grand rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#ff6b00] p-2.5 rounded-xl bg-white">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>ASIAN LOGISTICS EXPO</span><span class="bg-[#b8860b] text-white px-2 py-0.5 rounded font-sans">WINNER 2026</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
+              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
+                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>ASIAN LOGISTICS EXPO</span><span class="bg-[#b8860b] text-white px-2 py-0.5 rounded font-sans">EXCELLENCE 2026</span></div>
                 <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">BEST DIGITAL CARGO ENTERPRISE</h4>
                 <div class="w-12 h-0.5 bg-[#b8860b] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Highest payout fidelity and continuous member dividend distribution.</p>
+                <p class="text-[9px] text-gray-700 font-medium">Recognized for highest liquidation compliance and 100% precision in shared ocean freight allocations.</p>
               </div>
             </div>
-            <div class="cert-grand rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#ff6b00] p-2.5 rounded-xl bg-white">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#1e3a8a]"><span>ESCROW ASSET GUARANTEE</span><span class="bg-[#1e3a8a] text-white px-2 py-0.5 rounded font-sans">100% SECURE</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
+              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
+                <div class="flex justify-between items-center text-[8px] font-black text-[#1e3a8a]"><span>BANKING SAFEGUARD</span><span class="bg-[#1e3a8a] text-white px-2 py-0.5 rounded font-sans">100% SECURE</span></div>
                 <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">CAPITAL ESCROW GUARANTEE BOND</h4>
                 <div class="w-12 h-0.5 bg-[#1e3a8a] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Member deposits and yield accounts backed through third-party banking reserves.</p>
+                <p class="text-[9px] text-gray-700 font-medium">All member holdings are insured through custodial escrow guarantees backed by institutional reserves.</p>
               </div>
             </div>
-            <div class="cert-grand rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#ff6b00] p-2.5 rounded-xl bg-white">
+            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
+              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#008744]"><span>INTERNATIONAL MARITIME ORG</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">SOLAS COMPLIANT</span></div>
                 <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">FLEET SAFETY INSPECTION CHARTER</h4>
                 <div class="w-12 h-0.5 bg-[#008744] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Full compliance verification of heavy container ships operating in trans-ocean lanes.</p>
+                <p class="text-[9px] text-gray-700 font-medium">Full compliance verification of heavy commercial container fleets operating across trans-ocean corridors.</p>
               </div>
             </div>
-            <div class="cert-grand rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#ff6b00] p-2.5 rounded-xl bg-white">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>SOLVENCY RATING BUREAU</span><span class="bg-[#ffd000] text-black px-2 py-0.5 rounded font-sans font-bold">AAA RATED</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
+              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
+                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>SOLVENCY AUDIT BUREAU</span><span class="bg-[#ffd000] text-black px-2 py-0.5 rounded font-sans font-bold">AAA RATED</span></div>
                 <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">TRIPLE-A LIQUIDITY CERTIFICATION</h4>
                 <div class="w-12 h-0.5 bg-[#ffd000] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Maximum tier solvency certification for zero-delay member withdrawal settlements.</p>
+                <p class="text-[9px] text-gray-700 font-medium">Highest liquidity grade authorizing uninterrupted daily withdrawal settlements.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-        <!-- RECHARGE MODAL (CLEAN MANUAL UPI COPY - NO BARCODE) -->
+            <!-- SECTION: SIX INVESTMENT PLANS -->
+      <section id="sec-plans" class="hidden space-y-3">
+        <div class="flex justify-between items-center px-1">
+          <div>
+            <h3 class="text-xs font-black text-gray-200 uppercase tracking-widest">Six Investment Plans</h3>
+            <p class="text-[10px] text-gray-400">Yield generated via commercial maritime container allocations</p>
+          </div>
+          <button onclick="switchTab('my-invest')" class="text-[10px] text-[#ff7b00] font-black bg-[#0b101c] px-3 py-1.5 rounded-xl border border-white/10 active:scale-95 transition">
+            My Portfolio
+          </button>
+        </div>
+        <div id="allPlansContainer" class="space-y-3.5"></div>
+      </section>
+
+      <!-- SECTION: MY INVESTMENTS -->
+      <section id="sec-my-invest" class="hidden space-y-3">
+        <div class="flex justify-between items-center px-1">
+          <h3 class="text-xs font-black text-gray-200 uppercase tracking-widest">Active Fleet Contracts</h3>
+          <button onclick="switchTab('plans')" class="text-[10px] text-[#ff7b00] font-bold">&larr; Fleet Inventory</button>
+        </div>
+        <div id="myInvestmentsList" class="space-y-2"></div>
+      </section>
+
+      <!-- SECTION: USER DASHBOARD / WALLET -->
+      <section id="sec-wallet" class="hidden space-y-4">
+        <div class="luxury-card p-5 rounded-3xl shadow-2xl border border-orange-500/30">
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Settlement Clearing Account</span>
+            <span class="bg-[#00f589]/15 text-[#00f589] border border-[#00f589]/30 text-[10px] font-black px-2.5 py-0.5 rounded-full">Audited</span>
+          </div>
+          <h2 class="text-3xl font-black text-white mt-1.5 tracking-tight" id="walletBalanceDisplay">₹ 0.00</h2>
+          
+          <div class="grid grid-cols-2 gap-3 mt-4">
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-md flex items-center justify-center gap-1.5 uppercase tracking-wider">
+              <i class="fa-solid fa-circle-plus"></i> Deposit Capital
+            </button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#080d1a] border border-white/15 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 flex items-center justify-center gap-1.5 uppercase tracking-wider">
+              <i class="fa-solid fa-arrow-down"></i> Liquidate Payout
+            </button>
+          </div>
+        </div>
+
+        <!-- Ledger Audit History -->
+        <div class="luxury-card rounded-2xl p-4 space-y-3">
+          <div class="flex justify-between items-center">
+            <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-receipt text-[#ff7b00]"></i> Ledger Settlement Ledger
+            </h4>
+            <button onclick="showToast('Ledger verified and updated.')" class="text-[10px] text-gray-400 hover:text-white">Refresh</button>
+          </div>
+          <div id="txHistoryList" class="space-y-2 text-xs">
+            <div class="bg-[#050914] border border-white/5 p-2.5 rounded-xl flex justify-between items-center">
+              <div><p class="font-bold text-white">Daily Freight Allocation</p><p class="text-[9px] text-gray-500">Automated Ledger Credit</p></div>
+              <span class="text-[#00f589] font-black">+ ₹0.00</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: AFFILIATE COMMISSION -->
+      <section id="sec-team" class="hidden space-y-4">
+        <div class="luxury-card p-5 rounded-3xl space-y-3 shadow-xl">
+          <h3 class="text-sm font-extrabold text-white flex items-center gap-1.5"><i class="fa-solid fa-share-nodes text-[#ff7b00]"></i> Institutional Referral Allocation</h3>
+          <p class="text-xs text-gray-400">Share your partner terminal link to earn daily recurring brokerage commissions.</p>
+          <div class="flex gap-2">
+            <input id="refInput" type="text" readonly class="w-full bg-[#050914] border border-white/15 text-xs px-3.5 py-2.5 rounded-xl text-gray-300 font-mono">
+            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black px-4 py-2.5 rounded-xl text-xs whitespace-nowrap active:scale-95 shadow">Copy Link</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-center text-xs">
+          <div class="luxury-card p-4 rounded-2xl"><p class="text-gray-400 font-bold uppercase text-[10px]">Tier 1 Direct</p><p class="text-2xl font-black text-[#00f589] mt-1">10%</p></div>
+          <div class="luxury-card p-4 rounded-2xl"><p class="text-gray-400 font-bold uppercase text-[10px]">Tier 2 Secondary</p><p class="text-2xl font-black text-[#ffd000] mt-1">5%</p></div>
+        </div>
+      </section>
+
+      <!-- SECTION: ULTRA-LUXURY PROFILE -->
+      <section id="sec-profile" class="hidden space-y-4">
+        <div class="luxury-card p-5 rounded-3xl flex items-center gap-4 shadow-xl border border-orange-500/30">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#ff7b00] to-[#ffd000] flex items-center justify-center text-black font-black text-2xl shadow-lg shadow-orange-500/25">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-white" id="profUser">User</h3>
+            <p class="text-xs text-gray-400 font-mono" id="profPhone">+91 **********</p>
+            <span class="inline-block mt-1 text-[9px] bg-[#00f589]/15 text-[#00f589] font-black px-2.5 py-0.5 rounded-full border border-[#00f589]/30">KYC Verified Investor</span>
+          </div>
+        </div>
+
+        <div class="luxury-card rounded-2xl divide-y divide-white/5 text-xs">
+          <div onclick="showToast('Profile credentials synchronized.')" class="p-3.5 flex justify-between items-center cursor-pointer hover:bg-white/5 transition">
+            <span class="text-gray-300 flex items-center gap-2.5"><i class="fa-solid fa-id-card text-[#ff7b00]"></i> Personal Information</span>
+            <span class="text-gray-500">&rarr;</span>
+          </div>
+          <div onclick="showToast('Password security active.')" class="p-3.5 flex justify-between items-center cursor-pointer hover:bg-white/5 transition">
+            <span class="text-gray-300 flex items-center gap-2.5"><i class="fa-solid fa-key text-[#ffd000]"></i> Security Credentials</span>
+            <span class="text-gray-500">&rarr;</span>
+          </div>
+          <div onclick="showToast('Escrow Encryption protocol active.')" class="p-3.5 flex justify-between items-center cursor-pointer hover:bg-white/5 transition">
+            <span class="text-gray-300 flex items-center gap-2.5"><i class="fa-solid fa-shield-halved text-[#00f589]"></i> Escrow Firewall</span>
+            <span class="text-[#00f589] font-black">256-Bit SSL</span>
+          </div>
+          <div onclick="showToast('No unread bulletins.')" class="p-3.5 flex justify-between items-center cursor-pointer hover:bg-white/5 transition">
+            <span class="text-gray-300 flex items-center gap-2.5"><i class="fa-solid fa-bell text-blue-400"></i> Vessel Bulletins</span>
+            <span class="text-gray-500">All Read</span>
+          </div>
+          <div class="p-3.5 flex justify-between items-center">
+            <span class="text-gray-300 flex items-center gap-2.5"><i class="fa-solid fa-headset text-green-400"></i> Clearing Desk Support</span>
+            <a href="https://wa.me/919682814718" target="_blank" class="text-[#25D366] font-black">Connect &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Ultra-Premium Logout Card -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-red-950/40 via-red-900/20 to-black border border-red-500/30 flex items-center justify-between">
+          <div>
+            <h5 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-lock text-red-400"></i> Terminate Active Session</h5>
+            <p class="text-[10px] text-gray-400">Disconnect from the secure clearing terminal</p>
+          </div>
+          <button onclick="logout()" class="px-4 py-2 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-black rounded-xl text-xs shadow-lg active:scale-95 transition uppercase tracking-wider">
+            Logout
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation Bar (5 Luxury Tabs) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#060a16]/95 backdrop-blur-xl border-t border-white/10 py-2.5 px-4 flex justify-around text-[10px] text-gray-400 max-w-md mx-auto z-40">
+      <button onclick="switchTab('home')" id="nav-home" class="text-[#ff7b00] font-black flex flex-col items-center gap-1"><i class="fa-solid fa-house text-sm"></i>Home</button>
+      <button onclick="switchTab('plans')" id="nav-plans" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-ship text-sm"></i>Fleets</button>
+      <button onclick="switchTab('wallet')" id="nav-wallet" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-wallet text-sm"></i>Ledger</button>
+      <button onclick="switchTab('team')" id="nav-team" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-users text-sm"></i>Partner</button>
+      <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-user text-sm"></i>Account</button>
+    </nav>
+  </div>
+    <!-- RECHARGE MODAL (100% ENGLISH - NO BARCODE - FAST UPI COPY) -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-[#0b101c] border border-orange-500/40 w-full max-w-xs rounded-3xl p-5 space-y-4 text-center shadow-2xl">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-wallet text-[#ff6b00]"></i> Add Capital (UPI)</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
-      <div class="bg-[#05070d] border border-white/10 p-3 rounded-2xl text-left space-y-1">
-        <p class="text-[10px] text-gray-400 font-semibold uppercase">Official Settlement UPI ID:</p>
-        <div class="flex justify-between items-center">
-          <span class="text-white font-mono text-xs font-bold">theseacargo@upi</span>
-          <button onclick="navigator.clipboard.writeText('theseacargo@upi'); showToast('UPI Copied!')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-extrabold px-3 py-1 rounded-lg text-[10px] active:scale-95 shadow">Copy</button>
+    <div class="luxury-card w-full max-w-xs rounded-3xl p-5 space-y-4 text-center shadow-2xl border border-orange-500/40">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-building-columns text-[#ff7b00]"></i> Deposit Reserve Capital</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
+      
+      <div class="bg-[#050914] border border-white/10 p-3 rounded-2xl text-left space-y-1.5">
+        <div class="flex justify-between items-center text-[10px]">
+          <span class="text-gray-400 uppercase font-bold">Clearing UPI Channel:</span>
+          <span class="text-[#00f589] font-black">● 100% Instant</span>
+        </div>
+        <div class="flex justify-between items-center bg-black/40 p-2 rounded-xl border border-white/5">
+          <span class="text-white font-mono text-xs font-black">theseacargo@upi</span>
+          <button onclick="navigator.clipboard.writeText('theseacargo@upi'); showToast('Settlement UPI ID copied!')" class="bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black px-3 py-1 rounded-lg text-[10px] active:scale-95 shadow">Copy</button>
         </div>
       </div>
-      <input id="depositUtrInput" type="text" placeholder="Enter 12-digit UPI UTR / Ref No." class="w-full bg-[#05070d] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff6b00]">
-      <button onclick="submitDepositUtr()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 shadow-lg tracking-wider uppercase">Submit Deposit UTR</button>
+
+      <div class="space-y-1 text-left">
+        <label class="text-[10px] uppercase font-bold text-gray-400">Transaction Reference / UTR Number</label>
+        <input id="depositUtrInput" type="text" placeholder="Enter 12-digit UPI UTR" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00]">
+      </div>
+
+      <button onclick="submitDepositUtr()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg tracking-wider uppercase">Submit Deposit for Verification</button>
     </div>
   </div>
 
   <!-- WITHDRAW MODAL -->
   <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-[#0b101c] border border-white/15 w-full max-w-xs rounded-3xl p-5 space-y-3.5 shadow-2xl">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-building-columns text-[#ffd000]"></i> Request Payout</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
-      <input id="withdrawAccountInput" type="text" placeholder="Enter UPI ID or Bank Account" class="w-full bg-[#05070d] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
-      <input id="withdrawAmountInput" type="number" placeholder="Withdrawal Amount (Min ₹150)" class="w-full bg-[#05070d] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
-      <button onclick="submitWithdrawRequest()" class="w-full bg-gradient-to-r from-[#ffd000] to-[#ffae00] text-black font-extrabold py-2.5 rounded-xl text-xs active:scale-95 shadow-lg tracking-wider uppercase">Submit Withdrawal</button>
+    <div class="luxury-card w-full max-w-xs rounded-3xl p-5 space-y-3.5 shadow-2xl border border-white/15">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-arrow-down text-[#ffd000]"></i> Request Settlement Payout</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
+      
+      <div class="space-y-1 text-left">
+        <label class="text-[10px] uppercase font-bold text-gray-400">Destination Account / UPI ID</label>
+        <input id="withdrawAccountInput" type="text" placeholder="Enter verified UPI or Bank details" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
+      </div>
+
+      <div class="space-y-1 text-left">
+        <label class="text-[10px] uppercase font-bold text-gray-400">Payout Amount</label>
+        <input id="withdrawAmountInput" type="number" placeholder="Minimum threshold: ₹150" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
+      </div>
+
+      <button onclick="submitWithdrawRequest()" class="w-full bg-gradient-to-r from-[#ffd000] to-[#ffae00] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg tracking-wider uppercase">Authorize Payout</button>
     </div>
   </div>
 
   <!-- PLAN DETAILS MODAL -->
   <div id="planDetailsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-[#0b101c] border border-orange-500/40 w-full max-w-xs rounded-3xl p-5 space-y-3 text-center shadow-2xl">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white" id="modalPlanTitle">Plan Specification</h3><button onclick="closeModal('planDetailsModal')" class="text-gray-400 text-lg">&times;</button></div>
+    <div class="luxury-card w-full max-w-xs rounded-3xl p-5 space-y-3 text-center shadow-2xl border border-orange-500/40">
+      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white" id="modalPlanTitle">Fleet Details</h3><button onclick="closeModal('planDetailsModal')" class="text-gray-400 text-lg">&times;</button></div>
       <div id="modalPlanContent" class="text-left text-xs space-y-2 text-gray-300"></div>
-      <button onclick="closeModal('planDetailsModal')" class="w-full bg-white/10 text-white font-bold py-2 rounded-xl text-xs">Close</button>
+      <button onclick="closeModal('planDetailsModal')" class="w-full bg-white/10 text-white font-bold py-2 rounded-xl text-xs">Dismiss</button>
     </div>
   </div>
 
-  <div id="appToast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#0d1424] border border-[#ff6b00] text-white px-4 py-2 rounded-xl text-xs opacity-0 pointer-events-none transition duration-300 shadow-2xl"></div>
+  <div id="appToast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#0c1426] border border-[#ff7b00] text-white px-4 py-2 rounded-xl text-xs opacity-0 pointer-events-none transition duration-300 shadow-2xl"></div>
 
   <!-- ================= 3. SCRIPT ENGINE ================= -->
   <script>
-    // SIX INVESTMENT PLANS (EXACT 6 REAL CARGO & CRUISE ASSETS GIVEN BY USER)
+    // EXACT REAL CARGO VESSELS GIVEN IN ATTACHMENTS (100% UNBLOCKED DIRECT STATIC ASSETS)
     const plansData = [
       { 
         id: 1,
         name: "Ocean Container Liner Tier 1", 
         price: 190, daily: 195, total: 1950, days: 10, 
-        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
-        tag: "Active Ocean Carrier",
-        route: "Singapore → JNPT (Transit 18.2 Knots)",
-        desc: "Direct deep-sea container shipment cargo asset. Returns distributed daily upon automated port clearance."
+        img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
+        tag: "Active Deep-Sea Vessel",
+        route: "Singapore → JNPT (Speed 18.2 Knots)",
+        desc: "High-tonnage container vessel operating international trans-ocean shipping corridors. Yields accrue daily."
       },
       { 
         id: 2,
-        name: "Harbor Gantry Terminal Tier 2", 
+        name: "Harbor Crane Terminal Tier 2", 
         price: 295, daily: 300, total: 3000, days: 10, 
-        img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
-        tag: "Harbor Crane Terminal",
-        route: "Colombo → Mundra Harbor",
-        desc: "Heavy gantry crane port facility operations and transshipment container handling terminal lease."
+        img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", 
+        tag: "Quay Crane Terminal",
+        route: "Colombo → Mundra Terminal (Loading)",
+        desc: "Heavy gantry quay crane operations handling high-throughput containerized cargo logistics."
       },
       { 
         id: 3,
-        name: "Sunset Port Quay Tier 3", 
+        name: "Sunset Harbor Quay Tier 3", 
         price: 395, daily: 400, total: 4000, days: 10, 
-        img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", 
-        tag: "Sunset Quay Vessel",
-        route: "Dubai → Chennai Port",
-        desc: "Commercial container fleet asset chartered for uninterrupted international trade corridors."
+        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
+        tag: "Expedited Cargo Line",
+        route: "Dubai → Chennai Port (Speed 19.5 Knots)",
+        desc: "Scheduled container transport ensuring prioritized maritime delivery and consistent freight yield."
       },
       { 
         id: 4,
         name: "Ocean Royal Flagship Tier 4", 
         price: 498, daily: 500, total: 5000, days: 10, 
-        img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80", 
-        tag: "Ocean Royal Luxury Cruise",
+        img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=800&q=80", 
+        tag: "Luxury Commercial Liner",
         route: "Rotterdam → Kandla Port",
-        desc: "High-yield luxury maritime liner operations backed by dedicated escrow reserves."
+        desc: "Premier maritime transport vessel combining maximum cargo tonnage with verified escrow backing."
       },
       { 
         id: 5,
-        name: "Royal Cargo Express Tier 5", 
+        name: "Royal Cargo Luxury Tier 5", 
         price: 795, daily: 800, total: 8000, days: 10, 
         img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=800&q=80", 
-        tag: "Royal Cargo Luxury Shipping",
-        route: "Hong Kong → Cochin (Night Harbor)",
-        desc: "High-capacity heavy cargo vessel transport contract handling expedited freight deliveries."
+        tag: "Night Terminal Carrier",
+        route: "Hong Kong → Cochin (Speed 20.1 Knots)",
+        desc: "High-capacity vessel chartered for rapid regional container dispatch across strategic trade nodes."
       },
       { 
         id: 6,
@@ -340,9 +504,9 @@
         price: 999, daily: 1200, total: 18000, days: 15, 
         img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80", 
         vip: true, 
-        tag: "Ocean Princess Luxury Container Line",
+        tag: "Mega Container Flagship",
         route: "Suez Canal → Mumbai Deep Water",
-        desc: "VIP Flagship container liner with premium multi-carrier logistics dividend rights."
+        desc: "Multi-carrier ultra-large container flagship generating maximum daily maritime dividend allocations."
       }
     ];
 
@@ -355,8 +519,8 @@
         function switchAuth(tab) {
       document.getElementById('signupBox').classList.toggle('hidden', tab !== 'signup');
       document.getElementById('loginBox').classList.toggle('hidden', tab === 'signup');
-      document.getElementById('tabSignup').className = `py-2.5 text-xs font-extrabold rounded-xl ${tab === 'signup' ? 'bg-[#ff6b00] text-black shadow-md' : 'text-gray-400'}`;
-      document.getElementById('tabLogin').className = `py-2.5 text-xs font-extrabold rounded-xl ${tab === 'login' ? 'bg-[#ffa100] text-black shadow-md' : 'text-gray-400'}`;
+      document.getElementById('tabSignup').className = `py-2.5 text-xs font-black rounded-xl ${tab === 'signup' ? 'bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md' : 'text-gray-400'}`;
+      document.getElementById('tabLogin').className = `py-2.5 text-xs font-black rounded-xl ${tab === 'login' ? 'bg-gradient-to-r from-[#ffd000] to-[#ffae00] text-black shadow-md' : 'text-gray-400'}`;
     }
 
     function handleRegister() {
@@ -366,10 +530,10 @@
       const cpass = document.getElementById('regConfirmPass').value.trim();
 
       if(!u || p.length < 10 || pass.length < 6) {
-        return showToast("User ID, 10-digit Phone aur Password (min 6) required!");
+        return showToast("Please provide valid Username, 10-digit Phone and Password (Min 6).");
       }
       if(pass !== cpass) {
-        return showToast("Password aur Confirm Password match nahi ho rahe!");
+        return showToast("Password and Confirm Password do not match.");
       }
 
       let users = JSON.parse(localStorage.getItem('sc_users_list') || '[]');
@@ -378,7 +542,7 @@
 
       const initialUser = { userId: u, phone: p, bal: 0, totalInvest: 0, estReturn: 0, investments: [] };
       localStorage.setItem('sc_current_user', JSON.stringify(initialUser));
-      showToast("Account Created Successfully!");
+      showToast("Account successfully registered.");
       launchApp(initialUser);
     }
 
@@ -393,14 +557,14 @@
           cur = { userId: found.userId, phone: found.phone, bal: 0, totalInvest: 0, estReturn: 0, investments: [] };
         }
         localStorage.setItem('sc_current_user', JSON.stringify(cur));
-        showToast("Login Authorized!");
+        showToast("Access authorized.");
         launchApp(cur);
       } else if((input.toLowerCase() === "diwedi" || input === "9682814718") && pass.length >= 6) {
         const adminUser = { userId: "Diwedi", phone: "9682814718", bal: 0, totalInvest: 0, estReturn: 0, investments: [] };
         localStorage.setItem('sc_current_user', JSON.stringify(adminUser));
         launchApp(adminUser);
       } else {
-        showToast("Galat User ID ya Password! Pehle Sign Up karein.");
+        showToast("Invalid credentials. Please register first.");
       }
     }
 
@@ -429,14 +593,14 @@
     function refreshDashboard() {
       const cur = JSON.parse(localStorage.getItem('sc_current_user') || '{}');
       updateDashboardData(cur);
-      showToast("Dashboard synchronized!");
+      showToast("Ledger synchronized with port gateway.");
     }
 
     function dailyCheckIn() {
       const cur = JSON.parse(localStorage.getItem('sc_current_user') || '{}');
       const today = new Date().toDateString();
       if(cur.lastCheckin === today) {
-        return showToast("Aaj ka dividend already claimed hai!");
+        return showToast("Today's dividend allowance has already been claimed.");
       }
       cur.bal = (cur.bal || 0) + 10;
       cur.lastCheckin = today;
@@ -444,7 +608,7 @@
       updateDashboardData(cur);
       document.getElementById('btnCheckin').innerText = "Claimed ✓";
       document.getElementById('btnCheckin').disabled = true;
-      showToast("₹10 Harbor Dividend added to your balance!");
+      showToast("₹10 Harbor Dividend credited to reserve balance.");
     }
 
     function logout() {
@@ -452,7 +616,7 @@
       document.getElementById('mainDashboard').classList.add('hidden');
       document.getElementById('authScreen').classList.remove('hidden');
       switchAuth('login');
-      showToast("Session Ended.");
+      showToast("Terminal session safely terminated.");
     }
 
     function switchTab(t) {
@@ -465,43 +629,43 @@
       const activeSec = document.getElementById('sec-' + t);
       if(activeSec) activeSec.classList.remove('hidden');
       const activeNav = document.getElementById('nav-' + t);
-      if(activeNav) activeNav.className = "text-[#ff6b00] font-black flex flex-col items-center gap-1";
+      if(activeNav) activeNav.className = "text-[#ff7b00] font-black flex flex-col items-center gap-1";
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     // SIX INVESTMENT PLANS CARD BUILDER
     function renderPlanCard(p) {
       return `
-        <div class="bg-gradient-to-b from-[#0b101d] to-[#050810] border ${p.vip ? 'border-[#ffd000]' : 'border-white/10'} rounded-2xl overflow-hidden shadow-xl">
-          <div class="relative h-36 w-full bg-[#020307] overflow-hidden">
+        <div class="luxury-card rounded-2xl overflow-hidden shadow-xl border ${p.vip ? 'border-[#ffd000]' : 'border-white/10'}">
+          <div class="relative h-40 w-full bg-[#02050c] overflow-hidden">
             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
-            <span class="absolute top-2.5 right-2.5 ${p.vip ? 'bg-gradient-to-r from-[#ffd000] to-[#ff9800]' : 'bg-[#ff6b00]'} text-black text-[11px] font-black px-3 py-0.5 rounded-full shadow-lg">₹${p.price}</span>
+            <span class="absolute top-2.5 right-2.5 ${p.vip ? 'bg-gradient-to-r from-[#ffd000] to-[#ff9800]' : 'bg-[#ff7b00]'} text-black text-[11px] font-black px-3 py-0.5 rounded-full shadow-lg">₹${p.price}</span>
             <span class="absolute bottom-2 left-2.5 bg-black/85 backdrop-blur-md text-[9px] ${p.vip ? 'text-[#ffd000] font-black' : 'text-white font-bold'} px-2.5 py-0.5 rounded-md border border-white/10">${p.tag}</span>
           </div>
           <div class="p-3.5 pt-2.5">
             <div class="flex justify-between items-center">
               <h4 class="text-xs font-black text-white uppercase tracking-wider">${p.name}</h4>
-              <span class="text-[10px] text-gray-400 font-semibold">Term: <b class="text-white">${p.days} Days</b></span>
+              <span class="text-[10px] text-gray-400 font-semibold">Contract: <b class="text-white">${p.days} Days</b></span>
             </div>
             <div class="mt-1 flex items-center gap-1 text-[9px] text-orange-400/90 font-mono">
-              <i class="fa-solid fa-location-dot text-[#ff6b00]"></i> <span>${p.route}</span>
+              <i class="fa-solid fa-location-dot text-[#ff7b00]"></i> <span>${p.route}</span>
             </div>
             
-            <div class="grid grid-cols-2 gap-2 mt-2 bg-[#04060d] p-2.5 rounded-xl border border-white/5">
+            <div class="grid grid-cols-2 gap-2 mt-2 bg-[#040712] p-2.5 rounded-xl border border-white/5">
               <div>
-                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Est. Daily Return</p>
+                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Est. Daily Yield</p>
                 <p class="text-[#00f589] font-black text-base mt-0.5 tracking-tight">₹${p.daily}.00</p>
               </div>
               <div>
-                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Total Projected</p>
+                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Projected Return</p>
                 <p class="text-[#ffd000] font-black text-base mt-0.5 tracking-tight">₹${p.total.toLocaleString('en-IN')}.00</p>
               </div>
             </div>
 
-            <p class="text-[9px] text-gray-400 mt-1.5 italic">*Returns are projected freight allocations.</p>
+            <p class="text-[9px] text-gray-400 mt-1.5 italic">*Returns reflect projected maritime freight allocations.</p>
 
             <div class="grid grid-cols-2 gap-2 mt-2">
-              <button onclick="viewPlanDetails(${p.id})" class="bg-[#101728] border border-white/15 text-white font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
+              <button onclick="viewPlanDetails(${p.id})" class="bg-[#0e1628] border border-white/15 text-white font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
                 View Details
               </button>
               <button onclick="selectPlan(${p.id})" class="bg-white/10 hover:bg-white/15 text-[#ffd000] font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
@@ -509,7 +673,7 @@
               </button>
             </div>
 
-            <button onclick="investPlan(${p.price}, '${p.name}', ${p.total})" class="w-full mt-2 ${p.vip ? 'bg-gradient-to-r from-[#ffd000] to-[#ff6b00]' : 'bg-gradient-to-r from-[#ff6b00] to-[#ffa100]'} text-black font-black py-2.5 rounded-xl text-xs active:scale-[0.98] transition shadow-md tracking-wider uppercase">
+            <button onclick="investPlan(${p.price}, '${p.name}', ${p.total})" class="w-full mt-2 ${p.vip ? 'bg-gradient-to-r from-[#ffd000] via-[#ffaa00] to-[#ff6b00]' : 'bg-gradient-to-r from-[#ff6b00] to-[#ffa100]'} text-black font-black py-2.5 rounded-xl text-xs active:scale-[0.98] transition shadow-md tracking-wider uppercase">
               Buy Now ₹${p.price}
             </button>
           </div>
@@ -518,9 +682,7 @@
     }
 
     function renderAllPlans() {
-      // Home screen: Compact 3 plans
       document.getElementById('homePlansContainer').innerHTML = renderPlanCard(plansData[0]) + renderPlanCard(plansData[1]) + renderPlanCard(plansData[2]);
-      // Plans section: All 6 plans
       document.getElementById('allPlansContainer').innerHTML = plansData.map(renderPlanCard).join('');
     }
 
@@ -531,11 +693,11 @@
       document.getElementById('modalPlanContent').innerHTML = `
         <p class="text-white font-bold">${p.tag}</p>
         <p class="text-[11px] text-gray-400 mt-1">${p.desc}</p>
-        <div class="bg-[#05070d] p-2 rounded-xl mt-2 text-[10px] space-y-1">
-          <div class="flex justify-between"><span>Investment:</span><b class="text-white">₹${p.price}</b></div>
-          <div class="flex justify-between"><span>Duration:</span><b class="text-white">${p.days} Days</b></div>
-          <div class="flex justify-between"><span>Est. Daily:</span><b class="text-[#00f589]">₹${p.daily}.00</b></div>
-          <div class="flex justify-between"><span>Total Return:</span><b class="text-[#ffd000]">₹${p.total}.00</b></div>
+        <div class="bg-[#050914] p-2.5 rounded-xl mt-2 text-[10px] space-y-1.5">
+          <div class="flex justify-between"><span>Investment Allocation:</span><b class="text-white">₹${p.price}</b></div>
+          <div class="flex justify-between"><span>Contract Period:</span><b class="text-white">${p.days} Days</b></div>
+          <div class="flex justify-between"><span>Estimated Daily Dividend:</span><b class="text-[#00f589]">₹${p.daily}.00</b></div>
+          <div class="flex justify-between"><span>Total Projected Payout:</span><b class="text-[#ffd000]">₹${p.total}.00</b></div>
         </div>
       `;
       openModal('planDetailsModal');
@@ -543,13 +705,13 @@
 
     function selectPlan(id) {
       const p = plansData.find(x => x.id === id);
-      showToast(`${p.name} selected for portfolio.`);
+      showToast(`${p.name} earmarked for capital deployment.`);
     }
 
     function investPlan(amt, name, projected) {
       let cur = JSON.parse(localStorage.getItem('sc_current_user') || '{}');
       if((cur.bal || 0) < amt) {
-        showToast(`Balance kam hai! Pehle deposit karein.`);
+        showToast("Insufficient reserve balance. Please deposit capital.");
         return openModal('rechargeModal');
       }
       cur.bal -= amt;
@@ -560,7 +722,7 @@
       localStorage.setItem('sc_current_user', JSON.stringify(cur));
       updateDashboardData(cur);
       renderMyInvestments(cur);
-      showToast(`${name} purchased successfully!`);
+      showToast(`${name} contract successfully initiated.`);
     }
 
     function renderMyInvestments(cur) {
@@ -568,18 +730,18 @@
       if(!el) return;
       const list = cur.investments || [];
       if(list.length === 0) {
-        el.innerHTML = `<div class="bg-[#0b101c] p-4 rounded-xl text-center text-xs text-gray-400">No active fleets invested yet. Choose a plan from above.</div>`;
+        el.innerHTML = `<div class="luxury-card p-4 rounded-xl text-center text-xs text-gray-400">No active cargo fleet allocations found. Select a fleet to start.</div>`;
         return;
       }
       el.innerHTML = list.map(item => `
-        <div class="bg-[#0b101c] border border-white/10 p-3 rounded-2xl flex justify-between items-center text-xs">
+        <div class="luxury-card p-3 rounded-2xl flex justify-between items-center text-xs border border-white/10">
           <div>
             <h5 class="font-bold text-white">${item.name}</h5>
-            <p class="text-[10px] text-gray-400">Invested: ₹${item.amt} • Date: ${item.date}</p>
+            <p class="text-[10px] text-gray-400">Deployed: ₹${item.amt} • Date: ${item.date}</p>
           </div>
           <div class="text-right">
             <span class="text-[#00f589] font-black">₹${item.projected}</span>
-            <p class="text-[9px] text-gray-500">Projected</p>
+            <p class="text-[9px] text-gray-500">Projected Yield</p>
           </div>
         </div>
       `).join('');
@@ -587,16 +749,16 @@
 
     function submitDepositUtr() {
       const val = document.getElementById('depositUtrInput').value.trim();
-      if(!val || val.length < 8) return showToast("Valid 12-digit UTR enter karein!");
-      showToast("Deposit UTR submitted! Escrow verification in progress.");
+      if(!val || val.length < 8) return showToast("Please input a valid 12-digit UTR reference.");
+      showToast("Deposit UTR recorded. Verification in progress.");
       closeModal('rechargeModal');
     }
 
     function submitWithdrawRequest() {
       const acc = document.getElementById('withdrawAccountInput').value.trim();
       const amt = Number(document.getElementById('withdrawAmountInput').value.trim());
-      if(!acc || amt < 150) return showToast("Minimum withdrawal ₹150 hai!");
-      showToast("Insufficient available balance for withdrawal.");
+      if(!acc || amt < 150) return showToast("Minimum withdrawal threshold is ₹150.");
+      showToast("Insufficient available liquid balance.");
       closeModal('withdrawModal');
     }
 
@@ -604,24 +766,24 @@
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     function copyRef() {
       navigator.clipboard.writeText(document.getElementById('refInput').value);
-      showToast("Affiliate Link Copied!");
+      showToast("Partner Affiliate Link copied.");
     }
 
     const amounts = [1950, 3000, 4000, 5000, 8000, 18000];
-    const banks = ['HDFC', 'SBI', 'ICICI', 'Paytm', 'Kotak'];
+    const banks = ['HDFC', 'SBI', 'ICICI', 'Axis', 'Kotak'];
     let feed = [
       { u: "68****51", a: "18,000", b: "HDFC", utr: "4281" },
       { u: "65****72", a: "8,000", b: "SBI", utr: "9102" },
       { u: "76****34", a: "8,000", b: "ICICI", utr: "3891" },
-      { u: "62****91", a: "5,000", b: "Paytm", utr: "7712" }
+      { u: "62****91", a: "5,000", b: "Axis", utr: "7712" }
     ];
     function startWithdrawFeed() {
       const el = document.getElementById('withdrawList');
       function update() {
         el.innerHTML = feed.map(x => `
-          <div class="flex justify-between items-center bg-[#05070d] border border-white/5 px-2.5 py-1.5 rounded-xl text-[10px]">
-            <span class="text-gray-300 font-mono">User ${x.u} (${x.b})</span>
-            <span class="text-[#00f589] font-bold">₹${x.a} Sent <span class="text-gray-400 text-[9px] font-mono">#${x.utr}</span></span>
+          <div class="flex justify-between items-center bg-[#050914] border border-white/5 px-2.5 py-1.5 rounded-xl text-[10px]">
+            <span class="text-gray-300 font-mono">Terminal ${x.u} (${x.b})</span>
+            <span class="text-[#00f589] font-bold">₹${x.a} Dispatched <span class="text-gray-400 text-[9px] font-mono">#${x.utr}</span></span>
           </div>
         `).join('');
       }
@@ -648,4 +810,3 @@
   </script>
 </body>
 </html>
-          
