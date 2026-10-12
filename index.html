@@ -11,12 +11,12 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #040711; }
     .font-luxury { font-family: 'Cinzel', serif; }
     .luxury-card {
-      background: linear-gradient(145deg, rgba(14, 21, 37, 0.9) 0%, rgba(7, 11, 20, 0.95) 100%);
-      border: 1px solid rgba(255, 123, 0, 0.2);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      background: linear-gradient(145deg, rgba(14, 21, 37, 0.95) 0%, rgba(7, 11, 20, 0.98) 100%);
+      border: 1px solid rgba(255, 123, 0, 0.25);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
     }
     .cert-luxury {
-      background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f6f3ea 100%);
+      background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f7f4ec 100%);
       border: 2px solid #d4af37;
       box-shadow: 0 12px 35px rgba(0,0,0,0.6), inset 0 0 18px rgba(212, 175, 55, 0.2);
     }
@@ -26,9 +26,24 @@
 
   <!-- ================= 1. AUTH SCREEN ================= -->
   <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center relative">
-    <div class="text-center mb-7">
-      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#ff6b00] via-[#ffa100] to-[#ffd000] flex items-center justify-center font-black text-black text-2xl shadow-xl shadow-orange-500/25 mb-3 border border-orange-400/40">
-        <i class="fa-solid fa-ship text-2xl"></i>
+    <div class="text-center mb-6">
+      <div class="w-16 h-16 mx-auto mb-3 relative flex items-center justify-center">
+        <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_4px_16px_rgba(255,123,0,0.45)]">
+          <path d="M50 5 L88 20 V50 C88 74 50 95 50 95 C50 95 12 74 12 50 V20 Z" fill="#0b1220" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M50 25 L74 55 H26 Z" fill="url(#orangeGrad)" opacity="0.95"/>
+          <rect x="38" y="38" width="10" height="7" rx="1" fill="#ffd000"/>
+          <rect x="52" y="38" width="10" height="7" rx="1" fill="#00f589"/>
+          <rect x="44" y="30" width="12" height="6" rx="1" fill="#ffffff"/>
+          <path d="M50 55 V80 M34 68 C34 78 66 78 66 68" fill="none" stroke="#ffd000" stroke-width="4.5" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffd000"/><stop offset="50%" stop-color="#ff7b00"/><stop offset="100%" stop-color="#ffd000"/>
+            </linearGradient>
+            <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff9100"/><stop offset="100%" stop-color="#d44000"/>
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
       <h1 class="text-2xl font-black text-white tracking-[0.2em] font-luxury uppercase">THE SEA CARGO</h1>
       <p class="text-xs text-orange-400/90 mt-1 font-semibold tracking-wider">OFFICIAL MARITIME CONTAINER ASSET NETWORK</p>
@@ -84,13 +99,17 @@
   <!-- ================= 2. MAIN APPLICATION ================= -->
   <div id="mainDashboard" class="hidden">
     <!-- Header -->
-    <header class="sticky top-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-b border-white/10 px-4 py-3 flex justify-between items-center max-w-md mx-auto">
+    <header class="sticky top-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 flex justify-between items-center max-w-md mx-auto">
       <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#ff6b00] to-[#ffd000] flex items-center justify-center font-black text-black text-xs shadow-md shadow-orange-500/30">
-          <i class="fa-solid fa-ship"></i>
+        <div class="w-8 h-8 rounded-xl bg-[#090e1a] p-1 border border-orange-500/40 flex items-center justify-center shadow-md">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M50 5 L88 20 V50 C88 74 50 95 50 95 C50 95 12 74 12 50 V20 Z" fill="#080e1b" stroke="#ffd000" stroke-width="4"/>
+            <path d="M50 25 L74 55 H26 Z" fill="#ff7b00"/>
+            <path d="M50 55 V80 M34 68 C34 78 66 78 66 68" fill="none" stroke="#ffd000" stroke-width="5" stroke-linecap="round"/>
+          </svg>
         </div>
         <div>
-          <h1 class="text-xs font-black text-white tracking-widest font-luxury uppercase">THE SEA CARGO</h1>
+          <h1 class="text-xs font-black text-white tracking-wider font-luxury uppercase">THE SEA CARGO</h1>
           <p id="topUserTag" class="text-[10px] text-[#00f589] font-bold flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Terminal Connected
           </p>
@@ -101,11 +120,11 @@
           <i class="fa-solid fa-crown text-[9px]"></i> VIP 1
         </span>
       </div>
-    </header>
-        <main class="p-3.5 space-y-4 max-w-md mx-auto">
+          </header>
+              <main class="p-3.5 space-y-4 max-w-md mx-auto">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- Live Settlement Feed -->
+        <!-- Live Verified Settlement Feed -->
         <div class="luxury-card rounded-2xl p-3 space-y-2 shadow-xl">
           <div class="flex justify-between items-center px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5 tracking-wide">
@@ -116,7 +135,7 @@
           <div id="withdrawList" class="space-y-1.5 text-xs"></div>
         </div>
 
-        <!-- Institutional Reserve Portfolio Card -->
+        <!-- Maritime Reserve Portfolio Card -->
         <div class="luxury-card p-5 rounded-3xl shadow-2xl relative overflow-hidden border border-orange-500/30">
           <div class="flex justify-between items-start">
             <div>
@@ -143,7 +162,19 @@
           </div>
         </div>
 
-        <!-- Portfolio Statistics Grid -->
+        <!-- Global Maritime Telemetry Radar -->
+        <div class="luxury-card p-3 rounded-2xl border border-blue-500/30 space-y-1.5">
+          <div class="flex justify-between items-center text-[10px]">
+            <span class="text-white font-bold flex items-center gap-1.5"><i class="fa-solid fa-satellite-dish text-blue-400 animate-pulse"></i> Global Vessel AIS Radar</span>
+            <span class="text-blue-400 font-mono">18.4 Knots Active</span>
+          </div>
+          <div class="bg-[#050813] p-2 rounded-xl border border-white/5 font-mono text-[9px] text-gray-400 flex justify-between items-center">
+            <span>Coordinates: <b class="text-white">Lat 18.94° N, Lon 72.83° E</b></span>
+            <span class="text-[#00f589] font-bold">Approaching JNPT Terminal</span>
+          </div>
+        </div>
+
+        <!-- Statistics Grid -->
         <div class="grid grid-cols-3 gap-2 text-center text-xs">
           <div class="luxury-card p-2.5 rounded-2xl">
             <p class="text-[9px] text-gray-400 font-bold uppercase">Total Allocated</p>
@@ -171,11 +202,11 @@
           <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] hover:bg-[#00d876] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shadow transition">Claim ₹10</button>
         </div>
 
-        <!-- 24/7 Institutional Support -->
+        <!-- 24/7 Institutional Support Desk -->
         <div class="luxury-card p-3.5 rounded-2xl flex items-center justify-between border border-orange-500/30">
           <div class="space-y-0.5">
             <h4 class="text-xs font-black text-white flex items-center gap-1.5">
-              <i class="fa-solid fa-headset text-[#ff6b00]"></i> Institutional Clearing Desk
+              <i class="fa-solid fa-headset text-[#ff7b00]"></i> Institutional Clearing Desk
             </h4>
             <p class="text-[10px] text-gray-400">Direct Priority Channel for Deposits & Settlements</p>
           </div>
@@ -192,9 +223,9 @@
         <!-- Featured Plans Header -->
         <div class="flex justify-between items-center pt-1 px-1">
           <h3 class="text-xs font-black text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-            <i class="fa-solid fa-boxes-stacked text-[#ff6b00]"></i> Active Container Fleets
+            <i class="fa-solid fa-boxes-stacked text-[#ff7b00]"></i> Active Container Fleets
           </h3>
-          <button onclick="switchTab('plans')" class="text-[11px] text-[#ff6b00] font-black hover:underline">
+          <button onclick="switchTab('plans')" class="text-[11px] text-[#ff7b00] font-black hover:underline">
             View All 6 Fleets &rarr;
           </button>
         </div>
@@ -260,6 +291,13 @@
             </div>
           </div>
         </div>
+
+        <!-- Formal Regulatory Disclaimer & Legal Notice -->
+        <footer class="p-4 rounded-2xl bg-black/40 border border-white/5 text-[9px] text-gray-500 leading-relaxed text-center space-y-1 mt-6">
+          <p class="font-bold text-gray-400 uppercase tracking-widest font-luxury">THE SEA CARGO REGULATORY GOVERNANCE</p>
+          <p>Maritime Cargo Allocation &amp; Escrow Clearing Agreement. Digital asset yields are distributed strictly based on physical vessel freight transit contracts across international oceanic channels. Backed by institutional reserve bonds and Port Terminal Escrow Protocols.</p>
+          <p class="text-[8px] text-gray-600 font-mono pt-1">&copy; 2026 The Sea Cargo Maritime Infrastructure. All Rights Reserved.</p>
+        </footer>
       </section>
             <!-- SECTION: SIX INVESTMENT PLANS -->
       <section id="sec-plans" class="hidden space-y-3">
@@ -275,7 +313,7 @@
         <div id="allPlansContainer" class="space-y-3.5"></div>
       </section>
 
-      <!-- SECTION: MY INVESTMENTS -->
+      <!-- SECTION: MY INVESTMENTS & DIGITAL BONDS -->
       <section id="sec-my-invest" class="hidden space-y-3">
         <div class="flex justify-between items-center px-1">
           <h3 class="text-xs font-black text-gray-200 uppercase tracking-widest">Active Fleet Contracts</h3>
@@ -307,7 +345,7 @@
         <div class="luxury-card rounded-2xl p-4 space-y-3">
           <div class="flex justify-between items-center">
             <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
-              <i class="fa-solid fa-receipt text-[#ff7b00]"></i> Ledger Settlement Ledger
+              <i class="fa-solid fa-receipt text-[#ff7b00]"></i> Ledger Settlement History
             </h4>
             <button onclick="showToast('Ledger verified and updated.')" class="text-[10px] text-gray-400 hover:text-white">Refresh</button>
           </div>
@@ -327,7 +365,7 @@
           <p class="text-xs text-gray-400">Share your partner terminal link to earn daily recurring brokerage commissions.</p>
           <div class="flex gap-2">
             <input id="refInput" type="text" readonly class="w-full bg-[#050914] border border-white/15 text-xs px-3.5 py-2.5 rounded-xl text-gray-300 font-mono">
-            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black px-4 py-2.5 rounded-xl text-xs whitespace-nowrap active:scale-95 shadow">Copy Link</button>
+            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black px-4 py-2.5 rounded-xl text-xs whitespace-nowrap active:scale-95 shadow">Copy Link</button>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 text-center text-xs">
@@ -347,6 +385,18 @@
             <p class="text-xs text-gray-400 font-mono" id="profPhone">+91 **********</p>
             <span class="inline-block mt-1 text-[9px] bg-[#00f589]/15 text-[#00f589] font-black px-2.5 py-0.5 rounded-full border border-[#00f589]/30">KYC Verified Investor</span>
           </div>
+        </div>
+
+        <!-- VIP Progression Loyalty Bar -->
+        <div class="luxury-card p-3 rounded-2xl border border-yellow-500/30 space-y-1.5">
+          <div class="flex justify-between items-center text-[10px]">
+            <span class="text-white font-bold"><i class="fa-solid fa-crown text-[#ffd000]"></i> VIP Progression</span>
+            <span class="text-[#ffd000] font-black">Tier 1 Active</span>
+          </div>
+          <div class="w-full bg-black/50 h-2 rounded-full overflow-hidden border border-white/5">
+            <div class="bg-gradient-to-r from-[#ff7b00] to-[#ffd000] h-full w-[40%] rounded-full"></div>
+          </div>
+          <p class="text-[9px] text-gray-400">Allocate ₹500 more to unlock VIP 2 with zero liquidation fee.</p>
         </div>
 
         <div class="luxury-card rounded-2xl divide-y divide-white/5 text-xs">
@@ -394,7 +444,7 @@
       <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center gap-1 hover:text-white"><i class="fa-solid fa-user text-sm"></i>Account</button>
     </nav>
   </div>
-    <!-- RECHARGE MODAL (100% ENGLISH - NO BARCODE - FAST UPI COPY) -->
+    <!-- RECHARGE MODAL WITH QUICK AMOUNT BUTTONS & INSTANT UPI COPY -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="luxury-card w-full max-w-xs rounded-3xl p-5 space-y-4 text-center shadow-2xl border border-orange-500/40">
       <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-building-columns text-[#ff7b00]"></i> Deposit Reserve Capital</h3><button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
@@ -405,9 +455,27 @@
           <span class="text-[#00f589] font-black">● 100% Instant</span>
         </div>
         <div class="flex justify-between items-center bg-black/40 p-2 rounded-xl border border-white/5">
-          <span class="text-white font-mono text-xs font-black">theseacargo@upi</span>
-          <button onclick="navigator.clipboard.writeText('theseacargo@upi'); showToast('Settlement UPI ID copied!')" class="bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black px-3 py-1 rounded-lg text-[10px] active:scale-95 shadow">Copy</button>
+          <span class="text-white font-mono text-xs font-black" id="activeUpiId">theseacargo@upi</span>
+          <button onclick="copyUpiId()" class="bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black px-3 py-1 rounded-lg text-[10px] active:scale-95 shadow">Copy</button>
         </div>
+      </div>
+
+      <!-- Quick Amount Selection Buttons -->
+      <div class="space-y-1 text-left">
+        <label class="text-[10px] uppercase font-bold text-gray-400">Quick Plan Amount Select</label>
+        <div class="grid grid-cols-3 gap-1.5 pt-1">
+          <button type="button" onclick="setDepositAmount(190)" class="bg-[#050914] hover:border-orange-500/50 border border-white/10 text-white font-bold py-1.5 rounded-lg text-[10px] active:scale-95">₹190</button>
+          <button type="button" onclick="setDepositAmount(295)" class="bg-[#050914] hover:border-orange-500/50 border border-white/10 text-white font-bold py-1.5 rounded-lg text-[10px] active:scale-95">₹295</button>
+          <button type="button" onclick="setDepositAmount(395)" class="bg-[#050914] hover:border-orange-500/50 border border-white/10 text-white font-bold py-1.5 rounded-lg text-[10px] active:scale-95">₹395</button>
+          <button type="button" onclick="setDepositAmount(498)" class="bg-[#050914] hover:border-orange-500/50 border border-white/10 text-white font-bold py-1.5 rounded-lg text-[10px] active:scale-95">₹498</button>
+          <button type="button" onclick="setDepositAmount(795)" class="bg-[#050914] hover:border-orange-500/50 border border-white/10 text-white font-bold py-1.5 rounded-lg text-[10px] active:scale-95">₹795</button>
+          <button type="button" onclick="setDepositAmount(999)" class="bg-[#050914] hover:border-orange-500/50 border border-white/10 text-[#ffd000] font-black py-1.5 rounded-lg text-[10px] active:scale-95">₹999</button>
+        </div>
+      </div>
+
+      <div class="space-y-1 text-left">
+        <label class="text-[10px] uppercase font-bold text-gray-400">Deposit Amount (₹)</label>
+        <input id="depositAmountInput" type="number" placeholder="Enter Amount" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
       </div>
 
       <div class="space-y-1 text-left">
@@ -438,12 +506,23 @@
     </div>
   </div>
 
-  <!-- PLAN DETAILS MODAL -->
-  <div id="planDetailsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="luxury-card w-full max-w-xs rounded-3xl p-5 space-y-3 text-center shadow-2xl border border-orange-500/40">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white" id="modalPlanTitle">Fleet Details</h3><button onclick="closeModal('planDetailsModal')" class="text-gray-400 text-lg">&times;</button></div>
-      <div id="modalPlanContent" class="text-left text-xs space-y-2 text-gray-300"></div>
-      <button onclick="closeModal('planDetailsModal')" class="w-full bg-white/10 text-white font-bold py-2 rounded-xl text-xs">Dismiss</button>
+  <!-- DIGITAL LEASE BOND CERTIFICATE MODAL -->
+  <div id="bondModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="cert-luxury w-full max-w-xs rounded-3xl p-4 text-center shadow-2xl relative text-gray-900 border-2 border-[#d4af37]">
+      <div class="flex justify-between items-center text-[9px] font-black text-[#b8860b] mb-1">
+        <span>MARITIME LEASE BOND</span>
+        <button onclick="closeModal('bondModal')" class="text-gray-700 text-base font-bold">&times;</button>
+      </div>
+      <div class="border border-[#d4af37] p-3 rounded-xl bg-white/95 text-left space-y-1.5 text-[10px]">
+        <h4 class="text-center font-luxury font-black text-xs text-gray-900">CERTIFICATE OF VESSEL LEASE</h4>
+        <div class="w-10 h-0.5 bg-[#d4af37] mx-auto my-1"></div>
+        <p>Investor ID: <b id="bondUser" class="text-black">User</b></p>
+        <p>Allocated Fleet: <b id="bondFleet" class="text-black">Fleet</b></p>
+        <p>Capital Deployed: <b id="bondPrice" class="text-[#ff7b00]">₹0</b></p>
+        <p>Projected Return: <b id="bondReturn" class="text-[#008744]">₹0</b></p>
+        <p class="text-[8px] text-gray-500 pt-1">Audited Escrow ID: #SC-2026-BOND-VERIFIED</p>
+      </div>
+      <button onclick="showToast('Bond certificate acknowledged.'); closeModal('bondModal')" class="w-full mt-2 bg-[#d4af37] text-black font-black py-2 rounded-xl text-xs">Acknowledge Agreement</button>
     </div>
   </div>
 
@@ -457,7 +536,7 @@
         id: 1,
         name: "Ocean Container Liner Tier 1", 
         price: 190, daily: 195, total: 1950, days: 10, 
-        img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
+        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
         tag: "Active Deep-Sea Vessel",
         route: "Singapore → JNPT (Speed 18.2 Knots)",
         desc: "High-tonnage container vessel operating international trans-ocean shipping corridors. Yields accrue daily."
@@ -466,7 +545,7 @@
         id: 2,
         name: "Harbor Crane Terminal Tier 2", 
         price: 295, daily: 300, total: 3000, days: 10, 
-        img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", 
+        img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
         tag: "Quay Crane Terminal",
         route: "Colombo → Mundra Terminal (Loading)",
         desc: "Heavy gantry quay crane operations handling high-throughput containerized cargo logistics."
@@ -475,7 +554,7 @@
         id: 3,
         name: "Sunset Harbor Quay Tier 3", 
         price: 395, daily: 400, total: 4000, days: 10, 
-        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
+        img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", 
         tag: "Expedited Cargo Line",
         route: "Dubai → Chennai Port (Speed 19.5 Knots)",
         desc: "Scheduled container transport ensuring prioritized maritime delivery and consistent freight yield."
@@ -633,7 +712,6 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // SIX INVESTMENT PLANS CARD BUILDER
     function renderPlanCard(p) {
       return `
         <div class="luxury-card rounded-2xl overflow-hidden shadow-xl border ${p.vip ? 'border-[#ffd000]' : 'border-white/10'}">
@@ -665,11 +743,11 @@
             <p class="text-[9px] text-gray-400 mt-1.5 italic">*Returns reflect projected maritime freight allocations.</p>
 
             <div class="grid grid-cols-2 gap-2 mt-2">
-              <button onclick="viewPlanDetails(${p.id})" class="bg-[#0e1628] border border-white/15 text-white font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
-                View Details
+              <button onclick="investPlan(${p.price}, '${p.name}', ${p.total})" class="bg-[#0e1628] border border-white/15 text-white font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
+                View Bond
               </button>
-              <button onclick="selectPlan(${p.id})" class="bg-white/10 hover:bg-white/15 text-[#ffd000] font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
-                Select Plan
+              <button onclick="showToast('${p.name} earmarked for capital deployment.')" class="bg-white/10 hover:bg-white/15 text-[#ffd000] font-bold py-2 rounded-xl text-[11px] active:scale-95 transition">
+                Select Fleet
               </button>
             </div>
 
@@ -686,32 +764,22 @@
       document.getElementById('allPlansContainer').innerHTML = plansData.map(renderPlanCard).join('');
     }
 
-    function viewPlanDetails(id) {
-      const p = plansData.find(x => x.id === id);
-      if(!p) return;
-      document.getElementById('modalPlanTitle').innerText = p.name;
-      document.getElementById('modalPlanContent').innerHTML = `
-        <p class="text-white font-bold">${p.tag}</p>
-        <p class="text-[11px] text-gray-400 mt-1">${p.desc}</p>
-        <div class="bg-[#050914] p-2.5 rounded-xl mt-2 text-[10px] space-y-1.5">
-          <div class="flex justify-between"><span>Investment Allocation:</span><b class="text-white">₹${p.price}</b></div>
-          <div class="flex justify-between"><span>Contract Period:</span><b class="text-white">${p.days} Days</b></div>
-          <div class="flex justify-between"><span>Estimated Daily Dividend:</span><b class="text-[#00f589]">₹${p.daily}.00</b></div>
-          <div class="flex justify-between"><span>Total Projected Payout:</span><b class="text-[#ffd000]">₹${p.total}.00</b></div>
-        </div>
-      `;
-      openModal('planDetailsModal');
+    function setDepositAmount(amt) {
+      document.getElementById('depositAmountInput').value = amt;
+      showToast(`Selected ₹${amt} allocation.`);
     }
 
-    function selectPlan(id) {
-      const p = plansData.find(x => x.id === id);
-      showToast(`${p.name} earmarked for capital deployment.`);
+    function copyUpiId() {
+      const upi = document.getElementById('activeUpiId').innerText;
+      navigator.clipboard.writeText(upi);
+      showToast("Settlement UPI ID copied!");
     }
 
     function investPlan(amt, name, projected) {
       let cur = JSON.parse(localStorage.getItem('sc_current_user') || '{}');
       if((cur.bal || 0) < amt) {
         showToast("Insufficient reserve balance. Please deposit capital.");
+        setDepositAmount(amt);
         return openModal('rechargeModal');
       }
       cur.bal -= amt;
@@ -722,7 +790,12 @@
       localStorage.setItem('sc_current_user', JSON.stringify(cur));
       updateDashboardData(cur);
       renderMyInvestments(cur);
-      showToast(`${name} contract successfully initiated.`);
+      
+      document.getElementById('bondUser').innerText = cur.userId;
+      document.getElementById('bondFleet').innerText = name;
+      document.getElementById('bondPrice').innerText = `₹${amt}`;
+      document.getElementById('bondReturn').innerText = `₹${projected}`;
+      openModal('bondModal');
     }
 
     function renderMyInvestments(cur) {
@@ -748,7 +821,9 @@
     }
 
     function submitDepositUtr() {
+      const amt = document.getElementById('depositAmountInput').value.trim();
       const val = document.getElementById('depositUtrInput').value.trim();
+      if(!amt || Number(amt) <= 0) return showToast("Please enter a valid deposit amount.");
       if(!val || val.length < 8) return showToast("Please input a valid 12-digit UTR reference.");
       showToast("Deposit UTR recorded. Verification in progress.");
       closeModal('rechargeModal');
