@@ -120,26 +120,26 @@
           <i class="fa-solid fa-crown text-[9px]"></i> VIP 1
         </span>
       </div>
-          </header>
-              <main class="p-3.5 space-y-4 max-w-md mx-auto">
+    </header>
+        <main class="p-3.5 space-y-4 max-w-md mx-auto">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- Live Verified Settlement Feed -->
+        <!-- Live Withdrawals (Clearly renamed from Verified Port Settlements) -->
         <div class="luxury-card rounded-2xl p-3 space-y-2 shadow-xl">
           <div class="flex justify-between items-center px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5 tracking-wide">
-              <i class="fa-solid fa-bolt text-[#ffd000]"></i> Verified Port Settlements
+              <i class="fa-solid fa-bolt text-[#ffd000]"></i> Live Withdrawals
             </span>
             <span class="text-[9px] font-extrabold text-[#00f589] uppercase tracking-wider bg-[#00f589]/10 px-2 py-0.5 rounded-md border border-[#00f589]/20">Live UTR</span>
           </div>
           <div id="withdrawList" class="space-y-1.5 text-xs"></div>
         </div>
 
-        <!-- Maritime Reserve Portfolio Card -->
+        <!-- Maritime Reserve Holdings -->
         <div class="luxury-card p-5 rounded-3xl shadow-2xl relative overflow-hidden border border-orange-500/30">
           <div class="flex justify-between items-start">
             <div>
-              <p class="text-[10px] font-extrabold text-[#ff7b00] uppercase tracking-widest">Maritime Reserve Holdings</p>
+              <p class="text-[10px] font-extrabold text-[#ff7b00] uppercase tracking-widest">MARITIME RESERVE HOLDINGS</p>
               <h2 class="text-xs text-gray-300 font-semibold mt-0.5">Investor: <span id="welcomeUser" class="text-white font-bold">Partner</span></h2>
             </div>
             <button onclick="refreshDashboard()" class="text-xs text-gray-400 hover:text-white bg-[#0b101c] p-2 rounded-xl border border-white/10 active:scale-95 transition" title="Synchronize">
@@ -148,21 +148,22 @@
           </div>
 
           <div class="mt-3">
-            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Settled Liquid Capital</p>
+            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">SETTLED LIQUID CAPITAL</p>
             <h3 class="text-3xl font-black text-white tracking-tight mt-0.5" id="balanceDisplay">₹ 0.00</h3>
           </div>
 
+          <!-- Prominent Action Buttons: Clear DEPOSIT CAPITAL & WITHDRAWAL -->
           <div class="grid grid-cols-2 gap-3 mt-4">
             <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/30 flex items-center justify-center gap-1.5 uppercase tracking-wider">
-              <i class="fa-solid fa-circle-plus"></i> Deposit Capital
+              <i class="fa-solid fa-circle-plus"></i> DEPOSIT CAPITAL
             </button>
-            <button onclick="openModal('withdrawModal')" class="bg-[#080d1a] border border-white/15 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5 uppercase tracking-wider">
-              <i class="fa-solid fa-arrow-down"></i> Liquidate Payout
+            <button onclick="openModal('withdrawModal')" class="bg-[#080d1a] border border-white/15 text-white font-black py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5 uppercase tracking-wider">
+              <i class="fa-solid fa-arrow-down"></i> WITHDRAWAL
             </button>
           </div>
         </div>
 
-        <!-- Global Maritime Telemetry Radar -->
+        <!-- AIS Telemetry Radar -->
         <div class="luxury-card p-3 rounded-2xl border border-blue-500/30 space-y-1.5">
           <div class="flex justify-between items-center text-[10px]">
             <span class="text-white font-bold flex items-center gap-1.5"><i class="fa-solid fa-satellite-dish text-blue-400 animate-pulse"></i> Global Vessel AIS Radar</span>
@@ -177,15 +178,15 @@
         <!-- Statistics Grid -->
         <div class="grid grid-cols-3 gap-2 text-center text-xs">
           <div class="luxury-card p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">Total Allocated</p>
+            <p class="text-[9px] text-gray-400 font-bold uppercase">TOTAL ALLOCATED</p>
             <p class="text-xs font-black text-white mt-1" id="dashTotalInvest">₹ 0.00</p>
           </div>
           <div class="luxury-card p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">Estimated Yield</p>
+            <p class="text-[9px] text-gray-400 font-bold uppercase">ESTIMATED YIELD</p>
             <p class="text-xs font-black text-[#00f589] mt-1" id="dashEstEarnings">₹ 0.00</p>
           </div>
           <div class="luxury-card p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">Executed Payouts</p>
+            <p class="text-[9px] text-gray-400 font-bold uppercase">EXECUTED PAYOUTS</p>
             <p class="text-xs font-black text-[#ffd000] mt-1" id="dashCompletedPayout">₹ 0.00</p>
           </div>
         </div>
@@ -202,13 +203,16 @@
           <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] hover:bg-[#00d876] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shadow transition">Claim ₹10</button>
         </div>
 
-        <!-- 24/7 Institutional Support Desk -->
+        <!-- 24/7 Priority Help & Support (Cleared and Prominent) -->
         <div class="luxury-card p-3.5 rounded-2xl flex items-center justify-between border border-orange-500/30">
           <div class="space-y-0.5">
-            <h4 class="text-xs font-black text-white flex items-center gap-1.5">
-              <i class="fa-solid fa-headset text-[#ff7b00]"></i> Institutional Clearing Desk
+            <div class="flex items-center gap-1.5">
+              <span class="bg-[#ff6b00]/20 text-[#ff6b00] border border-[#ff6b00]/40 text-[9px] font-black px-1.5 py-0.2 rounded uppercase">24/7 Priority Help</span>
+            </div>
+            <h4 class="text-xs font-black text-white flex items-center gap-1.5 pt-0.5">
+              <i class="fa-solid fa-headset text-[#ff6b00]"></i> Institutional Clearing Desk
             </h4>
-            <p class="text-[10px] text-gray-400">Direct Priority Channel for Deposits & Settlements</p>
+            <p class="text-[10px] text-gray-400">Direct Priority Channel for Deposits & Withdrawals</p>
           </div>
           <div class="flex gap-2">
             <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Team" target="_blank" class="px-3 py-2 rounded-xl bg-[#25D366] text-black font-extrabold flex items-center gap-1.5 text-xs shadow-md active:scale-95 transition">
@@ -223,9 +227,9 @@
         <!-- Featured Plans Header -->
         <div class="flex justify-between items-center pt-1 px-1">
           <h3 class="text-xs font-black text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-            <i class="fa-solid fa-boxes-stacked text-[#ff7b00]"></i> Active Container Fleets
+            <i class="fa-solid fa-boxes-stacked text-[#ff6b00]"></i> ACTIVE CONTAINER FLEETS
           </h3>
-          <button onclick="switchTab('plans')" class="text-[11px] text-[#ff7b00] font-black hover:underline">
+          <button onclick="switchTab('plans')" class="text-[11px] text-[#ff6b00] font-black hover:underline">
             View All 6 Fleets &rarr;
           </button>
         </div>
@@ -292,7 +296,7 @@
           </div>
         </div>
 
-        <!-- Formal Regulatory Disclaimer & Legal Notice -->
+        <!-- Disclaimer -->
         <footer class="p-4 rounded-2xl bg-black/40 border border-white/5 text-[9px] text-gray-500 leading-relaxed text-center space-y-1 mt-6">
           <p class="font-bold text-gray-400 uppercase tracking-widest font-luxury">THE SEA CARGO REGULATORY GOVERNANCE</p>
           <p>Maritime Cargo Allocation &amp; Escrow Clearing Agreement. Digital asset yields are distributed strictly based on physical vessel freight transit contracts across international oceanic channels. Backed by institutional reserve bonds and Port Terminal Escrow Protocols.</p>
@@ -333,10 +337,10 @@
           
           <div class="grid grid-cols-2 gap-3 mt-4">
             <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-md flex items-center justify-center gap-1.5 uppercase tracking-wider">
-              <i class="fa-solid fa-circle-plus"></i> Deposit Capital
+              <i class="fa-solid fa-circle-plus"></i> DEPOSIT CAPITAL
             </button>
             <button onclick="openModal('withdrawModal')" class="bg-[#080d1a] border border-white/15 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 flex items-center justify-center gap-1.5 uppercase tracking-wider">
-              <i class="fa-solid fa-arrow-down"></i> Liquidate Payout
+              <i class="fa-solid fa-arrow-down"></i> WITHDRAWAL
             </button>
           </div>
         </div>
@@ -365,7 +369,7 @@
           <p class="text-xs text-gray-400">Share your partner terminal link to earn daily recurring brokerage commissions.</p>
           <div class="flex gap-2">
             <input id="refInput" type="text" readonly class="w-full bg-[#050914] border border-white/15 text-xs px-3.5 py-2.5 rounded-xl text-gray-300 font-mono">
-            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black px-4 py-2.5 rounded-xl text-xs whitespace-nowrap active:scale-95 shadow">Copy Link</button>
+            <button onclick="copyRef()" class="bg-gradient-to-r from-[#ff7b00] to-[#ffa100] text-black font-black px-4 py-2.5 rounded-xl text-xs whitespace-nowrap active:scale-95 shadow">Copy Link</button>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 text-center text-xs">
@@ -490,7 +494,7 @@
   <!-- WITHDRAW MODAL -->
   <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="luxury-card w-full max-w-xs rounded-3xl p-5 space-y-3.5 shadow-2xl border border-white/15">
-      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-arrow-down text-[#ffd000]"></i> Request Settlement Payout</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
+      <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white flex items-center gap-1.5"><i class="fa-solid fa-arrow-down text-[#ffd000]"></i> Request Settlement Withdrawal</h3><button onclick="closeModal('withdrawModal')" class="text-gray-400 hover:text-white text-lg">&times;</button></div>
       
       <div class="space-y-1 text-left">
         <label class="text-[10px] uppercase font-bold text-gray-400">Destination Account / UPI ID</label>
@@ -502,7 +506,7 @@
         <input id="withdrawAmountInput" type="number" placeholder="Minimum threshold: ₹150" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
       </div>
 
-      <button onclick="submitWithdrawRequest()" class="w-full bg-gradient-to-r from-[#ffd000] to-[#ffae00] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg tracking-wider uppercase">Authorize Payout</button>
+      <button onclick="submitWithdrawRequest()" class="w-full bg-gradient-to-r from-[#ffd000] to-[#ffae00] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg tracking-wider uppercase">Authorize Withdrawal</button>
     </div>
   </div>
 
@@ -530,13 +534,13 @@
 
   <!-- ================= 3. SCRIPT ENGINE ================= -->
   <script>
-    // EXACT REAL CARGO VESSELS GIVEN IN ATTACHMENTS (100% UNBLOCKED DIRECT STATIC ASSETS)
+    // 100% UNBLOCKED DIRECT MARITIME CONTAINER & HARBOR ASSETS (NO REDIRECTS, ZERO TREES/RESORTS)
     const plansData = [
       { 
         id: 1,
         name: "Ocean Container Liner Tier 1", 
         price: 190, daily: 195, total: 1950, days: 10, 
-        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80", 
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Container_Ship.jpg/800px-Container_Ship.jpg", 
         tag: "Active Deep-Sea Vessel",
         route: "Singapore → JNPT (Speed 18.2 Knots)",
         desc: "High-tonnage container vessel operating international trans-ocean shipping corridors. Yields accrue daily."
@@ -545,7 +549,7 @@
         id: 2,
         name: "Harbor Crane Terminal Tier 2", 
         price: 295, daily: 300, total: 3000, days: 10, 
-        img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80", 
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Container_ship_loading-700px.jpg/700px-Container_ship_loading-700px.jpg", 
         tag: "Quay Crane Terminal",
         route: "Colombo → Mundra Terminal (Loading)",
         desc: "Heavy gantry quay crane operations handling high-throughput containerized cargo logistics."
@@ -554,7 +558,7 @@
         id: 3,
         name: "Sunset Harbor Quay Tier 3", 
         price: 395, daily: 400, total: 4000, days: 10, 
-        img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", 
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Large_colorful_container_ship.jpg/800px-Large_colorful_container_ship.jpg", 
         tag: "Expedited Cargo Line",
         route: "Dubai → Chennai Port (Speed 19.5 Knots)",
         desc: "Scheduled container transport ensuring prioritized maritime delivery and consistent freight yield."
@@ -716,7 +720,7 @@
       return `
         <div class="luxury-card rounded-2xl overflow-hidden shadow-xl border ${p.vip ? 'border-[#ffd000]' : 'border-white/10'}">
           <div class="relative h-40 w-full bg-[#02050c] overflow-hidden">
-            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Container_Ship.jpg/800px-Container_Ship.jpg'">
             <span class="absolute top-2.5 right-2.5 ${p.vip ? 'bg-gradient-to-r from-[#ffd000] to-[#ff9800]' : 'bg-[#ff7b00]'} text-black text-[11px] font-black px-3 py-0.5 rounded-full shadow-lg">₹${p.price}</span>
             <span class="absolute bottom-2 left-2.5 bg-black/85 backdrop-blur-md text-[9px] ${p.vip ? 'text-[#ffd000] font-black' : 'text-white font-bold'} px-2.5 py-0.5 rounded-md border border-white/10">${p.tag}</span>
           </div>
