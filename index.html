@@ -21,8 +21,9 @@
       box-shadow: 0 12px 35px rgba(0,0,0,0.6), inset 0 0 18px rgba(212, 175, 55, 0.2);
     }
     .trust-card {
-      background: linear-gradient(145deg, rgba(16, 24, 40, 0.9) 0%, rgba(10, 15, 28, 0.95) 100%);
+      background: linear-gradient(145deg, rgba(16, 24, 40, 0.95) 0%, rgba(9, 14, 25, 0.98) 100%);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px -6px rgba(0,0,0,0.7);
     }
   </style>
 </head>
@@ -99,7 +100,8 @@
       </button>
     </div>
   </div>
-    <!-- ================= 2. MAIN APPLICATION ================= -->
+
+  <!-- ================= 2. MAIN APPLICATION ================= -->
   <div id="mainDashboard" class="hidden">
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 flex justify-between items-center max-w-md mx-auto">
@@ -124,9 +126,8 @@
         </span>
       </div>
     </header>
-
-    <main class="p-3.5 space-y-4 max-w-md mx-auto">
-      <!-- SECTION: HOMEPAGE -->
+        <main class="p-3.5 space-y-4 max-w-md mx-auto">
+      <!-- SECTION: HOMEPAGE (ALL 8 PLANS DIRECTLY DISPLAYED HERE) -->
       <section id="sec-home" class="space-y-4">
         <!-- Live Withdrawals -->
         <div class="luxury-card rounded-2xl p-3 space-y-2 shadow-xl">
@@ -167,18 +168,6 @@
           </div>
         </div>
 
-        <!-- AIS Telemetry Radar -->
-        <div class="luxury-card p-3 rounded-2xl border border-blue-500/30 space-y-1.5">
-          <div class="flex justify-between items-center text-[10px]">
-            <span class="text-white font-bold flex items-center gap-1.5"><i class="fa-solid fa-satellite-dish text-blue-400 animate-pulse"></i> Global Vessel AIS Radar</span>
-            <span class="text-blue-400 font-mono">18.4 Knots Active</span>
-          </div>
-          <div class="bg-[#050813] p-2 rounded-xl border border-white/5 font-mono text-[9px] text-gray-400 flex justify-between items-center">
-            <span>Coordinates: <b class="text-white">Lat 18.94° N, Lon 72.83° E</b></span>
-            <span class="text-[#00f589] font-bold">Approaching JNPT Terminal</span>
-          </div>
-        </div>
-
         <!-- Statistics Grid -->
         <div class="grid grid-cols-3 gap-2 text-center text-xs">
           <div class="luxury-card p-2.5 rounded-2xl">
@@ -207,96 +196,107 @@
           <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] hover:bg-[#00d876] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shadow transition">Claim ₹10</button>
         </div>
 
-        <!-- Featured Plans Header -->
-        <div class="flex justify-between items-center pt-1 px-1">
-          <h3 class="text-xs font-black text-gray-300 uppercase tracking-widest flex items-center gap-1.5">
-            <i class="fa-solid fa-boxes-stacked text-[#ff6b00]"></i> ACTIVE CONTAINER FLEETS
+        <!-- Container Fleet Plans Header -->
+        <div class="flex justify-between items-center pt-2 px-1">
+          <h3 class="text-xs font-black text-white uppercase tracking-widest flex items-center gap-2">
+            <i class="fa-solid fa-ship text-[#ff6b00]"></i> Container Fleet Plans
           </h3>
-          <button onclick="switchTab('fleets')" class="text-[11px] text-[#ff6b00] font-black hover:underline">
-            View All 8 Fleets &rarr;
-          </button>
+          <span class="text-[10px] text-orange-400 font-bold bg-orange-500/10 px-2 py-0.5 rounded-md border border-orange-500/20">8 Active Fleets</span>
         </div>
         
-        <!-- Home Featured Plans -->
-        <div id="homePlansContainer" class="space-y-3"></div>
-
-        <!-- ================= GOVERNMENT OF INDIA & STATUTORY CREDENTIALS ================= -->
-        <div class="luxury-card rounded-3xl p-4 space-y-3.5 shadow-2xl mt-4">
+        <!-- ALL 8 PLANS CONTAINER ON HOME SCREEN -->
+        <div id="homePlansContainer" class="space-y-4"></div>
+                <!-- ================= 5 STATUTORY TRUST & TRANSPARENCY CARDS ================= -->
+        <div class="luxury-card rounded-3xl p-4 space-y-3.5 shadow-2xl mt-6">
           <div class="text-center space-y-1">
             <span class="text-[9px] font-black text-[#00f589] tracking-widest uppercase">TRUSTED & TRANSPARENT</span>
-            <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">Trust & Transparency</h3>
+            <h3 class="text-base font-black text-white uppercase tracking-wider font-luxury">Trust & Transparency</h3>
             <p class="text-[10px] text-gray-400">Clear information. Verified credentials. Transparent policies.</p>
           </div>
 
           <div class="grid grid-cols-2 gap-2.5 pt-1">
-            <!-- MCA -->
+            <!-- 1. MCA -->
             <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-[18px]">🏛️</span>
+                <span class="text-xl">🏛️</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
-              <div class="mt-2">
-                <p class="text-[9px] text-gray-400 uppercase font-semibold">GOVERNMENT OF INDIA</p>
-                <h4 class="text-xs font-bold text-white leading-tight">MCA</h4>
+              <div class="mt-2.5">
+                <p class="text-[8px] text-gray-400 uppercase font-semibold">GOVERNMENT OF INDIA</p>
+                <h4 class="text-xs font-black text-white leading-tight mt-0.5">MCA</h4>
                 <p class="text-[10px] text-gray-300">Registered Company</p>
-                <span class="text-[8px] text-orange-400 block mt-1">Company Registration</span>
+                <span class="text-[8px] text-orange-400 block mt-1 font-mono">Company Registration</span>
               </div>
             </div>
 
-            <!-- MSME -->
+            <!-- 2. MSME / Udyam -->
             <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-[18px]">🏭</span>
+                <span class="text-xl">🏭</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
-              <div class="mt-2">
-                <p class="text-[9px] text-gray-400 uppercase font-semibold">MICRO, SMALL & MEDIUM</p>
-                <h4 class="text-xs font-bold text-white leading-tight">MSME / Udyam</h4>
+              <div class="mt-2.5">
+                <p class="text-[8px] text-gray-400 uppercase font-semibold">MICRO, SMALL & MEDIUM</p>
+                <h4 class="text-xs font-black text-white leading-tight mt-0.5">MSME / Udyam</h4>
                 <p class="text-[10px] text-gray-300">Registered Enterprise</p>
-                <span class="text-[8px] text-orange-400 block mt-1">MSME Registration</span>
+                <span class="text-[8px] text-orange-400 block mt-1 font-mono">MSME Registration</span>
               </div>
             </div>
 
-            <!-- GST -->
+            <!-- 3. GST -->
             <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-[18px]">📄</span>
+                <span class="text-xl">📄</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
-              <div class="mt-2">
-                <p class="text-[9px] text-gray-400 uppercase font-semibold">GOODS AND SERVICES TAX</p>
-                <h4 class="text-xs font-bold text-white leading-tight">GST</h4>
+              <div class="mt-2.5">
+                <p class="text-[8px] text-gray-400 uppercase font-semibold">GOODS AND SERVICES TAX</p>
+                <h4 class="text-xs font-black text-white leading-tight mt-0.5">GST</h4>
                 <p class="text-[10px] text-gray-300">Registered Business</p>
-                <span class="text-[8px] text-orange-400 block mt-1">Tax Registration</span>
+                <span class="text-[8px] text-orange-400 block mt-1 font-mono">Tax Registration</span>
               </div>
             </div>
 
-            <!-- STARTUP INDIA -->
+            <!-- 4. DPIIT #startupindia -->
             <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-[18px]">🚀</span>
+                <span class="text-xl">🚀</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
-              <div class="mt-2">
-                <p class="text-[9px] text-gray-400 uppercase font-semibold">#STARTUPINDIA</p>
-                <h4 class="text-xs font-bold text-white leading-tight">DPIIT</h4>
+              <div class="mt-2.5">
+                <p class="text-[8px] text-gray-400 uppercase font-semibold">#STARTUPINDIA</p>
+                <h4 class="text-xs font-black text-white leading-tight mt-0.5">DPIIT</h4>
                 <p class="text-[10px] text-gray-300">Startup India Recognition</p>
-                <span class="text-[8px] text-orange-400 block mt-1">Startup Recognition</span>
+                <span class="text-[8px] text-orange-400 block mt-1 font-mono">Startup Recognition</span>
               </div>
             </div>
           </div>
+
+          <!-- 5. Razorpay / UPI Payment Partner Card -->
+          <div class="trust-card rounded-2xl p-3 flex items-center justify-between border-t border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-black text-white">Razorpay / UPI Payment Partner</h4>
+                <p class="text-[10px] text-gray-400">Secure Liquidity Gateway Infrastructure</p>
+              </div>
+            </div>
+            <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-2 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
+          </div>
         </div>
 
-        <!-- 6 GRAND TRUST CERTIFICATES -->
+        <!-- ================= 6 GRAND GOLD LUXURY CERTIFICATES ================= -->
         <div class="luxury-card rounded-3xl p-4 space-y-3.5 shadow-2xl mt-4">
           <div class="text-center space-y-1">
-            <span class="text-[9px] font-black text-[#ffd000] tracking-widest uppercase font-luxury">REGULATORY AUDIT</span>
-            <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">Institutional Accreditations</h3>
+            <span class="text-[9px] font-black text-[#ffd000] tracking-widest uppercase font-luxury">REGULATORY COMPLIANCE</span>
+            <h3 class="text-base font-black text-white uppercase tracking-wider font-luxury">Institutional Accreditations</h3>
             <p class="text-[10px] text-gray-400">Audited ocean logistics assets governed under maritime commercial protocol.</p>
           </div>
 
           <div class="space-y-3 pt-1">
-            <!-- 1. ISO -->
+            <!-- 1. ISO Certificate -->
             <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
               <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>GENEVA MARITIME FORUM</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">ISO 9001:2015</span></div>
@@ -305,7 +305,8 @@
                 <p class="text-[9px] text-gray-700 font-medium">Standard for global container cargo operations, escrow solvency & automated member settlements.</p>
               </div>
             </div>
-            <!-- 2. Port License -->
+
+            <!-- 2. Port Operator Trade License -->
             <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
               <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#008744]"><span>PORT COMMISSION BUREAU</span><span class="bg-[#ff6b00] text-black px-2 py-0.5 rounded font-sans">LICENSED</span></div>
@@ -314,7 +315,8 @@
                 <p class="text-[9px] text-gray-700 font-medium">Authorizes multi-terminal container vessel transit and offshore freight revenue allocation.</p>
               </div>
             </div>
-            <!-- 3. Escrow Bond -->
+
+            <!-- 3. Capital Escrow Guarantee Bond -->
             <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
               <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#1e3a8a]"><span>BANKING SAFEGUARD</span><span class="bg-[#1e3a8a] text-white px-2 py-0.5 rounded font-sans">100% SECURE</span></div>
@@ -323,7 +325,8 @@
                 <p class="text-[9px] text-gray-700 font-medium">All member holdings are insured through custodial escrow guarantees backed by institutional reserves.</p>
               </div>
             </div>
-            <!-- 4. SOLAS Safety -->
+
+            <!-- 4. SOLAS Safety Inspection -->
             <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
               <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#008744]"><span>INTERNATIONAL MARITIME ORG</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">SOLAS COMPLIANT</span></div>
@@ -332,7 +335,8 @@
                 <p class="text-[9px] text-gray-700 font-medium">Comprehensive marine vessel compliance and unhindered ocean logistics routing protocol.</p>
               </div>
             </div>
-            <!-- 5. CyberSec -->
+
+            <!-- 5. Cyber Security Protocol -->
             <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
               <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#581c87]"><span>CYBERSEC FINANCIAL AUDIT</span><span class="bg-[#581c87] text-white px-2 py-0.5 rounded font-sans">256-BIT SSL</span></div>
@@ -341,7 +345,8 @@
                 <p class="text-[9px] text-gray-700 font-medium">Military grade ledger encryption for instantaneous liquidity disbursements & automated withdrawals.</p>
               </div>
             </div>
-            <!-- 6. Asia Logistics -->
+
+            <!-- 6. Liquidity Excellence Citation -->
             <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
               <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
                 <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>ASIA-PACIFIC CHAMBER</span><span class="bg-[#b8860b] text-white px-2 py-0.5 rounded font-sans">GRADE-A</span></div>
@@ -352,14 +357,6 @@
             </div>
           </div>
         </div>
-      </section>
-            <!-- SECTION: FLEETS -->
-      <section id="sec-fleets" class="hidden space-y-4">
-        <div class="flex justify-between items-center">
-          <h2 class="text-sm font-black text-white uppercase tracking-wider font-luxury">ALL CONTAINER ASSET FLEETS</h2>
-          <span class="text-[10px] text-orange-400 font-bold bg-orange-500/10 px-2 py-1 rounded-lg border border-orange-500/20">8 Fleets Active</span>
-        </div>
-        <div id="allPlansContainer" class="space-y-4"></div>
       </section>
 
       <!-- SECTION: LEDGER -->
@@ -428,14 +425,10 @@
 
     <!-- Bottom Navigation Bar -->
     <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-t border-white/10 max-w-md mx-auto px-2 py-2">
-      <div class="grid grid-cols-5 text-center">
+      <div class="grid grid-cols-4 text-center">
         <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center gap-1 text-[#ff7b00]">
           <i class="fa-solid fa-house text-sm"></i>
           <span class="text-[10px] font-bold">Home</span>
-        </button>
-        <button onclick="switchTab('fleets')" id="nav-fleets" class="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
-          <i class="fa-solid fa-ship text-sm"></i>
-          <span class="text-[10px] font-bold">Fleets</span>
         </button>
         <button onclick="switchTab('ledger')" id="nav-ledger" class="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
           <i class="fa-solid fa-wallet text-sm"></i>
@@ -454,7 +447,7 @@
   </div>
     <!-- ================= 3. POPUP MODALS ================= -->
 
-  <!-- RECHARGE / DEPOSIT MODAL WITH PROMINENT REALISTIC UPI ICONS -->
+  <!-- RECHARGE / DEPOSIT MODAL WITH REALISTIC PROMINENT UPI BUTTONS (NO QR) -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="luxury-card rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -605,7 +598,7 @@
 
       <div class="grid grid-cols-2 gap-2 pt-1">
         <button onclick="closeModal('vipNoticeModal')" class="bg-white/10 text-gray-300 font-bold py-2.5 rounded-xl text-xs active:scale-95">Close</button>
-        <button onclick="closeModal('vipNoticeModal'); switchTab('fleets')" class="bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg">Buy VIP Plan</button>
+        <button onclick="closeModal('vipNoticeModal'); window.scrollTo({top: 400, behavior: 'smooth'})" class="bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg">Buy VIP Plan</button>
       </div>
     </div>
   </div>
@@ -622,99 +615,99 @@
       transactions: []
     };
 
-    // 8 FLEET PLANS WITH DEDICATED CARGO CONTAINER SHIPS
+    // 8 FLEET PLANS MATCHING EXACT REFERENCE LAYOUT
     const FLEET_PLANS = [
       {
         id: 1,
-        title: "Quay Crane Terminal Tier 1",
+        planNo: "Plan 1",
+        title: "Active Harbor Vessel",
         price: 350,
         daily: 350,
         days: 10,
         returnTotal: 3500,
-        route: "Singapore → JNPT Port",
-        type: "Active Harbor Vessel",
+        route: "Singapore to JNPT Port",
         image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 2,
-        title: "Ocean Feeder Liner Tier 2",
+        planNo: "Plan 2",
+        title: "Ocean Feeder",
         price: 450,
         daily: 450,
         days: 10,
         returnTotal: 4500,
-        route: "Colombo → Mundra Terminal",
-        type: "Expedited Cargo Line",
+        route: "Colombo to Mundra Terminal",
         image: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 3,
-        title: "Ocean Princess Luxury Tier 3",
+        planNo: "Plan 3",
+        title: "VIP Offshore Liner",
         price: 500,
         daily: 500,
         days: 10,
         returnTotal: 5000,
-        route: "Dubai → Chennai Port",
-        type: "VIP Offshore Carrier",
+        route: "Dubai to Chennai Port",
         image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 4,
-        title: "Trans-Pacific Mega Carrier Tier 4",
+        planNo: "Plan 4",
+        title: "VIP Deep-Sea Vessel",
         price: 700,
         daily: 700,
         days: 10,
         returnTotal: 7000,
-        route: "Port Klang → Mumbai Port",
-        type: "VIP Deep-Sea Carrier",
+        route: "Port Klang to Mumbai Port",
         image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 5,
-        title: "Royal Cargo Luxury Shipping Tier 5",
+        planNo: "Plan 5",
+        title: "VIP Deep-Sea Fleet",
         price: 900,
         daily: 1100,
         days: 10,
         returnTotal: 11000,
-        route: "Hong Kong → Kandla Terminal",
-        type: "VIP Mega Cargo Fleet",
+        route: "Hong Kong to Kandla Port",
         image: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 6,
-        title: "High-Seas Horizon Flagship Tier 6",
+        planNo: "Plan 6",
+        title: "Ocean Feeder Flagship",
         price: 1200,
         daily: 1500,
         days: 10,
         returnTotal: 15000,
-        route: "Rotterdam → JNPT Terminal",
-        type: "VIP Continental Liner",
+        route: "Rotterdam to JNPT Port",
         image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 7,
-        title: "Imperial Golden Gulf Vessel Tier 7",
+        planNo: "Plan 7",
+        title: "VIP Offshore Carrier",
         price: 1500,
         daily: 1800,
         days: 10,
         returnTotal: 18000,
-        route: "Shanghai → Vizag Harbor",
-        type: "Imperial Escrow Vessel",
+        route: "Shanghai to Vizag Port",
         image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80"
       },
       {
         id: 8,
-        title: "Ocean Royal Grand Cruise Liner Tier 8",
+        planNo: "Plan 8",
+        title: "Container Liner Supreme",
         price: 2500,
         daily: 3000,
         days: 10,
         returnTotal: 30000,
-        route: "Panama Canal → Global Escrow Route",
-        type: "Supreme Flagship Cruise",
+        route: "Panama to Global Port",
         image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=700&q=80"
       }
     ];
 
-    // Direct 1-Click UPI Launch
+    // Direct 1-Click Launch for PhonePe, GPay, Paytm, BHIM
     function launchUpi(app) {
       const amount = document.getElementById("depAmount").value || "350";
       const upiUrl = `upi://pay?pa=thesolarinvest1@ybl&pn=The%20Sea%20Cargo&am=${amount}&cu=INR`;
@@ -732,45 +725,49 @@
       alert("Institutional partner link copied!");
     }
 
-    // Render Plans
+    // Render All 8 Plans Exactly Like Reference UI
     function renderPlans() {
       const homeBox = document.getElementById("homePlansContainer");
-      const allBox = document.getElementById("allPlansContainer");
+      if (!homeBox) return;
 
-      const makeCardHtml = (p) => `
+      homeBox.innerHTML = FLEET_PLANS.map(p => `
         <div class="luxury-card rounded-3xl overflow-hidden shadow-2xl border border-orange-500/30">
-          <div class="h-36 w-full relative overflow-hidden bg-black/40">
-            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover opacity-90">
-            <span class="absolute top-2.5 right-2.5 bg-orange-500 text-black font-black text-xs px-2.5 py-0.5 rounded-lg shadow-lg">₹${p.price}</span>
-            <span class="absolute bottom-2 left-2.5 bg-black/70 backdrop-blur-md text-[9px] text-gray-300 px-2 py-0.5 rounded-md border border-white/10 uppercase tracking-wider">${p.type}</span>
-          </div>
-          <div class="p-3.5 space-y-2.5">
-            <div class="flex justify-between items-center text-xs">
-              <h4 class="font-black text-white uppercase">${p.title}</h4>
-              <span class="text-[10px] text-gray-400 font-mono">Contract: <b class="text-white">${p.days} Days</b></span>
+          <div class="p-3 bg-[#080d1a] flex justify-between items-center border-b border-white/5">
+            <div>
+              <span class="text-xs font-bold text-gray-400">${p.planNo}</span>
+              <h4 class="text-xs font-black text-white uppercase">${p.title}</h4>
             </div>
-            <p class="text-[10px] text-orange-400/90 font-mono flex items-center gap-1">
-              <i class="fa-solid fa-location-dot"></i> ${p.route}
-            </p>
-            <div class="grid grid-cols-2 gap-2 bg-[#050813] p-2 rounded-xl border border-white/5 text-center">
+            <span class="text-sm font-black text-[#ff7b00] font-mono">₹${p.price}</span>
+          </div>
+
+          <div class="h-44 w-full relative overflow-hidden bg-black">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+          </div>
+
+          <div class="p-3.5 space-y-3">
+            <button onclick="buyFleetPlan(${p.id})" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg tracking-wider uppercase">
+              Buy now
+            </button>
+
+            <div class="flex justify-between items-center text-xs px-1">
               <div>
                 <p class="text-[9px] text-gray-400 uppercase font-bold">Daily Income</p>
-                <p class="text-xs font-black text-[#00f589] mt-0.5">₹${p.daily}.00</p>
+                <p class="text-xs font-black text-white mt-0.5 font-mono">₹${p.daily}.00</p>
               </div>
-              <div>
-                <p class="text-[9px] text-gray-400 uppercase font-bold">Projected Return</p>
-                <p class="text-xs font-black text-[#ffd000] mt-0.5">₹${p.returnTotal}.00</p>
+              <div class="text-right">
+                <p class="text-[9px] text-gray-400 uppercase font-bold">Contract</p>
+                <p class="text-xs font-black text-white mt-0.5 font-mono">${p.days} days</p>
               </div>
             </div>
-            <button onclick="buyFleetPlan(${p.id})" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg tracking-wider uppercase">
-              BUY NOW ₹${p.price}
-            </button>
+
+            <div class="pt-2 border-t border-white/5 text-center">
+              <p class="text-[10px] text-orange-400 font-mono flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-xs"></i> ${p.route}
+              </p>
+            </div>
           </div>
         </div>
-      `;
-
-      if (homeBox) homeBox.innerHTML = FLEET_PLANS.slice(0, 3).map(makeCardHtml).join("");
-      if (allBox) allBox.innerHTML = FLEET_PLANS.map(makeCardHtml).join("");
+      `).join("");
     }
 
     // Buy Fleet Action
@@ -790,13 +787,13 @@
       state.activePlans.push(plan);
       state.transactions.unshift({
         type: 'Allocated Plan',
-        name: plan.title,
+        name: `${plan.planNo} - ${plan.title}`,
         amount: -plan.price,
         time: 'Just now'
       });
 
       updateUI();
-      alert(`Successfully allocated: ${plan.title}!`);
+      alert(`Successfully allocated: ${plan.planNo} (${plan.title})!`);
     }
 
     // WITHDRAWAL VALIDATION ENGINE (VIP MEMBERSHIP GATE)
@@ -810,7 +807,7 @@
         return;
       }
 
-      // Condition: Either two ₹350 plans OR at least one ₹500+ VIP plan
+      // VIP Condition: Either two ₹350 plans OR at least one ₹500+ VIP plan
       const tier350Count = state.activePlans.filter(p => p.price === 350).length;
       const hasVipPlan = state.activePlans.some(p => p.price >= 500);
 
@@ -924,7 +921,7 @@
     }
 
     function switchTab(name) {
-      ['home', 'fleets', 'ledger', 'partner', 'account'].forEach(tab => {
+      ['home', 'ledger', 'partner', 'account'].forEach(tab => {
         document.getElementById(`sec-${tab}`).classList.add("hidden");
         const btn = document.getElementById(`nav-${tab}`);
         btn.classList.remove("text-[#ff7b00]");
@@ -952,7 +949,7 @@
         plansList.innerHTML = state.activePlans.map(p => `
           <div class="bg-[#050914] p-2.5 rounded-xl border border-white/5 flex justify-between items-center">
             <div>
-              <p class="font-bold text-white text-xs">${p.title}</p>
+              <p class="font-bold text-white text-xs">${p.planNo} - ${p.title}</p>
               <p class="text-[9px] text-[#00f589]">Daily: ₹${p.daily}</p>
             </div>
             <span class="text-[9px] bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded font-mono">10 Days Left</span>
