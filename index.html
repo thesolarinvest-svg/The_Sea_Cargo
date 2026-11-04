@@ -8,26 +8,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #040711; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f3f4f6; }
     .font-luxury { font-family: 'Cinzel', serif; }
-    .luxury-card {
-      background: linear-gradient(145deg, rgba(14, 21, 37, 0.95) 0%, rgba(7, 11, 20, 0.98) 100%);
-      border: 1px solid rgba(255, 123, 0, 0.25);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+    .plan-card {
+      background: #080d1a;
+      border: 1px solid rgba(255, 123, 0, 0.35);
+      border-radius: 1.25rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+    .trust-card {
+      background: #080e1e;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .cert-luxury {
       background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f7f4ec 100%);
       border: 2px solid #d4af37;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.6), inset 0 0 18px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7), inset 0 0 12px rgba(212, 175, 55, 0.3);
     }
-    .trust-card {
-      background: linear-gradient(145deg, rgba(16, 24, 40, 0.95) 0%, rgba(9, 14, 25, 0.98) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 24px -6px rgba(0,0,0,0.7);
+    .app-icon-shadow {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
   </style>
 </head>
-<body class="text-gray-200 pb-28 selection:bg-[#ff7b00] selection:text-black">
+<body class="selection:bg-[#ff7b00] selection:text-black pb-28">
 
   <!-- ================= 1. AUTH SCREEN ================= -->
   <div id="authScreen" class="min-h-screen max-w-md mx-auto p-5 flex flex-col justify-center relative">
@@ -51,7 +57,7 @@
         </svg>
       </div>
       <h1 class="text-2xl font-black text-white tracking-[0.2em] font-luxury uppercase">THE SEA CARGO</h1>
-      <p class="text-xs text-orange-400/90 mt-1 font-semibold tracking-wider">OFFICIAL MARITIME CONTAINER ASSET NETWORK</p>
+      <p class="text-xs text-orange-400 mt-1 font-bold tracking-wider">MARITIME ASSET TERMINAL</p>
     </div>
 
     <div class="grid grid-cols-2 bg-[#090e1a] p-1.5 rounded-2xl border border-white/10 mb-5 shadow-inner">
@@ -60,315 +66,479 @@
     </div>
 
     <!-- Sign Up Form -->
-    <div id="signupBox" class="luxury-card rounded-3xl p-5 space-y-3.5 shadow-2xl relative">
+    <div id="signupBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account Identity / Username</label>
-        <input id="regUser" type="text" placeholder="Enter unique ID (e.g. Diwedi)" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
+        <input id="regUser" type="text" placeholder="Enter ID (e.g. Diwedi)" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Mobile Number</label>
         <div class="flex gap-2 mt-1.5">
-          <span class="bg-[#050914] border border-white/10 px-3 py-2.5 text-xs text-gray-400 rounded-xl font-mono">+91</span>
-          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
+          <span class="bg-[#030712] border border-white/10 px-3 py-2.5 text-xs text-gray-400 rounded-xl font-mono">+91</span>
+          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
         </div>
       </div>
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Security Access Password</label>
-        <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Password</label>
+        <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
-      <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Confirm Security Password</label>
-        <input id="regConfirmPass" type="password" placeholder="Re-type password" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
-      </div>
-      <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] via-[#ff8800] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg shadow-orange-500/25 tracking-wider uppercase mt-2">
+      <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] via-[#ff8800] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
         Create Cargo Account
       </button>
     </div>
 
     <!-- Login Form -->
-    <div id="loginBox" class="hidden luxury-card rounded-3xl p-5 space-y-3.5 shadow-2xl relative">
+    <div id="loginBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account ID / Mobile</label>
-        <input id="loginUser" type="text" placeholder="Enter User ID or phone" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
+        <input id="loginUser" type="text" placeholder="Enter User ID or phone" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
       </div>
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Password</label>
-        <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
+        <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
       </div>
-      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg shadow-yellow-500/20 tracking-wider uppercase mt-2">
+      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
         Authorize Access
       </button>
     </div>
   </div>
 
   <!-- ================= 2. MAIN APPLICATION ================= -->
-  <div id="mainDashboard" class="hidden">
-    <!-- Header -->
-    <header class="sticky top-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 flex justify-between items-center max-w-md mx-auto">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-[#090e1a] p-1 border border-orange-500/40 flex items-center justify-center shadow-md">
-          <svg viewBox="0 0 100 100" class="w-full h-full">
-            <path d="M50 5 L88 20 V50 C88 74 50 95 50 95 C50 95 12 74 12 50 V20 Z" fill="#080e1b" stroke="#ffd000" stroke-width="4"/>
-            <path d="M50 25 L74 55 H26 Z" fill="#ff7b00"/>
-            <path d="M50 55 V80 M34 68 C34 78 66 78 66 68" fill="none" stroke="#ffd000" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <h1 class="text-xs font-black text-white tracking-wider font-luxury uppercase">THE SEA CARGO</h1>
-          <p id="topUserTag" class="text-[10px] text-[#00f589] font-bold flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Terminal Connected
-          </p>
-        </div>
-      </div>
-      <div class="flex items-center gap-1.5">
-        <span class="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 text-[#ffd000] border border-[#ffd000]/40 text-[10px] font-black px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-          <i class="fa-solid fa-crown text-[9px]"></i> VIP 1
+  <div id="mainDashboard" class="hidden max-w-md mx-auto">
+    <!-- Top Header -->
+    <header class="sticky top-0 z-40 bg-[#030712]/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex justify-between items-center">
+      <h1 class="text-sm font-black text-white tracking-wider font-luxury uppercase">THE SEA CARGO</h1>
+      
+      <div class="flex items-center gap-2">
+        <span class="bg-[#003822]/60 border border-[#00f589]/40 text-[#00f589] text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Terminal Connected
         </span>
+        <span class="bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+          <i class="fa-solid fa-crown text-[9px]"></i> VIP
+        </span>
+        <button class="text-gray-300 text-lg ml-1">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </header>
-        <main class="p-3.5 space-y-4 max-w-md mx-auto">
-      <!-- SECTION: HOMEPAGE (ALL 8 PLANS DIRECTLY DISPLAYED HERE) -->
+        <main class="p-3.5 space-y-4">
+      <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- Live Withdrawals -->
-        <div class="luxury-card rounded-2xl p-3 space-y-2 shadow-xl">
-          <div class="flex justify-between items-center px-1">
-            <span class="text-xs font-black text-white flex items-center gap-1.5 tracking-wide">
-              <i class="fa-solid fa-bolt text-[#ffd000]"></i> Live Withdrawals
-            </span>
-            <span class="text-[9px] font-extrabold text-[#00f589] uppercase tracking-wider bg-[#00f589]/10 px-2 py-0.5 rounded-md border border-[#00f589]/20">Live UTR</span>
+        <!-- Live Holdings & Wallet Actions -->
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-orange-500/30 flex justify-between items-center shadow-lg">
+          <div>
+            <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Settled Liquid Capital</p>
+            <h2 class="text-2xl font-black text-white font-mono mt-0.5" id="balanceDisplay">₹ 0.00</h2>
           </div>
-          <div id="withdrawList" class="space-y-1.5 text-xs"></div>
+          <div class="flex gap-2">
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black px-3.5 py-2 rounded-xl text-xs active:scale-95 transition shadow-md uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-plus-circle"></i> Add Funds
+            </button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#030712] border border-white/20 text-white font-bold px-3 py-2 rounded-xl text-xs active:scale-95 transition flex items-center gap-1.5">
+              <i class="fa-solid fa-arrow-down"></i> Withdraw
+            </button>
+          </div>
         </div>
 
-        <!-- Maritime Reserve Holdings -->
-        <div class="luxury-card p-5 rounded-3xl shadow-2xl relative overflow-hidden border border-orange-500/30">
-          <div class="flex justify-between items-start">
-            <div>
-              <p class="text-[10px] font-extrabold text-[#ff7b00] uppercase tracking-widest">MARITIME RESERVE HOLDINGS</p>
-              <h2 class="text-xs text-gray-300 font-semibold mt-0.5">Investor: <span id="welcomeUser" class="text-white font-bold">Partner</span></h2>
+        <!-- Section Title: Container Fleet Plans -->
+        <div class="flex justify-between items-center px-1 pt-1">
+          <h2 class="text-lg font-black text-white font-luxury tracking-wide">Container Fleet Plans</h2>
+          <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded-md">8 Plans Active</span>
+        </div>
+
+        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 -->
+        <div class="grid grid-cols-2 gap-3">
+          <!-- PLAN 1 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 1</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">Active Harbor Vessel</h4>
+              </div>
+              <span class="text-xs font-black text-[#00f589] font-mono">₹350</span>
             </div>
-            <button onclick="refreshDashboard()" class="text-xs text-gray-400 hover:text-white bg-[#0b101c] p-2 rounded-xl border border-white/10 active:scale-95 transition" title="Synchronize">
-              <i class="fa-solid fa-arrows-rotate"></i>
-            </button>
-          </div>
-
-          <div class="mt-3">
-            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">SETTLED LIQUID CAPITAL</p>
-            <h3 class="text-3xl font-black text-white tracking-tight mt-0.5" id="balanceDisplay">₹ 0.00</h3>
-          </div>
-
-          <!-- Buttons -->
-          <div class="grid grid-cols-2 gap-3 mt-4">
-            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg shadow-orange-500/30 flex items-center justify-center gap-1.5 uppercase tracking-wider">
-              <i class="fa-solid fa-circle-plus"></i> DEPOSIT CAPITAL
-            </button>
-            <button onclick="openModal('withdrawModal')" class="bg-[#080d1a] border border-white/15 text-white font-black py-2.5 rounded-xl text-xs active:scale-95 transition flex items-center justify-center gap-1.5 uppercase tracking-wider">
-              <i class="fa-solid fa-arrow-down"></i> WITHDRAWAL
-            </button>
-          </div>
-        </div>
-
-        <!-- Statistics Grid -->
-        <div class="grid grid-cols-3 gap-2 text-center text-xs">
-          <div class="luxury-card p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">TOTAL ALLOCATED</p>
-            <p class="text-xs font-black text-white mt-1" id="dashTotalInvest">₹ 0.00</p>
-          </div>
-          <div class="luxury-card p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">DAILY INCOME</p>
-            <p class="text-xs font-black text-[#00f589] mt-1" id="dashEstEarnings">₹ 0.00</p>
-          </div>
-          <div class="luxury-card p-2.5 rounded-2xl">
-            <p class="text-[9px] text-gray-400 font-bold uppercase">EXECUTED PAYOUTS</p>
-            <p class="text-xs font-black text-[#ffd000] mt-1" id="dashCompletedPayout">₹ 0.00</p>
-          </div>
-        </div>
-
-        <!-- Daily Freight Dividend Check-In -->
-        <div class="luxury-card p-3 rounded-2xl flex justify-between items-center border border-[#00f589]/30">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-xl bg-[#00f589]/15 text-[#00f589] flex items-center justify-center font-black text-sm"><i class="fa-solid fa-calendar-check"></i></div>
-            <div>
-              <p class="text-xs font-bold text-white">Daily Freight Dividend</p>
-              <p class="text-[10px] text-gray-400">Claim complimentary ₹10 harbor allowance</p>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Active Harbor Vessel" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(1)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹350.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Singapore to JNPT Port
+              </p>
             </div>
           </div>
-          <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-[#00f589] hover:bg-[#00d876] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shadow transition">Claim ₹10</button>
-        </div>
 
-        <!-- Container Fleet Plans Header -->
-        <div class="flex justify-between items-center pt-2 px-1">
-          <h3 class="text-xs font-black text-white uppercase tracking-widest flex items-center gap-2">
-            <i class="fa-solid fa-ship text-[#ff6b00]"></i> Container Fleet Plans
-          </h3>
-          <span class="text-[10px] text-orange-400 font-bold bg-orange-500/10 px-2 py-0.5 rounded-md border border-orange-500/20">8 Active Fleets</span>
-        </div>
-        
-        <!-- ALL 8 PLANS CONTAINER ON HOME SCREEN -->
-        <div id="homePlansContainer" class="space-y-4"></div>
-                <!-- ================= 5 STATUTORY TRUST & TRANSPARENCY CARDS ================= -->
-        <div class="luxury-card rounded-3xl p-4 space-y-3.5 shadow-2xl mt-6">
-          <div class="text-center space-y-1">
-            <span class="text-[9px] font-black text-[#00f589] tracking-widest uppercase">TRUSTED & TRANSPARENT</span>
-            <h3 class="text-base font-black text-white uppercase tracking-wider font-luxury">Trust & Transparency</h3>
-            <p class="text-[10px] text-gray-400">Clear information. Verified credentials. Transparent policies.</p>
+          <!-- PLAN 2 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 2</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">Ocean Feeder</h4>
+              </div>
+              <span class="text-xs font-black text-[#ff7b00] font-mono">₹450</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80" alt="Ocean Feeder" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(2)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹450.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Colombo to Mundra Terminal
+              </p>
+            </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-2.5 pt-1">
+          <!-- PLAN 3 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 3</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">VIP Offshore</h4>
+              </div>
+              <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80" alt="VIP Offshore" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(3)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹500.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Dubai to Chennai Port
+              </p>
+            </div>
+          </div>
+
+          <!-- PLAN 4 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 4</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">VIP Deep-Sea</h4>
+              </div>
+              <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="VIP Deep-Sea" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(4)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹700.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Port Klang to Mumbai Port
+              </p>
+            </div>
+          </div>
+        </div>
+                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 -->
+        <div class="grid grid-cols-2 gap-3 mt-3">
+          <!-- PLAN 5 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 5</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">VIP Deep-Sea</h4>
+              </div>
+              <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=600&q=80" alt="VIP Deep-Sea" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(5)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹350.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Colombos to Mundra Port
+              </p>
+            </div>
+          </div>
+
+          <!-- PLAN 6 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 6</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">Ocean Feeder</h4>
+              </div>
+              <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" alt="Ocean Feeder" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(6)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹450.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Colombo to Mundra Port
+              </p>
+            </div>
+          </div>
+
+          <!-- PLAN 7 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 7</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">VIP Offshore</h4>
+              </div>
+              <span class="text-xs font-black text-orange-400 font-mono">₹200</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="VIP Offshore" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(7)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹500.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Port Klang to Mumbai Port
+              </p>
+            </div>
+          </div>
+
+          <!-- PLAN 8 -->
+          <div class="plan-card flex flex-col justify-between">
+            <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
+              <div>
+                <p class="text-[9px] text-gray-400 font-bold">Plan 8</p>
+                <h4 class="text-[11px] font-black text-white truncate max-w-[90px]">Container Liner</h4>
+              </div>
+              <span class="text-xs font-black text-[#ffd000] font-mono">₹2500</span>
+            </div>
+            <div class="h-28 w-full bg-black relative">
+              <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=600&q=80" alt="Container Liner" class="w-full h-full object-cover">
+            </div>
+            <div class="p-2.5 space-y-2">
+              <button onclick="buyFleetPlan(8)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy now
+              </button>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <div>
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Daily Income</span>
+                  <b class="text-white font-mono">₹2500.00</b>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[8px] uppercase font-bold text-gray-500">Contract</span>
+                  <b class="text-white font-mono">10 days</b>
+                </div>
+              </div>
+              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
+                Port Klang to Mumbai Port
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TRUSTED & TRANSPARENT ACCREDITATION GRID ================= -->
+        <div class="pt-6 space-y-3">
+          <h2 class="text-base font-black text-white font-luxury tracking-wide px-1">
+            Trusted & Transparent Accreditation Grid
+          </h2>
+
+          <div class="grid grid-cols-2 gap-2.5">
             <!-- 1. MCA -->
-            <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
+            <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-xl">🏛️</span>
+                <span class="text-2xl">🏛️</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
               <div class="mt-2.5">
-                <p class="text-[8px] text-gray-400 uppercase font-semibold">GOVERNMENT OF INDIA</p>
-                <h4 class="text-xs font-black text-white leading-tight mt-0.5">MCA</h4>
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">GOVT OF INDIA<br>MINISTRY OF CORPORATE AFFAIRS</p>
+                <h4 class="text-xs font-black text-white mt-1">MCA</h4>
                 <p class="text-[10px] text-gray-300">Registered Company</p>
-                <span class="text-[8px] text-orange-400 block mt-1 font-mono">Company Registration</span>
+                <span class="text-[8px] text-gray-500 block mt-1 font-mono">Company Registration</span>
               </div>
             </div>
 
             <!-- 2. MSME / Udyam -->
-            <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
+            <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-xl">🏭</span>
+                <span class="text-2xl">🏭</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
               <div class="mt-2.5">
-                <p class="text-[8px] text-gray-400 uppercase font-semibold">MICRO, SMALL & MEDIUM</p>
-                <h4 class="text-xs font-black text-white leading-tight mt-0.5">MSME / Udyam</h4>
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">MSME ENTERPRISES<br>GOVT OF INDIA</p>
+                <h4 class="text-xs font-black text-white mt-1">MSME / Udyam</h4>
                 <p class="text-[10px] text-gray-300">Registered Enterprise</p>
-                <span class="text-[8px] text-orange-400 block mt-1 font-mono">MSME Registration</span>
+                <span class="text-[8px] text-gray-500 block mt-1 font-mono">MSME Registration</span>
               </div>
             </div>
 
             <!-- 3. GST -->
-            <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
+            <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-xl">📄</span>
+                <span class="text-2xl">📄</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
               <div class="mt-2.5">
-                <p class="text-[8px] text-gray-400 uppercase font-semibold">GOODS AND SERVICES TAX</p>
-                <h4 class="text-xs font-black text-white leading-tight mt-0.5">GST</h4>
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">GOODS AND SERVICES TAX</p>
+                <h4 class="text-xs font-black text-white mt-1">GST</h4>
                 <p class="text-[10px] text-gray-300">Registered Business</p>
-                <span class="text-[8px] text-orange-400 block mt-1 font-mono">Tax Registration</span>
+                <span class="text-[8px] text-gray-500 block mt-1 font-mono">Tax Registration</span>
               </div>
             </div>
 
             <!-- 4. DPIIT #startupindia -->
-            <div class="trust-card rounded-2xl p-3 flex flex-col justify-between">
+            <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
-                <span class="text-xl">🚀</span>
+                <span class="text-2xl">🚀</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
               <div class="mt-2.5">
-                <p class="text-[8px] text-gray-400 uppercase font-semibold">#STARTUPINDIA</p>
-                <h4 class="text-xs font-black text-white leading-tight mt-0.5">DPIIT</h4>
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">#STARTUPINDIA</p>
+                <h4 class="text-xs font-black text-white mt-1">DPIIT</h4>
                 <p class="text-[10px] text-gray-300">Startup India Recognition</p>
-                <span class="text-[8px] text-orange-400 block mt-1 font-mono">Startup Recognition</span>
+                <span class="text-[8px] text-gray-500 block mt-1 font-mono">Startup Recognition</span>
               </div>
             </div>
           </div>
 
-          <!-- 5. Razorpay / UPI Payment Partner Card -->
-          <div class="trust-card rounded-2xl p-3 flex items-center justify-between border-t border-white/10">
+          <!-- 5. Razorpay Payment Partner Full Card -->
+          <div class="trust-card p-3 flex items-center justify-between border-t border-white/10 mt-1">
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
               <div>
-                <h4 class="text-xs font-black text-white">Razorpay / UPI Payment Partner</h4>
-                <p class="text-[10px] text-gray-400">Secure Liquidity Gateway Infrastructure</p>
+                <h4 class="text-xs font-black text-white">Razorpay</h4>
+                <p class="text-[10px] text-gray-300">Payment Partner • Secure Gateway</p>
+                <span class="text-[8px] text-gray-500 block font-mono">Payment Infrastructure</span>
               </div>
             </div>
             <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-2 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
           </div>
         </div>
 
-        <!-- ================= 6 GRAND GOLD LUXURY CERTIFICATES ================= -->
-        <div class="luxury-card rounded-3xl p-4 space-y-3.5 shadow-2xl mt-4">
-          <div class="text-center space-y-1">
-            <span class="text-[9px] font-black text-[#ffd000] tracking-widest uppercase font-luxury">REGULATORY COMPLIANCE</span>
-            <h3 class="text-base font-black text-white uppercase tracking-wider font-luxury">Institutional Accreditations</h3>
-            <p class="text-[10px] text-gray-400">Audited ocean logistics assets governed under maritime commercial protocol.</p>
-          </div>
-
-          <div class="space-y-3 pt-1">
-            <!-- 1. ISO Certificate -->
-            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>GENEVA MARITIME FORUM</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">ISO 9001:2015</span></div>
-                <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">CERTIFICATE OF STANDARDIZATION</h4>
-                <div class="w-12 h-0.5 bg-[#d4af37] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Standard for global container cargo operations, escrow solvency & automated member settlements.</p>
-              </div>
+        <!-- ================= 5 GOLD MARITIME CERTIFICATES ROW ================= -->
+        <div class="pt-4 pb-2 space-y-2">
+          <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Institutional Accreditations</p>
+          <div class="grid grid-cols-5 gap-1.5">
+            <!-- Cert 1 -->
+            <div class="cert-luxury rounded-lg p-1.5 text-center flex flex-col justify-between h-28">
+              <div class="text-[14px]">📜</div>
+              <p class="text-[7px] font-black text-gray-900 leading-tight">ISO Standardization Certificate</p>
+              <div class="w-4 h-0.5 bg-[#d4af37] mx-auto"></div>
+              <span class="text-[6px] text-gray-600 font-mono">Verified</span>
             </div>
-
-            <!-- 2. Port Operator Trade License -->
-            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#008744]"><span>PORT COMMISSION BUREAU</span><span class="bg-[#ff6b00] text-black px-2 py-0.5 rounded font-sans">LICENSED</span></div>
-                <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">PORT OPERATOR TRADE LICENSE</h4>
-                <div class="w-12 h-0.5 bg-[#008744] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Authorizes multi-terminal container vessel transit and offshore freight revenue allocation.</p>
-              </div>
+            <!-- Cert 2 -->
+            <div class="cert-luxury rounded-lg p-1.5 text-center flex flex-col justify-between h-28">
+              <div class="text-[14px]">⚓</div>
+              <p class="text-[7px] font-black text-gray-900 leading-tight">Trade License</p>
+              <div class="w-4 h-0.5 bg-[#d4af37] mx-auto"></div>
+              <span class="text-[6px] text-gray-600 font-mono">Verified</span>
             </div>
-
-            <!-- 3. Capital Escrow Guarantee Bond -->
-            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#1e3a8a]"><span>BANKING SAFEGUARD</span><span class="bg-[#1e3a8a] text-white px-2 py-0.5 rounded font-sans">100% SECURE</span></div>
-                <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">CAPITAL ESCROW GUARANTEE BOND</h4>
-                <div class="w-12 h-0.5 bg-[#1e3a8a] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">All member holdings are insured through custodial escrow guarantees backed by institutional reserves.</p>
-              </div>
+            <!-- Cert 3 -->
+            <div class="cert-luxury rounded-lg p-1.5 text-center flex flex-col justify-between h-28">
+              <div class="text-[14px]">🏛️</div>
+              <p class="text-[7px] font-black text-gray-900 leading-tight">Custodial Banking guarantee</p>
+              <div class="w-4 h-0.5 bg-[#d4af37] mx-auto"></div>
+              <span class="text-[6px] text-gray-600 font-mono">Verified</span>
             </div>
-
-            <!-- 4. SOLAS Safety Inspection -->
-            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#008744]"><span>INTERNATIONAL MARITIME ORG</span><span class="bg-[#008744] text-white px-2 py-0.5 rounded font-sans">SOLAS COMPLIANT</span></div>
-                <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">FLEET SAFETY INSPECTION CHARTER</h4>
-                <div class="w-12 h-0.5 bg-[#008744] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Comprehensive marine vessel compliance and unhindered ocean logistics routing protocol.</p>
-              </div>
+            <!-- Cert 4 -->
+            <div class="cert-luxury rounded-lg p-1.5 text-center flex flex-col justify-between h-28">
+              <div class="text-[14px]">🛡️</div>
+              <p class="text-[7px] font-black text-gray-900 leading-tight">Custodial Banking guarantee</p>
+              <div class="w-4 h-0.5 bg-[#d4af37] mx-auto"></div>
+              <span class="text-[6px] text-gray-600 font-mono">Verified</span>
             </div>
-
-            <!-- 5. Cyber Security Protocol -->
-            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#581c87]"><span>CYBERSEC FINANCIAL AUDIT</span><span class="bg-[#581c87] text-white px-2 py-0.5 rounded font-sans">256-BIT SSL</span></div>
-                <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">SETTLEMENT SECURITY PROTOCOL</h4>
-                <div class="w-12 h-0.5 bg-[#581c87] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Military grade ledger encryption for instantaneous liquidity disbursements & automated withdrawals.</p>
-              </div>
-            </div>
-
-            <!-- 6. Liquidity Excellence Citation -->
-            <div class="cert-luxury rounded-2xl p-3 text-gray-900 text-center">
-              <div class="border-2 border-[#d4af37] p-2.5 rounded-xl bg-white/95">
-                <div class="flex justify-between items-center text-[8px] font-black text-[#b8860b]"><span>ASIA-PACIFIC CHAMBER</span><span class="bg-[#b8860b] text-white px-2 py-0.5 rounded font-sans">GRADE-A</span></div>
-                <h4 class="text-xs font-black text-gray-900 mt-1 uppercase font-serif">LIQUIDITY EXCELLENCE CITATION</h4>
-                <div class="w-12 h-0.5 bg-[#b8860b] mx-auto my-1"></div>
-                <p class="text-[9px] text-gray-700 font-medium">Accredited for zero settlement delays and top tier maritime freight distribution adherence.</p>
-              </div>
+            <!-- Cert 5 -->
+            <div class="cert-luxury rounded-lg p-1.5 text-center flex flex-col justify-between h-28">
+              <div class="text-[14px]">🚢</div>
+              <p class="text-[7px] font-black text-gray-900 leading-tight">SOLAS Inspection charter</p>
+              <div class="w-4 h-0.5 bg-[#d4af37] mx-auto"></div>
+              <span class="text-[6px] text-gray-600 font-mono">Verified</span>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- SECTION: LEDGER -->
+            <!-- SECTION: LEDGER / WALLET -->
       <section id="sec-ledger" class="hidden space-y-4">
-        <div class="luxury-card p-4 rounded-2xl">
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-orange-500/30">
           <h3 class="text-xs font-black text-white uppercase tracking-wider mb-2">My Active Fleets</h3>
           <div id="myPlansList" class="space-y-2 text-xs">
             <p class="text-gray-500 text-center py-4">No active fleets allocated yet.</p>
           </div>
         </div>
 
-        <div class="luxury-card p-4 rounded-2xl">
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10">
           <h3 class="text-xs font-black text-white uppercase tracking-wider mb-2">Transaction History</h3>
           <div id="txHistoryList" class="space-y-2 text-xs">
             <p class="text-gray-500 text-center py-4">No transactions recorded yet.</p>
@@ -378,20 +548,20 @@
 
       <!-- SECTION: PARTNER -->
       <section id="sec-partner" class="hidden space-y-4">
-        <div class="luxury-card p-5 rounded-3xl text-center space-y-3">
+        <div class="bg-[#080d1a] p-5 rounded-3xl border border-orange-500/30 text-center space-y-3">
           <span class="text-[10px] font-black text-[#ffd000] tracking-widest uppercase">Institutional Referral Program</span>
           <h2 class="text-lg font-black text-white font-luxury">Invite & Earn 10% Lifetime</h2>
           <p class="text-xs text-gray-400">Share your terminal invitation link and earn automated freight incentives on partner allocations.</p>
-          <div class="bg-[#050914] p-3 rounded-2xl border border-white/10 flex items-center justify-between mt-2">
+          <div class="bg-[#030712] p-3 rounded-2xl border border-white/10 flex items-center justify-between mt-2">
             <span id="refLinkText" class="text-xs text-orange-400 font-mono truncate mr-2">https://the-sea-cargo.vercel.app/?ref=Diwedi</span>
-            <button onclick="copyRefLink()" class="bg-[#ff7b00] text-black font-black px-3 py-1.5 rounded-xl text-xs active:scale-95 shrink-0">Copy</button>
+            <button onclick="copyRefLink()" class="bg-[#ff7b00] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shrink-0">Copy</button>
           </div>
         </div>
       </section>
 
       <!-- SECTION: ACCOUNT -->
       <section id="sec-account" class="hidden space-y-4">
-        <div class="luxury-card p-4 rounded-2xl flex items-center justify-between">
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-xl font-black">
               <i class="fa-solid fa-user-astronaut"></i>
@@ -406,10 +576,10 @@
           </button>
         </div>
 
-        <div class="luxury-card p-4 rounded-2xl space-y-3 text-xs">
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3 text-xs">
           <div class="flex justify-between py-2 border-b border-white/5">
             <span class="text-gray-400">Terminal Version</span>
-            <span class="text-white font-bold">2.4.0 (Enterprise)</span>
+            <span class="text-white font-bold font-mono">2.4.0 (Enterprise)</span>
           </div>
           <div class="flex justify-between py-2 border-b border-white/5">
             <span class="text-gray-400">Escrow Liquidity Node</span>
@@ -423,36 +593,37 @@
       </section>
     </main>
 
-    <!-- Bottom Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#060a16]/95 backdrop-blur-xl border-t border-white/10 max-w-md mx-auto px-2 py-2">
+    <!-- Bottom Navigation Bar with Explicit Wallet Icon -->
+    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#030712]/95 backdrop-blur-xl border-t border-white/10 max-w-md mx-auto px-2 py-2.5">
       <div class="grid grid-cols-4 text-center">
         <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center gap-1 text-[#ff7b00]">
-          <i class="fa-solid fa-house text-sm"></i>
+          <i class="fa-solid fa-house text-base"></i>
           <span class="text-[10px] font-bold">Home</span>
         </button>
         <button onclick="switchTab('ledger')" id="nav-ledger" class="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
-          <i class="fa-solid fa-wallet text-sm"></i>
-          <span class="text-[10px] font-bold">Ledger</span>
+          <i class="fa-solid fa-wallet text-base"></i>
+          <span class="text-[10px] font-bold">Wallet</span>
         </button>
         <button onclick="switchTab('partner')" id="nav-partner" class="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
-          <i class="fa-solid fa-users text-sm"></i>
+          <i class="fa-solid fa-users text-base"></i>
           <span class="text-[10px] font-bold">Partner</span>
         </button>
         <button onclick="switchTab('account')" id="nav-account" class="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
-          <i class="fa-solid fa-circle-user text-sm"></i>
+          <i class="fa-solid fa-circle-user text-base"></i>
           <span class="text-[10px] font-bold">Account</span>
         </button>
       </div>
     </nav>
   </div>
-    <!-- ================= 3. POPUP MODALS ================= -->
 
-  <!-- RECHARGE / DEPOSIT MODAL WITH REALISTIC PROMINENT UPI BUTTONS (NO QR) -->
-  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="luxury-card rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto">
+  <!-- ================= 3. POPUP MODALS ================= -->
+
+  <!-- RECHARGE / DEPOSIT MODAL WITH PROMINENT REALISTIC UPI ICONS (NO QR & NO RAW TEXT UPI ID) -->
+  <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
         <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
-          <i class="fa-solid fa-wallet text-[#ff7b00]"></i> DEPOSIT CAPITAL GATEWAY
+          <i class="fa-solid fa-wallet text-[#ff7b00]"></i> DIRECT UPI GATEWAY
         </h3>
         <button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
       </div>
@@ -460,73 +631,78 @@
       <!-- Quick Amount Input -->
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400">Deposit Amount (₹)</label>
-        <input id="depAmount" type="number" placeholder="Enter amount (min ₹350)" value="350" class="w-full mt-1 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white font-bold outline-none focus:border-[#ff7b00]">
+        <input id="depAmount" type="number" placeholder="Enter amount (min ₹350)" value="350" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white font-bold outline-none focus:border-[#ff7b00]">
       </div>
 
       <!-- BIG REALISTIC UPI PAYMENT BUTTONS -->
       <div>
-        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-2">Select Direct UPI App</p>
+        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-2">Tap to Pay via Instant App</p>
         <div class="grid grid-cols-2 gap-2.5">
           <!-- PhonePe -->
-          <button onclick="launchUpi('phonepe')" class="bg-[#5f259f]/20 hover:bg-[#5f259f]/30 border-2 border-[#5f259f]/60 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
-            <div class="w-10 h-10 rounded-xl bg-[#5f259f] flex items-center justify-center text-white text-lg font-black shadow-md">
+          <button onclick="launchUpi('phonepe')" class="bg-gradient-to-br from-[#5f259f]/30 to-[#3b126b]/40 hover:from-[#5f259f]/40 hover:to-[#3b126b]/60 border border-[#8a42e0]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+            <div class="w-11 h-11 rounded-xl bg-[#5f259f] flex items-center justify-center text-white text-xl font-black shadow-md border border-white/10">
               पे
             </div>
             <div class="text-left">
               <p class="text-xs font-black text-white">PhonePe</p>
-              <span class="text-[9px] text-[#00f589] font-semibold">Instant Pay</span>
+              <span class="text-[9px] text-[#00f589] font-bold flex items-center gap-1">
+                <span class="w-1 h-1 rounded-full bg-[#00f589]"></span> Instant Pay
+              </span>
             </div>
           </button>
 
           <!-- Google Pay -->
-          <button onclick="launchUpi('gpay')" class="bg-blue-500/10 hover:bg-blue-500/20 border-2 border-blue-500/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
-            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md">
-              <span class="text-base font-black tracking-tighter"><span class="text-blue-500">G</span><span class="text-red-500">P</span><span class="text-yellow-500">a</span><span class="text-green-500">y</span></span>
+          <button onclick="launchUpi('gpay')" class="bg-gradient-to-br from-[#ffffff]/10 to-[#ffffff]/5 hover:from-[#ffffff]/20 hover:to-[#ffffff]/10 border border-white/20 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+            <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-md border border-gray-200">
+              <span class="text-base font-black tracking-tighter"><span class="text-[#4285f4]">G</span><span class="text-[#ea4335]">P</span><span class="text-[#fbbc05]">a</span><span class="text-[#34a853]">y</span></span>
             </div>
             <div class="text-left">
               <p class="text-xs font-black text-white">Google Pay</p>
-              <span class="text-[9px] text-[#00f589] font-semibold">Instant Pay</span>
+              <span class="text-[9px] text-[#00f589] font-bold flex items-center gap-1">
+                <span class="w-1 h-1 rounded-full bg-[#00f589]"></span> Instant Pay
+              </span>
             </div>
           </button>
 
           <!-- Paytm -->
-          <button onclick="launchUpi('paytm')" class="bg-[#002e6e]/20 hover:bg-[#002e6e]/30 border-2 border-[#00baf2]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
-            <div class="w-10 h-10 rounded-xl bg-[#002e6e] flex items-center justify-center text-[#00baf2] text-xs font-black shadow-md border border-[#00baf2]/40">
+          <button onclick="launchUpi('paytm')" class="bg-gradient-to-br from-[#002e6e]/40 to-[#001738]/50 hover:from-[#002e6e]/60 hover:to-[#001738]/70 border border-[#00baf2]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+            <div class="w-11 h-11 rounded-xl bg-[#002e6e] flex items-center justify-center text-[#00baf2] text-xs font-black shadow-md border border-[#00baf2]/30">
               Paytm
             </div>
             <div class="text-left">
               <p class="text-xs font-black text-white">Paytm UPI</p>
-              <span class="text-[9px] text-[#00f589] font-semibold">Instant Pay</span>
+              <span class="text-[9px] text-[#00f589] font-bold flex items-center gap-1">
+                <span class="w-1 h-1 rounded-full bg-[#00f589]"></span> Instant Pay
+              </span>
             </div>
           </button>
 
           <!-- BHIM UPI -->
-          <button onclick="launchUpi('bhim')" class="bg-orange-500/10 hover:bg-orange-500/20 border-2 border-orange-500/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#008744] via-[#ffffff] to-[#ff7b00] flex items-center justify-center text-black text-xs font-black shadow-md">
+          <button onclick="launchUpi('bhim')" class="bg-gradient-to-br from-orange-500/10 via-white/5 to-green-500/10 hover:border-orange-500/40 border border-white/15 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#008744] via-[#ffffff] to-[#ff7b00] flex items-center justify-center text-black text-xs font-black shadow-md">
               BHIM
             </div>
             <div class="text-left">
               <p class="text-xs font-black text-white">BHIM UPI</p>
-              <span class="text-[9px] text-[#00f589] font-semibold">Instant Pay</span>
+              <span class="text-[9px] text-[#00f589] font-bold flex items-center gap-1">
+                <span class="w-1 h-1 rounded-full bg-[#00f589]"></span> Instant Pay
+              </span>
             </div>
           </button>
         </div>
-      </div>
 
-      <!-- UPI ID Manual Copy -->
-      <div class="bg-[#050914] p-3 rounded-2xl border border-white/10 flex justify-between items-center text-xs">
-        <div>
-          <p class="text-[9px] text-gray-400 font-bold uppercase">Official Escrow UPI ID</p>
-          <p class="text-white font-mono font-bold">thesolarinvest1@ybl</p>
-        </div>
-        <button onclick="copyUpiId()" class="bg-[#ff7b00] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95">Copy</button>
+        <!-- Other UPI Payment Option -->
+        <button onclick="launchUpi('any')" class="w-full mt-2.5 bg-[#030712] border border-white/10 hover:border-white/20 p-2.5 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition text-xs font-bold text-gray-300">
+          <i class="fa-solid fa-mobile-screen-button text-[#ff7b00]"></i>
+          <span>Pay via Any Other UPI App</span>
+        </button>
       </div>
 
       <!-- Deposit Submission Form -->
-      <div class="space-y-3 pt-1">
+      <div class="space-y-3 pt-2 border-t border-white/10">
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">12-Digit Bank UTR / Reference No.</label>
-          <input id="depUtr" type="text" maxlength="12" placeholder="e.g. 4328XXXXXXXX" class="w-full mt-1 bg-[#050914] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white font-mono outline-none focus:border-[#ff7b00]">
+          <input id="depUtr" type="text" maxlength="12" placeholder="e.g. 4328XXXXXXXX" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono outline-none focus:border-[#ff7b00]">
         </div>
         <button onclick="submitDeposit()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-lg">
           Submit Deposit Receipt
@@ -536,8 +712,8 @@
   </div>
 
   <!-- WITHDRAWAL MODAL -->
-  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="luxury-card rounded-3xl p-5 w-full max-w-sm space-y-4">
+  <div id="withdrawModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#080d1a] border border-white/10 rounded-3xl p-5 w-full max-w-sm space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
         <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
           <i class="fa-solid fa-arrow-down text-[#ff7b00]"></i> Request Settlement
@@ -548,22 +724,22 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">Account Holder Name</label>
-          <input id="wdName" type="text" placeholder="As per bank passbook" class="w-full mt-1 bg-[#050914] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
+          <input id="wdName" type="text" placeholder="As per bank passbook" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
         </div>
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">Bank Account Number / UPI ID</label>
-          <input id="wdAccount" type="text" placeholder="Account number or UPI ID" class="w-full mt-1 bg-[#050914] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
+          <input id="wdAccount" type="text" placeholder="Account number or UPI ID" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
         </div>
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">Bank IFSC Code</label>
-          <input id="wdIfsc" type="text" placeholder="e.g. SBIN000XXXX" class="w-full mt-1 bg-[#050914] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
+          <input id="wdIfsc" type="text" placeholder="e.g. SBIN000XXXX" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
         </div>
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">Settlement Amount (₹)</label>
-          <input id="wdAmount" type="number" placeholder="Enter amount" class="w-full mt-1 bg-[#050914] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
+          <input id="wdAmount" type="number" placeholder="Enter amount" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3 py-2 text-white outline-none focus:border-[#ff7b00]">
         </div>
 
-        <button onclick="handleWithdrawalSubmit()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider">
+        <button onclick="handleWithdrawalSubmit()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-lg">
           Authorize Withdrawal
         </button>
       </div>
@@ -571,8 +747,8 @@
   </div>
 
   <!-- VIP WITHDRAWAL LOCK POPUP (MANDATORY REQUIREMENT) -->
-  <div id="vipNoticeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="luxury-card rounded-3xl p-5 w-full max-w-sm space-y-4 border-2 border-red-500/40 text-center shadow-2xl">
+  <div id="vipNoticeModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#080d1a] border-2 border-red-500/40 rounded-3xl p-5 w-full max-w-sm space-y-4 text-center shadow-2xl">
       <div class="w-14 h-14 mx-auto rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-500 text-2xl animate-pulse">
         <i class="fa-solid fa-lock"></i>
       </div>
@@ -581,7 +757,7 @@
         <p class="text-[10px] text-red-400 font-bold uppercase tracking-wider mt-0.5">VIP Membership Required</p>
       </div>
       
-      <div class="bg-[#050914] p-3 rounded-2xl border border-white/10 text-left text-xs space-y-2">
+      <div class="bg-[#030712] p-3 rounded-2xl border border-white/10 text-left text-xs space-y-2">
         <p class="text-gray-300 text-[11px] leading-relaxed">
           Settlement gateway unlock karne ke liye aapko official VIP membership activate karni hogi:
         </p>
@@ -598,13 +774,13 @@
 
       <div class="grid grid-cols-2 gap-2 pt-1">
         <button onclick="closeModal('vipNoticeModal')" class="bg-white/10 text-gray-300 font-bold py-2.5 rounded-xl text-xs active:scale-95">Close</button>
-        <button onclick="closeModal('vipNoticeModal'); window.scrollTo({top: 400, behavior: 'smooth'})" class="bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg">Buy VIP Plan</button>
+        <button onclick="closeModal('vipNoticeModal'); switchTab('home')" class="bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95 shadow-lg">Buy VIP Plan</button>
       </div>
     </div>
   </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // App State
+    // App State Management
     const state = {
       user: null,
       balance: 100.0,
@@ -615,159 +791,73 @@
       transactions: []
     };
 
-    // 8 FLEET PLANS MATCHING EXACT REFERENCE LAYOUT
+    // Plans Data mapped to local storage / memory
     const FLEET_PLANS = [
-      {
-        id: 1,
-        planNo: "Plan 1",
-        title: "Active Harbor Vessel",
-        price: 350,
-        daily: 350,
-        days: 10,
-        returnTotal: 3500,
-        route: "Singapore to JNPT Port",
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 2,
-        planNo: "Plan 2",
-        title: "Ocean Feeder",
-        price: 450,
-        daily: 450,
-        days: 10,
-        returnTotal: 4500,
-        route: "Colombo to Mundra Terminal",
-        image: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 3,
-        planNo: "Plan 3",
-        title: "VIP Offshore Liner",
-        price: 500,
-        daily: 500,
-        days: 10,
-        returnTotal: 5000,
-        route: "Dubai to Chennai Port",
-        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 4,
-        planNo: "Plan 4",
-        title: "VIP Deep-Sea Vessel",
-        price: 700,
-        daily: 700,
-        days: 10,
-        returnTotal: 7000,
-        route: "Port Klang to Mumbai Port",
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 5,
-        planNo: "Plan 5",
-        title: "VIP Deep-Sea Fleet",
-        price: 900,
-        daily: 1100,
-        days: 10,
-        returnTotal: 11000,
-        route: "Hong Kong to Kandla Port",
-        image: "https://images.unsplash.com/photo-1505705694340-019e1e335916?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 6,
-        planNo: "Plan 6",
-        title: "Ocean Feeder Flagship",
-        price: 1200,
-        daily: 1500,
-        days: 10,
-        returnTotal: 15000,
-        route: "Rotterdam to JNPT Port",
-        image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 7,
-        planNo: "Plan 7",
-        title: "VIP Offshore Carrier",
-        price: 1500,
-        daily: 1800,
-        days: 10,
-        returnTotal: 18000,
-        route: "Shanghai to Vizag Port",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: 8,
-        planNo: "Plan 8",
-        title: "Container Liner Supreme",
-        price: 2500,
-        daily: 3000,
-        days: 10,
-        returnTotal: 30000,
-        route: "Panama to Global Port",
-        image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=700&q=80"
-      }
+      { id: 1, planNo: "Plan 1", title: "Active Harbor Vessel", price: 350, daily: 350, days: 10, route: "Singapore to JNPT Port" },
+      { id: 2, planNo: "Plan 2", title: "Ocean Feeder", price: 450, daily: 450, days: 10, route: "Colombo to Mundra Terminal" },
+      { id: 3, planNo: "Plan 3", title: "VIP Offshore", price: 500, daily: 500, days: 10, route: "Dubai to Chennai Port" },
+      { id: 4, planNo: "Plan 4", title: "VIP Deep-Sea", price: 700, daily: 700, days: 10, route: "Port Klang to Mumbai Port" },
+      { id: 5, planNo: "Plan 5", title: "VIP Deep-Sea", price: 500, daily: 350, days: 10, route: "Colombos to Mundra Port" },
+      { id: 6, planNo: "Plan 6", title: "Ocean Feeder", price: 700, daily: 450, days: 10, route: "Colombo to Mundra Port" },
+      { id: 7, planNo: "Plan 7", title: "VIP Offshore", price: 200, daily: 500, days: 10, route: "Port Klang to Mumbai Port" },
+      { id: 8, planNo: "Plan 8", title: "Container Liner", price: 2500, daily: 2500, days: 10, route: "Port Klang to Mumbai Port" }
     ];
 
-    // Direct 1-Click Launch for PhonePe, GPay, Paytm, BHIM
+    // DIRECT APP-SPECIFIC UPI INTENTS TRIGGER
     function launchUpi(app) {
-      const amount = document.getElementById("depAmount").value || "350";
-      const upiUrl = `upi://pay?pa=thesolarinvest1@ybl&pn=The%20Sea%20Cargo&am=${amount}&cu=INR`;
-      window.location.href = upiUrl;
+      const amtInput = document.getElementById("depAmount");
+      const amount = (amtInput && amtInput.value) ? parseFloat(amtInput.value).toFixed(2) : "350.00";
+      
+      const vpa = "thesolarinvest1@ybl";
+      const name = encodeURIComponent("The Sea Cargo");
+      const note = encodeURIComponent("Cargo Asset Capital Allocation");
+      const currency = "INR";
+      const upiParams = `pa=${vpa}&pn=${name}&am=${amount}&cu=${currency}&tn=${note}`;
+
+      let appUrl = "";
+
+      switch (app) {
+        case 'phonepe':
+          // PhonePe Direct Deep-link Scheme
+          appUrl = `phonepe://pay?${upiParams}`;
+          break;
+
+        case 'paytm':
+          // Paytm Direct App Scheme
+          appUrl = `paytmmp://pay?${upiParams}`;
+          break;
+
+        case 'gpay':
+          // Google Pay (Tez) Direct App Scheme
+          appUrl = `tez://upi/pay?${upiParams}`;
+          break;
+
+        case 'bhim':
+          // BHIM UPI Direct App Scheme
+          appUrl = `bhim://pay?${upiParams}`;
+          break;
+
+        default:
+          // Universal Generic UPI Intent
+          appUrl = `upi://pay?${upiParams}`;
+          break;
+      }
+
+      // Try triggering the dedicated app
+      window.location.href = appUrl;
+
+      // Fallback: If custom scheme isn't registered, fallback to generic UPI after 600ms
+      setTimeout(() => {
+        const genericUrl = `upi://pay?${upiParams}`;
+        window.location.href = genericUrl;
+      }, 600);
     }
 
-    function copyUpiId() {
-      navigator.clipboard.writeText("thesolarinvest1@ybl");
-      alert("UPI ID (thesolarinvest1@ybl) copied successfully!");
-    }
-
+    // Copy Referral Link
     function copyRefLink() {
       const link = document.getElementById("refLinkText").innerText;
       navigator.clipboard.writeText(link);
       alert("Institutional partner link copied!");
-    }
-
-    // Render All 8 Plans Exactly Like Reference UI
-    function renderPlans() {
-      const homeBox = document.getElementById("homePlansContainer");
-      if (!homeBox) return;
-
-      homeBox.innerHTML = FLEET_PLANS.map(p => `
-        <div class="luxury-card rounded-3xl overflow-hidden shadow-2xl border border-orange-500/30">
-          <div class="p-3 bg-[#080d1a] flex justify-between items-center border-b border-white/5">
-            <div>
-              <span class="text-xs font-bold text-gray-400">${p.planNo}</span>
-              <h4 class="text-xs font-black text-white uppercase">${p.title}</h4>
-            </div>
-            <span class="text-sm font-black text-[#ff7b00] font-mono">₹${p.price}</span>
-          </div>
-
-          <div class="h-44 w-full relative overflow-hidden bg-black">
-            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
-          </div>
-
-          <div class="p-3.5 space-y-3">
-            <button onclick="buyFleetPlan(${p.id})" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg tracking-wider uppercase">
-              Buy now
-            </button>
-
-            <div class="flex justify-between items-center text-xs px-1">
-              <div>
-                <p class="text-[9px] text-gray-400 uppercase font-bold">Daily Income</p>
-                <p class="text-xs font-black text-white mt-0.5 font-mono">₹${p.daily}.00</p>
-              </div>
-              <div class="text-right">
-                <p class="text-[9px] text-gray-400 uppercase font-bold">Contract</p>
-                <p class="text-xs font-black text-white mt-0.5 font-mono">${p.days} days</p>
-              </div>
-            </div>
-
-            <div class="pt-2 border-t border-white/5 text-center">
-              <p class="text-[10px] text-orange-400 font-mono flex items-center justify-center gap-1.5">
-                <i class="fa-solid fa-location-dot text-xs"></i> ${p.route}
-              </p>
-            </div>
-          </div>
-        </div>
-      `).join("");
     }
 
     // Buy Fleet Action
@@ -796,7 +886,7 @@
       alert(`Successfully allocated: ${plan.planNo} (${plan.title})!`);
     }
 
-    // WITHDRAWAL VALIDATION ENGINE (VIP MEMBERSHIP GATE)
+    // WITHDRAWAL VALIDATION ENGINE (VIP GATE REQUIREMENT)
     function handleWithdrawalSubmit() {
       const amount = parseFloat(document.getElementById("wdAmount").value);
       const name = document.getElementById("wdName").value.trim();
@@ -836,7 +926,7 @@
       alert("Withdrawal authorized successfully! Funds will credit within maritime clearing schedule.");
     }
 
-    // Submit Deposit
+    // Submit Deposit Receipt via UTR
     function submitDeposit() {
       const amt = parseFloat(document.getElementById("depAmount").value);
       const utr = document.getElementById("depUtr").value.trim();
@@ -864,13 +954,15 @@
       state.balance += 10;
       updateUI();
       const btn = document.getElementById("btnCheckin");
-      btn.disabled = true;
-      btn.innerText = "Claimed ✓";
-      btn.classList.add("opacity-50", "cursor-not-allowed");
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = "Claimed ✓";
+        btn.classList.add("opacity-50", "cursor-not-allowed");
+      }
       alert("Daily harbor dividend of ₹10 credited!");
     }
 
-    // Auth & Navigation
+    // Auth & Navigation Engine
     function switchAuth(tab) {
       if (tab === 'signup') {
         document.getElementById("signupBox").classList.remove("hidden");
@@ -922,32 +1014,50 @@
 
     function switchTab(name) {
       ['home', 'ledger', 'partner', 'account'].forEach(tab => {
-        document.getElementById(`sec-${tab}`).classList.add("hidden");
+        const sec = document.getElementById(`sec-${tab}`);
         const btn = document.getElementById(`nav-${tab}`);
-        btn.classList.remove("text-[#ff7b00]");
-        btn.classList.add("text-gray-400");
+        if (sec) sec.classList.add("hidden");
+        if (btn) {
+          btn.classList.remove("text-[#ff7b00]");
+          btn.classList.add("text-gray-400");
+        }
       });
 
-      document.getElementById(`sec-${name}`).classList.remove("hidden");
+      const activeSec = document.getElementById(`sec-${name}`);
       const activeBtn = document.getElementById(`nav-${name}`);
-      activeBtn.classList.remove("text-gray-400");
-      activeBtn.classList.add("text-[#ff7b00]");
+      if (activeSec) activeSec.classList.remove("hidden");
+      if (activeBtn) {
+        activeBtn.classList.remove("text-gray-400");
+        activeBtn.classList.add("text-[#ff7b00]");
+      }
     }
 
-    function openModal(id) { document.getElementById(id).classList.remove("hidden"); }
-    function closeModal(id) { document.getElementById(id).classList.add("hidden"); }
+    function openModal(id) { 
+      const el = document.getElementById(id);
+      if (el) el.classList.remove("hidden"); 
+    }
+    
+    function closeModal(id) { 
+      const el = document.getElementById(id);
+      if (el) el.classList.add("hidden"); 
+    }
 
     function updateUI() {
-      document.getElementById("balanceDisplay").innerText = `₹ ${state.balance.toFixed(2)}`;
-      document.getElementById("dashTotalInvest").innerText = `₹ ${state.totalInvested.toFixed(2)}`;
-      document.getElementById("dashEstEarnings").innerText = `₹ ${state.dailyIncome.toFixed(2)}`;
-      document.getElementById("dashCompletedPayout").innerText = `₹ ${state.completedPayout.toFixed(2)}`;
+      const bal = document.getElementById("balanceDisplay");
+      const tot = document.getElementById("dashTotalInvest");
+      const inc = document.getElementById("dashEstEarnings");
+      const pay = document.getElementById("dashCompletedPayout");
 
-      // Update Ledger
+      if (bal) bal.innerText = `₹ ${state.balance.toFixed(2)}`;
+      if (tot) tot.innerText = `₹ ${state.totalInvested.toFixed(2)}`;
+      if (inc) inc.innerText = `₹ ${state.dailyIncome.toFixed(2)}`;
+      if (pay) pay.innerText = `₹ ${state.completedPayout.toFixed(2)}`;
+
+      // Update Active Fleets
       const plansList = document.getElementById("myPlansList");
       if (plansList && state.activePlans.length > 0) {
         plansList.innerHTML = state.activePlans.map(p => `
-          <div class="bg-[#050914] p-2.5 rounded-xl border border-white/5 flex justify-between items-center">
+          <div class="bg-[#030712] p-2.5 rounded-xl border border-white/5 flex justify-between items-center">
             <div>
               <p class="font-bold text-white text-xs">${p.planNo} - ${p.title}</p>
               <p class="text-[9px] text-[#00f589]">Daily: ₹${p.daily}</p>
@@ -957,10 +1067,11 @@
         `).join("");
       }
 
+      // Update Ledger History
       const txList = document.getElementById("txHistoryList");
       if (txList && state.transactions.length > 0) {
         txList.innerHTML = state.transactions.map(t => `
-          <div class="bg-[#050914] p-2 rounded-xl border border-white/5 flex justify-between items-center">
+          <div class="bg-[#030712] p-2 rounded-xl border border-white/5 flex justify-between items-center">
             <div>
               <p class="font-bold text-white text-[11px]">${t.type}</p>
               <p class="text-[9px] text-gray-500">${t.name} • ${t.time}</p>
@@ -980,7 +1091,7 @@
       if (!list) return;
 
       list.innerHTML = names.slice(0, 3).map((name, i) => `
-        <div class="flex justify-between items-center bg-[#050914] p-2 rounded-xl border border-white/5 text-[11px]">
+        <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 text-[11px]">
           <span class="text-gray-300 font-semibold">${name}</span>
           <span class="text-[#00f589] font-black font-mono">₹${amounts[i]}.00</span>
           <span class="text-[9px] text-gray-500 font-mono">UTR: 9028***${i}82</span>
@@ -994,9 +1105,8 @@
       alert("Terminal Synchronized!");
     }
 
-    // Init
+    // Initialization
     window.addEventListener("DOMContentLoaded", () => {
-      renderPlans();
       renderFakeWithdrawals();
     });
   </script>
