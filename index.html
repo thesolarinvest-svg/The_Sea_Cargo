@@ -18,22 +18,20 @@
       overflow: hidden;
     }
     .trust-card {
-      background: #080e1e;
+      background: #070d1d;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.55);
     }
     .cert-luxury {
       background: radial-gradient(circle at 50% 20%, #ffffff 0%, #f7f4ec 100%);
       border: 2px solid #d4af37;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.7), inset 0 0 15px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7), inset 0 0 14px rgba(212, 175, 55, 0.3);
     }
-    .app-icon-shadow {
-      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-    }
-    @keyframes marquee {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
+    .fade-item { animation: fadeIn 0.4s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -128,7 +126,7 @@
         <main class="p-3.5 space-y-4">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- PROMINENT LIVE WITHDRAWALS TICKER -->
+        <!-- CONTINUOUSLY AUTO-ROTATING LIVE WITHDRAWALS -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3 shadow-lg">
           <div class="flex justify-between items-center mb-2 px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5">
@@ -138,8 +136,8 @@
               Live UTR
             </span>
           </div>
-          <div id="liveWithdrawTicker" class="space-y-1.5 text-xs">
-            <!-- Dynamically populated via JS -->
+          <div id="liveWithdrawTicker" class="space-y-1.5 text-xs min-h-[92px]">
+            <!-- JS dynamically changes these continuously -->
           </div>
         </div>
 
@@ -177,7 +175,7 @@
               <span class="text-xs font-black text-[#00f589] font-mono">₹350</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Harbor Crane Terminal" class="w-full h-full object-cover">
+              <img src="ship1.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Ocean Princess Line" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(1)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -186,7 +184,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹350</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹350</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -209,7 +207,7 @@
               <span class="text-xs font-black text-[#ff7b00] font-mono">₹450</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80" alt="Ocean Princess Liner" class="w-full h-full object-cover">
+              <img src="ship2.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Royal Cargo Line" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(2)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -218,7 +216,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹450</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹450</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -241,7 +239,7 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80" alt="Royal Cargo Vessel" class="w-full h-full object-cover">
+              <img src="ship3.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Ocean Royal Cruise" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(3)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -250,7 +248,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹500</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹500</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -273,7 +271,7 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="Ocean Royal Cruise" class="w-full h-full object-cover">
+              <img src="ship4.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Container Terminal Crane Vessel" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(4)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -282,7 +280,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹700</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹700</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -307,7 +305,7 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Harbor Crane Terminal" class="w-full h-full object-cover">
+              <img src="ship1.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Ocean Princess Line" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(5)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -316,7 +314,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹350</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹350</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -339,7 +337,7 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80" alt="Ocean Princess Liner" class="w-full h-full object-cover">
+              <img src="ship2.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Royal Cargo Line" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(6)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -348,7 +346,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹450</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹450</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -371,7 +369,7 @@
               <span class="text-xs font-black text-orange-400 font-mono">₹200</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80" alt="Royal Cargo Vessel" class="w-full h-full object-cover">
+              <img src="ship3.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Ocean Royal Cruise" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(7)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -380,7 +378,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹500</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹500</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -403,7 +401,7 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹2500</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="Ocean Royal Cruise" class="w-full h-full object-cover">
+              <img src="ship4.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Container Terminal Crane Vessel" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(8)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
@@ -412,7 +410,7 @@
               <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
                 <div>
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-xs font-black text-[#00f589] font-mono">₹2500</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹2500</b>
                 </div>
                 <div class="text-right">
                   <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
@@ -426,14 +424,14 @@
           </div>
         </div>
 
-        <!-- ================= 5 STATUTORY TRUST & TRANSPARENCY CARDS ================= -->
+        <!-- ================= EXACT 6-CARD TRUSTED & TRANSPARENT ACCREDITATION GRID ================= -->
         <div class="pt-6 space-y-3">
-          <h2 class="text-base font-black text-white font-luxury tracking-wide px-1">
+          <h2 class="text-base font-black text-white tracking-wide px-1">
             Trusted & Transparent Accreditation Grid
           </h2>
 
           <div class="grid grid-cols-2 gap-2.5">
-            <!-- 1. MCA -->
+            <!-- 1. MCA Card -->
             <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
                 <span class="text-2xl">🏛️</span>
@@ -447,7 +445,7 @@
               </div>
             </div>
 
-            <!-- 2. MSME / Udyam -->
+            <!-- 2. MSME / Udyam Enterprise -->
             <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
                 <span class="text-2xl">🏭</span>
@@ -461,7 +459,21 @@
               </div>
             </div>
 
-            <!-- 3. GST -->
+            <!-- 3. MSME / Udyam Business (GST) -->
+            <div class="trust-card p-3 flex flex-col justify-between">
+              <div class="flex justify-between items-start">
+                <span class="text-2xl">⚖️</span>
+                <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
+              </div>
+              <div class="mt-2.5">
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">GOODS AND SERVICES TAX<br>GOVT OF INDIA</p>
+                <h4 class="text-xs font-black text-white mt-1">MSME / Udyam</h4>
+                <p class="text-[10px] text-gray-300">Registered Business</p>
+                <span class="text-[8px] text-gray-500 block mt-1 font-mono">Tax Registration</span>
+              </div>
+            </div>
+
+            <!-- 4. GST Business Card -->
             <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
                 <span class="text-2xl">📄</span>
@@ -475,38 +487,37 @@
               </div>
             </div>
 
-            <!-- 4. DPIIT #startupindia -->
+            <!-- 5. DPIIT #startupindia -->
             <div class="trust-card p-3 flex flex-col justify-between">
               <div class="flex justify-between items-start">
                 <span class="text-2xl">🚀</span>
                 <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
               <div class="mt-2.5">
-                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">#STARTUPINDIA</p>
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">#STARTUPINDIA<br>DREAM • BELIEVE • BUILD</p>
                 <h4 class="text-xs font-black text-white mt-1">DPIIT</h4>
                 <p class="text-[10px] text-gray-300">Startup India Recognition</p>
                 <span class="text-[8px] text-gray-500 block mt-1 font-mono">Startup Recognition</span>
               </div>
             </div>
-          </div>
 
-          <!-- 5. Razorpay Payment Partner Full Card -->
-          <div class="trust-card p-3 flex items-center justify-between border-t border-white/10 mt-1">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg">
-                <i class="fa-solid fa-shield-halved"></i>
+            <!-- 6. Razorpay Payment Partner -->
+            <div class="trust-card p-3 flex flex-col justify-between">
+              <div class="flex justify-between items-start">
+                <span class="text-2xl">🛡️</span>
+                <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-1.5 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
               </div>
-              <div>
-                <h4 class="text-xs font-black text-white">Razorpay</h4>
-                <p class="text-[10px] text-gray-300">Payment Partner • Secure Gateway</p>
-                <span class="text-[8px] text-gray-500 block font-mono">Payment Infrastructure</span>
+              <div class="mt-2.5">
+                <p class="text-[8px] text-gray-400 font-bold uppercase leading-tight">RAZORPAY PAYMENT</p>
+                <h4 class="text-xs font-black text-white mt-1">Payment Partner</h4>
+                <p class="text-[10px] text-gray-300">Secure Payment Gateway</p>
+                <span class="text-[8px] text-gray-500 block mt-1 font-mono">Payment Infrastructure</span>
               </div>
             </div>
-            <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 px-2 py-0.5 rounded border border-[#00f589]/30">✓ Verified</span>
           </div>
         </div>
 
-        <!-- ================= 5 ENLARGED GOLD MARITIME CERTIFICATES ================= -->
+        <!-- ================= 5 GRAND GOLD LUXURY CERTIFICATES ROW ================= -->
         <div class="pt-6 pb-2 space-y-3">
           <div class="flex justify-between items-center px-1">
             <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">INSTITUTIONAL ACCREDITATIONS</h3>
@@ -514,12 +525,12 @@
           </div>
           
           <div class="grid grid-cols-2 gap-3">
-            <!-- Cert 1 -->
+            <!-- Cert 1: ISO -->
             <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-36">
               <div class="text-2xl">📜</div>
               <div>
-                <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">ISO Standardization</h5>
-                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">Geneva Maritime Solvency Standard</p>
+                <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">ISO Standardization Certificate</h5>
+                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">Geneva Maritime Protocol Standard</p>
               </div>
               <div class="border-t border-[#d4af37]/60 pt-1 flex justify-between items-center text-[7px] font-bold text-gray-600">
                 <span>ISO 9001:2015</span>
@@ -527,12 +538,12 @@
               </div>
             </div>
 
-            <!-- Cert 2 -->
+            <!-- Cert 2: Trade License -->
             <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-36">
               <div class="text-2xl">⚓</div>
               <div>
                 <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">Trade License</h5>
-                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">Port Operator Terminal Transit</p>
+                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">Port Terminal Transit Operator</p>
               </div>
               <div class="border-t border-[#d4af37]/60 pt-1 flex justify-between items-center text-[7px] font-bold text-gray-600">
                 <span>PORT COMMISSION</span>
@@ -540,12 +551,12 @@
               </div>
             </div>
 
-            <!-- Cert 3 -->
+            <!-- Cert 3: Custodial Banking 1 -->
             <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-36">
               <div class="text-2xl">🏛️</div>
               <div>
-                <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">Custodial Banking</h5>
-                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">100% Capital Escrow Guarantee</p>
+                <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">Custodial Banking guarantee</h5>
+                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">100% Escrow Liquidity Safeguard</p>
               </div>
               <div class="border-t border-[#d4af37]/60 pt-1 flex justify-between items-center text-[7px] font-bold text-gray-600">
                 <span>ESCROW SAFEGUARD</span>
@@ -553,27 +564,27 @@
               </div>
             </div>
 
-            <!-- Cert 4 -->
+            <!-- Cert 4: Custodial Banking 2 -->
             <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-36">
               <div class="text-2xl">🛡️</div>
               <div>
-                <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">SOLAS Inspection</h5>
-                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">International Maritime Safety</p>
+                <h5 class="text-[11px] font-black text-gray-900 leading-tight uppercase font-serif">Custodial Banking guarantee</h5>
+                <p class="text-[8px] text-gray-700 font-semibold mt-0.5">Capital Distribution Protection</p>
               </div>
               <div class="border-t border-[#d4af37]/60 pt-1 flex justify-between items-center text-[7px] font-bold text-gray-600">
-                <span>IMO PROTOCOL</span>
-                <span class="text-[#008744]">✓ COMPLIANT</span>
+                <span>BANKING RESERVE</span>
+                <span class="text-[#008744]">✓ VERIFIED</span>
               </div>
             </div>
           </div>
 
-          <!-- Cert 5 (Full Width Accent) -->
+          <!-- Cert 5: SOLAS Inspection (Full Width Accent) -->
           <div class="cert-luxury rounded-2xl p-3.5 text-center flex justify-between items-center">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">🏆</span>
+              <span class="text-2xl">🚢</span>
               <div class="text-left">
-                <h5 class="text-xs font-black text-gray-900 uppercase font-serif">Liquidity Excellence Citation</h5>
-                <p class="text-[9px] text-gray-700 font-semibold">Asia-Pacific High-Seas Freight Bureau Grade-A</p>
+                <h5 class="text-xs font-black text-gray-900 uppercase font-serif">SOLAS Inspection charter</h5>
+                <p class="text-[9px] text-gray-700 font-semibold">International Maritime High-Seas Safety Adherence</p>
               </div>
             </div>
             <span class="text-[9px] font-black bg-[#d4af37] text-black px-2.5 py-1 rounded-lg">VERIFIED</span>
@@ -729,7 +740,7 @@
         <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-2">Tap to Pay via Instant App</p>
         <div class="grid grid-cols-2 gap-2.5">
           <!-- PhonePe -->
-          <button onclick="launchUpi('phonepe')" class="bg-gradient-to-br from-[#5f259f]/30 to-[#3b126b]/40 hover:from-[#5f259f]/40 hover:to-[#3b126b]/60 border border-[#8a42e0]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+          <button onclick="launchUpi('phonepe')" class="bg-gradient-to-br from-[#5f259f]/30 to-[#3b126b]/40 hover:from-[#5f259f]/40 hover:to-[#3b126b]/60 border border-[#8a42e0]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
             <div class="w-11 h-11 rounded-xl bg-[#5f259f] flex items-center justify-center text-white text-xl font-black shadow-md border border-white/10">
               पे
             </div>
@@ -742,7 +753,7 @@
           </button>
 
           <!-- Google Pay -->
-          <button onclick="launchUpi('gpay')" class="bg-gradient-to-br from-[#ffffff]/10 to-[#ffffff]/5 hover:from-[#ffffff]/20 hover:to-[#ffffff]/10 border border-white/20 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+          <button onclick="launchUpi('gpay')" class="bg-gradient-to-br from-[#ffffff]/10 to-[#ffffff]/5 hover:from-[#ffffff]/20 hover:to-[#ffffff]/10 border border-white/20 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
             <div class="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-md border border-gray-200">
               <span class="text-base font-black tracking-tighter"><span class="text-[#4285f4]">G</span><span class="text-[#ea4335]">P</span><span class="text-[#fbbc05]">a</span><span class="text-[#34a853]">y</span></span>
             </div>
@@ -755,7 +766,7 @@
           </button>
 
           <!-- Paytm -->
-          <button onclick="launchUpi('paytm')" class="bg-gradient-to-br from-[#002e6e]/40 to-[#001738]/50 hover:from-[#002e6e]/60 hover:to-[#001738]/70 border border-[#00baf2]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+          <button onclick="launchUpi('paytm')" class="bg-gradient-to-br from-[#002e6e]/40 to-[#001738]/50 hover:from-[#002e6e]/60 hover:to-[#001738]/70 border border-[#00baf2]/50 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
             <div class="w-11 h-11 rounded-xl bg-[#002e6e] flex items-center justify-center text-[#00baf2] text-xs font-black shadow-md border border-[#00baf2]/30">
               Paytm
             </div>
@@ -768,7 +779,7 @@
           </button>
 
           <!-- BHIM UPI -->
-          <button onclick="launchUpi('bhim')" class="bg-gradient-to-br from-orange-500/10 via-white/5 to-green-500/10 hover:border-orange-500/40 border border-white/15 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition app-icon-shadow">
+          <button onclick="launchUpi('bhim')" class="bg-gradient-to-br from-orange-500/10 via-white/5 to-green-500/10 hover:border-orange-500/40 border border-white/15 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
             <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#008744] via-[#ffffff] to-[#ff7b00] flex items-center justify-center text-black text-xs font-black shadow-md">
               BHIM
             </div>
@@ -894,6 +905,40 @@
       { id: 8, planNo: "Plan 8", title: "Container Liner", price: 2500, daily: 2500, total: 25000 }
     ];
 
+    // CONTINUOUS ROTATING LIVE WITHDRAWALS ENGINE (NAMES & UTR CHANGE CONSTANTLY)
+    const withdrawalPool = [
+      "Sanjay Gupta", "Deepak Verma", "Manoj Singh", "Rajesh Kumar", 
+      "Vikram Rathore", "Aman Dubey", "Pooja Sharma", "Rohit Pandey",
+      "Suresh Patel", "Ankit Tiwari", "Vijay Jadhav", "Karan Malhotra",
+      "Arjun Nair", "Preeti Mishra", "Rahul Chauhan", "Harish Rao"
+    ];
+    const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200, 11500];
+
+    let currentIndex = 0;
+    function updateLiveWithdrawals() {
+      const ticker = document.getElementById("liveWithdrawTicker");
+      if (!ticker) return;
+
+      let html = "";
+      for (let i = 0; i < 3; i++) {
+        const nameIdx = (currentIndex + i) % withdrawalPool.length;
+        const amtIdx = (currentIndex + i * 2) % amountPool.length;
+        const name = withdrawalPool[nameIdx];
+        const amt = amountPool[amtIdx];
+        const randomUTR = Math.floor(100000 + Math.random() * 900000);
+        
+        html += `
+          <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
+            <span class="text-gray-300 font-semibold">${name}</span>
+            <span class="text-[#00f589] font-black font-mono">₹${amt}.00</span>
+            <span class="text-[9px] text-gray-500 font-mono">UTR: ${randomUTR}***</span>
+          </div>
+        `;
+      }
+      ticker.innerHTML = html;
+      currentIndex = (currentIndex + 1) % withdrawalPool.length;
+    }
+
     // DIRECT APP-SPECIFIC UPI INTENT LAUNCHER
     function launchUpi(app) {
       const amtInput = document.getElementById("depAmount");
@@ -906,7 +951,6 @@
       const upiParams = `pa=${vpa}&pn=${name}&am=${amount}&cu=${currency}&tn=${note}`;
 
       let appUrl = "";
-
       switch (app) {
         case 'phonepe':
           appUrl = `phonepe://pay?${upiParams}`;
@@ -927,7 +971,7 @@
 
       window.location.href = appUrl;
 
-      // Fallback to universal intent if app link is intercepted
+      // Fallback
       setTimeout(() => {
         window.location.href = `upi://pay?${upiParams}`;
       }, 700);
@@ -970,7 +1014,7 @@
         return;
       }
 
-      // VIP Condition: Either two ₹350 plans OR at least one ₹500+ VIP plan
+      // Check: Either two ₹350 plans OR at least one ₹500+ VIP plan
       const tier350Count = state.activePlans.filter(p => p.price === 350).length;
       const hasVipPlan = state.activePlans.some(p => p.price >= 500);
 
@@ -999,7 +1043,7 @@
       alert("Withdrawal authorized successfully! Funds will credit within maritime clearing schedule.");
     }
 
-    // Deposit Receipt Submission
+    // Deposit Submission
     function submitDeposit() {
       const amt = parseFloat(document.getElementById("depAmount").value);
       const utr = document.getElementById("depUtr").value.trim();
@@ -1023,32 +1067,6 @@
       alert(`Deposit receipt of ₹${amt} verified and credited to Settled Capital!`);
     }
 
-    // Dynamic Live Withdrawal Feed
-    function initLiveWithdrawals() {
-      const members = ["Rajesh Kumar", "Vikram Rathore", "Aman Dubey", "Pooja Sharma", "Rohit Verma", "Suresh Patel", "Ankit Tiwari"];
-      const amounts = [1200, 2400, 3500, 4800, 5200, 7500, 10500];
-      const ticker = document.getElementById("liveWithdrawTicker");
-      if (!ticker) return;
-
-      function renderList() {
-        const shuffled = members.map((name, i) => {
-          const randAmt = amounts[Math.floor(Math.random() * amounts.length)];
-          const randUTR = Math.floor(100000000000 + Math.random() * 900000000000).toString().slice(0, 7) + "***";
-          return `
-            <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5">
-              <span class="text-gray-300 font-semibold">${name}</span>
-              <span class="text-[#00f589] font-black font-mono">₹${randAmt}.00</span>
-              <span class="text-[9px] text-gray-500 font-mono">UTR: ${randUTR}</span>
-            </div>
-          `;
-        }).slice(0, 3).join("");
-        ticker.innerHTML = shuffled;
-      }
-
-      renderList();
-      setInterval(renderList, 4000); // Rotates every 4 seconds
-    }
-
     // Update UI elements
     function updateUI() {
       const bal = document.getElementById("balanceDisplay");
@@ -1063,7 +1081,7 @@
       if (wth) wth.innerText = `₹ ${state.totalWithdrawn.toFixed(2)}`;
       if (count) count.innerText = `${state.activePlans.length} Active`;
 
-      // Update Ledger Plans
+      // Update Ledger Active Plans
       const plansList = document.getElementById("myPlansList");
       if (plansList) {
         if (state.activePlans.length > 0) {
@@ -1081,7 +1099,7 @@
         }
       }
 
-      // Update Transactions
+      // Update Ledger History
       const txList = document.getElementById("txHistoryList");
       if (txList) {
         if (state.transactions.length > 0) {
@@ -1188,7 +1206,8 @@
 
     // Initialization
     window.addEventListener("DOMContentLoaded", () => {
-      initLiveWithdrawals();
+      updateLiveWithdrawals();
+      setInterval(updateLiveWithdrawals, 2500); // Dynamic real-time change every 2.5 seconds
     });
   </script>
 </body>
