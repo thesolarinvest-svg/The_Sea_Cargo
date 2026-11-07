@@ -71,7 +71,7 @@
     <div id="signupBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account Identity / Username</label>
-        <input id="regUser" type="text" placeholder="Enter ID (e.g. Diwedi)" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
+        <input id="regUser" type="text" placeholder="Enter Full Name" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Mobile Number</label>
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Password</label>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Create Password</label>
         <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] via-[#ff8800] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
@@ -89,19 +89,50 @@
       </button>
     </div>
 
-    <!-- Login Form -->
+    <!-- Login Form with Strict Verification & Forgot Password -->
     <div id="loginBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account ID / Mobile</label>
-        <input id="loginUser" type="text" placeholder="Enter User ID or phone" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
+        <div class="flex gap-2 mt-1.5">
+          <span class="bg-[#030712] border border-white/10 px-3 py-2.5 text-xs text-gray-400 rounded-xl font-mono">+91</span>
+          <input id="loginPhone" type="tel" maxlength="10" placeholder="10-digit registered number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
+        </div>
       </div>
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Password</label>
         <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
       </div>
+      <div class="text-right">
+        <button onclick="openModal('forgotModal')" class="text-[11px] text-orange-400 hover:text-orange-300 font-bold">Forgot Password?</button>
+      </div>
       <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
         Authorize Access
       </button>
+    </div>
+  </div>
+
+  <!-- Forgot Password Reset Modal -->
+  <div id="forgotModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 shadow-2xl">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
+          <i class="fa-solid fa-key text-[#ffd000]"></i> Reset Access Key
+        </h3>
+        <button onclick="closeModal('forgotModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400">Registered Mobile</label>
+          <input id="forgotPhone" type="tel" maxlength="10" placeholder="Enter 10-digit phone" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+        </div>
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400">New Password</label>
+          <input id="forgotNewPass" type="password" placeholder="Enter new password" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+        </div>
+        <button onclick="handleResetPassword()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-md">
+          Update & Save Password
+        </button>
+      </div>
     </div>
   </div>
 
@@ -137,7 +168,7 @@
             </span>
           </div>
           <div id="liveWithdrawTicker" class="space-y-1.5 text-xs min-h-[92px]">
-            <!-- JS dynamically changes these every 2.5s with masked names -->
+            <!-- Dynamically populated via JS with masked format -->
           </div>
         </div>
 
@@ -157,13 +188,33 @@
           </div>
         </div>
 
+        <!-- Maritime Operational Metrics & Daily Check-In Dividend Banner -->
+        <div class="grid grid-cols-4 gap-2 text-center">
+          <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
+            <span class="text-[8px] text-gray-400 uppercase font-bold block">Active Ships</span>
+            <b class="text-xs text-white font-mono">1,420</b>
+          </div>
+          <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
+            <span class="text-[8px] text-gray-400 uppercase font-bold block">Clearing Vol.</span>
+            <b class="text-xs text-[#00f589] font-mono">₹4.82 Cr</b>
+          </div>
+          <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
+            <span class="text-[8px] text-gray-400 uppercase font-bold block">Payout Speed</span>
+            <b class="text-xs text-[#ffd000] font-mono">&lt; 15 Min</b>
+          </div>
+          <button id="btnCheckin" onclick="dailyCheckIn()" class="bg-gradient-to-br from-orange-500/30 to-yellow-500/20 border border-orange-500/40 p-2 rounded-xl flex flex-col justify-center items-center active:scale-95 transition">
+            <span class="text-[8px] text-orange-400 uppercase font-black block">Harbor Claim</span>
+            <b class="text-xs text-white font-bold">+₹10</b>
+          </button>
+        </div>
+
         <!-- Section Title: Container Fleet Plans -->
         <div class="flex justify-between items-center px-1 pt-1">
           <h2 class="text-lg font-black text-white font-luxury tracking-wide">Container Fleet Plans</h2>
           <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded-md">8 Plans Active</span>
         </div>
 
-        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 WITH EXACT SHIP IMAGES -->
+        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 WITH DEDICATED IMAGES (image1.png to image4.png) -->
         <div class="grid grid-cols-2 gap-3">
           <!-- PLAN 1 -->
           <div class="plan-card flex flex-col justify-between">
@@ -175,25 +226,26 @@
               <span class="text-xs font-black text-[#00f589] font-mono">₹350</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship1.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Ocean Princess Line" class="w-full h-full object-cover">
+              <img src="image1.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Plan 1" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(1)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹350</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹350.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹3500</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹3500.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Singapore to JNPT Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Singapore to JNPT Port</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
 
@@ -207,25 +259,26 @@
               <span class="text-xs font-black text-[#ff7b00] font-mono">₹450</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship2.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Royal Cargo Line" class="w-full h-full object-cover">
+              <img src="image2.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Plan 2" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(2)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹450</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹450.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹4500</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹4500.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Colombo to Mundra Terminal
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Colombo to Mundra</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
 
@@ -239,25 +292,26 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship3.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Ocean Royal Cruise" class="w-full h-full object-cover">
+              <img src="image3.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Plan 3" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(3)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹500</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹500.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹5000</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹5000.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Dubai to Chennai Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Dubai to Chennai Port</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
 
@@ -271,29 +325,30 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship4.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Container Terminal Crane Vessel" class="w-full h-full object-cover">
+              <img src="image4.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Plan 4" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(4)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹700</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹700.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹7000</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹7000.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Port Klang to Mumbai Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Port Klang to Mumbai</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
         </div>
-                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 WITH EXACT SHIP IMAGES -->
+                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 WITH DEDICATED IMAGES (image5.png to image8.png) -->
         <div class="grid grid-cols-2 gap-3 mt-3">
           <!-- PLAN 5 -->
           <div class="plan-card flex flex-col justify-between">
@@ -305,25 +360,26 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship1.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Ocean Princess Line" class="w-full h-full object-cover">
+              <img src="image5.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Plan 5" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(5)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹350</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹350.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹3500</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹3500.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Colombos to Mundra Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Colombos to Mundra</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
 
@@ -337,25 +393,26 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship2.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Royal Cargo Line" class="w-full h-full object-cover">
+              <img src="image6.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Plan 6" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(6)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹450</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹450.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹4500</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹4500.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Colombo to Mundra Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Colombo to Mundra Port</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
 
@@ -369,25 +426,26 @@
               <span class="text-xs font-black text-orange-400 font-mono">₹200</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship3.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Ocean Royal Cruise" class="w-full h-full object-cover">
+              <img src="image7.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Plan 7" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(7)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹500</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹500.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹5000</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹5000.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Port Klang to Mumbai Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Port Klang to Mumbai</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
 
@@ -401,25 +459,26 @@
               <span class="text-xs font-black text-[#ffd000] font-mono">₹2500</span>
             </div>
             <div class="h-28 w-full bg-black relative">
-              <img src="ship4.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Container Terminal Crane Vessel" class="w-full h-full object-cover">
+              <img src="image8.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Plan 8" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(8)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="grid grid-cols-2 gap-1 bg-[#050914] p-2 rounded-xl border border-white/5">
-                <div>
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Daily</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹2500</b>
+              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹2500.00</b>
                 </div>
-                <div class="text-right">
-                  <span class="block text-[8px] uppercase font-bold text-gray-400">Total Return</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹25000</b>
+                <div class="flex justify-between items-center border-t border-white/5 pt-1">
+                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
+                  <b class="text-xs font-black text-[#ffd000] font-mono">₹25000.00</b>
                 </div>
               </div>
-              <p class="text-[9px] text-orange-400/90 font-mono text-center truncate pt-1 border-t border-white/5">
-                Port Klang to Mumbai Port
-              </p>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
+                <span class="truncate">Port Klang to Mumbai</span>
+                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+              </div>
             </div>
           </div>
         </div>
@@ -578,7 +637,7 @@
             </div>
           </div>
 
-          <!-- Cert 5: SOLAS Inspection (Full Width Accent) -->
+          <!-- Cert 5: SOLAS Inspection -->
           <div class="cert-luxury rounded-2xl p-3.5 text-center flex justify-between items-center">
             <div class="flex items-center gap-3">
               <span class="text-2xl">🚢</span>
@@ -627,7 +686,7 @@
           </div>
         </div>
 
-        <!-- Active Cargo Fleet Contracts -->
+        <!-- Active Cargo Fleet Contracts with Running Countdown -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
           <div class="flex justify-between items-center">
             <h3 class="text-xs font-black text-white uppercase tracking-wider">Active Fleet Allocations</h3>
@@ -654,7 +713,7 @@
           <h2 class="text-lg font-black text-white font-luxury">Invite & Earn 10% Lifetime</h2>
           <p class="text-xs text-gray-400">Share your terminal invitation link and earn automated freight incentives on partner allocations.</p>
           <div class="bg-[#030712] p-3 rounded-2xl border border-white/10 flex items-center justify-between mt-2">
-            <span id="refLinkText" class="text-xs text-orange-400 font-mono truncate mr-2">https://the-sea-cargo.vercel.app/?ref=Diwedi</span>
+            <span id="refLinkText" class="text-xs text-orange-400 font-mono truncate mr-2">https://the-sea-cargo.vercel.app/?ref=CargoInvestor</span>
             <button onclick="copyRefLink()" class="bg-[#ff7b00] text-black font-black px-3.5 py-1.5 rounded-xl text-xs active:scale-95 shrink-0">Copy</button>
           </div>
         </div>
@@ -680,11 +739,15 @@
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3 text-xs">
           <div class="flex justify-between py-2 border-b border-white/5">
             <span class="text-gray-400">Terminal Version</span>
-            <span class="text-white font-bold font-mono">2.5.0 (Enterprise)</span>
+            <span class="text-white font-bold font-mono">2.6.0 (Enterprise)</span>
           </div>
           <div class="flex justify-between py-2 border-b border-white/5">
             <span class="text-gray-400">Escrow Liquidity Node</span>
             <span class="text-[#00f589] font-bold">Active & Verified</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-white/5">
+            <span class="text-gray-400">Encryption Standard</span>
+            <span class="text-[#ffd000] font-bold font-mono">256-bit SSL Bonded</span>
           </div>
           <div class="flex justify-between py-2">
             <span class="text-gray-400">Default Currency</span>
@@ -693,6 +756,16 @@
         </div>
       </section>
     </main>
+
+    <!-- Floating 24/7 Official Support (Telegram / WhatsApp) -->
+    <div class="fixed bottom-20 right-4 z-40 flex flex-col gap-2">
+      <a href="https://t.me/" target="_blank" class="w-11 h-11 rounded-full bg-[#229ed9] text-white flex items-center justify-center text-lg shadow-xl hover:scale-105 active:scale-95 transition border border-white/20">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+      <a href="https://wa.me/" target="_blank" class="w-11 h-11 rounded-full bg-[#25d366] text-white flex items-center justify-center text-lg shadow-xl hover:scale-105 active:scale-95 transition border border-white/20">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
 
     <!-- Bottom Navigation Bar with Explicit Wallet Icon -->
     <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#030712]/95 backdrop-blur-xl border-t border-white/10 max-w-md mx-auto px-2 py-2.5">
@@ -719,7 +792,7 @@
 
   <!-- ================= 3. POPUP MODALS ================= -->
 
-  <!-- RECHARGE / DEPOSIT MODAL WITH REALISTIC UPI APPS (NO RAW TEXT UPI ID) -->
+  <!-- RECHARGE / DEPOSIT MODAL WITH REALISTIC BIG UPI APPS (NO RAW TEXT UPI ID) -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -881,7 +954,7 @@
   </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // State management
+    // App State Management with Persistent User Storage
     const state = {
       user: null,
       balance: 100.0,
@@ -893,7 +966,10 @@
       transactions: []
     };
 
-    // 8 Plans Reference Database
+    // Registered Users Store (Local storage simulation)
+    const registeredUsers = JSON.parse(localStorage.getItem('seaCargoUsers') || '{}');
+
+    // 8 Plans Reference Database with 10-day Contract
     const FLEET_PLANS = [
       { id: 1, planNo: "Plan 1", title: "Active Harbor Vessel", price: 350, daily: 350, total: 3500 },
       { id: 2, planNo: "Plan 2", title: "Ocean Feeder", price: 450, daily: 450, total: 4500 },
@@ -1001,7 +1077,11 @@
       state.balance -= plan.price;
       state.totalInvested += plan.price;
       state.dailyIncome += plan.daily;
-      state.activePlans.push(plan);
+      state.activePlans.push({
+        ...plan,
+        boughtAt: Date.now(),
+        daysLeft: 10
+      });
       state.transactions.unshift({
         type: 'Fleet Allocation',
         name: `${plan.planNo} - ${plan.title}`,
@@ -1077,7 +1157,20 @@
       alert(`Deposit receipt of ₹${amt} verified and credited to Settled Capital!`);
     }
 
-    // Update UI elements
+    // Daily Check-In
+    function dailyCheckIn() {
+      state.balance += 10;
+      updateUI();
+      const btn = document.getElementById("btnCheckin");
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="text-[8px] text-green-400 uppercase font-black block">Claimed</span><b class="text-xs text-white">✓ Done</b>`;
+        btn.classList.add("opacity-50", "cursor-not-allowed");
+      }
+      alert("Daily harbor dividend of ₹10 credited!");
+    }
+
+    // Update UI elements & Active Fleet Countdowns
     function updateUI() {
       const bal = document.getElementById("balanceDisplay");
       const ledgerBal = document.getElementById("ledgerBalanceDisplay");
@@ -1091,17 +1184,18 @@
       if (wth) wth.innerText = `₹ ${state.totalWithdrawn.toFixed(2)}`;
       if (count) count.innerText = `${state.activePlans.length} Active`;
 
-      // Update Ledger Active Plans
+      // Update Ledger Active Plans with Live Countdown
       const plansList = document.getElementById("myPlansList");
       if (plansList) {
         if (state.activePlans.length > 0) {
           plansList.innerHTML = state.activePlans.map(p => `
-            <div class="bg-[#030712] p-2.5 rounded-xl border border-white/5 flex justify-between items-center">
+            <div class="bg-[#030712] p-3 rounded-2xl border border-white/5 flex justify-between items-center">
               <div>
                 <p class="font-bold text-white text-xs">${p.planNo} - ${p.title}</p>
-                <p class="text-[9px] text-[#00f589] font-mono">Daily Dividend: ₹${p.daily}</p>
+                <p class="text-[10px] text-[#00f589] font-mono mt-0.5">Daily Dividend: ₹${p.daily}</p>
+                <span class="text-[9px] text-[#ffd000] font-mono block mt-0.5">⏱ Next Dividend in: 14h 22m 10s</span>
               </div>
-              <span class="text-[9px] bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded font-mono">10 Days Term</span>
+              <span class="text-[9px] bg-orange-500/20 text-orange-400 px-2.5 py-1 rounded-lg font-mono">10 Days Term</span>
             </div>
           `).join("");
         } else {
@@ -1114,7 +1208,7 @@
       if (txList) {
         if (state.transactions.length > 0) {
           txList.innerHTML = state.transactions.map(t => `
-            <div class="bg-[#030712] p-2 rounded-xl border border-white/5 flex justify-between items-center">
+            <div class="bg-[#030712] p-2.5 rounded-xl border border-white/5 flex justify-between items-center">
               <div>
                 <p class="font-bold text-white text-[11px]">${t.type}</p>
                 <p class="text-[9px] text-gray-500">${t.name} • ${t.time}</p>
@@ -1130,7 +1224,7 @@
       }
     }
 
-    // Auth Engine
+    // STRICT AUTHENTICATION SYSTEM WITH FORGOT PASSWORD
     function switchAuth(tab) {
       if (tab === 'signup') {
         document.getElementById("signupBox").classList.remove("hidden");
@@ -1148,22 +1242,64 @@
     function handleRegister() {
       const user = document.getElementById("regUser").value.trim();
       const phone = document.getElementById("regPhone").value.trim();
-      if (!user || phone.length !== 10) {
-        alert("Please enter a valid username and 10-digit mobile number.");
+      const pass = document.getElementById("regPass").value.trim();
+
+      if (!user || phone.length !== 10 || pass.length < 6) {
+        alert("Please enter full name, valid 10-digit number & minimum 6 character password.");
         return;
       }
+
+      registeredUsers[phone] = { name: user, password: pass };
+      localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
+
       state.user = { name: user, phone: phone };
+      alert("Account created successfully! Logging you in...");
       startApp();
     }
 
     function handleLogin() {
-      const user = document.getElementById("loginUser").value.trim();
-      if (!user) {
-        alert("Please enter your account ID or phone.");
+      const phone = document.getElementById("loginPhone").value.trim();
+      const pass = document.getElementById("loginPass").value.trim();
+
+      if (!phone || !pass) {
+        alert("Please enter your registered mobile number and password.");
         return;
       }
-      state.user = { name: user, phone: "9876543210" };
+
+      const account = registeredUsers[phone];
+      if (!account) {
+        alert("No account found with this phone number. Please Sign Up first!");
+        switchAuth('signup');
+        return;
+      }
+
+      if (account.password !== pass) {
+        alert("Incorrect password! If forgotten, use 'Forgot Password?'.");
+        return;
+      }
+
+      state.user = { name: account.name, phone: phone };
       startApp();
+    }
+
+    function handleResetPassword() {
+      const phone = document.getElementById("forgotPhone").value.trim();
+      const newPass = document.getElementById("forgotNewPass").value.trim();
+
+      if (!phone || !registeredUsers[phone]) {
+        alert("Phone number is not registered!");
+        return;
+      }
+
+      if (newPass.length < 6) {
+        alert("Password must be at least 6 characters.");
+        return;
+      }
+
+      registeredUsers[phone].password = newPass;
+      localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
+      alert("Password updated successfully! You can now log in.");
+      closeModal('forgotModal');
     }
 
     function handleLogout() {
