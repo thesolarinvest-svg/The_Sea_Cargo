@@ -70,7 +70,7 @@
     <!-- Sign Up Form -->
     <div id="signupBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account Identity / Username</label>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account Identity / Full Name</label>
         <input id="regUser" type="text" placeholder="Enter Full Name" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <div>
@@ -168,7 +168,7 @@
             </span>
           </div>
           <div id="liveWithdrawTicker" class="space-y-1.5 text-xs min-h-[92px]">
-            <!-- Dynamically populated via JS with masked format -->
+            <!-- Dynamically populated via JS -->
           </div>
         </div>
 
@@ -214,7 +214,7 @@
           <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded-md">8 Plans Active</span>
         </div>
 
-        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 WITH DEDICATED IMAGES (image1.png to image4.png) -->
+        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 (HIGH-CONTRAST HIGHLIGHTED INCOME) -->
         <div class="grid grid-cols-2 gap-3">
           <!-- PLAN 1 -->
           <div class="plan-card flex flex-col justify-between">
@@ -225,26 +225,29 @@
               </div>
               <span class="text-xs font-black text-[#00f589] font-mono">₹350</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image1.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Plan 1" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 1" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(1)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <!-- HIGHLY HIGHLIGHTED INCOME BOX -->
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹350.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹3500.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹3500.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Singapore to JNPT Port</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="truncate">Singapore to JNPT</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -258,26 +261,29 @@
               </div>
               <span class="text-xs font-black text-[#ff7b00] font-mono">₹450</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image2.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Plan 2" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/FkWf9jhT/file-00000000a8748208a42ad1212440a40e.png" alt="Plan 2" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(2)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <!-- HIGHLY HIGHLIGHTED INCOME BOX -->
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹450.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹4500.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹4500.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Colombo to Mundra</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -291,26 +297,29 @@
               </div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image3.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Plan 3" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/Y74NWMrp/file-000000008e7882118eb69c525667c070.png" alt="Plan 3" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(3)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <!-- HIGHLY HIGHLIGHTED INCOME BOX -->
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹500.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹5000.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹5000.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Dubai to Chennai Port</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="truncate">Dubai to Chennai</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -324,31 +333,34 @@
               </div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image4.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Plan 4" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 4" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(4)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <!-- HIGHLY HIGHLIGHTED INCOME BOX -->
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹700.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹7000.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹7000.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Port Klang to Mumbai</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
         </div>
-                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 WITH DEDICATED IMAGES (image5.png to image8.png) -->
+                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 (HIGH-CONTRAST HIGHLIGHTED INCOME) -->
         <div class="grid grid-cols-2 gap-3 mt-3">
           <!-- PLAN 5 -->
           <div class="plan-card flex flex-col justify-between">
@@ -359,26 +371,28 @@
               </div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image5.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80';" alt="Plan 5" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 5" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(5)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹350.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹3500.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹3500.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Colombos to Mundra</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -392,26 +406,28 @@
               </div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image6.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80';" alt="Plan 6" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/FkWf9jhT/file-00000000a8748208a42ad1212440a40e.png" alt="Plan 6" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(6)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹450.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹4500.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹4500.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Colombo to Mundra Port</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="truncate">Colombo to Mundra</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -425,26 +441,28 @@
               </div>
               <span class="text-xs font-black text-orange-400 font-mono">₹200</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image7.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80';" alt="Plan 7" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/Y74NWMrp/file-000000008e7882118eb69c525667c070.png" alt="Plan 7" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(7)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹500.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹5000.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹5000.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Port Klang to Mumbai</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -458,26 +476,28 @@
               </div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹2500</span>
             </div>
-            <div class="h-28 w-full bg-black relative">
-              <img src="image8.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80';" alt="Plan 8" class="w-full h-full object-cover">
+            <div class="h-28 w-full bg-black relative overflow-hidden">
+              <img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 8" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
               <button onclick="buyFleetPlan(8)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
                 Buy now
               </button>
-              <div class="bg-[#050914] p-2 rounded-xl border border-white/5 space-y-1">
-                <div class="flex justify-between items-center">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Daily Income</span>
+              
+              <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
                   <b class="text-sm font-black text-[#00f589] font-mono">₹2500.00</b>
                 </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-1">
-                  <span class="text-[8px] uppercase font-bold text-gray-400">Total Income</span>
-                  <b class="text-xs font-black text-[#ffd000] font-mono">₹25000.00</b>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
+                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹25000.00</b>
                 </div>
               </div>
+
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Port Klang to Mumbai</span>
-                <b class="text-gray-400 font-bold shrink-0">10 Days</b>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
               </div>
             </div>
           </div>
@@ -954,7 +974,7 @@
   </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // App State Management with Persistent User Storage
+    // State management with Persistent User Store
     const state = {
       user: null,
       balance: 100.0,
@@ -966,7 +986,7 @@
       transactions: []
     };
 
-    // Registered Users Store (Local storage simulation)
+    // Registered Users Store (Simulated Local Storage Database)
     const registeredUsers = JSON.parse(localStorage.getItem('seaCargoUsers') || '{}');
 
     // 8 Plans Reference Database with 10-day Contract
@@ -992,7 +1012,7 @@
     }
 
     // CONTINUOUS ROTATING MASKED LIVE WITHDRAWALS ENGINE
-    // Format: First letter + asterisks + last letter (e.g. R*****h, V*****m)
+    // Format: First letter + asterisks + last letter
     const maskedNames = [
       "R*****h", "V*****m", "A***y", "S*****a", "D****k", 
       "M***j", "P***a", "R***t", "S****h", "A***t", 
@@ -1025,7 +1045,7 @@
       currentIndex = (currentIndex + 1) % maskedNames.length;
     }
 
-    // DIRECT APP-SPECIFIC UPI INTENT LAUNCHER WITH DUAL UPI ROTATION
+    // DIRECT APP-SPECIFIC UPI INTENT LAUNCHER WITH DUAL ROTATION
     function launchUpi(app) {
       const amtInput = document.getElementById("depAmount");
       const amount = (amtInput && amtInput.value) ? parseFloat(amtInput.value).toFixed(2) : "350.00";
@@ -1157,7 +1177,7 @@
       alert(`Deposit receipt of ₹${amt} verified and credited to Settled Capital!`);
     }
 
-    // Daily Check-In
+    // Daily Harbor Check-In
     function dailyCheckIn() {
       state.balance += 10;
       updateUI();
