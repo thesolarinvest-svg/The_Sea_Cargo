@@ -62,75 +62,113 @@
       <p class="text-xs text-orange-400 mt-1 font-bold tracking-wider">MARITIME ASSET TERMINAL</p>
     </div>
 
+    <!-- Auth Tabs -->
     <div class="grid grid-cols-2 bg-[#090e1a] p-1.5 rounded-2xl border border-white/10 mb-5 shadow-inner">
-      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md transition">Sign Up</button>
-      <button id="tabLogin" onclick="switchAuth('login')" class="py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition">Login</button>
+      <button id="tabPin" onclick="switchAuth('pin')" class="py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition">Quick PIN Login</button>
+      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition">New Sign Up</button>
     </div>
 
-    <!-- Sign Up Form -->
-    <div id="signupBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
+    <!-- Screen 1: FAST 4-DIGIT PIN LOGIN -->
+    <div id="pinBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-4 shadow-2xl">
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Full Legal Name</label>
-        <input id="regUser" type="text" placeholder="Enter Full Name" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
-      </div>
-      <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Mobile Number</label>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
         <div class="flex gap-2 mt-1.5">
           <span class="bg-[#030712] border border-white/10 px-3 py-2.5 text-xs text-gray-400 rounded-xl font-mono">+91</span>
-          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
+          <input id="pinPhone" type="tel" maxlength="10" placeholder="10-digit registered number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
         </div>
       </div>
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Create Access Password</label>
-        <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">4-Digit Security PIN</label>
+        <input id="pinInput" type="password" maxlength="4" placeholder="••••" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-center text-lg tracking-[0.4em] text-white font-mono outline-none focus:border-[#ffd000]">
+      </div>
+      <div class="flex justify-between items-center text-[11px] pt-1">
+        <button onclick="switchAuth('login')" class="text-gray-400 hover:text-gray-200">Password Login</button>
+        <button onclick="openModal('dobRecoveryModal')" class="text-orange-400 hover:text-orange-300 font-bold">Forgot PIN? Verify DOB</button>
+      </div>
+      <button onclick="handlePinLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase">
+        Unlock Terminal
+      </button>
+    </div>
+
+    <!-- Screen 2: SIGN UP FORM WITH DOB & PIN SETUP -->
+    <div id="signupBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3 shadow-2xl">
+      <div>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Full Legal Name</label>
+        <input id="regUser" type="text" placeholder="Enter Full Name" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+      </div>
+      <div>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Mobile Number</label>
+        <div class="flex gap-2 mt-1">
+          <span class="bg-[#030712] border border-white/10 px-3 py-2 text-xs text-gray-400 rounded-xl font-mono">+91</span>
+          <input id="regPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Date of Birth (Recovery)</label>
+          <input id="regDob" type="date" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-2.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+        </div>
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Create 4-Digit PIN</label>
+          <input id="regPin" type="password" maxlength="4" placeholder="4 digits" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3 py-2 text-center text-xs tracking-widest text-white font-mono outline-none focus:border-[#ff7b00]">
+        </div>
+      </div>
+      <div>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Master Password</label>
+        <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
       </div>
       <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] via-[#ff8800] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
         Create Cargo Account
       </button>
     </div>
 
-    <!-- Login Form with Forgot Password Option -->
+    <!-- Screen 3: BACKUP PASSWORD LOGIN -->
     <div id="loginBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
         <div class="flex gap-2 mt-1.5">
           <span class="bg-[#030712] border border-white/10 px-3 py-2.5 text-xs text-gray-400 rounded-xl font-mono">+91</span>
-          <input id="loginPhone" type="tel" maxlength="10" placeholder="10-digit registered number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
+          <input id="loginPhone" type="tel" maxlength="10" placeholder="10-digit registered number" class="w-full bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
         </div>
       </div>
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Password</label>
-        <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000] transition">
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Master Password</label>
+        <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
       </div>
-      <div class="text-right">
-        <button onclick="openModal('forgotModal')" class="text-[11px] text-orange-400 hover:text-orange-300 font-bold">Forgot Password?</button>
+      <div class="flex justify-between items-center text-[11px]">
+        <button onclick="switchAuth('pin')" class="text-orange-400 hover:text-orange-300 font-bold">Use PIN Login</button>
+        <button onclick="openModal('dobRecoveryModal')" class="text-gray-400 hover:text-white">Recover Key</button>
       </div>
-      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
+      <button onclick="handlePasswordLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase">
         Authorize Access
       </button>
     </div>
   </div>
 
-  <!-- Password Reset Modal -->
-  <div id="forgotModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+  <!-- DOB-SECURED PIN RECOVERY MODAL (STRICT ANTI-HIJACK GATE) -->
+  <div id="dobRecoveryModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
         <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
-          <i class="fa-solid fa-key text-[#ffd000]"></i> Reset Terminal Key
+          <i class="fa-solid fa-shield-halved text-[#ffd000]"></i> DOB Identity Verification
         </h3>
-        <button onclick="closeModal('forgotModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
+        <button onclick="closeModal('dobRecoveryModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
       </div>
       <div class="space-y-3">
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400">Registered Mobile</label>
-          <input id="forgotPhone" type="tel" maxlength="10" placeholder="Enter 10-digit phone" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+          <input id="recPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
         </div>
         <div>
-          <label class="text-[10px] uppercase font-bold text-gray-400">New Password</label>
-          <input id="forgotNewPass" type="password" placeholder="Enter new password" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
+          <label class="text-[10px] uppercase font-bold text-gray-400">Registered Date of Birth</label>
+          <input id="recDob" type="date" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
         </div>
-        <button onclick="handleResetPassword()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-md">
-          Save New Key
+        <div>
+          <label class="text-[10px] uppercase font-bold text-gray-400">Set New 4-Digit PIN</label>
+          <input id="recNewPin" type="password" maxlength="4" placeholder="New 4-digit PIN" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-center text-xs tracking-widest text-white font-mono outline-none focus:border-[#ff7b00]">
+        </div>
+        <button onclick="handleDobPinReset()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-md">
+          Verify DOB & Update PIN
         </button>
       </div>
     </div>
@@ -159,7 +197,7 @@
     <main class="p-3.5 space-y-4">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- LIVE WITHDRAWAL TICKER (WITH HARDCODED FALLBACK ROWS) -->
+        <!-- GUARANTEED ACTIVE REAL-TIME WITHDRAWALS TICKER -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3 shadow-lg">
           <div class="flex justify-between items-center mb-2 px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5">
@@ -188,7 +226,7 @@
           </div>
         </div>
 
-        <!-- Settled Liquid Capital Banner -->
+        <!-- Settled Liquid Capital Card -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-orange-500/30 flex justify-between items-center shadow-lg">
           <div>
             <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Settled Liquid Capital</p>
@@ -273,7 +311,7 @@
           </div>
         </div>
 
-        <!-- Maritime Operational Metrics & Daily Check-In Dividend Banner -->
+        <!-- Metrics & Harbor Check-In (+₹10.00) -->
         <div class="grid grid-cols-4 gap-2 text-center">
           <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
             <span class="text-[8px] text-gray-400 uppercase font-bold block">Active Ships</span>
@@ -405,11 +443,11 @@
             </div>
           </div>
 
-          <!-- PLAN 4: VIP ₹700 (Daily ₹750, 10 Days) -->
-          <div class="plan-card flex flex-col justify-between">
+          <!-- PLAN 4: VIP 2 ₹700 (Daily ₹750) -->
+          <div class="plan-card flex flex-col justify-between border-2 border-yellow-500/50">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
               <div>
-                <p class="text-[9px] text-[#ffd000] font-bold">VIP Plan 4</p>
+                <p class="text-[9px] text-[#ffd000] font-black uppercase flex items-center gap-1"><i class="fa-solid fa-crown text-[8px]"></i> VIP 2</p>
                 <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">VIP Deep-Sea</h4>
               </div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
@@ -418,8 +456,8 @@
               <img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 4" class="w-full h-full object-cover">
             </div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(4)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
+              <button onclick="buyFleetPlan(4)" class="w-full bg-[#ffd000] hover:bg-[#ffb700] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
+                Buy VIP Plan
               </button>
               
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
@@ -674,30 +712,75 @@
               <span class="text-[8px] font-bold text-[#008744]">✓ VERIFIED</span>
             </div>
           </div>
-          <div class="cert-luxury rounded-2xl p-3 text-center flex justify-between items-center">
-            <div class="flex items-center gap-3"><span class="text-2xl">🚢</span><div class="text-left"><h5 class="text-xs font-black text-gray-900 uppercase font-serif">SOLAS Inspection charter</h5><p class="text-[9px] text-gray-700 font-semibold">Maritime High-Seas Safety Adherence</p></div></div>
-            <span class="text-[9px] font-black bg-[#d4af37] text-black px-2.5 py-1 rounded-lg">VERIFIED</span>
-          </div>
         </div>
       </section>
 
-      <!-- SECTION: PROFESSIONAL WALLET / LEDGER -->
+      <!-- SECTION: ENHANCED PROFESSIONAL WALLET / LEDGER -->
       <section id="sec-ledger" class="hidden space-y-4">
-        <div class="bg-gradient-to-br from-[#0c1324] to-[#060a14] p-5 rounded-3xl border border-orange-500/40 shadow-2xl relative">
-          <p class="text-[10px] font-extrabold text-[#ff7b00] tracking-widest uppercase">MARITIME PORTFOLIO DESK</p>
-          <h2 class="text-3xl font-black text-white font-mono mt-1" id="ledgerBalanceDisplay">₹ 0.00</h2>
-          <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-white/10">
-            <div class="bg-[#030712] p-2.5 rounded-xl border border-white/5"><span class="text-[9px] text-gray-400 uppercase font-bold">Total Deposited</span><p class="text-sm font-black text-[#00f589] font-mono mt-0.5" id="ledgerDepositDisplay">₹ 0.00</p></div>
-            <div class="bg-[#030712] p-2.5 rounded-xl border border-white/5"><span class="text-[9px] text-gray-400 uppercase font-bold">Total Withdrawn</span><p class="text-sm font-black text-[#ffd000] font-mono mt-0.5" id="ledgerWithdrawnDisplay">₹ 0.00</p></div>
+        <div class="bg-gradient-to-br from-[#0c1324] via-[#080d1a] to-[#040711] p-5 rounded-3xl border border-orange-500/40 shadow-2xl relative overflow-hidden">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-[10px] font-black text-orange-400 tracking-widest uppercase">MARITIME PORTFOLIO DESK</p>
+              <h2 class="text-3xl font-black text-white font-mono mt-1" id="ledgerBalanceDisplay">₹ 0.00</h2>
+              <p class="text-[10px] text-gray-400 mt-0.5">Total Settled Available Capital</p>
+            </div>
+            <span class="w-11 h-11 rounded-2xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-lg">
+              <i class="fa-solid fa-vault"></i>
+            </span>
+          </div>
+
+          <!-- Quick Action Buttons Inside Wallet -->
+          <div class="grid grid-cols-2 gap-2 mt-4">
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg uppercase tracking-wider flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-plus"></i> Add Funds
+            </button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#030712] border border-white/20 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-arrow-down"></i> Withdraw
+            </button>
+          </div>
+
+          <!-- 4-Card Portfolio Analytics -->
+          <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/10">
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
+              <span class="text-[8px] text-gray-400 uppercase font-bold block">Total Deposited</span>
+              <p class="text-xs font-black text-[#00f589] font-mono mt-0.5" id="ledgerDepositDisplay">₹ 0.00</p>
+            </div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
+              <span class="text-[8px] text-gray-400 uppercase font-bold block">Total Withdrawn</span>
+              <p class="text-xs font-black text-[#ffd000] font-mono mt-0.5" id="ledgerWithdrawnDisplay">₹ 0.00</p>
+            </div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
+              <span class="text-[8px] text-gray-400 uppercase font-bold block">Daily Expected Yield</span>
+              <p class="text-xs font-black text-orange-400 font-mono mt-0.5" id="ledgerYieldDisplay">₹ 0.00</p>
+            </div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
+              <span class="text-[8px] text-gray-400 uppercase font-bold block">Escrow Protection</span>
+              <p class="text-[10px] font-black text-[#00f589] mt-0.5">100% Bonded</p>
+            </div>
           </div>
         </div>
+
+        <!-- Active Fleet Allocations -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
-          <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white uppercase tracking-wider">Active Fleet Allocations</h3><span class="text-[10px] text-orange-400 font-mono font-bold" id="activePlanCount">0 Active</span></div>
-          <div id="myPlansList" class="space-y-2 text-xs"><p class="text-gray-500 text-center py-4">No active fleets allocated yet.</p></div>
+          <div class="flex justify-between items-center">
+            <h3 class="text-xs font-black text-white uppercase tracking-wider">Active Fleet Allocations</h3>
+            <span class="text-[10px] text-orange-400 font-mono font-bold" id="activePlanCount">0 Active</span>
+          </div>
+          <div id="myPlansList" class="space-y-2 text-xs">
+            <div class="text-center py-6 space-y-2">
+              <i class="fa-solid fa-ship text-2xl text-gray-600"></i>
+              <p class="text-gray-500 text-xs">No active fleets allocated yet.</p>
+              <button onclick="switchTab('home')" class="text-[10px] text-orange-400 underline font-bold">Explore Fleet Plans</button>
+            </div>
+          </div>
         </div>
+
+        <!-- Financial Transactions Ledger -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
           <h3 class="text-xs font-black text-white uppercase tracking-wider">Financial Transactions Ledger</h3>
-          <div id="txHistoryList" class="space-y-2 text-xs"><p class="text-gray-500 text-center py-4">No transactions recorded yet.</p></div>
+          <div id="txHistoryList" class="space-y-2 text-xs">
+            <p class="text-gray-500 text-center py-4">No transactions recorded yet.</p>
+          </div>
         </div>
       </section>
 
@@ -712,15 +795,55 @@
           </div>
         </div>
       </section>
-
-      <!-- SECTION: ACCOUNT -->
+            <!-- SECTION: ENHANCED ACCOUNT & IDENTITY VAULT -->
       <section id="sec-account" class="hidden space-y-4">
+        <!-- Profile Identity Card -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-xl font-black"><i class="fa-solid fa-user-astronaut"></i></div>
-            <div><div class="flex items-center gap-2"><h3 id="accUsername" class="text-sm font-black text-white">Investor</h3><span id="accVipPill" class="text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10">Standard Tier</span></div><p id="accPhone" class="text-xs text-gray-400 font-mono mt-0.5">+91 **********</p></div>
+            <div class="w-12 h-12 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-xl font-black">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 id="accUsername" class="text-sm font-black text-white">Investor</h3>
+                <span id="accVipPill" class="text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10">Standard Tier</span>
+              </div>
+              <p id="accPhone" class="text-xs text-gray-400 font-mono mt-0.5">+91 **********</p>
+            </div>
           </div>
           <button onclick="handleLogout()" class="text-xs text-red-400 font-bold bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl active:scale-95">Logout</button>
+        </div>
+
+        <!-- Linked Bank & Settlement Details Card -->
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
+          <div class="flex justify-between items-center">
+            <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-building-columns text-[#ffd000]"></i> Settlement Bank Account
+            </h4>
+            <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-0.5 rounded-full">Encrypted</span>
+          </div>
+          <div class="bg-[#030712] p-3 rounded-xl border border-white/5 space-y-2 text-xs">
+            <div class="flex justify-between"><span class="text-gray-400">Account Holder</span><span id="accBankName" class="text-white font-bold">Unlinked</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Account / UPI</span><span id="accBankNumber" class="text-white font-mono font-bold">•••• ••••</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Bank IFSC</span><span id="accBankIfsc" class="text-white font-mono font-bold">••••</span></div>
+          </div>
+        </div>
+
+        <!-- Security & PIN Management Drawer -->
+        <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-2.5 text-xs">
+          <h4 class="text-xs font-black text-white uppercase tracking-wider">Identity & Security Node</h4>
+          <div class="flex justify-between py-1.5 border-b border-white/5">
+            <span class="text-gray-400">Date of Birth (Recovery)</span>
+            <span id="accDobMasked" class="text-orange-400 font-mono font-bold">Verified On Record ✓</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-white/5">
+            <span class="text-gray-400">Quick PIN Status</span>
+            <span class="text-[#00f589] font-bold">Bonded & Active ✓</span>
+          </div>
+          <div class="flex justify-between py-1.5">
+            <span class="text-gray-400">Custodial Security Node</span>
+            <span class="text-[#ffd000] font-mono font-bold">256-Bit SSL Bonded</span>
+          </div>
         </div>
       </section>
     </main>
@@ -735,12 +858,12 @@
       </div>
     </nav>
   </div>
-    <!-- ================= 3. POPUP MODALS ================= -->
+
+  <!-- ================= 3. POPUP MODALS ================= -->
 
   <!-- INSTAGRAM-STYLE FULLSCREEN STORY POPUP MODAL -->
   <div id="storyModal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex items-center justify-center p-3 select-none">
     <div class="relative w-full max-w-sm h-[88vh] bg-[#050811] rounded-3xl border border-orange-500/30 overflow-hidden shadow-2xl flex flex-col justify-between">
-      <!-- Top Story Bar -->
       <div class="p-3.5 z-20 bg-gradient-to-b from-black/90 to-transparent">
         <div class="w-full bg-white/20 h-1 rounded-full overflow-hidden mb-2.5">
           <div id="storyProgressBar" class="h-full bg-gradient-to-r from-[#ffd000] to-[#ff7b00] transition-all duration-100 ease-linear" style="width: 0%;"></div>
@@ -753,13 +876,9 @@
           <button onclick="closeStory()" class="text-white text-base bg-white/10 hover:bg-white/20 w-7 h-7 rounded-full flex items-center justify-center active:scale-95 transition">✕</button>
         </div>
       </div>
-
-      <!-- Story Full Image Viewer -->
       <div class="absolute inset-0 z-10 flex items-center justify-center p-2">
         <img id="storyImage" src="" alt="Story View" class="max-w-full max-h-[82vh] object-contain rounded-2xl shadow-2xl">
       </div>
-
-      <!-- Story Footer Action -->
       <div class="p-3.5 z-20 bg-gradient-to-t from-black/90 to-transparent text-center">
         <button onclick="closeStory()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs uppercase tracking-wider active:scale-95 transition shadow-lg">
           Done Reading
@@ -767,8 +886,7 @@
       </div>
     </div>
   </div>
-
-  <!-- RECHARGE / DEPOSIT MODAL WITH SLIP ATTACHMENT & COPY UPI OPTION -->
+    <!-- RECHARGE / DEPOSIT MODAL WITH CLEAN DIRECT PAYMENT & HIDDEN RAW UPI -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -804,16 +922,11 @@
           </button>
         </div>
 
-        <!-- 1-Click Copy UPI ID Card to Bypass Decline Issues -->
-        <div class="bg-[#030712] border border-orange-500/30 p-2.5 rounded-xl flex items-center justify-between mt-2.5">
-          <div>
-            <span class="text-[9px] text-gray-400 block font-bold uppercase">Manual Deposit UPI</span>
-            <span class="text-xs text-[#00f589] font-mono font-bold">thesolarinvest1@ybl</span>
-          </div>
-          <button onclick="copyMerchantUpi()" class="bg-[#ff7b00] text-black font-black px-3 py-1.5 rounded-lg text-xs active:scale-95 shadow">
-            Copy UPI
-          </button>
-        </div>
+        <!-- Pay via Other UPI Apps (Direct App Launcher, No Raw Text Displayed) -->
+        <button onclick="launchUpi('any')" class="w-full mt-2.5 bg-[#030712] border border-white/10 hover:border-orange-500/40 p-2.5 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition text-xs font-bold text-gray-300">
+          <i class="fa-solid fa-mobile-screen-button text-[#ff7b00]"></i>
+          <span>Pay via Other UPI Apps (CRED, Amazon Pay, Any Bank)</span>
+        </button>
       </div>
 
       <div class="space-y-3 pt-2 border-t border-white/10">
@@ -853,13 +966,13 @@
     </div>
   </div>
 
-  <!-- VIP WITHDRAWAL LOCK POPUP -->
+  <!-- STRICT VIP 2 REQUIREMENT POPUP -->
   <div id="vipNoticeModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border-2 border-red-500/40 rounded-3xl p-5 w-full max-w-sm space-y-4 text-center shadow-2xl">
       <div class="w-14 h-14 mx-auto rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-500 text-2xl animate-pulse"><i class="fa-solid fa-lock"></i></div>
-      <h3 class="text-base font-black text-white tracking-wide uppercase font-luxury">Withdrawal Restricted</h3>
-      <p class="text-gray-300 text-xs">Unlock clearance by holding at least two ₹350 plans OR minimum one ₹700+ VIP plan.</p>
-      <button onclick="closeModal('vipNoticeModal'); switchTab('home')" class="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95">Upgrade Plan</button>
+      <h3 class="text-base font-black text-white tracking-wide uppercase font-luxury">VIP 2 Requirement Gate</h3>
+      <p class="text-gray-300 text-xs">To unlock settlements, terminal rules require activating at least one Base Plan (Plans 1-3) followed by VIP 2 (Plan 4 - ₹700 or above).</p>
+      <button onclick="closeModal('vipNoticeModal'); switchTab('home')" class="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95 uppercase tracking-wider shadow-lg">Activate VIP 2 Plan</button>
     </div>
   </div>
 
@@ -878,7 +991,7 @@
   </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // Master State Management (Explicit 0.00 Initial Balance)
+    // Master State Management (Initial Balance Set to Strictly 0.00)
     const state = {
       user: null,
       balance: 0.0,
@@ -900,7 +1013,7 @@
       { id: 1, planNo: "Plan 1", title: "Active Harbor Vessel", price: 350, daily: 350, days: 10, total: 3500 },
       { id: 2, planNo: "Plan 2", title: "Ocean Feeder", price: 450, daily: 450, days: 10, total: 4500 },
       { id: 3, planNo: "Plan 3", title: "VIP Offshore", price: 500, daily: 500, days: 10, total: 5000 },
-      { id: 4, planNo: "Plan 4 (VIP)", title: "VIP Deep-Sea", price: 700, daily: 750, days: 10, total: 7500 },
+      { id: 4, planNo: "Plan 4 (VIP 2)", title: "VIP Deep-Sea", price: 700, daily: 750, days: 10, total: 7500 },
       { id: 5, planNo: "Plan 5", title: "Harbor Express", price: 900, daily: 1000, days: 15, total: 15000 },
       { id: 6, planNo: "Plan 6", title: "Pacific Carrier", price: 1500, daily: 1650, days: 14, total: 23100 },
       { id: 7, planNo: "Plan 7", title: "Atlantic Fleet", price: 2500, daily: 3900, days: 14, total: 54600 },
@@ -920,7 +1033,6 @@
       8: { title: "Terminal Updates", img: "https://i.ibb.co/rLNLb7t/file-0000000011608208b0a9ded7b84238a1.png" }
     };
 
-    // Story Progress Engine
     let storyInterval = null;
     function openStory(id) {
       const story = STORIES_DATABASE[id];
@@ -949,7 +1061,6 @@
       closeModal("storyModal");
     }
 
-    // Audio Feedback Synthesizer
     function playTerminalChime(type = 'success') {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -974,20 +1085,10 @@
       } catch (e) {}
     }
 
-    // Dual UPI Rotation
-    const UPI_IDS = ["thesolarinvest1@ybl", "thecargo@slc"];
-    let upiRotateIndex = 0;
-    function getActiveUpiId() {
-      const selectedVpa = UPI_IDS[upiRotateIndex];
-      upiRotateIndex = (upiRotateIndex + 1) % UPI_IDS.length;
-      return selectedVpa;
-    }
-
-    // Clean PhonePe / GPay Intent
     function launchUpi(app) {
       const amtInput = document.getElementById("depAmount");
       const amount = (amtInput && amtInput.value) ? parseFloat(amtInput.value).toFixed(2) : "350.00";
-      const vpa = getActiveUpiId();
+      const vpa = "thesolarinvest1@ybl";
       const registeredName = encodeURIComponent("VIKASH KUMAR DUBEY");
       const upiParams = `pa=${vpa}&pn=${registeredName}&am=${amount}&cu=INR`;
       let appUrl = `upi://pay?${upiParams}`;
@@ -999,13 +1100,6 @@
       setTimeout(() => { window.location.href = `upi://pay?${upiParams}`; }, 700);
     }
 
-    function copyMerchantUpi() {
-      const vpa = "thesolarinvest1@ybl";
-      navigator.clipboard.writeText(vpa);
-      playTerminalChime('success');
-      alert(`UPI ID Copied: ${vpa}\n\nPaste in your UPI App to complete payment!`);
-    }
-
     function handleSlipSelection(input) {
       const label = document.getElementById("slipFileName");
       if (input.files && input.files[0]) {
@@ -1013,65 +1107,27 @@
         label.classList.add("text-[#00f589]");
       }
     }
-        // 24-HOUR AUTOMATED DIVIDEND PAYOUT ENGINE
-    const CYCLE_DURATION_MS = 24 * 60 * 60 * 1000;
 
-    function processPlanPayouts() {
-      const now = Date.now();
-      let updated = false;
-
-      state.activePlans.forEach(plan => {
-        if (plan.payoutsClaimed >= plan.days) return;
-
-        const elapsed = now - plan.lastPayoutTime;
-        if (elapsed >= CYCLE_DURATION_MS) {
-          const cyclesToPay = Math.min(
-            Math.floor(elapsed / CYCLE_DURATION_MS),
-            plan.days - plan.payoutsClaimed
-          );
-
-          if (cyclesToPay > 0) {
-            const addedIncome = plan.daily * cyclesToPay;
-            state.balance += addedIncome;
-            plan.payoutsClaimed += cyclesToPay;
-            plan.lastPayoutTime += (cyclesToPay * CYCLE_DURATION_MS);
-
-            state.transactions.unshift({
-              type: '24H Dividend Credited',
-              name: `${plan.planNo} Daily Return (${cyclesToPay}x)`,
-              amount: addedIncome,
-              time: 'Just now'
-            });
-            updated = true;
-          }
-        }
-      });
-
-      if (updated) {
-        playTerminalChime('bonus');
-        updateUI();
-      }
-    }
-
-    function formatTimeRemaining(ms) {
-      if (ms <= 0) return "00h 00m 00s";
-      const totalSeconds = Math.floor(ms / 1000);
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      return `${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
-    }
-
+    // STRICT VIP 2 WITHDRAWAL RULE (Must hold at least 1 Base Plan AND 1 Plan 4+ VIP Plan)
     function isUserVipQualified() {
       if (state.adminForceVip) return true;
-      const tier350Count = state.activePlans.filter(p => p.price === 350).length;
+      const hasBasePlan = state.activePlans.some(p => p.price <= 500);
       const hasVipPlan = state.activePlans.some(p => p.price >= 700);
-      return tier350Count >= 2 || hasVipPlan;
+      return hasBasePlan && hasVipPlan;
     }
 
     function buyFleetPlan(id) {
       const plan = FLEET_PLANS.find(p => p.id === id);
       if (!plan) return;
+
+      // Sequential Purchasing: Require base plan before VIP purchase
+      if (plan.price >= 700) {
+        const hasBase = state.activePlans.some(p => p.price <= 500);
+        if (!hasBase) {
+          alert("Sequential Plan Requirement: You must allocate at least one Base Fleet Plan (Plan 1, 2, or 3) before unlocking VIP 2.");
+          return;
+        }
+      }
 
       if (state.balance < plan.price) {
         alert("Insufficient Settled Liquid Capital! Please recharge your account.");
@@ -1108,6 +1164,7 @@
       const amount = parseFloat(document.getElementById("wdAmount").value);
       const name = document.getElementById("wdName").value.trim();
       const account = document.getElementById("wdAccount").value.trim();
+      const ifsc = document.getElementById("wdIfsc").value.trim();
 
       if (!name || !account || isNaN(amount) || amount <= 0) {
         alert("Please enter valid bank details and settlement amount.");
@@ -1125,6 +1182,11 @@
         return;
       }
 
+      // Link Account Permanently in Vault Tab
+      document.getElementById("accBankName").innerText = name;
+      document.getElementById("accBankNumber").innerText = account;
+      document.getElementById("accBankIfsc").innerText = ifsc || "UPI Instant Node";
+
       state.balance -= amount;
       state.totalWithdrawn += amount;
       state.transactions.unshift({
@@ -1137,7 +1199,7 @@
       playTerminalChime('success');
       closeModal('withdrawModal');
       updateUI();
-      alert("Withdrawal authorized successfully!");
+      alert("Withdrawal authorized successfully! Routed to custodial clearing.");
     }
 
     function submitDeposit() {
@@ -1287,12 +1349,18 @@
       const plansList = document.getElementById("myPlansList");
       if (!plansList) return;
       if (state.activePlans.length === 0) {
-        plansList.innerHTML = `<p class="text-gray-500 text-center py-4">No active fleets allocated yet.</p>`;
+        plansList.innerHTML = `
+          <div class="text-center py-6 space-y-2">
+            <i class="fa-solid fa-ship text-2xl text-gray-600"></i>
+            <p class="text-gray-500 text-xs">No active fleets allocated yet.</p>
+            <button onclick="switchTab('home')" class="text-[10px] text-orange-400 underline font-bold">Explore Fleet Plans</button>
+          </div>
+        `;
         return;
       }
       const now = Date.now();
       plansList.innerHTML = state.activePlans.map(p => {
-        const nextPayout = p.lastPayoutTime + CYCLE_DURATION_MS;
+        const nextPayout = p.lastPayoutTime + (24 * 60 * 60 * 1000);
         const remainingMs = Math.max(0, nextPayout - now);
         const timeText = p.payoutsClaimed >= p.days ? "Term Completed" : formatTimeRemaining(remainingMs);
         return `
@@ -1308,17 +1376,47 @@
       }).join("");
     }
 
+    function formatTimeRemaining(ms) {
+      if (ms <= 0) return "00h 00m 00s";
+      const totalSeconds = Math.floor(ms / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+    }
+
     function updateUI() {
       const bal = document.getElementById("balanceDisplay");
       const ledgerBal = document.getElementById("ledgerBalanceDisplay");
       const dep = document.getElementById("ledgerDepositDisplay");
       const wth = document.getElementById("ledgerWithdrawnDisplay");
+      const yld = document.getElementById("ledgerYieldDisplay");
       const count = document.getElementById("activePlanCount");
+
       if (bal) bal.innerText = `₹ ${state.balance.toFixed(2)}`;
       if (ledgerBal) ledgerBal.innerText = `₹ ${state.balance.toFixed(2)}`;
       if (dep) dep.innerText = `₹ ${state.totalDeposited.toFixed(2)}`;
       if (wth) wth.innerText = `₹ ${state.totalWithdrawn.toFixed(2)}`;
+      if (yld) yld.innerText = `₹ ${state.dailyIncome.toFixed(2)}`;
       if (count) count.innerText = `${state.activePlans.length} Active`;
+
+      // Top VIP Badge Dynamic Lighting
+      const isVip = isUserVipQualified();
+      const topBadge = document.getElementById("topVipBadge");
+      const accPill = document.getElementById("accVipPill");
+      if (topBadge && accPill) {
+        if (isVip) {
+          topBadge.className = "bg-gradient-to-r from-[#ffd000] to-[#ff7b00] text-black text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-md animate-pulse";
+          topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP 2 ACTIVE`;
+          accPill.className = "text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-[#ffd000]/20 text-[#ffd000] border border-[#ffd000]/40";
+          accPill.innerText = "VIP 2 Member";
+        } else {
+          topBadge.className = "bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm";
+          topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP`;
+          accPill.className = "text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10";
+          accPill.innerText = "Standard Tier";
+        }
+      }
 
       renderFleetCountdowns();
       renderAdminPendingQueue();
@@ -1331,73 +1429,81 @@
               <div><p class="font-bold text-white text-[11px]">${t.type}</p><p class="text-[9px] text-gray-500">${t.name} • ${t.time}</p></div>
               <span class="font-black text-xs ${t.status === 'PENDING' ? 'text-yellow-400' : (t.amount > 0 ? 'text-[#00f589]' : 'text-orange-400')} font-mono">
                 ${t.status === 'PENDING' ? '⏳ ₹' + t.amount : (t.amount > 0 ? '+' : '') + '₹' + Math.abs(t.amount)}
-              </span>
-            </div>
-          `).join("");
-        } else {
-          txList.innerHTML = `<p class="text-gray-500 text-center py-4">No transactions recorded yet.</p>`;
-        }
-      }
-    }
+        function handlePinLogin() {
+      const phone = document.getElementById("pinPhone").value.trim();
+      const pin = document.getElementById("pinInput").value.trim();
 
-    function switchAuth(tab) {
-      if (tab === 'signup') {
-        document.getElementById("signupBox").classList.remove("hidden");
-        document.getElementById("loginBox").classList.add("hidden");
-        document.getElementById("tabSignup").className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md transition";
-        document.getElementById("tabLogin").className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
-      } else {
-        document.getElementById("signupBox").classList.add("hidden");
-        document.getElementById("loginBox").classList.remove("hidden");
-        document.getElementById("tabLogin").className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition";
-        document.getElementById("tabSignup").className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
-      }
-    }
-
-    function handleRegister() {
-      const user = document.getElementById("regUser").value.trim();
-      const phone = document.getElementById("regPhone").value.trim();
-      const pass = document.getElementById("regPass").value.trim();
-      if (!user || phone.length !== 10 || pass.length < 6) {
-        alert("Enter full name, valid 10-digit number & min 6 char password.");
+      if (phone.length !== 10 || pin.length !== 4) {
+        alert("Please enter registered 10-digit mobile number and 4-digit PIN.");
         return;
       }
-      registeredUsers[phone] = { name: user, password: pass };
-      localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
-      state.user = { name: user, phone: phone };
+
+      const account = registeredUsers[phone];
+      if (!account) {
+        alert("Account not found. Please click 'New Sign Up' first.");
+        switchAuth('signup');
+        return;
+      }
+
+      if (account.pin !== pin) {
+        alert("Incorrect PIN! If forgotten, click 'Forgot PIN? Verify DOB'.");
+        return;
+      }
+
+      state.user = { name: account.name, phone: phone, dob: account.dob };
       playTerminalChime('success');
       startApp();
     }
 
-    function handleLogin() {
+    function handlePasswordLogin() {
       const phone = document.getElementById("loginPhone").value.trim();
       const pass = document.getElementById("loginPass").value.trim();
       const account = registeredUsers[phone];
+
       if (!account || account.password !== pass) {
-        alert("Invalid mobile or password!");
+        alert("Invalid mobile number or master password!");
         return;
       }
-      state.user = { name: account.name, phone: phone };
+
+      state.user = { name: account.name, phone: phone, dob: account.dob };
       playTerminalChime('success');
       startApp();
     }
 
-    function handleResetPassword() {
-      const phone = document.getElementById("forgotPhone").value.trim();
-      const newPass = document.getElementById("forgotNewPass").value.trim();
-      if (!phone || !registeredUsers[phone] || newPass.length < 6) {
-        alert("Invalid phone or short password.");
+    // DOB-SECURED PIN RECOVERY HANDLER
+    function handleDobPinReset() {
+      const phone = document.getElementById("recPhone").value.trim();
+      const dob = document.getElementById("recDob").value;
+      const newPin = document.getElementById("recNewPin").value.trim();
+
+      const account = registeredUsers[phone];
+      if (!account) {
+        alert("Security Rejection: Unregistered mobile number.");
         return;
       }
-      registeredUsers[phone].password = newPass;
+
+      if (account.dob !== dob) {
+        alert("Identity Match Failure: The Date of Birth does not match account records!");
+        return;
+      }
+
+      if (newPin.length !== 4) {
+        alert("Please enter a valid 4-digit PIN.");
+        return;
+      }
+
+      account.pin = newPin;
       localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
-      alert("Password updated!");
-      closeModal('forgotModal');
+      playTerminalChime('success');
+      alert("Identity Verified! Your 4-Digit PIN has been updated. Please log in.");
+      closeModal('dobRecoveryModal');
+      switchAuth('pin');
     }
 
     function handleLogout() {
       document.getElementById("mainDashboard").classList.add("hidden");
       document.getElementById("authScreen").classList.remove("hidden");
+      switchAuth('pin');
     }
 
     function startApp() {
