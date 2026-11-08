@@ -62,10 +62,10 @@
       <p class="text-xs text-orange-400 mt-1 font-bold tracking-wider">MARITIME ASSET TERMINAL</p>
     </div>
 
-    <!-- Auth Tabs -->
+    <!-- Toggle Selector -->
     <div class="grid grid-cols-2 bg-[#090e1a] p-1.5 rounded-2xl border border-white/10 mb-5 shadow-inner">
-      <button id="tabPin" onclick="switchAuth('pin')" class="py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition">Quick PIN Login</button>
-      <button id="tabSignup" onclick="switchAuth('signup')" class="py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition">New Sign Up</button>
+      <button id="tabPin" onclick="switchAuthMode('pin')" class="py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition">Quick PIN Login</button>
+      <button id="tabSignup" onclick="switchAuthMode('signup')" class="py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition">New Sign Up</button>
     </div>
 
     <!-- Screen 1: FAST 4-DIGIT PIN LOGIN -->
@@ -82,7 +82,7 @@
         <input id="pinInput" type="password" maxlength="4" placeholder="••••" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-center text-lg tracking-[0.4em] text-white font-mono outline-none focus:border-[#ffd000]">
       </div>
       <div class="flex justify-between items-center text-[11px] pt-1">
-        <button onclick="switchAuth('login')" class="text-gray-400 hover:text-gray-200">Password Login</button>
+        <button onclick="switchAuthMode('login')" class="text-gray-400 hover:text-gray-200">Password Login</button>
         <button onclick="openModal('dobRecoveryModal')" class="text-orange-400 hover:text-orange-300 font-bold">Forgot PIN? Verify DOB</button>
       </div>
       <button onclick="handlePinLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase">
@@ -136,7 +136,7 @@
         <input id="loginPass" type="password" placeholder="Enter password" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ffd000]">
       </div>
       <div class="flex justify-between items-center text-[11px]">
-        <button onclick="switchAuth('pin')" class="text-orange-400 hover:text-orange-300 font-bold">Use PIN Login</button>
+        <button onclick="switchAuthMode('pin')" class="text-orange-400 hover:text-orange-300 font-bold">Use PIN Login</button>
         <button onclick="openModal('dobRecoveryModal')" class="text-gray-400 hover:text-white">Recover Key</button>
       </div>
       <button onclick="handlePasswordLogin()" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ffae00] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase">
@@ -145,7 +145,7 @@
     </div>
   </div>
 
-  <!-- DOB-SECURED PIN RECOVERY MODAL (STRICT ANTI-HIJACK GATE) -->
+  <!-- DOB-SECURED PIN RECOVERY MODAL -->
   <div id="dobRecoveryModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -197,7 +197,7 @@
     <main class="p-3.5 space-y-4">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- GUARANTEED ACTIVE REAL-TIME WITHDRAWALS TICKER -->
+        <!-- CONTINUOUSLY AUTO-ROTATING MASKED LIVE WITHDRAWALS -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3 shadow-lg">
           <div class="flex justify-between items-center mb-2 px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5">
@@ -226,7 +226,7 @@
           </div>
         </div>
 
-        <!-- Settled Liquid Capital Card -->
+        <!-- Live Holdings & Wallet Actions (Strict Zero Default) -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-orange-500/30 flex justify-between items-center shadow-lg">
           <div>
             <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Settled Liquid Capital</p>
@@ -241,8 +241,7 @@
             </button>
           </div>
         </div>
-
-        <!-- ================= 8 ORIGINAL 3D GOLDEN CIRCULAR ICONS GRID ================= -->
+                <!-- ================= 8 CIRCULAR GOLDEN STORY ICONS GRID ================= -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3.5 shadow-xl">
           <div class="grid grid-cols-4 gap-3 text-center">
             <!-- 1. About Us -->
@@ -311,7 +310,7 @@
           </div>
         </div>
 
-        <!-- Metrics & Harbor Check-In (+₹10.00) -->
+        <!-- Maritime Operational Metrics & Daily Check-In (+₹10.00 Claim) -->
         <div class="grid grid-cols-4 gap-2 text-center">
           <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
             <span class="text-[8px] text-gray-400 uppercase font-bold block">Active Ships</span>
@@ -991,7 +990,7 @@
   </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // Master State Management (Initial Balance Set to Strictly 0.00)
+    // Master State Management (Strict 0.00 Starting Balance)
     const state = {
       user: null,
       balance: 0.0,
@@ -1120,7 +1119,6 @@
       const plan = FLEET_PLANS.find(p => p.id === id);
       if (!plan) return;
 
-      // Sequential Purchasing: Require base plan before VIP purchase
       if (plan.price >= 700) {
         const hasBase = state.activePlans.some(p => p.price <= 500);
         if (!hasBase) {
@@ -1182,7 +1180,6 @@
         return;
       }
 
-      // Link Account Permanently in Vault Tab
       document.getElementById("accBankName").innerText = name;
       document.getElementById("accBankNumber").innerText = account;
       document.getElementById("accBankIfsc").innerText = ifsc || "UPI Instant Node";
@@ -1256,8 +1253,7 @@
       updateUI();
       alert("Deposit submitted! Status is PENDING. Funds reflect after bank clearance.");
     }
-
-    function adminApproveDeposit(id) {
+        function adminApproveDeposit(id) {
       const idx = pendingDeposits.findIndex(d => d.id === id);
       if (idx === -1) return;
       const record = pendingDeposits[idx];
@@ -1307,7 +1303,7 @@
       `).join("");
     }
 
-    // Masked Live Withdrawals Engine
+    // Live Withdrawals Engine
     const maskedNames = ["R*****h", "V*****m", "A***y", "S*****a", "D****k", "M***j", "P***a", "R***t", "S****h", "A***t", "V***y", "K***n"];
     const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200];
     let currentIndex = 0;
@@ -1331,7 +1327,6 @@
       currentIndex = (currentIndex + 1) % maskedNames.length;
     }
 
-    // Daily Harbor Claim (+₹10.00)
     function dailyCheckIn() {
       state.balance += 10;
       playTerminalChime('bonus');
@@ -1400,7 +1395,6 @@
       if (yld) yld.innerText = `₹ ${state.dailyIncome.toFixed(2)}`;
       if (count) count.innerText = `${state.activePlans.length} Active`;
 
-      // Top VIP Badge Dynamic Lighting
       const isVip = isUserVipQualified();
       const topBadge = document.getElementById("topVipBadge");
       const accPill = document.getElementById("accVipPill");
@@ -1429,7 +1423,65 @@
               <div><p class="font-bold text-white text-[11px]">${t.type}</p><p class="text-[9px] text-gray-500">${t.name} • ${t.time}</p></div>
               <span class="font-black text-xs ${t.status === 'PENDING' ? 'text-yellow-400' : (t.amount > 0 ? 'text-[#00f589]' : 'text-orange-400')} font-mono">
                 ${t.status === 'PENDING' ? '⏳ ₹' + t.amount : (t.amount > 0 ? '+' : '') + '₹' + Math.abs(t.amount)}
-        function handlePinLogin() {
+              </span>
+            </div>
+          `).join("");
+        } else {
+          txList.innerHTML = `<p class="text-gray-500 text-center py-4">No transactions recorded yet.</p>`;
+        }
+      }
+    }
+
+    // DIRECT ROBUST AUTH SWITCHER
+    function switchAuthMode(tab) {
+      const pinBox = document.getElementById("pinBox");
+      const signupBox = document.getElementById("signupBox");
+      const loginBox = document.getElementById("loginBox");
+      const tabPin = document.getElementById("tabPin");
+      const tabSignup = document.getElementById("tabSignup");
+
+      pinBox.classList.add("hidden");
+      signupBox.classList.add("hidden");
+      loginBox.classList.add("hidden");
+
+      tabPin.className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
+      tabSignup.className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
+
+      if (tab === 'pin') {
+        pinBox.classList.remove("hidden");
+        tabPin.className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition";
+      } else if (tab === 'signup') {
+        signupBox.classList.remove("hidden");
+        tabSignup.className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md transition";
+      } else if (tab === 'login') {
+        loginBox.classList.remove("hidden");
+      }
+    }
+
+    function handleRegister() {
+      const user = document.getElementById("regUser").value.trim();
+      const phone = document.getElementById("regPhone").value.trim();
+      const dob = document.getElementById("regDob").value;
+      const pin = document.getElementById("regPin").value.trim();
+      const pass = document.getElementById("regPass").value.trim();
+
+      if (!user || phone.length !== 10 || !dob || pin.length !== 4 || pass.length < 6) {
+        alert("Registration Incomplete: Please enter full name, 10-digit number, DOB, 4-digit PIN & minimum 6 character password.");
+        return;
+      }
+
+      registeredUsers[phone] = { name: user, dob: dob, pin: pin, password: pass };
+      localStorage.setItem('seaCargoUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('seaCargoLastPhone', phone);
+
+      state.user = { name: user, phone: phone, dob: dob };
+      playTerminalChime('success');
+      alert("Cargo Account created successfully! Initial balance is ₹0.00. Unlocking Terminal...");
+      startApp();
+    }
+
+    // STRICT PIN ONLY FAST LOGIN
+    function handlePinLogin() {
       const phone = document.getElementById("pinPhone").value.trim();
       const pin = document.getElementById("pinInput").value.trim();
 
@@ -1441,7 +1493,7 @@
       const account = registeredUsers[phone];
       if (!account) {
         alert("Account not found. Please click 'New Sign Up' first.");
-        switchAuth('signup');
+        switchAuthMode('signup');
         return;
       }
 
@@ -1450,6 +1502,7 @@
         return;
       }
 
+      localStorage.setItem('seaCargoLastPhone', phone);
       state.user = { name: account.name, phone: phone, dob: account.dob };
       playTerminalChime('success');
       startApp();
@@ -1465,12 +1518,12 @@
         return;
       }
 
+      localStorage.setItem('seaCargoLastPhone', phone);
       state.user = { name: account.name, phone: phone, dob: account.dob };
       playTerminalChime('success');
       startApp();
     }
 
-    // DOB-SECURED PIN RECOVERY HANDLER
     function handleDobPinReset() {
       const phone = document.getElementById("recPhone").value.trim();
       const dob = document.getElementById("recDob").value;
@@ -1497,13 +1550,14 @@
       playTerminalChime('success');
       alert("Identity Verified! Your 4-Digit PIN has been updated. Please log in.");
       closeModal('dobRecoveryModal');
-      switchAuth('pin');
+      switchAuthMode('pin');
     }
 
     function handleLogout() {
       document.getElementById("mainDashboard").classList.add("hidden");
       document.getElementById("authScreen").classList.remove("hidden");
-      switchAuth('pin');
+      switchAuthMode('pin');
+      checkLastUser();
     }
 
     function startApp() {
@@ -1550,10 +1604,18 @@
     function openModal(id) { const el = document.getElementById(id); if (el) el.classList.remove("hidden"); }
     function closeModal(id) { const el = document.getElementById(id); if (el) el.classList.add("hidden"); }
 
+    function checkLastUser() {
+      const lastPhone = localStorage.getItem('seaCargoLastPhone');
+      if (lastPhone && registeredUsers[lastPhone]) {
+        const phoneField = document.getElementById("pinPhone");
+        if (phoneField) phoneField.value = lastPhone;
+      }
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
+      checkLastUser();
       updateLiveWithdrawals();
       setInterval(updateLiveWithdrawals, 2500);
-      setInterval(processPlanPayouts, 1000);
       setInterval(renderFleetCountdowns, 1000);
     });
   </script>
