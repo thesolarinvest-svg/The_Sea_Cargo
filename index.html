@@ -62,13 +62,12 @@
       <p class="text-xs text-orange-400 mt-1 font-bold tracking-wider">MARITIME ASSET TERMINAL</p>
     </div>
 
-    <!-- Toggle Selector -->
     <div class="grid grid-cols-2 bg-[#090e1a] p-1.5 rounded-2xl border border-white/10 mb-5 shadow-inner">
       <button id="tabPin" onclick="switchAuthMode('pin')" class="py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition">Quick PIN Login</button>
       <button id="tabSignup" onclick="switchAuthMode('signup')" class="py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition">New Sign Up</button>
     </div>
 
-    <!-- Screen 1: FAST 4-DIGIT PIN LOGIN -->
+    <!-- Fast 4-Digit PIN Login -->
     <div id="pinBox" class="bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-4 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
@@ -90,7 +89,7 @@
       </button>
     </div>
 
-    <!-- Screen 2: SIGN UP FORM WITH DOB & PIN SETUP -->
+    <!-- Sign Up Form -->
     <div id="signupBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Full Legal Name</label>
@@ -105,7 +104,7 @@
       </div>
       <div class="grid grid-cols-2 gap-2">
         <div>
-          <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Date of Birth (Recovery)</label>
+          <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Date of Birth</label>
           <input id="regDob" type="date" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-2.5 py-2 text-xs text-white outline-none focus:border-[#ff7b00]">
         </div>
         <div>
@@ -122,7 +121,7 @@
       </button>
     </div>
 
-    <!-- Screen 3: BACKUP PASSWORD LOGIN -->
+    <!-- Backup Password Login -->
     <div id="loginBox" class="hidden bg-[#080d1a] border border-orange-500/20 rounded-3xl p-5 space-y-3.5 shadow-2xl">
       <div>
         <label class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Registered Mobile Number</label>
@@ -145,7 +144,7 @@
     </div>
   </div>
 
-  <!-- DOB-SECURED PIN RECOVERY MODAL -->
+  <!-- DOB-Secured PIN Recovery Modal -->
   <div id="dobRecoveryModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -175,12 +174,10 @@
   </div>
     <!-- ================= 2. MAIN APPLICATION ================= -->
   <div id="mainDashboard" class="hidden max-w-md mx-auto">
-    <!-- Top Header -->
     <header class="sticky top-0 z-40 bg-[#030712]/95 backdrop-blur-md border-b border-white/10 px-4 py-3 flex justify-between items-center select-none">
       <h1 onclick="handleAdminSecretTap()" class="text-sm font-black text-white tracking-wider font-luxury uppercase cursor-pointer">
         THE SEA CARGO
       </h1>
-      
       <div class="flex items-center gap-2">
         <span class="bg-[#003822]/60 border border-[#00f589]/40 text-[#00f589] text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-[#00f589] animate-pulse"></span> Terminal Connected
@@ -188,24 +185,19 @@
         <span id="topVipBadge" class="bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm">
           <i class="fa-solid fa-crown text-[9px]"></i> VIP
         </span>
-        <button class="text-gray-300 text-lg ml-1">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="text-gray-300 text-lg ml-1"><i class="fa-solid fa-bars"></i></button>
       </div>
     </header>
 
     <main class="p-3.5 space-y-4">
-      <!-- SECTION: HOMEPAGE -->
       <section id="sec-home" class="space-y-4">
-        <!-- CONTINUOUSLY AUTO-ROTATING MASKED LIVE WITHDRAWALS -->
+        <!-- Real-Time Member Withdrawals Ticker -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3 shadow-lg">
           <div class="flex justify-between items-center mb-2 px-1">
             <span class="text-xs font-black text-white flex items-center gap-1.5">
               <i class="fa-solid fa-bolt text-[#ffd000]"></i> Real-time Member Withdrawals
             </span>
-            <span class="text-[9px] font-extrabold text-[#00f589] bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-0.5 rounded-full uppercase">
-              Live UTR
-            </span>
+            <span class="text-[9px] font-extrabold text-[#00f589] bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-0.5 rounded-full uppercase">Live UTR</span>
           </div>
           <div id="liveWithdrawTicker" class="space-y-1.5 text-xs min-h-[92px]">
             <div class="flex justify-between items-center bg-[#030712] p-2 rounded-xl border border-white/5 fade-item">
@@ -226,7 +218,7 @@
           </div>
         </div>
 
-        <!-- Live Holdings & Wallet Actions (Strict Zero Default) -->
+        <!-- Settled Liquid Capital Card -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-orange-500/30 flex justify-between items-center shadow-lg">
           <div>
             <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Settled Liquid Capital</p>
@@ -241,66 +233,51 @@
             </button>
           </div>
         </div>
-                <!-- ================= 8 CIRCULAR GOLDEN STORY ICONS GRID ================= -->
+                <!-- 8 Circular Golden Story Icons Grid -->
         <div class="bg-[#080d1a] border border-white/10 rounded-2xl p-3.5 shadow-xl">
           <div class="grid grid-cols-4 gap-3 text-center">
-            <!-- 1. About Us -->
             <button onclick="openStory(1)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/Kcdkjw9p/01-About-Us.png" alt="About Us" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">About Us</span>
             </button>
-
-            <!-- 2. Our Fleet -->
             <button onclick="openStory(2)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/FbL8r1PW/02-Our-Fleet.png" alt="Our Fleet" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Our Fleet</span>
             </button>
-
-            <!-- 3. Global -->
             <button onclick="openStory(3)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/sht1GsT/03-Global.png" alt="Global" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Global</span>
             </button>
-
-            <!-- 4. Safety -->
             <button onclick="openStory(4)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/jZGpL8yH/04-Safety.png" alt="Safety" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Safety</span>
             </button>
-
-            <!-- 5. Plans -->
             <button onclick="openStory(5)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/yF5ZTjDN/05-Plans.png" alt="Plans" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Plans</span>
             </button>
-
-            <!-- 6. Partnership -->
             <button onclick="openStory(6)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/HLxDM6Z0/06-Partnership.png" alt="Partnership" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Partnership</span>
             </button>
-
-            <!-- 7. Support -->
             <button onclick="openStory(7)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/99tCkJpV/07-Support.png" alt="Support" class="w-full h-full object-cover rounded-full">
               </div>
               <span class="text-[10px] font-bold text-gray-200 mt-1 truncate w-full">Support</span>
             </button>
-
-            <!-- 8. Updates -->
             <button onclick="openStory(8)" class="flex flex-col items-center group active:scale-95 transition">
               <div class="w-14 h-14 rounded-full overflow-hidden p-0.5 border border-[#ffd000]/60 bg-black shadow-lg">
                 <img src="https://i.ibb.co/39QgxPCv/08-Updates.png" alt="Updates" class="w-full h-full object-cover rounded-full">
@@ -310,7 +287,7 @@
           </div>
         </div>
 
-        <!-- Maritime Operational Metrics & Daily Check-In (+₹10.00 Claim) -->
+        <!-- Metrics & Harbor Check-In (+₹10.00) -->
         <div class="grid grid-cols-4 gap-2 text-center">
           <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
             <span class="text-[8px] text-gray-400 uppercase font-bold block">Active Ships</span>
@@ -335,324 +312,163 @@
           <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded-md">9 Plans Active</span>
         </div>
 
-        <!-- 2x2 PLANS GRID: PLANS 1 TO 4 -->
         <div class="grid grid-cols-2 gap-3">
           <!-- PLAN 1: ₹350 -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 1</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Active Harbor Vessel</h4>
-              </div>
+              <div><p class="text-[9px] text-gray-400 font-bold">Plan 1</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Active Harbor Vessel</h4></div>
               <span class="text-xs font-black text-[#00f589] font-mono">₹350</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 1" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 1" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(1)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(1)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy now</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹350.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹3500.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹350.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹3500.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Singapore to JNPT</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Singapore to JNPT</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span></div>
             </div>
           </div>
 
           <!-- PLAN 2: ₹450 -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 2</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Ocean Feeder</h4>
-              </div>
+              <div><p class="text-[9px] text-gray-400 font-bold">Plan 2</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Ocean Feeder</h4></div>
               <span class="text-xs font-black text-[#ff7b00] font-mono">₹450</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/FkWf9jhT/file-00000000a8748208a42ad1212440a40e.png" alt="Plan 2" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/FkWf9jhT/file-00000000a8748208a42ad1212440a40e.png" alt="Plan 2" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(2)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(2)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy now</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹450.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹4500.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹450.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹4500.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Colombo to Mundra</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Colombo to Mundra</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span></div>
             </div>
           </div>
 
           <!-- PLAN 3: ₹500 -->
           <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 3</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">VIP Offshore</h4>
-              </div>
+              <div><p class="text-[9px] text-gray-400 font-bold">Plan 3</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Offshore Carrier</h4></div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹500</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/Y74NWMrp/file-000000008e7882118eb69c525667c070.png" alt="Plan 3" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/Y74NWMrp/file-000000008e7882118eb69c525667c070.png" alt="Plan 3" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(3)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(3)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy now</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹500.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹5000.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹500.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹5000.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Dubai to Chennai</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Dubai to Chennai</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span></div>
             </div>
           </div>
 
-          <!-- PLAN 4: VIP 2 ₹700 (Daily ₹750) -->
-          <div class="plan-card flex flex-col justify-between border-2 border-yellow-500/50">
+          <!-- PLAN 4: ₹700 -->
+          <div class="plan-card flex flex-col justify-between">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-[#ffd000] font-black uppercase flex items-center gap-1"><i class="fa-solid fa-crown text-[8px]"></i> VIP 2</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">VIP Deep-Sea</h4>
-              </div>
+              <div><p class="text-[9px] text-gray-400 font-bold">Plan 4</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Deep-Sea Fleet</h4></div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹700</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 4" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 4" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(4)" class="w-full bg-[#ffd000] hover:bg-[#ffb700] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy VIP Plan
-              </button>
-              
+              <button onclick="buyFleetPlan(4)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy now</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹750.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹7500.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹750.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹7500.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Port Klang to Mumbai</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Port Klang to Mumbai</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">10 Days</span></div>
             </div>
           </div>
         </div>
-                <!-- 2x2 PLANS GRID: PLANS 5 TO 8 & 9 -->
+                <!-- VIP PLANS GRID: PLANS 5 TO 9 (VIP STARTS FROM ₹900) -->
         <div class="grid grid-cols-2 gap-3 mt-3">
-          <!-- PLAN 5: ₹900 (Daily ₹1000, 15 Days) -->
-          <div class="plan-card flex flex-col justify-between">
+          <!-- PLAN 5: VIP TIER 1 ₹900 (Daily ₹1000, 15 Days) -->
+          <div class="plan-card flex flex-col justify-between border-2 border-yellow-500/50">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 5</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Harbor Express</h4>
-              </div>
+              <div><p class="text-[9px] text-[#ffd000] font-black uppercase flex items-center gap-1"><i class="fa-solid fa-crown text-[8px]"></i> VIP 1</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Harbor Express</h4></div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹900</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 5" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 5" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(5)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(5)" class="w-full bg-[#ffd000] hover:bg-[#ffb700] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy VIP Plan</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹1000.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹15000.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹1000.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹15000.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Colombos to Mundra</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">15 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Colombos to Mundra</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">15 Days</span></div>
             </div>
           </div>
 
-          <!-- PLAN 6: ₹1500 (Daily ₹1650, 14 Days) -->
-          <div class="plan-card flex flex-col justify-between">
+          <!-- PLAN 6: VIP TIER 2 ₹1500 (Daily ₹1650, 14 Days) -->
+          <div class="plan-card flex flex-col justify-between border-2 border-yellow-500/50">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 6</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Pacific Carrier</h4>
-              </div>
+              <div><p class="text-[9px] text-[#ffd000] font-black uppercase flex items-center gap-1"><i class="fa-solid fa-crown text-[8px]"></i> VIP 2</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Pacific Carrier</h4></div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹1500</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/FkWf9jhT/file-00000000a8748208a42ad1212440a40e.png" alt="Plan 6" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/FkWf9jhT/file-00000000a8748208a42ad1212440a40e.png" alt="Plan 6" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(6)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(6)" class="w-full bg-[#ffd000] hover:bg-[#ffb700] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy VIP Plan</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹1650.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹23100.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹1650.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹23100.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Colombo to Mundra</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">14 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Colombo to Mundra</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">14 Days</span></div>
             </div>
           </div>
 
-          <!-- PLAN 7: ₹2500 (Daily ₹3900, 14 Days) -->
-          <div class="plan-card flex flex-col justify-between">
+          <!-- PLAN 7: VIP TIER 3 ₹2500 (Daily ₹3900, 14 Days) -->
+          <div class="plan-card flex flex-col justify-between border-2 border-yellow-500/50">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 7</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Atlantic Fleet</h4>
-              </div>
+              <div><p class="text-[9px] text-[#ffd000] font-black uppercase flex items-center gap-1"><i class="fa-solid fa-crown text-[8px]"></i> VIP 3</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Atlantic Fleet</h4></div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹2500</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/Y74NWMrp/file-000000008e7882118eb69c525667c070.png" alt="Plan 7" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/Y74NWMrp/file-000000008e7882118eb69c525667c070.png" alt="Plan 7" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(7)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(7)" class="w-full bg-[#ffd000] hover:bg-[#ffb700] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy VIP Plan</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹3900.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹54600.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹3900.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹54600.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Port Klang to Mumbai</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">14 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Port Klang to Mumbai</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">14 Days</span></div>
             </div>
           </div>
 
-          <!-- PLAN 8: ₹3000 (Daily ₹3300, 18 Days) -->
-          <div class="plan-card flex flex-col justify-between">
+          <!-- PLAN 8: VIP TIER 4 ₹3000 (Daily ₹3300, 18 Days) -->
+          <div class="plan-card flex flex-col justify-between border-2 border-yellow-500/50">
             <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-              <div>
-                <p class="text-[9px] text-gray-400 font-bold">Plan 8</p>
-                <h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Container Liner</h4>
-              </div>
+              <div><p class="text-[9px] text-[#ffd000] font-black uppercase flex items-center gap-1"><i class="fa-solid fa-crown text-[8px]"></i> VIP 4</p><h4 class="text-[11px] font-black text-white truncate max-w-[85px]">Container Liner</h4></div>
               <span class="text-xs font-black text-[#ffd000] font-mono">₹3000</span>
             </div>
-            <div class="h-28 w-full bg-black relative overflow-hidden">
-              <img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 8" class="w-full h-full object-cover">
-            </div>
+            <div class="h-28 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/R4CHJ1Kh/file-0000000019fc821199fd765e04fc89b0.png" alt="Plan 8" class="w-full h-full object-cover"></div>
             <div class="p-2.5 space-y-2">
-              <button onclick="buyFleetPlan(8)" class="w-full bg-[#ff7b00] hover:bg-[#ff8c1a] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">
-                Buy now
-              </button>
-              
+              <button onclick="buyFleetPlan(8)" class="w-full bg-[#ffd000] hover:bg-[#ffb700] text-black font-black py-2 rounded-xl text-[11px] uppercase tracking-wider active:scale-95 transition shadow-md">Buy VIP Plan</button>
               <div class="bg-[#050914] p-2.5 rounded-xl border border-white/10 space-y-2 shadow-inner">
-                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span>
-                  <b class="text-sm font-black text-[#00f589] font-mono">₹3300.00</b>
-                </div>
-                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg">
-                  <span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span>
-                  <b class="text-sm font-black text-[#ffd000] font-mono">₹59400.00</b>
-                </div>
+                <div class="flex justify-between items-center bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#00f589] tracking-wider">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹3300.00</b></div>
+                <div class="flex justify-between items-center bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-1 rounded-lg"><span class="text-[9px] uppercase font-extrabold text-[#ffd000] tracking-wider">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹59400.00</b></div>
               </div>
-
-              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5">
-                <span class="truncate">Port Klang to Mumbai</span>
-                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">18 Days</span>
-              </div>
+              <div class="flex justify-between items-center text-[9px] text-orange-400/90 font-mono pt-0.5 px-0.5"><span class="truncate">Port Klang to Mumbai</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">18 Days</span></div>
             </div>
           </div>
         </div>
 
-        <!-- PLAN 9: ₹3500 (Daily ₹3900, 18 Days) -->
-        <div class="plan-card mt-3">
+        <!-- PLAN 9: VIP TIER 5 ₹3500 (Daily ₹3900, 18 Days) -->
+        <div class="plan-card mt-3 border-2 border-yellow-500/60">
           <div class="p-2.5 bg-[#060a14] border-b border-white/5 flex justify-between items-center">
-            <div>
-              <p class="text-[9px] text-[#ffd000] font-black uppercase tracking-wider">Ultra Enterprise Plan 9</p>
-              <h4 class="text-xs font-black text-white">Global Maritime Sovereign</h4>
-            </div>
+            <div><p class="text-[9px] text-[#ffd000] font-black uppercase tracking-wider flex items-center gap-1"><i class="fa-solid fa-crown text-[9px]"></i> VIP 5 SOVEREIGN</p><h4 class="text-xs font-black text-white">Global Maritime Sovereign</h4></div>
             <span class="text-sm font-black text-[#ffd000] font-mono">₹3,500</span>
           </div>
-          <div class="h-32 w-full bg-black relative overflow-hidden">
-            <img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 9" class="w-full h-full object-cover">
-          </div>
+          <div class="h-32 w-full bg-black relative overflow-hidden"><img src="https://i.ibb.co/SXWvYtN3/file-0000000016c88208aeb76faf8cda64a8.png" alt="Plan 9" class="w-full h-full object-cover"></div>
           <div class="p-3 space-y-2">
-            <button onclick="buyFleetPlan(9)" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ff9800] to-[#ff5100] text-black font-black py-2.5 rounded-xl text-xs uppercase tracking-wider active:scale-95 transition shadow-lg">
-              Buy Enterprise Fleet
-            </button>
+            <button onclick="buyFleetPlan(9)" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ff9800] to-[#ff5100] text-black font-black py-2.5 rounded-xl text-xs uppercase tracking-wider active:scale-95 transition shadow-lg">Buy Sovereign VIP</button>
             <div class="grid grid-cols-2 gap-2 bg-[#050914] p-2.5 rounded-xl border border-white/10">
-              <div class="bg-[#00f589]/10 border border-[#00f589]/30 p-2 rounded-lg text-center">
-                <span class="text-[8px] uppercase font-extrabold text-[#00f589] block">Daily Income</span>
-                <b class="text-sm font-black text-[#00f589] font-mono">₹3,900.00</b>
-              </div>
-              <div class="bg-[#ffd000]/10 border border-[#ffd000]/30 p-2 rounded-lg text-center">
-                <span class="text-[8px] uppercase font-extrabold text-[#ffd000] block">Total Income</span>
-                <b class="text-sm font-black text-[#ffd000] font-mono">₹70,200.00</b>
-              </div>
+              <div class="bg-[#00f589]/10 border border-[#00f589]/30 p-2 rounded-lg text-center"><span class="text-[8px] uppercase font-extrabold text-[#00f589] block">Daily Income</span><b class="text-sm font-black text-[#00f589] font-mono">₹3,900.00</b></div>
+              <div class="bg-[#ffd000]/10 border border-[#ffd000]/30 p-2 rounded-lg text-center"><span class="text-[8px] uppercase font-extrabold text-[#ffd000] block">Total Income</span><b class="text-sm font-black text-[#ffd000] font-mono">₹70,200.00</b></div>
             </div>
-            <div class="flex justify-between items-center text-[10px] text-orange-400 font-mono px-1">
-              <span>Rotterdam to JNPT Harbor</span>
-              <span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-2 py-0.5 rounded text-[9px] uppercase">18 Days</span>
-            </div>
+            <div class="flex justify-between items-center text-[10px] text-orange-400 font-mono px-1"><span>Rotterdam to JNPT Harbor</span><span class="bg-orange-500/20 border border-orange-500/30 text-orange-400 font-extrabold px-2 py-0.5 rounded text-[9px] uppercase">18 Days</span></div>
           </div>
         </div>
-                <!-- ================= 6-CARD TRUSTED ACCREDITATION GRID ================= -->
+                <!-- 6-Card Accreditation Grid -->
         <div class="pt-6 space-y-3">
           <h2 class="text-base font-black text-white tracking-wide px-1">Trusted & Transparent Accreditation Grid</h2>
           <div class="grid grid-cols-2 gap-2.5">
@@ -683,107 +499,49 @@
           </div>
         </div>
 
-        <!-- 5 GOLD LUXURY CERTIFICATES -->
+        <!-- 5 Gold Certificates -->
         <div class="pt-6 pb-2 space-y-3">
           <div class="flex justify-between items-center px-1">
             <h3 class="text-sm font-black text-white uppercase tracking-wider font-luxury">INSTITUTIONAL ACCREDITATIONS</h3>
             <span class="text-[9px] font-black text-[#ffd000] bg-[#ffd000]/10 border border-[#ffd000]/30 px-2 py-0.5 rounded-full">5 Official Citations</span>
           </div>
           <div class="grid grid-cols-2 gap-3">
-            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32">
-              <div class="text-2xl">📜</div>
-              <div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">ISO Certification</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">ISO 9001:2015</p></div>
-              <span class="text-[8px] font-bold text-[#008744]">✓ ACTIVE</span>
-            </div>
-            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32">
-              <div class="text-2xl">⚓</div>
-              <div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">Trade License</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">Port Operator</p></div>
-              <span class="text-[8px] font-bold text-[#008744]">✓ LICENSED</span>
-            </div>
-            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32">
-              <div class="text-2xl">🏛️</div>
-              <div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">Escrow Banking</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">Custodial Safeguard</p></div>
-              <span class="text-[8px] font-bold text-[#008744]">✓ BONDED</span>
-            </div>
-            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32">
-              <div class="text-2xl">🛡️</div>
-              <div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">Liquidity Reserve</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">Distribution Safe</p></div>
-              <span class="text-[8px] font-bold text-[#008744]">✓ VERIFIED</span>
-            </div>
+            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32"><div class="text-2xl">📜</div><div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">ISO Certification</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">ISO 9001:2015</p></div><span class="text-[8px] font-bold text-[#008744]">✓ ACTIVE</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32"><div class="text-2xl">⚓</div><div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">Trade License</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">Port Operator</p></div><span class="text-[8px] font-bold text-[#008744]">✓ LICENSED</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32"><div class="text-2xl">🏛️</div><div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">Escrow Banking</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">Custodial Safeguard</p></div><span class="text-[8px] font-bold text-[#008744]">✓ BONDED</span></div>
+            <div class="cert-luxury rounded-2xl p-3 text-center flex flex-col justify-between h-32"><div class="text-2xl">🛡️</div><div><h5 class="text-[10px] font-black text-gray-900 leading-tight uppercase font-serif">Liquidity Reserve</h5><p class="text-[8px] text-gray-700 font-semibold mt-0.5">Distribution Safe</p></div><span class="text-[8px] font-bold text-[#008744]">✓ VERIFIED</span></div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION: ENHANCED PROFESSIONAL WALLET / LEDGER -->
+      <!-- SECTION: WALLET / LEDGER -->
       <section id="sec-ledger" class="hidden space-y-4">
         <div class="bg-gradient-to-br from-[#0c1324] via-[#080d1a] to-[#040711] p-5 rounded-3xl border border-orange-500/40 shadow-2xl relative overflow-hidden">
           <div class="flex justify-between items-start">
-            <div>
-              <p class="text-[10px] font-black text-orange-400 tracking-widest uppercase">MARITIME PORTFOLIO DESK</p>
-              <h2 class="text-3xl font-black text-white font-mono mt-1" id="ledgerBalanceDisplay">₹ 0.00</h2>
-              <p class="text-[10px] text-gray-400 mt-0.5">Total Settled Available Capital</p>
-            </div>
-            <span class="w-11 h-11 rounded-2xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-lg">
-              <i class="fa-solid fa-vault"></i>
-            </span>
+            <div><p class="text-[10px] font-black text-orange-400 tracking-widest uppercase">MARITIME PORTFOLIO DESK</p><h2 class="text-3xl font-black text-white font-mono mt-1" id="ledgerBalanceDisplay">₹ 0.00</h2><p class="text-[10px] text-gray-400 mt-0.5">Total Settled Available Capital</p></div>
+            <span class="w-11 h-11 rounded-2xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-lg"><i class="fa-solid fa-vault"></i></span>
           </div>
-
-          <!-- Quick Action Buttons Inside Wallet -->
           <div class="grid grid-cols-2 gap-2 mt-4">
-            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg uppercase tracking-wider flex items-center justify-center gap-1.5">
-              <i class="fa-solid fa-circle-plus"></i> Add Funds
-            </button>
-            <button onclick="openModal('withdrawModal')" class="bg-[#030712] border border-white/20 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider flex items-center justify-center gap-1.5">
-              <i class="fa-solid fa-arrow-down"></i> Withdraw
-            </button>
+            <button onclick="openModal('rechargeModal')" class="bg-gradient-to-r from-[#ff6b00] to-[#ffa100] text-black font-black py-2.5 rounded-xl text-xs active:scale-95 transition shadow-lg uppercase tracking-wider flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-plus"></i> Add Funds</button>
+            <button onclick="openModal('withdrawModal')" class="bg-[#030712] border border-white/20 text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider flex items-center justify-center gap-1.5"><i class="fa-solid fa-arrow-down"></i> Withdraw</button>
           </div>
-
-          <!-- 4-Card Portfolio Analytics -->
           <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/10">
-            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
-              <span class="text-[8px] text-gray-400 uppercase font-bold block">Total Deposited</span>
-              <p class="text-xs font-black text-[#00f589] font-mono mt-0.5" id="ledgerDepositDisplay">₹ 0.00</p>
-            </div>
-            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
-              <span class="text-[8px] text-gray-400 uppercase font-bold block">Total Withdrawn</span>
-              <p class="text-xs font-black text-[#ffd000] font-mono mt-0.5" id="ledgerWithdrawnDisplay">₹ 0.00</p>
-            </div>
-            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
-              <span class="text-[8px] text-gray-400 uppercase font-bold block">Daily Expected Yield</span>
-              <p class="text-xs font-black text-orange-400 font-mono mt-0.5" id="ledgerYieldDisplay">₹ 0.00</p>
-            </div>
-            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5">
-              <span class="text-[8px] text-gray-400 uppercase font-bold block">Escrow Protection</span>
-              <p class="text-[10px] font-black text-[#00f589] mt-0.5">100% Bonded</p>
-            </div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5"><span class="text-[8px] text-gray-400 uppercase font-bold block">Total Deposited</span><p class="text-xs font-black text-[#00f589] font-mono mt-0.5" id="ledgerDepositDisplay">₹ 0.00</p></div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5"><span class="text-[8px] text-gray-400 uppercase font-bold block">Total Withdrawn</span><p class="text-xs font-black text-[#ffd000] font-mono mt-0.5" id="ledgerWithdrawnDisplay">₹ 0.00</p></div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5"><span class="text-[8px] text-gray-400 uppercase font-bold block">Daily Expected Yield</span><p class="text-xs font-black text-orange-400 font-mono mt-0.5" id="ledgerYieldDisplay">₹ 0.00</p></div>
+            <div class="bg-[#030712]/90 p-2.5 rounded-xl border border-white/5"><span class="text-[8px] text-gray-400 uppercase font-bold block">Escrow Protection</span><p class="text-[10px] font-black text-[#00f589] mt-0.5">100% Bonded</p></div>
           </div>
         </div>
-
-        <!-- Active Fleet Allocations -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
-          <div class="flex justify-between items-center">
-            <h3 class="text-xs font-black text-white uppercase tracking-wider">Active Fleet Allocations</h3>
-            <span class="text-[10px] text-orange-400 font-mono font-bold" id="activePlanCount">0 Active</span>
-          </div>
-          <div id="myPlansList" class="space-y-2 text-xs">
-            <div class="text-center py-6 space-y-2">
-              <i class="fa-solid fa-ship text-2xl text-gray-600"></i>
-              <p class="text-gray-500 text-xs">No active fleets allocated yet.</p>
-              <button onclick="switchTab('home')" class="text-[10px] text-orange-400 underline font-bold">Explore Fleet Plans</button>
-            </div>
-          </div>
+          <div class="flex justify-between items-center"><h3 class="text-xs font-black text-white uppercase tracking-wider">Active Fleet Allocations</h3><span class="text-[10px] text-orange-400 font-mono font-bold" id="activePlanCount">0 Active</span></div>
+          <div id="myPlansList" class="space-y-2 text-xs"><p class="text-gray-500 text-center py-4">No active fleets allocated yet.</p></div>
         </div>
-
-        <!-- Financial Transactions Ledger -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
           <h3 class="text-xs font-black text-white uppercase tracking-wider">Financial Transactions Ledger</h3>
-          <div id="txHistoryList" class="space-y-2 text-xs">
-            <p class="text-gray-500 text-center py-4">No transactions recorded yet.</p>
-          </div>
+          <div id="txHistoryList" class="space-y-2 text-xs"><p class="text-gray-500 text-center py-4">No transactions recorded yet.</p></div>
         </div>
       </section>
-
-      <!-- SECTION: PARTNER -->
+            <!-- SECTION: PARTNER -->
       <section id="sec-partner" class="hidden space-y-4">
         <div class="bg-[#080d1a] p-5 rounded-3xl border border-orange-500/30 text-center space-y-3">
           <span class="text-[10px] font-black text-[#ffd000] tracking-widest uppercase">Institutional Referral Program</span>
@@ -794,31 +552,23 @@
           </div>
         </div>
       </section>
-            <!-- SECTION: ENHANCED ACCOUNT & IDENTITY VAULT -->
+
+      <!-- SECTION: ACCOUNT VAULT -->
       <section id="sec-account" class="hidden space-y-4">
-        <!-- Profile Identity Card -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-xl font-black">
-              <i class="fa-solid fa-user-shield"></i>
-            </div>
+            <div class="w-12 h-12 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-xl font-black"><i class="fa-solid fa-user-shield"></i></div>
             <div>
-              <div class="flex items-center gap-2">
-                <h3 id="accUsername" class="text-sm font-black text-white">Investor</h3>
-                <span id="accVipPill" class="text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10">Standard Tier</span>
-              </div>
+              <div class="flex items-center gap-2"><h3 id="accUsername" class="text-sm font-black text-white">Investor</h3><span id="accVipPill" class="text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-white/10 text-gray-400 border border-white/10">Standard Tier</span></div>
               <p id="accPhone" class="text-xs text-gray-400 font-mono mt-0.5">+91 **********</p>
             </div>
           </div>
           <button onclick="handleLogout()" class="text-xs text-red-400 font-bold bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl active:scale-95">Logout</button>
         </div>
 
-        <!-- Linked Bank & Settlement Details Card -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-3">
           <div class="flex justify-between items-center">
-            <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
-              <i class="fa-solid fa-building-columns text-[#ffd000]"></i> Settlement Bank Account
-            </h4>
+            <h4 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-building-columns text-[#ffd000]"></i> Settlement Bank Account</h4>
             <span class="text-[8px] font-black text-[#00f589] bg-[#00f589]/10 border border-[#00f589]/30 px-2 py-0.5 rounded-full">Encrypted</span>
           </div>
           <div class="bg-[#030712] p-3 rounded-xl border border-white/5 space-y-2 text-xs">
@@ -828,26 +578,16 @@
           </div>
         </div>
 
-        <!-- Security & PIN Management Drawer -->
         <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/10 space-y-2.5 text-xs">
           <h4 class="text-xs font-black text-white uppercase tracking-wider">Identity & Security Node</h4>
-          <div class="flex justify-between py-1.5 border-b border-white/5">
-            <span class="text-gray-400">Date of Birth (Recovery)</span>
-            <span id="accDobMasked" class="text-orange-400 font-mono font-bold">Verified On Record ✓</span>
-          </div>
-          <div class="flex justify-between py-1.5 border-b border-white/5">
-            <span class="text-gray-400">Quick PIN Status</span>
-            <span class="text-[#00f589] font-bold">Bonded & Active ✓</span>
-          </div>
-          <div class="flex justify-between py-1.5">
-            <span class="text-gray-400">Custodial Security Node</span>
-            <span class="text-[#ffd000] font-mono font-bold">256-Bit SSL Bonded</span>
-          </div>
+          <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-gray-400">Date of Birth (Recovery)</span><span class="text-orange-400 font-mono font-bold">Verified On Record ✓</span></div>
+          <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-gray-400">Quick PIN Status</span><span class="text-[#00f589] font-bold">Bonded & Active ✓</span></div>
+          <div class="flex justify-between py-1.5"><span class="text-gray-400">Custodial Security Node</span><span class="text-[#ffd000] font-mono font-bold">256-Bit SSL Bonded</span></div>
         </div>
       </section>
     </main>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#030712]/95 backdrop-blur-xl border-t border-white/10 max-w-md mx-auto px-2 py-2.5">
       <div class="grid grid-cols-4 text-center">
         <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center gap-1 text-[#ff7b00]"><i class="fa-solid fa-house text-base"></i><span class="text-[10px] font-bold">Home</span></button>
@@ -858,40 +598,25 @@
     </nav>
   </div>
 
-  <!-- ================= 3. POPUP MODALS ================= -->
-
-  <!-- INSTAGRAM-STYLE FULLSCREEN STORY POPUP MODAL -->
+  <!-- STORY VIEWER MODAL -->
   <div id="storyModal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex items-center justify-center p-3 select-none">
     <div class="relative w-full max-w-sm h-[88vh] bg-[#050811] rounded-3xl border border-orange-500/30 overflow-hidden shadow-2xl flex flex-col justify-between">
       <div class="p-3.5 z-20 bg-gradient-to-b from-black/90 to-transparent">
-        <div class="w-full bg-white/20 h-1 rounded-full overflow-hidden mb-2.5">
-          <div id="storyProgressBar" class="h-full bg-gradient-to-r from-[#ffd000] to-[#ff7b00] transition-all duration-100 ease-linear" style="width: 0%;"></div>
-        </div>
+        <div class="w-full bg-white/20 h-1 rounded-full overflow-hidden mb-2.5"><div id="storyProgressBar" class="h-full bg-gradient-to-r from-[#ffd000] to-[#ff7b00] transition-all duration-100 ease-linear" style="width: 0%;"></div></div>
         <div class="flex justify-between items-center">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#00f589] animate-pulse"></span>
-            <h4 id="storyTitle" class="text-xs font-black text-white font-luxury uppercase tracking-wider">Cargo Story</h4>
-          </div>
+          <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-[#00f589] animate-pulse"></span><h4 id="storyTitle" class="text-xs font-black text-white font-luxury uppercase tracking-wider">Cargo Story</h4></div>
           <button onclick="closeStory()" class="text-white text-base bg-white/10 hover:bg-white/20 w-7 h-7 rounded-full flex items-center justify-center active:scale-95 transition">✕</button>
         </div>
       </div>
-      <div class="absolute inset-0 z-10 flex items-center justify-center p-2">
-        <img id="storyImage" src="" alt="Story View" class="max-w-full max-h-[82vh] object-contain rounded-2xl shadow-2xl">
-      </div>
-      <div class="p-3.5 z-20 bg-gradient-to-t from-black/90 to-transparent text-center">
-        <button onclick="closeStory()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs uppercase tracking-wider active:scale-95 transition shadow-lg">
-          Done Reading
-        </button>
-      </div>
+      <div class="absolute inset-0 z-10 flex items-center justify-center p-2"><img id="storyImage" src="" alt="Story View" class="max-w-full max-h-[82vh] object-contain rounded-2xl shadow-2xl"></div>
+      <div class="p-3.5 z-20 bg-gradient-to-t from-black/90 to-transparent text-center"><button onclick="closeStory()" class="w-full bg-gradient-to-r from-[#ff7b00] to-[#ffd000] text-black font-black py-2.5 rounded-xl text-xs uppercase tracking-wider active:scale-95 transition shadow-lg">Done Reading</button></div>
     </div>
   </div>
-    <!-- RECHARGE / DEPOSIT MODAL WITH CLEAN DIRECT PAYMENT & HIDDEN RAW UPI -->
+    <!-- RECHARGE / DEPOSIT MODAL (HIDDEN UPI TEXT, DIRECT APP LAUNCH) -->
   <div id="rechargeModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border border-orange-500/30 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[90vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
-        <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
-          <i class="fa-solid fa-wallet text-[#ff7b00]"></i> DIRECT UPI GATEWAY
-        </h3>
+        <h3 class="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2"><i class="fa-solid fa-wallet text-[#ff7b00]"></i> DIRECT UPI GATEWAY</h3>
         <button onclick="closeModal('rechargeModal')" class="text-gray-400 hover:text-white text-sm">✕</button>
       </div>
 
@@ -921,7 +646,6 @@
           </button>
         </div>
 
-        <!-- Pay via Other UPI Apps (Direct App Launcher, No Raw Text Displayed) -->
         <button onclick="launchUpi('any')" class="w-full mt-2.5 bg-[#030712] border border-white/10 hover:border-orange-500/40 p-2.5 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition text-xs font-bold text-gray-300">
           <i class="fa-solid fa-mobile-screen-button text-[#ff7b00]"></i>
           <span>Pay via Other UPI Apps (CRED, Amazon Pay, Any Bank)</span>
@@ -929,10 +653,7 @@
       </div>
 
       <div class="space-y-3 pt-2 border-t border-white/10">
-        <div>
-          <label class="text-[10px] uppercase font-bold text-gray-400">12-Digit Bank UTR / Reference No.</label>
-          <input id="depUtr" type="text" maxlength="12" placeholder="e.g. 4328XXXXXXXX" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white font-mono outline-none focus:border-[#ff7b00]">
-        </div>
+        <div><label class="text-[10px] uppercase font-bold text-gray-400">12-Digit Bank UTR / Reference No.</label><input id="depUtr" type="text" maxlength="12" placeholder="e.g. 4328XXXXXXXX" class="w-full mt-1 bg-[#030712] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white font-mono outline-none focus:border-[#ff7b00]"></div>
         <div>
           <label class="text-[10px] uppercase font-bold text-gray-400 block mb-1">Attach Payment Screenshot / Receipt</label>
           <label class="flex flex-col items-center justify-center border border-dashed border-white/20 rounded-xl p-3 cursor-pointer bg-[#030712] hover:border-orange-500/50 transition">
@@ -941,9 +662,7 @@
             <input type="file" id="depSlipInput" accept="image/*" class="hidden" onchange="handleSlipSelection(this)">
           </label>
         </div>
-        <button onclick="submitDeposit()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-lg">
-          Submit Deposit Receipt
-        </button>
+        <button onclick="submitDeposit()" class="w-full bg-gradient-to-r from-[#ff6b00] to-[#ffd000] text-black font-black py-3 rounded-xl text-xs active:scale-95 transition uppercase tracking-wider shadow-lg">Submit Deposit Receipt</button>
       </div>
     </div>
   </div>
@@ -965,17 +684,36 @@
     </div>
   </div>
 
-  <!-- STRICT VIP 2 REQUIREMENT POPUP -->
-  <div id="vipNoticeModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-[#080d1a] border-2 border-red-500/40 rounded-3xl p-5 w-full max-w-sm space-y-4 text-center shadow-2xl">
-      <div class="w-14 h-14 mx-auto rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-500 text-2xl animate-pulse"><i class="fa-solid fa-lock"></i></div>
-      <h3 class="text-base font-black text-white tracking-wide uppercase font-luxury">VIP 2 Requirement Gate</h3>
-      <p class="text-gray-300 text-xs">To unlock settlements, terminal rules require activating at least one Base Plan (Plans 1-3) followed by VIP 2 (Plan 4 - ₹700 or above).</p>
-      <button onclick="closeModal('vipNoticeModal'); switchTab('home')" class="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-black py-2.5 rounded-xl text-xs active:scale-95 uppercase tracking-wider shadow-lg">Activate VIP 2 Plan</button>
+  <!-- LUXURY DYNAMIC 2-STEP VIP TOP-UP GATE MODAL (ONLY ON WITHDRAWAL CLICK) -->
+  <div id="vipNoticeModal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
+    <div class="bg-gradient-to-b from-[#130d04] via-[#0a0f1d] to-[#050811] border-2 border-[#d4af37] rounded-3xl p-6 w-full max-w-sm space-y-4 text-center shadow-[0_0_40px_rgba(212,175,55,0.25)] relative overflow-hidden">
+      <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#ffd000]/20 to-[#ff7b00]/20 border-2 border-[#ffd000] flex items-center justify-center text-[#ffd000] text-3xl shadow-lg">
+        <i id="vipGateIcon" class="fa-solid fa-crown"></i>
+      </div>
+      <div>
+        <span id="vipGateTag" class="text-[9px] font-black uppercase tracking-widest bg-[#ffd000]/20 text-[#ffd000] px-2.5 py-0.5 rounded-full border border-[#ffd000]/40">Institutional Clearing Protocol</span>
+        <h3 id="vipGateTitle" class="text-lg font-black text-white tracking-wide uppercase font-luxury mt-2">VIP Clearance Required</h3>
+      </div>
+      <p id="vipGateDesc" class="text-gray-300 text-xs leading-relaxed">
+        To initiate automated settlement clearing, terminal guidelines require holding an active <b class="text-[#ffd000]">VIP Fleet Plan (starting from ₹900)</b>.
+      </p>
+      <div class="bg-[#030712] border border-white/10 rounded-xl p-3 text-left text-[11px] space-y-1.5">
+        <div class="flex justify-between">
+          <span class="text-gray-400">Step 1: VIP Entry (₹900+)</span>
+          <span id="vipStep1Status" class="font-bold text-red-400">Pending</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">Step 2: Executive VIP (₹1,500+)</span>
+          <span id="vipStep2Status" class="font-bold text-red-400">Pending</span>
+        </div>
+      </div>
+      <button onclick="closeModal('vipNoticeModal'); switchTab('home')" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ff9800] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-95 uppercase tracking-wider shadow-lg">
+        Activate Required VIP Fleet
+      </button>
     </div>
   </div>
 
-  <!-- ADMIN AUDIT CONTROL PANEL MODAL -->
+  <!-- ADMIN AUDIT DESK -->
   <div id="adminPanelModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#080d1a] border-2 border-[#00f589]/40 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[85vh] overflow-y-auto shadow-2xl">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -1007,20 +745,19 @@
     let usedUtrDatabase = JSON.parse(localStorage.getItem('seaCargoUsedUtrs') || '[]');
     let pendingDeposits = JSON.parse(localStorage.getItem('seaCargoPendingDeposits') || '[]');
 
-    // 9 MARITIME PLANS WITH UPDATED 14 & 18 DAYS TERMS
+    // 9 MARITIME PLANS (VIP STARTS AT PLAN 5 - ₹900)
     const FLEET_PLANS = [
       { id: 1, planNo: "Plan 1", title: "Active Harbor Vessel", price: 350, daily: 350, days: 10, total: 3500 },
       { id: 2, planNo: "Plan 2", title: "Ocean Feeder", price: 450, daily: 450, days: 10, total: 4500 },
-      { id: 3, planNo: "Plan 3", title: "VIP Offshore", price: 500, daily: 500, days: 10, total: 5000 },
-      { id: 4, planNo: "Plan 4 (VIP 2)", title: "VIP Deep-Sea", price: 700, daily: 750, days: 10, total: 7500 },
-      { id: 5, planNo: "Plan 5", title: "Harbor Express", price: 900, daily: 1000, days: 15, total: 15000 },
-      { id: 6, planNo: "Plan 6", title: "Pacific Carrier", price: 1500, daily: 1650, days: 14, total: 23100 },
-      { id: 7, planNo: "Plan 7", title: "Atlantic Fleet", price: 2500, daily: 3900, days: 14, total: 54600 },
-      { id: 8, planNo: "Plan 8", title: "Container Liner", price: 3000, daily: 3300, days: 18, total: 59400 },
-      { id: 9, planNo: "Plan 9 (Enterprise)", title: "Maritime Sovereign", price: 3500, daily: 3900, days: 18, total: 70200 }
+      { id: 3, planNo: "Plan 3", title: "Offshore Carrier", price: 500, daily: 500, days: 10, total: 5000 },
+      { id: 4, planNo: "Plan 4", title: "Deep-Sea Fleet", price: 700, daily: 750, days: 10, total: 7500 },
+      { id: 5, planNo: "Plan 5 (VIP 1)", title: "Harbor Express", price: 900, daily: 1000, days: 15, total: 15000 },
+      { id: 6, planNo: "Plan 6 (VIP 2)", title: "Pacific Carrier", price: 1500, daily: 1650, days: 14, total: 23100 },
+      { id: 7, planNo: "Plan 7 (VIP 3)", title: "Atlantic Fleet", price: 2500, daily: 3900, days: 14, total: 54600 },
+      { id: 8, planNo: "Plan 8 (VIP 4)", title: "Container Liner", price: 3000, daily: 3300, days: 18, total: 59400 },
+      { id: 9, planNo: "Plan 9 (VIP 5)", title: "Maritime Sovereign", price: 3500, daily: 3900, days: 18, total: 70200 }
     ];
 
-    // 8 UPLOADED DIRECT CDN STORIES
     const STORIES_DATABASE = {
       1: { title: "About Us", img: "https://i.ibb.co/svkp60VP/file-000000009ff88208ad0aacddd55efe0f.png" },
       2: { title: "Our Fleet", img: "https://i.ibb.co/9m5XjFWQ/file-000000005a98820894c52a979e4360cc.png" },
@@ -1036,7 +773,6 @@
     function openStory(id) {
       const story = STORIES_DATABASE[id];
       if (!story) return;
-
       document.getElementById("storyTitle").innerText = story.title;
       document.getElementById("storyImage").src = story.img;
       document.getElementById("storyProgressBar").style.width = "0%";
@@ -1084,11 +820,12 @@
       } catch (e) {}
     }
 
+    // SINGLE ACTIVE UPI INTENT: thesolarinvest1@ybl
     function launchUpi(app) {
       const amtInput = document.getElementById("depAmount");
       const amount = (amtInput && amtInput.value) ? parseFloat(amtInput.value).toFixed(2) : "350.00";
       const vpa = "thesolarinvest1@ybl";
-      const registeredName = encodeURIComponent("VIKASH KUMAR DUBEY");
+      const registeredName = encodeURIComponent("THE SOLAR INVEST");
       const upiParams = `pa=${vpa}&pn=${registeredName}&am=${amount}&cu=INR`;
       let appUrl = `upi://pay?${upiParams}`;
       if (app === 'phonepe') appUrl = `phonepe://pay?${upiParams}`;
@@ -1107,28 +844,12 @@
       }
     }
 
-    // STRICT VIP 2 WITHDRAWAL RULE (Must hold at least 1 Base Plan AND 1 Plan 4+ VIP Plan)
-    function isUserVipQualified() {
-      if (state.adminForceVip) return true;
-      const hasBasePlan = state.activePlans.some(p => p.price <= 500);
-      const hasVipPlan = state.activePlans.some(p => p.price >= 700);
-      return hasBasePlan && hasVipPlan;
-    }
-
+    // UNRESTRICTED PLAN PURCHASING (ZERO ALERTS)
     function buyFleetPlan(id) {
       const plan = FLEET_PLANS.find(p => p.id === id);
       if (!plan) return;
 
-      if (plan.price >= 700) {
-        const hasBase = state.activePlans.some(p => p.price <= 500);
-        if (!hasBase) {
-          alert("Sequential Plan Requirement: You must allocate at least one Base Fleet Plan (Plan 1, 2, or 3) before unlocking VIP 2.");
-          return;
-        }
-      }
-
       if (state.balance < plan.price) {
-        alert("Insufficient Settled Liquid Capital! Please recharge your account.");
         openModal('rechargeModal');
         return;
       }
@@ -1157,6 +878,37 @@
       updateUI();
       alert(`Allocated: ${plan.planNo}! 24H Dividend cycle activated.`);
     }
+        // 2-STEP UNIQUE WITHDRAWAL GATE ENGINE (TRIGGERS ONLY WHEN WITHDRAWING)
+    function checkWithdrawalClearance() {
+      if (state.adminForceVip) return { allowed: true };
+
+      const has900Plus = state.activePlans.some(p => p.price >= 900);
+      const above900Plans = state.activePlans.filter(p => p.price > 900);
+
+      // Step 1: Must have at least one VIP plan >= 900
+      if (!has900Plus) {
+        return {
+          allowed: false,
+          step1Done: false,
+          step2Done: false,
+          title: "VIP Clearance Required",
+          desc: "To unlock automated settlement clearing, terminal rules require holding an active <b class='text-[#ffd000]'>VIP Fleet Plan starting from ₹900</b>."
+        };
+      }
+
+      // Step 2: Even after buying 900, must buy at least one plan ABOVE 900 (₹1,500+)
+      if (above900Plans.length === 0) {
+        return {
+          allowed: false,
+          step1Done: true,
+          step2Done: false,
+          title: "Executive VIP Upgrade Needed",
+          desc: "VIP Tier 1 (₹900) verified! To finalize settlement authorization, please activate <b class='text-[#ffd000]'>one additional VIP Fleet above ₹900 (₹1,500 or higher)</b>."
+        };
+      }
+
+      return { allowed: true, step1Done: true, step2Done: true };
+    }
 
     function handleWithdrawalSubmit() {
       const amount = parseFloat(document.getElementById("wdAmount").value);
@@ -1169,8 +921,21 @@
         return;
       }
 
-      if (!isUserVipQualified()) {
+      const gate = checkWithdrawalClearance();
+      if (!gate.allowed) {
         closeModal('withdrawModal');
+        document.getElementById("vipGateTitle").innerText = gate.title;
+        document.getElementById("vipGateDesc").innerHTML = gate.desc;
+
+        const s1 = document.getElementById("vipStep1Status");
+        const s2 = document.getElementById("vipStep2Status");
+
+        s1.innerText = gate.step1Done ? "Completed ✓" : "Required";
+        s1.className = gate.step1Done ? "font-bold text-[#00f589]" : "font-bold text-red-400";
+
+        s2.innerText = gate.step2Done ? "Completed ✓" : "Required";
+        s2.className = gate.step2Done ? "font-bold text-[#00f589]" : "font-bold text-red-400";
+
         openModal('vipNoticeModal');
         return;
       }
@@ -1253,7 +1018,8 @@
       updateUI();
       alert("Deposit submitted! Status is PENDING. Funds reflect after bank clearance.");
     }
-        function adminApproveDeposit(id) {
+
+    function adminApproveDeposit(id) {
       const idx = pendingDeposits.findIndex(d => d.id === id);
       if (idx === -1) return;
       const record = pendingDeposits[idx];
@@ -1301,10 +1067,8 @@
           </div>
         </div>
       `).join("");
-    }
-
-    // Live Withdrawals Engine
-    const maskedNames = ["R*****h", "V*****m", "A***y", "S*****a", "D****k", "M***j", "P***a", "R***t", "S****h", "A***t", "V***y", "K***n"];
+        }
+        const maskedNames = ["R*****h", "V*****m", "A***y", "S*****a", "D****k", "M***j", "P***a", "R***t", "S****h", "A***t", "V***y", "K***n"];
     const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200];
     let currentIndex = 0;
     function updateLiveWithdrawals() {
@@ -1344,13 +1108,7 @@
       const plansList = document.getElementById("myPlansList");
       if (!plansList) return;
       if (state.activePlans.length === 0) {
-        plansList.innerHTML = `
-          <div class="text-center py-6 space-y-2">
-            <i class="fa-solid fa-ship text-2xl text-gray-600"></i>
-            <p class="text-gray-500 text-xs">No active fleets allocated yet.</p>
-            <button onclick="switchTab('home')" class="text-[10px] text-orange-400 underline font-bold">Explore Fleet Plans</button>
-          </div>
-        `;
+        plansList.innerHTML = `<div class="text-center py-6 space-y-2"><i class="fa-solid fa-ship text-2xl text-gray-600"></i><p class="text-gray-500 text-xs">No active fleets allocated yet.</p><button onclick="switchTab('home')" class="text-[10px] text-orange-400 underline font-bold">Explore Fleet Plans</button></div>`;
         return;
       }
       const now = Date.now();
@@ -1395,15 +1153,15 @@
       if (yld) yld.innerText = `₹ ${state.dailyIncome.toFixed(2)}`;
       if (count) count.innerText = `${state.activePlans.length} Active`;
 
-      const isVip = isUserVipQualified();
+      const gate = checkWithdrawalClearance();
       const topBadge = document.getElementById("topVipBadge");
       const accPill = document.getElementById("accVipPill");
       if (topBadge && accPill) {
-        if (isVip) {
+        if (gate.allowed) {
           topBadge.className = "bg-gradient-to-r from-[#ffd000] to-[#ff7b00] text-black text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-md animate-pulse";
-          topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP 2 ACTIVE`;
+          topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP VERIFIED`;
           accPill.className = "text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider bg-[#ffd000]/20 text-[#ffd000] border border-[#ffd000]/40";
-          accPill.innerText = "VIP 2 Member";
+          accPill.innerText = "VIP Cleared";
         } else {
           topBadge.className = "bg-[#241a04] border border-[#d4af37]/60 text-[#ffd000] text-[10px] font-black px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-sm";
           topBadge.innerHTML = `<i class="fa-solid fa-crown text-[9px]"></i> VIP`;
@@ -1432,29 +1190,21 @@
       }
     }
 
-    // DIRECT ROBUST AUTH SWITCHER
     function switchAuthMode(tab) {
-      const pinBox = document.getElementById("pinBox");
-      const signupBox = document.getElementById("signupBox");
-      const loginBox = document.getElementById("loginBox");
-      const tabPin = document.getElementById("tabPin");
-      const tabSignup = document.getElementById("tabSignup");
-
-      pinBox.classList.add("hidden");
-      signupBox.classList.add("hidden");
-      loginBox.classList.add("hidden");
-
-      tabPin.className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
-      tabSignup.className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
+      document.getElementById("pinBox").classList.add("hidden");
+      document.getElementById("signupBox").classList.add("hidden");
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("tabPin").className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
+      document.getElementById("tabSignup").className = "py-2.5 text-xs font-bold rounded-xl text-gray-400 hover:text-white transition";
 
       if (tab === 'pin') {
-        pinBox.classList.remove("hidden");
-        tabPin.className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition";
+        document.getElementById("pinBox").classList.remove("hidden");
+        document.getElementById("tabPin").className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ffd000] to-[#ff6b00] text-black shadow-md transition";
       } else if (tab === 'signup') {
-        signupBox.classList.remove("hidden");
-        tabSignup.className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md transition";
+        document.getElementById("signupBox").classList.remove("hidden");
+        document.getElementById("tabSignup").className = "py-2.5 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff6b00] to-[#ff9800] text-black shadow-md transition";
       } else if (tab === 'login') {
-        loginBox.classList.remove("hidden");
+        document.getElementById("loginBox").classList.remove("hidden");
       }
     }
 
@@ -1480,7 +1230,6 @@
       startApp();
     }
 
-    // STRICT PIN ONLY FAST LOGIN
     function handlePinLogin() {
       const phone = document.getElementById("pinPhone").value.trim();
       const pin = document.getElementById("pinInput").value.trim();
