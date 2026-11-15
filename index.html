@@ -287,7 +287,7 @@
           </div>
         </div>
 
-        <!-- Metrics & Harbor Check-In (+₹10.00) -->
+        <!-- Metrics & Harbor Check-In (+₹10.00 Locked 24H) -->
         <div class="grid grid-cols-4 gap-2 text-center">
           <div class="bg-[#080d1a] p-2 rounded-xl border border-white/5">
             <span class="text-[8px] text-gray-400 uppercase font-bold block">Active Ships</span>
@@ -566,7 +566,7 @@
         <button onclick="handleLogout()" class="text-xs text-red-400 font-bold bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-xl active:scale-95">Logout</button>
       </div>
 
-      <!-- 24/7 WhatsApp Help Desk Card -->
+      <!-- 24 Hours Support Card -->
       <div class="bg-[#080d1a] p-4 rounded-2xl border border-white/15 flex justify-between items-center">
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-2xl bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366] text-xl">
@@ -784,7 +784,8 @@
     dailyIncome: 0.0,
     activePlans: [],
     transactions: [],
-    adminForceVip: false
+    adminForceVip: false,
+    lastCheckinTime: 0
   };
 
   function saveUserState() {
@@ -926,7 +927,6 @@
     }, 1000);
   }
 
-  // AUTO-FILLS EXACT PLAN PRICE IN DEPOSIT MODAL
   function buyFleetPlan(id) {
     const plan = FLEET_PLANS.find(p => p.id === id);
     if (!plan) return;
@@ -1281,7 +1281,6 @@
     closeModal('rechargeModal');
     updateUI();
     
-    // Show Professional 5-Min Timer Modal
     showCustomAlert("Deposit Under Review", "Receipt transmitted to Admin Telegram securely. Balance will credit automatically upon verification.", "fa-clock", true);
   }
 
@@ -1361,18 +1360,33 @@
     currentIndex = (currentIndex + 1) % maskedNames.length;
   }
 
+  // 24-HOUR LOCKED HARBOR CLAIM ENGINE
   function dailyCheckIn() {
+    const now = Date.now();
+    const cooldown = 24 * 60 * 60 * 1000;
+
+    if (state.lastCheckinTime && (now - state.lastCheckinTime < cooldown)) {
+      const remainingMs = cooldown - (now - state.lastCheckinTime);
+      const hours = Math.floor(remainingMs / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+      showCustomAlert("Harbor Claim Locked", `Daily harbor dividend can only be claimed once every 24 hours. Next claim unlocks in ${hours}h ${minutes}m.`, "fa-clock");
+      return;
+    }
+
     state.balance += 10;
+    state.lastCheckinTime = now;
+    
+    state.transactions.unshift({
+      type: 'Harbor Claim',
+      name: 'Daily Port Dividend Check-In',
+      amount: 10,
+      time: 'Just now'
+    });
+
     saveUserState();
     playTerminalChime('bonus');
     updateUI();
-    const btn = document.getElementById("btnCheckin");
-    if (btn) {
-      btn.disabled = true;
-      btn.innerHTML = `<span class="text-[8px] text-green-400 font-black block">Claimed</span><b class="text-xs text-white">✓ Done</b>`;
-      btn.classList.add("opacity-50", "cursor-not-allowed");
-    }
-    alert("Harbor dividend of ₹10.00 credited to your account!");
+    showCustomAlert("Harbor Claim Successful!", "₹10.00 daily harbor dividend credited to your settled liquid capital.", "fa-circle-check");
   }
 
   // AUTOMATIC 24H DIVIDEND ACCUMULATION ENGINE
@@ -1698,14 +1712,18 @@
   });
 </script>
 
-<!-- ENHANCED 24/7 WHATSAPP SUPPORT WIDGET -->
-<div class="fixed bottom-20 right-4 z-50 flex items-center gap-2">
-  <div class="bg-[#080d1a]/90 backdrop-blur-md border border-[#25D366]/50 px-3 py-1.5 rounded-2xl shadow-xl text-right">
-    <p class="text-[9px] font-black text-[#25D366] uppercase tracking-wider">24 Hours Support</p>
-    <p class="text-[8px] text-gray-300 font-mono">Instant Help Desk</p>
+<!-- REDESIGNED LUXURY 24/7 WHATSAPP SUPPORT WIDGET -->
+<div class="fixed bottom-20 right-4 z-50 flex items-center gap-3">
+  <div class="bg-gradient-to-r from-[#080d1a] to-[#040814] border border-[#25D366]/40 px-3.5 py-2 rounded-2xl shadow-2xl backdrop-blur-md text-right hidden sm:block">
+    <div class="flex items-center justify-end gap-1.5">
+      <span class="w-2 h-2 rounded-full bg-[#25D366] animate-ping"></span>
+      <p class="text-[10px] font-black text-[#25D366] uppercase tracking-wider font-luxury">24/7 VIP Support</p>
+    </div>
+    <p class="text-[9px] text-gray-300 font-mono mt-0.5">Maritime Desk Online</p>
   </div>
-  <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Support,%20I%20need%20assistance%20with%20my%20terminal%20account." target="_blank" class="bg-[#25D366] text-black w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.7)] active:scale-95 transition animate-bounce">
-    <i class="fa-brands fa-whatsapp text-3xl font-black"></i>
+  <a href="https://wa.me/919682814718?text=Hello%20The%20Sea%20Cargo%20Support,%20I%20need%20assistance%20with%20my%20terminal%20account." target="_blank" class="relative group bg-gradient-to-br from-[#25D366] to-[#128C7E] text-black w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.5)] active:scale-95 transition">
+    <div class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full border-2 border-[#030712] flex items-center justify-center text-[8px] font-black">✓</div>
+    <i class="fa-brands fa-whatsapp text-3xl text-white drop-shadow-md"></i>
   </a>
 </div>
 
