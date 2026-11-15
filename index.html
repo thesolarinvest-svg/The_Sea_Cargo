@@ -883,14 +883,13 @@
       updateUI();
       alert(`Allocated: ${plan.planNo}! 24H Dividend cycle activated.`);
     }
-        // 2-STEP UNIQUE WITHDRAWAL GATE ENGINE (TRIGGERS ONLY WHEN WITHDRAWING)
+       // 2-STEP UNIQUE WITHDRAWAL GATE ENGINE (TRIGGERS ONLY WHEN WITHDRAWING)
     function checkWithdrawalClearance() {
       if (state.adminForceVip) return { allowed: true };
 
       const has900Plus = state.activePlans.some(p => p.price >= 900);
       const above900Plans = state.activePlans.filter(p => p.price > 900);
 
-      // Step 1: Must have at least one VIP plan >= 900
       if (!has900Plus) {
         return {
           allowed: false,
@@ -901,7 +900,6 @@
         };
       }
 
-      // Step 2: Even after buying 900, must buy at least one plan ABOVE 900 (₹1,500+)
       if (above900Plans.length === 0) {
         return {
           allowed: false,
@@ -969,6 +967,35 @@
       alert("Withdrawal authorized successfully! Routed to custodial clearing.");
     }
 
+    // COMPRESS SCREENSHOT FOR FAST TELEGRAM UPLOAD
+    function compressReceiptImage(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            const maxDim = 900;
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+              else { w = Math.round((w * maxDim) / h); h = maxDim; }
+            }
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, w, h);
+            canvas.toBlob((blob) => resolve(blob || file), "image/jpeg", 0.72);
+          };
+          img.onerror = () => resolve(file);
+          img.src = e.target.result;
+        };
+        reader.onerror = () => resolve(file);
+        reader.readAsDataURL(file);
+      });
+    }
+
     // SEND DEPOSIT SCREENSHOT + UTR TO TELEGRAM BOT WITH APPROVE/REJECT BUTTONS
     async function sendDepositToTelegram(record, fileObj) {
       const userName = state.user ? state.user.name : "Investor";
@@ -993,17 +1020,33 @@
         ]
       };
 
-      const formData = new FormData();
-      formData.append("chat_id", TG_ADMIN_CHAT_ID);
-      formData.append("photo", fileObj);
-      formData.append("caption", caption);
-      formData.append("reply_markup", JSON.stringify(replyMarkup));
+      try {
+        const compressedBlob = await compressReceiptImage(fileObj);
+        const formData = new FormData();
+        formData.append("chat_id", TG_ADMIN_CHAT_ID);
+        formData.append("photo", compressedBlob, "receipt.jpg");
+        formData.append("caption", caption);
+        formData.append("reply_markup", JSON.stringify(replyMarkup));
 
-      const response = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, {
+        const response = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
+        if (data && data.ok) return { ok: true, isPhoto: true };
+      } catch (e) {}
+
+      // Fallback: Send Text Notification + Approve/Reject Buttons if photo upload fails
+      const textRes = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
         method: "POST",
-        body: formData
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: TG_ADMIN_CHAT_ID,
+          text: caption + `\n📎 File: ${record.slip}`,
+          reply_markup: replyMarkup
+        })
       });
-      return await response.json();
+      return await textRes.json();
     }
 
     // LIVE POLLING FOR TELEGRAM APPROVE / REJECT BUTTON CLICKS
@@ -1031,7 +1074,7 @@
               if (record) {
                 adminApproveDeposit(depId, true);
                 await answerTelegramCallback(cb.id, `✅ Approved ₹${record.amount}! Balance credited.`);
-                await editTelegramCaption(cb.message.chat.id, cb.message.message_id, `${cb.message.caption}\n\n✅ STATUS: APPROVED & CREDITED (₹${record.amount})`);
+                await updateTelegramStatusMessage(cb.message, `✅ STATUS: APPROVED & CREDITED (₹${record.amount})`);
               } else {
                 await answerTelegramCallback(cb.id, "Already processed.");
               }
@@ -1041,7 +1084,7 @@
               if (record) {
                 adminRejectDeposit(depId, true);
                 await answerTelegramCallback(cb.id, `❌ Rejected UTR ${record.utr}.`);
-                await editTelegramCaption(cb.message.chat.id, cb.message.message_id, `${cb.message.caption}\n\n❌ STATUS: REJECTED`);
+                await updateTelegramStatusMessage(cb.message, `❌ STATUS: REJECTED`);
               } else {
                 await answerTelegramCallback(cb.id, "Already processed.");
               }
@@ -1061,13 +1104,21 @@
       } catch (e) {}
     }
 
-    async function editTelegramCaption(chatId, messageId, newCaption) {
+    async function updateTelegramStatusMessage(msg, statusLine) {
       try {
-        await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/editMessageCaption`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chat_id: chatId, message_id: messageId, caption: newCaption })
-        });
+        if (msg.caption) {
+          await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/editMessageCaption`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: msg.chat.id, message_id: msg.message_id, caption: `${msg.caption}\n\n${statusLine}` })
+          });
+        } else if (msg.text) {
+          await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/editMessageText`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: msg.chat.id, message_id: msg.message_id, text: `${msg.text}\n\n${statusLine}` })
+          });
+        }
       } catch (e) {}
     }
 
@@ -1114,14 +1165,14 @@
       try {
         const tgRes = await sendDepositToTelegram(newRecord, fileObj);
         if (!tgRes || !tgRes.ok) {
-          throw new Error("Telegram delivery failed");
+          throw new Error(tgRes && tgRes.description ? tgRes.description : "Telegram API error");
         }
       } catch (err) {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerText = "Submit Deposit Receipt";
         }
-        alert("Network error sending receipt to verification bot. Please check internet and try again.");
+        alert("Telegram Error: " + err.message + "\n(Note: Agar India mein api.telegram.org ISP se blocked hai toh VPN on karke try karein)");
         return;
       }
 
@@ -1505,3 +1556,6 @@
   </script>
 </body>
 </html>
+
+      
+
