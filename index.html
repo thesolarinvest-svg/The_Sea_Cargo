@@ -779,6 +779,9 @@
     lastCheckinTime: 0
   };
 
+  if (isNaN(state.rechargeBalance)) state.rechargeBalance = 0.0;
+  if (isNaN(state.earningsBalance)) state.earningsBalance = 0.0;
+
   function saveUserState() {
     localStorage.setItem(userStorageKey, JSON.stringify(state));
   }
@@ -918,7 +921,7 @@
     }, 1000);
   }
 
-  // RECHARGE-ONLY PLAN PURCHASE (CANNOT BUY USING EARNINGS)
+  // STRICT RECHARGE-ONLY PLAN PURCHASE
   function buyFleetPlan(id) {
     const plan = FLEET_PLANS.find(p => p.id === id);
     if (!plan) return;
@@ -965,7 +968,6 @@
     const has900Plus = state.activePlans.some(p => p.price >= 900);
     const has1500Plus = state.activePlans.some(p => p.price >= 1500);
 
-    // Step 1: Check if user has at least VIP 1 (₹900+)
     if (!has900Plus) {
       return {
         allowed: false,
@@ -974,7 +976,6 @@
       };
     }
 
-    // Step 2: Once VIP 1 is taken, check if user has taken a Final VIP (₹1,500+)
     if (!has1500Plus) {
       return {
         allowed: false,
@@ -1012,7 +1013,6 @@
       return;
     }
 
-    // Deduct from earnings first, then recharge balance if needed
     let remainingWd = amount;
     if (state.earningsBalance >= remainingWd) {
       state.earningsBalance -= remainingWd;
@@ -1276,7 +1276,6 @@
     showCustomAlert("Deposit Under Review", "Receipt transmitted to Admin Telegram securely. Recharge balance will credit automatically upon verification.", "fa-clock", true);
   }
 
-  // ADD TO RECHARGE BALANCE UPON APPROVAL
   function adminApproveDeposit(id, silent = false) {
     const idx = pendingDeposits.findIndex(d => d.id === id);
     if (idx === -1) return;
@@ -1328,8 +1327,8 @@
       </div>
     `).join("");
   }
-      </script>
-      <script>
+</script>
+<script>
   const maskedNames = ["R*****h", "V*****m", "A***y", "S*****a", "D****k", "M***j", "P***a", "R***t", "S****h", "A***t", "V***y", "K***n"];
   const amountPool = [1200, 1850, 2400, 3100, 3500, 4200, 4800, 5200, 6500, 7500, 9200];
   let currentIndex = 0;
